@@ -1,0 +1,49 @@
+POST http://localhost:5000/api/products/seed/
+Content-Type: application/json
+
+{
+    "name":"JNX Sports The Ripper",
+    "image":"https://cdn.muscleandstrength.com/store/media/catalog/product/cache/all/image/700x700/602f0fa2c1f0d1ba5e241f914e856ff9/t/h/the-ripper-blood-orange-30-serve_2.jpg",
+    "brand":"JNX Sports",
+    "description":"The Ultimate Fast Acting, Full Strength Fat Burner!*",
+    "features":["Fast acting formula*","Full strength fat-burner*","Supports appetite control*","9 intense great tasting flavors"],
+    "rating":94,
+    "numReviews":731,
+    "category":"Fat Burner",
+    "ingredient":"Citric Acid, Malic Acid, Calcium Silicate, Silicon Dioxide, Natural and Artificial Flavors, Beet Juice (color), Sucralose, Acesulfame Potassium",
+    "directions":"Begin drinking (1) serving (1 scoop) mixed with 6-8 ounces (180-250mls) of cold water on an empty stomach 15-30 minutes before breakfast for the first two (2) days to assess tolerance. an additional 1 scoop may be taken 5-6 hours later or as directed by a qualified healthcare practitioner. For best results, use for 60 days in combination with diet and exercise. Do not exceed 2 servings in a 24 hour period.",
+    "warning":"Always assess your tolerance with a single scoop. This product is only intended to be consumed by healthy adults 18 years of age or older. Not for use by those with pre-existing medical conditions or those taking any medications, young children under the age of 18, pregnant or lactating women, or individuals sensitive to caffeine or beta alanine. Discontinue use and consult your health care professional if you experience any adverse reaction to this product. Do not consume with caffeine, alcohol, or stimulants from other sources. To avoid sleeplessness do not consume within 4 hours of bedtime. You may experience harmless short term skin tingles. Store in a cool, dry place. KEEP OUT OF REACH OF CHILDREN.",
+    "extraInfo":
+}
+
+####
+
+GET http://localhost:5000/api/products/6033aeb63949aa3b5cda6999
+
+#####
+
+GET  http://localhost:5000/api/review/getAll/603cd94f39e7893b1cb3e4ed/1
+
+
+#####
+
+PUT http://localhost:5000/api/review/update
+Content-Type: application/json
+
+{
+    "review":{
+        "content":"Always assess your tolerance with a single scoop. This product is only intended to be consumed by healthy adults 18 years of age or older. Not for use by those with pre-existing medical conditions or those taking any medications, young children under the age of 18, pregnant or lactating women, or individuals sensitive to caffeine or beta alanine. Discontinue use and consult your health care professional if you experience any adverse reaction to this product. Do not consume with caffeine, alcohol, or stimulants from other sources. To avoid sleeplessness do not consume within 4 hours of bedtime. You may experience harmless short term skin tingles. Store in a cool, dry place. KEEP OUT OF REACH OF CHILDREN.",
+        "_id":"604b733f1ffe9b039cfbb3dc"
+    }  
+}
+
+###
+
+DELETE  http://localhost:5000/api/review/delete
+Content-Type: application/json
+
+{
+    
+    "_id":"605080b1bf0ab73d74020dd7",
+    "userId":"5fef1d35db624d3258c938c7"
+}

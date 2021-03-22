@@ -1,0 +1,250 @@
+{
+  "reviews": [
+    {
+      "helpful": 9,
+      "notHelpful": 1,
+      "userGoal": "Build Muscle",
+      "isVerifiedBuyer": true,
+      "_id": "604b733f1ffe9b039cfbb3da",
+      "userId": "5fe9b9e2e52187156472ac4c",
+      "rating": 60,
+      "ratingFavors": [
+        {
+          "_id": "604b733f1ffe9b039cfbb3db",
+          "rating": 80,
+          "name": "Pink Mango Slice",
+          "id": "5fe9b9e2e52187156472ac4c"
+        }
+      ],
+      "reviewingAs": "Robert",
+      "image": "/images/defaultUserImage",
+      "content": "Not great taste but non of theses supplements really do. No real boost in energy but did notice a curb in apptite. Overall I maintained about normal progress and didn't see a substantial boost from product use. Maybe good for a beginner but not for a long term fat burner user.",
+      "productId": "603cd94f39e7893b1cb3e4ed",
+      "__v": 0,
+      "createdAt": "2021-03-12T13:57:19.804Z",
+      "updatedAt": "2021-03-12T13:57:19.804Z"
+    },
+    {
+      "helpful": 4,
+      "notHelpful": 0,
+      "userGoal": "Build Muscle",
+      "isVerifiedBuyer": true,
+      "_id": "604b733f1ffe9b039cfbb3dc",
+      "userId": "5feaf9b01969e21de82b0980",
+      "rating": 60,
+      "ratingFavors": [
+        {
+          "_id": "604b733f1ffe9b039cfbb3dd",
+          "rating": 80,
+          "name": "Razor Lime",
+          "id": "5fe9b9e2e52187156472ac4c"
+        }
+      ],
+      "reviewingAs": "krista k",
+      "content": "Tastes great, nice energy boost. I read about people complaining about the Lime flavor (?) It's great. Remember the lime popsicles as a kid? That's the taste. Then again, why whine about flavor when it's a supplement? Down it and get on with your workout! I didn't have any side effects with this, no jitters or anything, and I drink a LOT of coffee throughout the day. On some days I'll do the recommended dosage, some days I use less. Experiment with it. Anyone looking to this (or any supplement) thinking it's going to magically make you lose weight? Sorry. You need to get off your butt, workout, and stop eating garbage. The Ripper is a tool, like other supplements that give a boost to your workouts and rev up your metabolism a bit. Hit the workout with intensity and focus, cut out empty carbs and yes, supplements will work for you. I'd buy this again.",
+      "image": "/images/defaultUserImage",
+      "productId": "603cd94f39e7893b1cb3e4ed",
+      "__v": 0,
+      "createdAt": "2021-03-12T13:57:19.806Z",
+      "updatedAt": "2021-03-12T13:57:19.806Z"
+    },
+    {
+      "helpful": 4,
+      "notHelpful": 0,
+      "userGoal": "",
+      "isVerifiedBuyer": true,
+      "_id": "604b733f1ffe9b039cfbb3de",
+      "userId": "5feaf9b01969e21de82b0980",
+      "rating": 60,
+      "ratingFavors": [
+        {
+          "_id": "604b733f1ffe9b039cfbb3df",
+          "rating": 40,
+          "name": "Cherry Limeade",
+          "id": "5fe9b9e2e52187156472ac4c"
+        }
+      ],
+      "reviewingAs": "Ahmed E",
+      "image": "/images/defaultUserImage",
+      "content": "about to finish my first one , I think it's useless , diet is the key",
+      "productId": "603cd94f39e7893b1cb3e4ed",
+      "__v": 0,
+      "createdAt": "2021-03-12T13:57:19.808Z",
+      "updatedAt": "2021-03-12T13:57:19.808Z"
+    },
+    {
+      "helpful": 3,
+      "notHelpful": 0,
+      "userGoal": "",
+      "isVerifiedBuyer": true,
+      "_id": "604b733f1ffe9b039cfbb3e0",
+      "userId": "5feaf9b01969e21de82b0980",
+      "rating": 100,
+      "ratingFavors": [
+        {
+          "_id": "604b733f1ffe9b039cfbb3e1",
+          "rating": 40,
+          "name": "Pineapple Shred",
+          "id": "5fe9b9e2e52187156472ac4c"
+        },
+        {
+          "_id": "604b733f1ffe9b039cfbb3e2",
+          "rating": 100,
+          "name": "Raspberry Lemonade",
+          "id": "5fe9b9e2e52187156472ac4c"
+        }
+      ],
+      "reviewingAs": "Andrea C",
+      "content": "Great product. Use it in the mornings and then as a pre-workout.",
+      "productId": "603cd94f39e7893b1cb3e4ed",
+      "image": "/images/defaultUserImage",
+      "__v": 0,
+      "createdAt": "2021-03-12T13:57:19.810Z",
+      "updatedAt": "2021-03-12T13:57:19.810Z"
+    },
+    {
+      "helpful": 4,
+      "notHelpful": 0,
+      "userGoal": "Build Muscle",
+      "isVerifiedBuyer": true,
+      "_id": "604b733f1ffe9b039cfbb3e3",
+      "userId": "5feaf9b01969e21de82b0980",
+      "rating": 60,
+      "ratingFavors": [
+        {
+          "_id": "604b733f1ffe9b039cfbb3e4",
+          "rating": 80,
+          "name": "Razor Lime",
+          "id": "5fe9b9e2e52187156472ac4c"
+        }
+      ],
+      "reviewingAs": "krista k",
+      "content": "Tastes great, nice energy boost. I read about people complaining about the Lime flavor (?) It's great. Remember the lime popsicles as a kid? That's the taste. Then again, why whine about flavor when it's a supplement? Down it and get on with your workout! I didn't have any side effects with this, no jitters or anything, and I drink a LOT of coffee throughout the day. On some days I'll do the recommended dosage, some days I use less. Experiment with it. Anyone looking to this (or any supplement) thinking it's going to magically make you lose weight? Sorry. You need to get off your butt, workout, and stop eating garbage. The Ripper is a tool, like other supplements that give a boost to your workouts and rev up your metabolism a bit. Hit the workout with intensity and focus, cut out empty carbs and yes, supplements will work for you. I'd buy this again.",
+      "image": "/images/defaultUserImage",
+      "productId": "603cd94f39e7893b1cb3e4ed",
+      "__v": 0,
+      "createdAt": "2021-03-12T13:57:19.813Z",
+      "updatedAt": "2021-03-12T13:57:19.813Z"
+    },
+    {
+      "helpful": 4,
+      "notHelpful": 0,
+      "userGoal": "Build Muscle",
+      "isVerifiedBuyer": true,
+      "_id": "604b733f1ffe9b039cfbb3e5",
+      "userId": "5feaf9b01969e21de82b0980",
+      "rating": 60,
+      "ratingFavors": [
+        {
+          "_id": "604b733f1ffe9b039cfbb3e6",
+          "rating": 80,
+          "name": "Razor Lime",
+          "id": "5fe9b9e2e52187156472ac4c"
+        }
+      ],
+      "reviewingAs": "krista k",
+      "content": "Tastes great, nice energy boost. I read about people complaining about the Lime flavor (?) It's great. Remember the lime popsicles as a kid? That's the taste. Then again, why whine about flavor when it's a supplement? Down it and get on with your workout! I didn't have any side effects with this, no jitters or anything, and I drink a LOT of coffee throughout the day. On some days I'll do the recommended dosage, some days I use less. Experiment with it. Anyone looking to this (or any supplement) thinking it's going to magically make you lose weight? Sorry. You need to get off your butt, workout, and stop eating garbage. The Ripper is a tool, like other supplements that give a boost to your workouts and rev up your metabolism a bit. Hit the workout with intensity and focus, cut out empty carbs and yes, supplements will work for you. I'd buy this again.",
+      "image": "/images/defaultUserImage",
+      "productId": "603cd94f39e7893b1cb3e4ed",
+      "__v": 0,
+      "createdAt": "2021-03-12T13:57:19.814Z",
+      "updatedAt": "2021-03-12T13:57:19.814Z"
+    },
+    {
+      "helpful": 4,
+      "notHelpful": 0,
+      "userGoal": "Build Muscle",
+      "isVerifiedBuyer": true,
+      "_id": "604b733f1ffe9b039cfbb3e7",
+      "userId": "5feaf9b01969e21de82b0980",
+      "rating": 60,
+      "ratingFavors": [
+        {
+          "_id": "604b733f1ffe9b039cfbb3e8",
+          "rating": 80,
+          "name": "Razor Lime",
+          "id": "5fe9b9e2e52187156472ac4c"
+        }
+      ],
+      "reviewingAs": "krista k",
+      "content": "Tastes great, nice energy boost. I read about people complaining about the Lime flavor (?) It's great. Remember the lime popsicles as a kid? That's the taste. Then again, why whine about flavor when it's a supplement? Down it and get on with your workout! I didn't have any side effects with this, no jitters or anything, and I drink a LOT of coffee throughout the day. On some days I'll do the recommended dosage, some days I use less. Experiment with it. Anyone looking to this (or any supplement) thinking it's going to magically make you lose weight? Sorry. You need to get off your butt, workout, and stop eating garbage. The Ripper is a tool, like other supplements that give a boost to your workouts and rev up your metabolism a bit. Hit the workout with intensity and focus, cut out empty carbs and yes, supplements will work for you. I'd buy this again.",
+      "image": "/images/defaultUserImage",
+      "productId": "603cd94f39e7893b1cb3e4ed",
+      "__v": 0,
+      "createdAt": "2021-03-12T13:57:19.816Z",
+      "updatedAt": "2021-03-12T13:57:19.816Z"
+    },
+    {
+      "helpful": 4,
+      "notHelpful": 0,
+      "userGoal": "Build Muscle",
+      "isVerifiedBuyer": true,
+      "_id": "604b733f1ffe9b039cfbb3e9",
+      "userId": "5feaf9b01969e21de82b0980",
+      "rating": 60,
+      "ratingFavors": [
+        {
+          "_id": "604b733f1ffe9b039cfbb3ea",
+          "rating": 80,
+          "name": "Razor Lime",
+          "id": "5fe9b9e2e52187156472ac4c"
+        }
+      ],
+      "reviewingAs": "krista k",
+      "content": "Tastes great, nice energy boost. I read about people complaining about the Lime flavor (?) It's great. Remember the lime popsicles as a kid? That's the taste. Then again, why whine about flavor when it's a supplement? Down it and get on with your workout! I didn't have any side effects with this, no jitters or anything, and I drink a LOT of coffee throughout the day. On some days I'll do the recommended dosage, some days I use less. Experiment with it. Anyone looking to this (or any supplement) thinking it's going to magically make you lose weight? Sorry. You need to get off your butt, workout, and stop eating garbage. The Ripper is a tool, like other supplements that give a boost to your workouts and rev up your metabolism a bit. Hit the workout with intensity and focus, cut out empty carbs and yes, supplements will work for you. I'd buy this again.",
+      "image": "/images/defaultUserImage",
+      "productId": "603cd94f39e7893b1cb3e4ed",
+      "__v": 0,
+      "createdAt": "2021-03-12T13:57:19.818Z",
+      "updatedAt": "2021-03-12T13:57:19.818Z"
+    },
+    {
+      "helpful": 4,
+      "notHelpful": 0,
+      "userGoal": "Build Muscle",
+      "isVerifiedBuyer": true,
+      "_id": "604b733f1ffe9b039cfbb3eb",
+      "userId": "5feaf9b01969e21de82b0980",
+      "rating": 60,
+      "ratingFavors": [
+        {
+          "_id": "604b733f1ffe9b039cfbb3ec",
+          "rating": 80,
+          "name": "Razor Lime",
+          "id": "5fe9b9e2e52187156472ac4c"
+        }
+      ],
+      "reviewingAs": "krista k",
+      "content": "Tastes great, nice energy boost. I read about people complaining about the Lime flavor (?) It's great. Remember the lime popsicles as a kid? That's the taste. Then again, why whine about flavor when it's a supplement? Down it and get on with your workout! I didn't have any side effects with this, no jitters or anything, and I drink a LOT of coffee throughout the day. On some days I'll do the recommended dosage, some days I use less. Experiment with it. Anyone looking to this (or any supplement) thinking it's going to magically make you lose weight? Sorry. You need to get off your butt, workout, and stop eating garbage. The Ripper is a tool, like other supplements that give a boost to your workouts and rev up your metabolism a bit. Hit the workout with intensity and focus, cut out empty carbs and yes, supplements will work for you. I'd buy this again.",
+      "image": "/images/defaultUserImage",
+      "productId": "603cd94f39e7893b1cb3e4ed",
+      "__v": 0,
+      "createdAt": "2021-03-12T13:57:19.819Z",
+      "updatedAt": "2021-03-12T13:57:19.819Z"
+    },
+    {
+      "helpful": 4,
+      "notHelpful": 0,
+      "userGoal": "Build Muscle",
+      "isVerifiedBuyer": true,
+      "_id": "604b733f1ffe9b039cfbb3ed",
+      "userId": "5feaf9b01969e21de82b0980",
+      "rating": 60,
+      "ratingFavors": [
+        {
+          "_id": "604b733f1ffe9b039cfbb3ee",
+          "rating": 80,
+          "name": "Razor Lime",
+          "id": "5fe9b9e2e52187156472ac4c"
+        }
+      ],
+      "reviewingAs": "krista k",
+      "content": "Tastes great, nice energy boost. I read about people complaining about the Lime flavor (?) It's great. Remember the lime popsicles as a kid? That's the taste. Then again, why whine about flavor when it's a supplement? Down it and get on with your workout! I didn't have any side effects with this, no jitters or anything, and I drink a LOT of coffee throughout the day. On some days I'll do the recommended dosage, some days I use less. Experiment with it. Anyone looking to this (or any supplement) thinking it's going to magically make you lose weight? Sorry. You need to get off your butt, workout, and stop eating garbage. The Ripper is a tool, like other supplements that give a boost to your workouts and rev up your metabolism a bit. Hit the workout with intensity and focus, cut out empty carbs and yes, supplements will work for you. I'd buy this again.",
+      "image": "/images/defaultUserImage",
+      "productId": "603cd94f39e7893b1cb3e4ed",
+      "__v": 0,
+      "createdAt": "2021-03-12T13:57:19.820Z",
+      "updatedAt": "2021-03-12T13:57:19.820Z"
+    }
+  ]
+}
