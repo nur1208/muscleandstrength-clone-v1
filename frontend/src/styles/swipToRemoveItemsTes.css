@@ -1,0 +1,84 @@
+#main {
+  height: 100vh;
+  /* padding: 5%; */
+}
+
+/* .section {
+  max-width: 100%;
+  margin: 0;
+}
+
+.slick-slider {
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -ms-touch-action: none;
+  -webkit-tap-highlight-color: transparent;
+  margin-bottom: 0;
+}
+
+.section-center {
+  height: 450px;
+} */
+
+/* .wrapper {
+  width: 100%;
+  overflow: hidden;
+  box-shadow: 5px 5px 20px 7px rgba(168, 168, 168, 1);
+} */
+
+.wrapper {
+  /* max-width: 69.5%;
+  float: left; */
+  margin: 0;
+}
+.carousel_container {
+  display: flex;
+}
+
+.carousel_slot {
+  flex: 1 0 100%;
+  flex-basis: 80%;
+  margin-right: 20px;
+}
+
+.slide_btn {
+  color: #ffffff;
+  font-family: Open Sans;
+  font-size: 16px;
+  font-weight: 100;
+  padding: 10px;
+  background-color: #f66f3e;
+  border: 1px solid white;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  margin-top: 20px;
+  text-decoration: none;
+}
+
+.slide_btn:active {
+  position: relative;
+  top: 1px;
+}
+
+.slide_btn:focus {
+  outline: 0;
+}
+
+.app-container {
+  font-family: sans-serif;
+  text-align: center;
+  width: 75%;
+  height: 1000px;
+}
+
+.item {
+  text-align: center;
+  padding: 1px 84px 0px 25px;
+  background-size: cover;
+}

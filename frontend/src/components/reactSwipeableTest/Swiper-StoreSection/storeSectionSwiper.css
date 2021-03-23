@@ -1,0 +1,184 @@
+section {
+  margin-bottom: 15px;
+  background-color: #fff;
+}
+
+.grey-stripe,
+.left-title {
+  position: relative;
+  width: 100%;
+  max-width: 1300px;
+  text-transform: uppercase;
+  padding: 15px 0 10px 15px;
+  border-bottom: 1px solid #eee;
+  color: #303030;
+  margin: 0;
+  font-size: 16px;
+  line-height: 1;
+  text-transform: uppercase;
+  text-align: left;
+}
+
+h2.grey-stripe {
+  color: #303030;
+  margin-bottom: 6px;
+  font-size: 16px;
+}
+
+.mns-carousel {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1300px;
+  padding: 12px 81px 12px 30px;
+}
+
+.grid-products-wrapper .image-wrap,
+.mns-carousel .image-wrap {
+  max-width: 120px;
+  padding-top: 8px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.grid-products-wrapper .product-image {
+  max-width: 120px;
+}
+
+.grid-products-wrapper .product-name,
+.mns-carousel .product-name {
+  font-size: 16px;
+  display: block;
+  line-height: 1.3;
+  color: #303030;
+}
+
+.mns-carousel .product-info {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  cursor: grab;
+}
+
+.mns-label {
+  padding: 0 8px;
+  background-color: #888;
+  border-radius: 2px;
+  font-size: 11px;
+  font-family: nimbusnovus, sans-serif;
+  font-weight: 500;
+  line-height: 24px;
+  color: #fff;
+  text-shadow: 1px 1px 0 #077f32;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mns-carousel .mns-label {
+  width: calc(100% - 16px);
+}
+
+.grid-products-wrapper .mns-label,
+.mns-carousel .mns-label {
+  margin-bottom: 4px;
+  display: inline-block;
+}
+
+.mns-label.lbl-deal {
+  background-color: #079c3a;
+}
+
+.mns-label.lbl-deal:before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  margin-right: 6px;
+  margin-bottom: -2px;
+  display: inline-block;
+  background: url(https://cdn.muscleandstrength.com/store/skin/frontend/mnsv4/default/css/svg/intermediate-svg/deal-white.svg)
+    0 0 / auto 100%;
+}
+
+.grid-products-wrapper .price-box,
+.grid-products-wrapper .product-price,
+.mns-carousel .price-box,
+.mns-carousel .product-price {
+  width: 100%;
+  font-size: 18px;
+  font-weight: 700;
+  color: #059;
+  padding-bottom: 6px;
+}
+
+.grid-products-wrapper .product-info .button-row,
+.grid-products-wrapper .product-info .button-wrap,
+.mns-carousel .product-info .button-row,
+.mns-carousel .product-info .button-wrap {
+  margin-bottom: 0;
+  width: 100%;
+}
+
+.mns-carousel .button-wrap {
+  bottom: 20px;
+}
+
+.btn.btn-blue {
+  background-color: #059;
+  background-image: linear-gradient(#0063b3, #004780);
+  color: #fff;
+  text-shadow: 1px 1px 0 #004780;
+  border: 1px solid #004a85;
+}
+.grid-products-wrapper .product-info .btn,
+.mns-carousel .product-info .btn {
+  flex: 0 0 48%;
+}
+
+.swiper-slide {
+  text-align: center;
+}
+
+.image-wrap img {
+  max-width: 120px;
+}
+
+.swiper-button-prev:after,
+.swiper-button-next:after {
+  color: #059;
+}
+
+.swiper-button-next.swiper-button-disabled .swiper-button-next:after {
+  color: #ddd;
+}
+.swiper-button-next:after {
+  margin-left: 24px;
+}
+
+.swiper-button-prev:after {
+  margin-right: 24px;
+}
+@media print, screen and (min-width: 52.5em) {
+  .mns-carousel .height-setter {
+    height: 100%;
+  }
+}
+
+@media (min-width: 840px) {
+  .mns-carousel {
+    padding: 15px 0px;
+  }
+
+  .grid-products-wrapper .image-wrap {
+    padding: 0;
+    text-align: center;
+    display: block;
+  }
+
+  .grid-products-wrapper .price-box,
+  .grid-products-wrapper .product-price,
+  .mns-carousel .price-box,
+  .mns-carousel .product-price {
+    padding-bottom: 10px;
+  }
+}

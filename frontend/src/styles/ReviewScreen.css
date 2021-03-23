@@ -1,0 +1,1300 @@
+.mnsreview-product-view {
+  background-color: #f5f5f5;
+}
+.mnsreview-product-view #page {
+  background-color: #f5f5f5;
+}
+#main-wrap {
+  max-width: 1060px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 2.5%;
+  max-width: 1060px;
+  background: #f5f5f5;
+}
+
+.layout-v3 #main-wrap {
+  max-width: 1300px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 2%;
+}
+
+.aside {
+  border-radius: 2px;
+  z-index: 0;
+  display: none;
+}
+
+.layout-v3.multi-cols .aside.aside-before {
+  width: 95%;
+  padding-left: 2.5%;
+  padding-right: 2.5%;
+  display: block;
+  background-color: transparent;
+  float: left;
+  padding-top: 0;
+  margin-top: 0;
+}
+
+.mnsreview-product-view #page #main-wrap .aside {
+  width: 95%;
+  padding-left: 2.5%;
+  padding-right: 2.5%;
+  display: block;
+  float: left;
+  padding-top: 0;
+  margin-top: 0;
+}
+
+/* start of Product */
+.mnsreview-index-index .aside .product-wrap,
+.mnsreview-product-view .aside .product-wrap {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  overflow: hidden;
+  font-size: 18px;
+}
+
+.mnsreview-index-index .aside .product-wrap .image-wrap,
+.mnsreview-product-view .aside .product-wrap .image-wrap {
+  float: left;
+  text-align: center;
+  width: 100%;
+  padding: 1.5em 9% 1em;
+  border-bottom: 1px solid #ddd;
+}
+
+.mnsreview-product-view .aside .product-wrap .info-wrap {
+  float: left;
+  width: 100%;
+  padding: 5%;
+}
+
+a:hover .icon,
+a:hover img,
+a:hover p {
+  opacity: 0.9;
+  transition: opacity 0.3s ease-in-out;
+}
+
+a:hover {
+  color: #0687e6;
+}
+
+.mnsreview-index-index .aside .product-wrap .info-wrap .product-name,
+.mnsreview-product-view .aside .product-wrap .info-wrap .product-name {
+  font-size: 1.5em;
+}
+
+.mnsreview-product-view .aside .product-wrap .info-wrap .brand-name {
+  font-size: 13px;
+}
+
+.mnsreview-product-view .aside .product-wrap .info-wrap .product-text {
+  font-size: 13px;
+}
+
+.btn,
+button.btn,
+input.btn {
+  background-color: #fff;
+  background-image: linear-gradient(white, #f2f2f2);
+  color: #3c3c3c;
+  text-shadow: 1px 1px 0 #f2f2f2;
+  border: 1px solid #f5f5f5;
+  padding: 0 20px;
+  cursor: pointer;
+  border-radius: 2px;
+  text-align: center;
+  box-sizing: border-box;
+  display: inline-block;
+  position: relative;
+  line-height: 43px;
+  font-family: nimbusnovus, sans-serif;
+  font-weight: 500;
+  width: auto;
+  white-space: nowrap;
+  transition: 0.25s ease-out, color 0.25s ease-out;
+}
+
+.btn.btn-lg,
+button.btn.btn-lg {
+  font-size: 18px;
+  padding: 0 20px;
+  height: 54px;
+  line-height: 54px;
+}
+
+.btn.btn-blue,
+.btn.btn-primary,
+.btn.primary,
+button.btn.btn-blue,
+button.btn.btn-primary,
+button.btn.primary {
+  background-color: #059;
+  background-image: linear-gradient(#0063b3, #004780);
+  color: #fff;
+  text-shadow: 1px 1px 0 #004780;
+  border: 1px solid #004a85;
+}
+
+.mnsreview-product-view .aside .product-wrap .info-wrap .btn {
+  display: block;
+  margin: 1em 0 0;
+}
+
+.btn.btn-blue:hover,
+.btn.btn-primary:hover,
+.btn.primary:hover,
+button.btn.btn-blue:hover,
+button.btn.btn-primary:hover,
+button.btn.primary:hover {
+  background-color: #004780;
+  background-image: linear-gradient(#004175, #004780);
+  color: #e6e6e6;
+}
+
+#main-wrap:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+
+.layout-v3 #main-wrap:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+
+.layout-v3.multi-cols #main-wrap .main-content,
+.layout-v3.multi-cols #main-wrap .main-content.full-width {
+  float: left;
+  width: 95%;
+  padding-left: 2.5%;
+  padding-right: 0;
+}
+
+.mnsreview-product-view #page #main-wrap .main-content {
+  float: left;
+  width: 95%;
+  padding-left: 2.5%;
+  padding-right: 2.5%;
+}
+
+/* end of Product */
+
+/* start of Reviews */
+.product-reviews-summary {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  margin-bottom: 1em;
+  font-size: 18px;
+}
+
+.product-reviews-summary .section-inner-wrap {
+  overflow: hidden;
+  padding: 1em 2.5%;
+}
+
+.product-reviews-summary .overall-rating-subsection .subsection-inner-wrap {
+  padding: 1em 0;
+}
+
+.product-reviews-summary .overall-rating-subsection .subsection-title {
+  font-family: nimbusnovus-light, sans-serif;
+  color: #059;
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.product-reviews-summary .overall-rating-subsection .rate-stars {
+  text-align: center;
+  margin: 1em 0;
+}
+
+.rating-box {
+  position: relative;
+  width: 6em;
+  max-width: 100%;
+  z-index: 0;
+}
+
+.product-reviews-summary .overall-rating-subsection .rate-stars .rating-box {
+  float: none;
+  margin: 0 auto;
+  width: 80%;
+  max-width: 15em;
+}
+
+.rating-box .star-overlay {
+  width: 101%;
+  left: -0.5%;
+  background-image: url(https://cdn.muscleandstrength.com/store/skin/frontend/mnsv4/default/images/stars-svg-overlay.png);
+  background-image: linear-gradient(transparent, transparent),
+    url(https://cdn.muscleandstrength.com/store/skin/frontend/mnsv4/default/images/stars-svg-overlay.svg);
+  background-size: 100% 100%;
+  height: 0;
+  padding: 0 0 25%;
+  background-repeat: no-repeat;
+  position: relative;
+  background-position: center;
+  z-index: 0;
+}
+
+.rating-box .rating {
+  height: 75%;
+  position: absolute;
+  top: 9%;
+  z-index: -1;
+  max-width: 99%;
+  background: #059;
+  background: linear-gradient(to right, #fff 0, #059 1.5%);
+}
+
+.bar-graph-wrap .stars {
+  display: inline-block;
+  text-align: right;
+  padding-right: 3%;
+  min-width: 3.4em;
+}
+
+.upper {
+  text-transform: uppercase !important;
+}
+
+.font-s-small {
+  font-size: 13px;
+}
+
+.bar-graph-wrap .bar-graph {
+  display: inline-block;
+  background-color: #eee;
+  margin: 0.2em 0 -0.3em;
+  max-width: 60%;
+  width: 20em;
+  height: 1.2em;
+}
+
+.bar-graph-wrap .bar-graph .bar {
+  height: 1.2em;
+  background-color: #059;
+}
+
+.bar-graph-wrap .percentage {
+  display: inline-block;
+  text-align: left;
+  padding-left: 2%;
+  min-width: 3em;
+}
+
+.slist-on li + .slist-more,
+.slist-on li:nth-child(-n + 3) {
+  display: block;
+}
+
+.slist-on .slist-less,
+.slist-on .slist-more,
+.slist-on li {
+  display: none;
+}
+
+.rating-item-wrap .slist-less,
+.rating-item-wrap .slist-more {
+  padding-top: 1em;
+  border-top: 1px solid #eee;
+  font-size: 13px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.slist-on .slist-less,
+.slist-on .slist-more,
+.slist-on li {
+  display: none;
+}
+
+.rating-item-wrap .slist-less,
+.rating-item-wrap .slist-more {
+  padding-top: 1em;
+  border-top: 1px solid #eee;
+  font-size: 13px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.slist-off .slist-more {
+  display: none;
+}
+
+.overall-rating-label {
+  font-size: 0.4em;
+  line-height: 1em;
+  padding-bottom: 1em;
+  display: block;
+  color: #059;
+  clear: both;
+  overflow: hidden;
+}
+
+.product-reviews-summary
+  .overall-rating-subsection
+  .rate-stars
+  .overall-rating-label {
+  color: #059;
+  font-family: nimbusnovus-light, sans-serif;
+}
+
+.product-reviews-summary .overall-rating-subsection .review-data-summary {
+  border: 1px solid #ddd;
+  font-family: nimbusnovus-light, sans-serif;
+  width: 80%;
+  max-width: 15em;
+  padding: 0.8em 0;
+  border-radius: 2px;
+  margin: 1em auto 0;
+  text-align: center;
+}
+
+.product-reviews-summary
+  .overall-rating-subsection
+  .review-data-summary
+  .item:nth-child(1) {
+  padding-top: 0;
+  margin-top: 0;
+  border-top: 0;
+}
+
+.product-reviews-summary .overall-rating-subsection .review-data-summary .item {
+  border-top: 1px solid #eee;
+  padding: 0.5em 0 0;
+  margin: 0.5em 0.5em 0;
+}
+
+.product-reviews-summary .review-graph-subsection .subsection-inner-wrap {
+  padding: 1em 0;
+}
+
+.product-reviews-summary .review-graph-subsection .bar-graph-wrap {
+  margin-top: 1em;
+  text-align: center;
+  font-size: 13px;
+}
+
+.main-content ol,
+.main-content ul {
+  margin-top: 0;
+}
+
+.bar-graph-wrap {
+  list-style: none;
+  margin: 1em 0 0;
+  padding: 0 !important;
+  display: block;
+  overflow: hidden;
+  color: #059;
+  white-space: nowrap;
+}
+
+.bar-graph-wrap li {
+  overflow: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+.product-reviews-summary .top-rated-flavors-subsection {
+  clear: both;
+  padding: 1em 0 0;
+}
+
+.product-reviews-summary .top-rated-flavors-subsection .subsection-inner-wrap {
+  padding: 1em 0;
+}
+.rating-item-wrap {
+  padding: 0 !important;
+  margin: 0;
+  overflow: hidden;
+}
+
+.main-content ol,
+.main-content ul {
+  margin-top: 0;
+}
+
+.product-reviews-summary .top-rated-flavors-subsection .rating-item-wrap {
+  margin: 1em auto 0;
+  max-width: 95%;
+}
+
+.slist-on li {
+  display: none;
+}
+
+.rating-item-wrap .item {
+  padding: 1em 0;
+  border-top: 1px solid #eee;
+  list-style: none;
+}
+
+.slist-on li + .slist-more,
+.slist-on li:nth-child(-n + 3) {
+  display: block;
+}
+
+.review-utility-bar {
+  padding: 1.1em 0.1em 0.1em 0;
+  position: relative;
+  font-size: 18px;
+  clear: both;
+}
+
+.review-utility-bar .btn {
+  width: 100%;
+  display: block;
+  margin-bottom: 0;
+}
+
+.product-reviews-summary .top-rated-flavors-subsection .subsection-title {
+  font-family: nimbusnovus-light, sans-serif;
+  color: #059;
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.product-reviews-summary .review-graph-subsection .subsection-title {
+  font-family: nimbusnovus-light, sans-serif;
+  color: #059;
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.review-data-summary .item .icon {
+  width: 0.9em;
+  height: 0.9em;
+  margin-bottom: -0.1em;
+  margin-right: -0.1em;
+  color: #059;
+}
+
+.review-data-summary .item .icon.green {
+  color: #077f32;
+}
+
+.product-reviews-section .overall-rating-subsection .rate-stars {
+  text-align: center;
+  margin: 1em 0;
+}
+.product-reviews-section
+  .overall-rating-subsection
+  .rate-stars
+  .overall-rating-label {
+  color: #059;
+  font-family: nimbusnovus-light, sans-serif;
+}
+
+.product-reviews-section .overall-rating-subsection .rate-stars .rating-box {
+  float: none;
+  margin: 0 auto;
+  width: 80%;
+  max-width: 15em;
+}
+
+.rating-item-wrap .item .rate-stars {
+  float: right;
+  margin-top: -0.4em;
+  margin-left: 0.5em;
+}
+
+.rating-item-wrap .item .rate-stars {
+  float: right;
+  margin-top: -0.4em;
+  margin-left: 0.5em;
+}
+
+.rating-item-wrap .item .rate-stars .rating-box {
+  width: 7em;
+  margin: 0 auto;
+}
+/* end of Reviews */
+/* start of inline-review */
+.inline-review {
+  overflow: hidden;
+  padding: 0 5% 3%;
+  margin: 0 0 1em;
+  display: block;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+/* end of inline-review */
+/* start of Filter */
+.refine-search-wrap {
+  width: 100%;
+  margin: 0;
+}
+
+.mnsreview-product-view .refine-search-wrap {
+  margin-bottom: 1em;
+}
+
+.mobile-header {
+  position: relative;
+  padding: 8px 15px;
+  font-size: 18px;
+  color: #fff;
+  background-color: #059;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mnsreview-product-view .refine-search-wrap .mobile-header {
+  position: relative;
+  padding: 0.8em 1em 0.8em 0.5em !important;
+  background-color: #fff;
+  margin: 0;
+  overflow: hidden;
+  color: #059;
+  text-transform: uppercase;
+}
+
+.mnsreview-product-view .refine-search-wrap .mobile-header .button {
+  margin: 0 auto;
+}
+
+.mobile-header .button {
+  margin-bottom: 0;
+}
+
+.mnsreview-product-view .refine-search-wrap .mobile-header label {
+  float: left;
+  color: #059;
+  padding: 0.6em 0 0 5%;
+  font-size: 13px;
+  width: 90%;
+  position: absolute;
+  left: 0;
+  z-index: 0;
+}
+
+.mnsreview-product-view .refine-search-wrap .mobile-header label.heading {
+  font-size: 18px;
+  float: left;
+  padding: 0.4em 0 0 1em;
+}
+
+.review-sorting-filtering {
+  width: 100%;
+  float: left;
+  clear: both;
+  display: none;
+}
+
+.review-sorting-filtering .inner-wrap {
+  margin-top: -1px;
+  border-left: 1px solid #ddd;
+}
+
+.review-sorting-filtering .wrap {
+  overflow: hidden;
+  background-color: #fff;
+  position: relative;
+  clear: both;
+  margin-bottom: -1px;
+  margin-left: -1px;
+}
+
+.review-sorting-filtering .filter-by .wrap,
+.review-sorting-filtering .sort-by .wrap {
+  padding: 1em 1em 0.5em;
+  min-height: 5.5em;
+}
+
+.simple-radio {
+  padding: 0;
+  margin: 0;
+  display: block;
+  width: 100%;
+  float: left;
+  position: relative;
+}
+
+.main-content ol,
+.main-content ul {
+  margin-top: 0;
+}
+
+.review-sorting-filtering ul.simple-radio {
+  padding: 0;
+}
+
+.simple-radio li {
+  list-style: none;
+  cursor: pointer;
+  background-color: #eee;
+  padding-top: 0.6em;
+  padding-bottom: 0.6em;
+  font-size: 13px;
+  transition: color 0.8s;
+  margin: 3%;
+  display: block;
+}
+
+.simple-radio.list-style li {
+  background-color: transparent;
+  padding-top: 0.6em;
+  padding-bottom: 0.3em;
+  font-size: 13px;
+  transition: color 0.8s;
+  margin: 3%;
+  border-top: 1px solid #ddd;
+  display: block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.simple-radio.list-style li:nth-child(1) {
+  border-top: 0;
+}
+
+.simple-radio.list-style li.checked {
+  color: #059 !important;
+}
+
+.review-sorting-filtering .wrap {
+  overflow: hidden;
+  background-color: #fff;
+  position: relative;
+  clear: both;
+  margin-bottom: -1px;
+  margin-left: -1px;
+}
+
+.review-sorting-filtering .star-filter .wrap {
+  /* padding: 1em; */
+  min-height: 5em;
+}
+
+.irs {
+  position: relative;
+  display: block;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.irs {
+  height: 55px;
+}
+
+.irs-with-grid {
+  height: 75px;
+}
+
+.irs {
+  position: relative;
+  display: block;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.irs-line {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  outline: 0 !important;
+}
+
+.irs-line {
+  height: 10px;
+  top: 33px;
+  background: #eee;
+  border: 1px solid #ccc;
+  border-radius: 16px;
+  -moz-border-radius: 16px;
+}
+
+.irs-line-left,
+.irs-line-mid,
+.irs-line-right {
+  position: absolute;
+  display: block;
+  top: 0;
+}
+
+.irs-line-left {
+  left: 0;
+  width: 11%;
+}
+
+.irs-line-left,
+.irs-line-mid,
+.irs-line-right {
+  height: 8px;
+}
+
+.irs-line-mid {
+  left: 9%;
+  width: 82%;
+}
+
+.irs-line-right {
+  right: 0;
+  width: 11%;
+}
+
+.irs-min {
+  position: absolute;
+  left: 0;
+  cursor: default;
+}
+
+.irs-max,
+.irs-min {
+  color: #333;
+  font-size: 12px;
+  line-height: 1.333;
+  top: 0;
+  display: none;
+}
+
+.irs-from,
+.irs-single,
+.irs-to {
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  cursor: default;
+  white-space: nowrap;
+}
+
+.irs-from,
+.irs-single,
+.irs-to {
+  font-size: 14px;
+  line-height: 1.333;
+  text-shadow: none;
+  padding: 0;
+  color: #059;
+  text-transform: uppercase;
+}
+.irs-with-grid .irs-grid {
+  display: block;
+}
+
+.irs-grid-pol {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 8px;
+}
+
+.irs-grid-pol {
+  opacity: 0.5;
+  background: #428bca;
+}
+
+.irs-grid-text {
+  position: absolute;
+  left: 0;
+  white-space: nowrap;
+  text-align: center;
+  font-size: 9px;
+  line-height: 9px;
+  padding: 0 3px;
+}
+
+.irs-grid-text {
+  bottom: 5px;
+  color: #99a4ac;
+}
+
+.irs-grid-pol.small {
+  height: 4px;
+  background: #999;
+}
+
+.irs-hidden-input {
+  position: absolute !important;
+  display: block !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  outline: 0 !important;
+  z-index: -9999 !important;
+  background: 0 0 !important;
+  border-style: solid !important;
+  border-color: transparent !important;
+}
+input[type="number"],
+input[type="text"] {
+  -webkit-appearance: none;
+}
+
+.simple-radio input {
+  display: none !important;
+}
+
+.simple-radio .radio-check {
+  display: inline-block;
+  text-align: center;
+  width: 1.3em;
+  height: 1.3em;
+  background-color: #a2a2a2;
+  margin: 0 1.2em -0.2em;
+  font-size: 13px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid #eee;
+}
+
+.simple-radio .radio-check {
+  display: inline-block;
+  text-align: center;
+  width: 1.3em;
+  height: 1.3em;
+  background-color: #a2a2a2;
+  margin: 0 1.2em -0.2em;
+  font-size: 13px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid #eee;
+}
+
+.simple-radio.list-style li .radio-check {
+  display: inline-block;
+  text-align: center;
+  width: 1.3em;
+  height: 1.3em;
+  background-color: #fff;
+  margin: 0 1.2em -0.2em;
+  font-size: 13px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid #ddd;
+}
+
+.simple-radio li .radio-check .yes {
+  width: 0;
+  display: block;
+  background-color: #059;
+  color: #fff;
+  height: 0;
+  padding-bottom: 0.1em;
+  line-height: 2.4em;
+  transition: 0.3s;
+  border-radius: 100px;
+  margin-top: 50px;
+  margin-left: -50px;
+  border: 1px solid #a2a2a2;
+}
+
+.simple-radio li.checked .radio-check .yes {
+  width: 1.8em;
+  height: 1.6em;
+  margin: -0.3em;
+}
+
+.simple-radio.list-style li .radio-check .yes {
+  width: 0;
+  display: block;
+  background-color: #059;
+  color: #fff;
+  height: 0;
+  line-height: 1em;
+  transition: 0.3s;
+  border-radius: 100px;
+  margin-top: 50px;
+  margin-left: -50px;
+  border: 1px solid #059;
+}
+
+.simple-radio.list-style li.checked .radio-check .yes {
+  width: 1.8em;
+  height: 1.6em;
+  margin: -0.3em;
+}
+
+.simple-radio li .radio-check .yes .icon-check {
+  font-size: 13px;
+  position: relative;
+  top: -0.7em;
+}
+
+.simple-radio.list-style li .radio-check .yes .icon-check {
+  font-size: 13px;
+  position: relative;
+  top: -0.7em;
+}
+
+.irs-slider {
+  position: absolute;
+  display: block;
+  z-index: 1;
+}
+
+.irs-grid {
+  position: absolute;
+  display: none;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.irs-grid {
+  height: 27px;
+}
+
+.irs-bar {
+  position: absolute;
+  display: block;
+  left: 0;
+  width: 0;
+}
+
+.irs-bar-edge {
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+}
+
+.irs-slider {
+  position: absolute;
+  display: block;
+  z-index: 1;
+}
+
+.irs-slider {
+  top: 27px;
+  width: 40px;
+  height: 25px;
+  background: url(https://cdn.muscleandstrength.com/store/skin/frontend/mnsv4/default/images/button-overlay.png)
+    #059;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+/* end of Filter */
+
+@media (min-width: 400px) {
+  #main-wrap {
+    padding-top: 2.5%;
+  }
+
+  .layout-v3 #main-wrap {
+    padding-top: 2%;
+  }
+
+  /* start of Reviews in 400px*/
+
+  /* end of Reviews in 400px*/
+
+  /* start of Filter in 400px*/
+
+  .review-sorting-filtering .filter-by,
+  .review-sorting-filtering .sort-by {
+    float: left;
+    width: 50%;
+  }
+
+  .review-sorting-filtering .filter-by,
+  .review-sorting-filtering .sort-by {
+    float: left;
+    width: 50%;
+  }
+
+  .simple-radio li .radio-check .yes .icon-check,
+  .simple-radio.list-style li .radio-check .yes .icon-check {
+    font-size: 13px;
+    position: relative;
+    top: -0.8em;
+  }
+  /* end of Filter in 400px*/
+}
+
+@media (min-width: 600px) {
+  /* start of Reviews in 600px*/
+  .rating-item-wrap .item .rate-stars {
+    margin-top: -0.2em;
+  }
+  /* end of Reviews in 600px*/
+}
+
+@media (min-width: 700px) {
+  #main-wrap {
+    padding-top: 2.5%;
+    position: relative;
+  }
+
+  .layout-v3 #main-wrap {
+    margin: 2%;
+    padding-top: 1%;
+    position: relative;
+  }
+}
+
+@media (min-width: 800px) {
+  .mnsreview-product-view #page #main-wrap .aside {
+    border-radius: 0;
+    float: left;
+    width: 37.5%;
+    padding-left: 0;
+    padding-right: 0;
+    margin-right: 0;
+    display: block;
+  }
+
+  /* start of Product in 800px */
+  .btn.btn-lg,
+  button.btn.btn-lg {
+    padding: 0 30px;
+    height: 60px;
+    line-height: 60px;
+  }
+  /* end of Product in 800px */
+
+  #main-wrap .main-content {
+    float: left;
+    width: 68%;
+    position: relative;
+  }
+
+  .mnsreview-product-view #page #main-wrap .main-content {
+    float: left;
+    width: 60%;
+    padding-left: 2.5%;
+    padding-right: 0;
+  }
+
+  /* start of Reviews in 800px*/
+  .review-utility-bar .btn {
+    width: 40%;
+    margin: 0 auto;
+  }
+
+  .review-utility-bar .btn {
+    width: 40%;
+    margin: 0 auto;
+  }
+
+  .btn.btn-lg,
+  button.btn.btn-lg {
+    padding: 0 30px;
+    height: 60px;
+    line-height: 60px;
+  }
+  /* end of Reviews in 800px*/
+
+  /* start of Filter in 800px*/
+
+  .review-sorting-filtering {
+    display: block;
+    margin-bottom: 1em;
+  }
+
+  .review-sorting-filtering .inner-wrap {
+    margin-top: 0;
+    border-left: 0;
+  }
+
+  .simple-radio li .radio-check .yes .icon-check {
+    font-size: 13px;
+    position: relative;
+    top: -0.9em;
+  }
+
+  .simple-radio.list-style li .radio-check .yes .icon-check {
+    font-size: 13px;
+    position: relative;
+    top: -0.9em;
+  }
+
+  /* end of Filter in 800px*/
+}
+
+@media (min-width: 840px) {
+  .aside {
+    float: right;
+    width: 30%;
+    display: block;
+  }
+
+  .layout-v3.multi-cols .aside.aside-before {
+    border-radius: 0;
+    float: left;
+    width: 28%;
+    padding-left: 0;
+    padding-right: 0;
+    display: block;
+  }
+
+  .layout-v3.multi-cols #main-wrap .main-content {
+    float: left;
+    width: 69.5%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+@media (min-width: 924px) {
+  .layout-v3.multi-cols .aside.aside-before {
+    border-radius: 0;
+    float: left;
+    width: 25%;
+    padding-left: 0;
+    padding-right: 0;
+    display: block;
+  }
+
+  .layout-v3.multi-cols #main-wrap .main-content {
+    float: left;
+    width: 72.5%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* start of Filter in 840px*/
+  .refine-search-wrap {
+    width: auto;
+    margin-bottom: 1.5em;
+    background-color: #fff;
+  }
+
+  .mobile-header {
+    display: none;
+  }
+
+  .simple-radio .radio-check,
+  .simple-radio.list-style li .radio-check {
+    margin: 0 0.5em -0.2em 0.3em;
+  }
+  /* end of Filter in 840px*/
+}
+
+@media (min-width: 1082px) {
+  #main-wrap {
+    padding-top: 0;
+    position: relative;
+  }
+
+  .layout-v3 #main-wrap {
+    position: relative;
+    margin: 0 2em 2em;
+    padding-top: 0;
+  }
+
+  .layout-v3.multi-cols .aside.aside-before {
+    border-radius: 0;
+    float: left;
+    width: 23%;
+    padding-left: 0;
+    padding-right: 0;
+    display: block;
+  }
+
+  .layout-v3.multi-cols #main-wrap .main-content {
+    float: left;
+    width: 74.5%;
+    padding-left: 2.5%;
+    padding-right: 0;
+  }
+  /* start of Reviews in 1082px*/
+
+  .product-reviews-summary .overall-rating-subsection {
+    float: left;
+    overflow: hidden;
+    width: 50%;
+  }
+
+  .product-reviews-summary .overall-rating-subsection .subsection-inner-wrap,
+  .product-reviews-summary .review-graph-subsection .subsection-inner-wrap,
+  .product-reviews-summary
+    .top-rated-flavors-subsection
+    .subsection-inner-wrap {
+    padding: 1em 0 2em;
+  }
+
+  .product-reviews-summary .overall-rating-subsection .subsection-inner-wrap {
+    border-right: 1px solid #ddd;
+  }
+
+  .product-reviews-summary .overall-rating-subsection .subsection-inner-wrap,
+  .product-reviews-summary .review-graph-subsection .subsection-inner-wrap,
+  .product-reviews-summary
+    .top-rated-flavors-subsection
+    .subsection-inner-wrap {
+    padding: 1em 0 2em;
+  }
+
+  /* end of Reviews in 1082px*/
+
+  /* start of Filter in 1082px*/
+  .review-sorting-filtering .filter-by,
+  .review-sorting-filtering .sort-by {
+    width: 28.6%;
+  }
+
+  .review-sorting-filtering .star-filter {
+    width: 42.8%;
+    float: left;
+  }
+  /* end of Filter in 1082px*/
+}
+
+@media (min-width: 1144px) {
+  .layout-v3.multi-cols .aside.aside-before {
+    border-radius: 0;
+    float: left;
+    width: 20%;
+    padding-left: 0;
+    padding-right: 0;
+    display: block;
+  }
+
+  .layout-v3.multi-cols #main-wrap .main-content {
+    float: left;
+    width: 77.5%;
+    padding-left: 2.5%;
+    padding-right: 0;
+  }
+}
+
+@media (min-width: 1182px) {
+  /* start of Reviews in 1182px*/
+  .product-reviews-summary .review-graph-subsection .bar-graph-wrap li,
+  .product-reviews-summary .top-rated-flavors-subsection .rating-item-wrap {
+    max-width: 80%;
+  }
+  /* end of Reviews in 1182px*/
+}
+
+@media (min-width: 1200px) {
+  .mnsreview-product-view #page #main-wrap .aside {
+    border-radius: 0;
+    float: left;
+    width: 32.5%;
+    padding-left: 0;
+    padding-right: 0;
+    margin-right: 0;
+    display: block;
+  }
+
+  .mnsreview-product-view #page #main-wrap .main-content {
+    float: left;
+    width: 65%;
+    padding-left: 2.5%;
+    padding-right: 0;
+  }
+}
