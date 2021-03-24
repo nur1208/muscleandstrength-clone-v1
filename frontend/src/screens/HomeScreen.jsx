@@ -25,16 +25,18 @@ export const HomeScreen = (props) => {
     <>
       <div id="main-wrap">
         <Helmet>
-          <title>Home</title>
+          <title>
+            Muscle {"&"} Strength: Supplement Store {"&"} Free Workouts
+          </title>
         </Helmet>
-        <div ame="header-content">
-          <div ame="row">
+        <div className="header-content">
+          <div className="row">
             <Slider sliderData={sliderData} sliderStyle={"section"} />
             <HeaderRightBlock />
           </div>
         </div>
-        <div ame="main-content wide-format">
-          <div ame="table"></div>
+        <div className="main-content wide-format">
+          <div className="table"></div>
           <TodaysDeals />
           <New />
           {articleGroup.map((group, index) => (

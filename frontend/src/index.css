@@ -2055,7 +2055,7 @@ a.btn {
 .footer-container .foot-line {
   clear: both;
   color: #0071cc;
-  font-size: 0.7em;
+  font-size: 0.45em;
   text-align: center;
   line-height: 1.2em;
   padding: 1rem 0;
@@ -2311,6 +2311,12 @@ img {
 @media print, screen and (min-width: 46.25em) {
 }
 /* end of @media print, screen and (min-width: 46.25em) */
+
+@media (min-width: 350px) {
+  .footer-container .foot-line {
+    font-size: 0.7em;
+  }
+}
 /* start of @media (min-width: 350px) */
 @media (min-width: 350px) {
   /* start of header in min-w 350px */
