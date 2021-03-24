@@ -2,6 +2,7 @@ import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation } from "swiper";
 import { Link } from "react-router-dom";
+
 import "swiper/swiper-bundle.css";
 
 SwiperCore.use([Navigation]);
@@ -60,11 +61,17 @@ export const StoreSectionSwiper = ({ sectionId, title, items }) => {
       <Swiper
         id="main"
         className="mns-carousel"
-        slidesPerView={6}
+        slidesPerView={2}
         freeMode={true}
-        spaceBetween={4}
+        spaceBetween={2}
         navigation={true}
-        slidesPerGroup={6}
+        breakpoints={{
+          950: { slidesPerView: 6, slidesPerGroup: 6 },
+          850: { slidesPerView: 5, slidesPerGroup: 5 },
+          650: { slidesPerView: 4, slidesPerGroup: 4 },
+          450: { slidesPerView: 3, slidesPerGroup: 3 },
+        }}
+        slidesPerGroup={4}
       >
         {items.map((item, index) => (
           <SwiperSlide key={index}>

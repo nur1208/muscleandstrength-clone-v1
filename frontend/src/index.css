@@ -17,7 +17,7 @@ body.menu-open #mns-page {
   width: 100%;
   position: fixed;
 }
-body.menu-open footer {
+body.menu-open .footer-container {
   display: none;
 }
 body.menu-open .menu-mask {
@@ -208,21 +208,27 @@ form .mnsComment .commentBody .comment-reply a {
   footer
   .foot-join
   a.btn-submit.btn-flat-blue,
-footer .foot-join .btn.btn-submit.btn-flat-blue,
+.footer-container .foot-join .btn.btn-submit.btn-flat-blue,
 footer
   .foot-join
   .comment-wrapper
   .commentBody
   .comment-reply
   a.btn-submit.btn-flat-blue,
-footer .foot-join .form-actions .btn-submit.btn-flat-blue#edit-submit,
+.footer-container
+  .foot-join
+  .form-actions
+  .btn-submit.btn-flat-blue#edit-submit,
 footer
   .foot-join
   .mnsComment
   .commentBody
   .comment-reply
   a.btn-submit.btn-flat-blue,
-.form-actions footer .foot-join .btn-submit.btn-flat-blue#edit-submit,
+.form-actions
+  .footer-container
+  .foot-join
+  .btn-submit.btn-flat-blue#edit-submit,
 .mnsComment
   .commentBody
   .comment-reply
@@ -234,7 +240,7 @@ footer
   margin: 0 !important;
   border: 0 !important;
 }
-footer .foot-join .btn.btn-submit.btn-flat-blue:hover {
+.footer-container .foot-join .btn.btn-submit.btn-flat-blue:hover {
   background-image: linear-gradient(#003966, #003966) !important;
   background-color: #003966 !important;
   margin: 0 !important;
@@ -581,7 +587,7 @@ input[type="radio"] {
   height: 100vh;
 } */
 
-footer {
+.footer-container {
   grid-area: footer;
   background-color: var(--primary-color-1);
 }
@@ -1888,15 +1894,15 @@ a.btn {
   height: 24px;
 } */
 /* start of footer */
-footer:after,
-footer:before {
+.footer-container:after,
+.footer-container:before {
   content: "";
   display: table;
 }
-footer:after {
+.footer-container:after {
   clear: both;
 }
-footer {
+.footer-container {
   text-align: left;
   background-color: #059;
   color: #fff;
@@ -1909,23 +1915,23 @@ footer {
   line-height: 1.4em;
   font-size: 0.72em;
 }
-footer-container {
+.footer-container {
   content: " ";
   display: block;
   clear: both;
 }
-footer-container {
+.footer-container {
   max-width: 1400px;
   margin-left: auto;
   margin-right: auto;
   padding-top: 1rem;
 }
 
-footer-container {
+.footer-container {
   padding-right: 2%;
   padding-left: 2%;
 }
-footer .foot-support {
+.footer-container .foot-support {
   float: left;
   width: 47%;
   padding-left: 5%;
@@ -1933,24 +1939,24 @@ footer .foot-support {
   margin-left: 0;
   margin-right: 0;
 }
-footer ul {
+.footer-container ul {
   padding: 0;
   margin: 0;
 }
 
-footer ul li {
+.footer-container ul li {
   list-style: none;
 }
-footer a {
+.footer-container a {
   color: #fff;
   text-decoration: none;
   font-size: 0.9em;
 }
-footer {
+.footer-container {
   font-size: 1em;
 }
 
-footer .foot-rewards {
+.footer-container .foot-rewards {
   float: left;
   width: 40%;
   padding-left: 5%;
@@ -1959,11 +1965,11 @@ footer .foot-rewards {
   margin-right: 0;
 }
 
-footer h1,
-footer h2,
-footer h3,
-footer h4,
-footer h5 {
+.footer-container h1,
+.footer-container h2,
+.footer-container h3,
+.footer-container h4,
+.footer-container h5 {
   margin: 0.8em 0 0.2em;
   font-weight: bold;
   letter-spacing: 0.1em;
@@ -1974,7 +1980,7 @@ footer h5 {
   font-family: nimbus800, sans-serif;
   line-height: 1.5em;
 }
-footer .foot-contact {
+.footer-container .foot-contact {
   box-sizing: border-box;
   width: 100%;
   float: left;
@@ -1986,22 +1992,22 @@ footer .foot-contact {
   font-size: 0.95em !important;
   font-weight: 400 !important;
 }
-footer .foot-connect {
+.footer-container .foot-connect {
   text-align: left;
   position: relative;
 }
-footer .foot-connect ul.follow {
+.footer-container .foot-connect ul.follow {
   position: absolute;
   font-size: 1.5em;
 }
-footer ul.follow li {
+.footer-container ul.follow li {
   display: inline;
 }
-footer ul li svg {
+.footer-container ul li svg {
   padding-right: 0.3rem;
 }
 
-footer .foot-join {
+.footer-container .foot-join {
   position: relative;
   box-sizing: border-box;
   width: 100%;
@@ -2009,10 +2015,10 @@ footer .foot-join {
   padding-left: 5%;
   padding-right: 5%;
 }
-footer .foot-join .foot-join-container {
+.footer-container .foot-join .foot-join-container {
   width: 11.5em;
 }
-footer .foot-join .foot-join-img {
+.footer-container .foot-join .foot-join-img {
   position: absolute;
   top: -3px;
   left: 34%;
@@ -2025,7 +2031,7 @@ footer .foot-join .foot-join-img {
   margin-right: auto;
   padding-top: 1em;
 }
-footer .tagline {
+.footer-container .tagline {
   text-align: center;
   font-weight: 800;
   letter-spacing: 0.15em;
@@ -2039,14 +2045,14 @@ footer .tagline {
   font-size: 2em;
   display: none;
 }
-footer .tagline .mark {
+.footer-container .tagline .mark {
   font-size: 0.5em;
   position: relative;
   bottom: 12px;
   text-shadow: none;
   font-weight: 200;
 }
-footer .foot-line {
+.footer-container .foot-line {
   clear: both;
   color: #0071cc;
   font-size: 0.7em;
@@ -2054,23 +2060,23 @@ footer .foot-line {
   line-height: 1.2em;
   padding: 1rem 0;
 }
-footer .foot-line .link-line {
+.footer-container .foot-line .link-line {
   font-size: 1.4em;
   padding: 0.5em 0;
   line-height: 1.5em;
 }
-footer p {
+.footer-container p {
   font-size: 0.9em;
   margin: 0 0 1em;
 }
-footer .foot-line a {
+.footer-container .foot-line a {
   color: #0071cc;
 }
-footer .foot-line .link-line a {
+.footer-container .foot-line .link-line a {
   margin: 0 0.4em;
   display: inline-block;
 }
-footer .foot-line .foot-line-background {
+.footer-container .foot-line .foot-line-background {
   position: absolute;
   left: 0;
   width: 100%;
@@ -2247,6 +2253,11 @@ footer .foot-line .foot-line-background {
   align-items: center;
   justify-content: center;
 }
+.max-wrap:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
 /* end of PerksFooter  */
 /* end of footer */
 
@@ -2331,28 +2342,28 @@ img {
   }
   /* end of header in min-w 400px */
 
-  footer .foot-join .foot-join-container {
+  .footer-container .foot-join .foot-join-container {
     width: 13.5em;
   }
-  footer .foot-connect ul.follow {
+  .footer-container .foot-connect ul.follow {
     font-size: 1.8em;
   }
-  footer .foot-connect {
+  .footer-container .foot-connect {
     text-align: left;
     font-size: 1em;
   }
-  footer {
+  .footer-container {
     font-size: 0.9em;
   }
-  footer .foot-join .foot-join-img {
+  .footer-container .foot-join .foot-join-img {
     top: -45px;
     left: 34%;
     width: 340px;
   }
-  footer .foot-line {
+  .footer-container .foot-line {
     padding-top: 2em;
   }
-  footer .foot-line .foot-line-background {
+  .footer-container .foot-line .foot-line-background {
     height: 10.8em;
     z-index: -2;
   }
@@ -2375,15 +2386,15 @@ img {
 
 /* @media (min-width: 500px) */
 @media (min-width: 500px) {
-  footer .foot-join .foot-join-container {
+  .footer-container .foot-join .foot-join-container {
     width: 15.3em;
   }
-  footer .foot-join .foot-join-img {
+  .footer-container .foot-join .foot-join-img {
     top: -82px;
     width: 350px;
     left: 40%;
   }
-  footer .foot-line .foot-line-background {
+  .footer-container .foot-line .foot-line-background {
     height: 9em;
     z-index: -5;
   }
@@ -2458,8 +2469,8 @@ img {
   }
   /* end of header in min-w 600px */
 
-  footer .foot-rewards,
-  footer .foot-support {
+  .footer-container .foot-rewards,
+  .footer-container .foot-support {
     float: left;
     width: 30%;
     padding-left: 2.5%;
@@ -2467,7 +2478,7 @@ img {
     margin-left: 0;
     margin-right: 0;
   }
-  footer .foot-contact {
+  .footer-container .foot-contact {
     box-sizing: border-box;
     width: 30%;
     float: left;
@@ -2476,25 +2487,25 @@ img {
     clear: none;
   }
 
-  footer {
+  .footer-container {
     font-size: 0.8em;
   }
-  footer .foot-join {
+  .footer-container .foot-join {
     box-sizing: border-box;
     width: 100%;
     float: left;
     padding-left: 2.5%;
     padding-right: 2.5%;
   }
-  footer .foot-connect ul.follow {
+  .footer-container .foot-connect ul.follow {
     font-size: 1.9em;
   }
-  footer .foot-join .foot-join-img {
+  .footer-container .foot-join .foot-join-img {
     top: -4px;
     left: 38%;
     width: 360px;
   }
-  footer .foot-line .foot-line-background {
+  .footer-container .foot-line .foot-line-background {
     height: 7.7em;
     z-index: -5;
   }
@@ -2503,8 +2514,8 @@ img {
 /* end of @media (min-width: 600px) */
 /* @media (min-width: 700px) */
 @media (min-width: 700px) {
-  footer .foot-rewards,
-  footer .foot-support {
+  .footer-container .foot-rewards,
+  .footer-container .foot-support {
     float: left;
     width: 22%;
     padding-left: 2.5%;
@@ -2512,7 +2523,7 @@ img {
     margin-left: 0;
     margin-right: 0;
   }
-  footer .foot-contact {
+  .footer-container .foot-contact {
     box-sizing: border-box;
     width: 30%;
     float: left;
@@ -2520,19 +2531,19 @@ img {
     padding-right: 2.5%;
     clear: left;
   }
-  footer .foot-connect ul.follow {
+  .footer-container .foot-connect ul.follow {
     font-size: 1.8em;
     padding-right: 1em;
   }
-  footer .foot-join .foot-join-container {
+  .footer-container .foot-join .foot-join-container {
     width: 13.3em;
   }
-  footer .foot-join .foot-join-img {
+  .footer-container .foot-join .foot-join-img {
     z-index: -1;
     top: -6px;
     left: 28%;
   }
-  footer .foot-join {
+  .footer-container .foot-join {
     box-sizing: border-box;
     width: 53%;
     float: left;
@@ -2542,13 +2553,13 @@ img {
     right: 0;
     top: 1em;
   }
-  footer .foot-line {
+  .footer-container .foot-line {
     font-size: 0.8em;
     padding-left: 2.5%;
     padding-right: 2.5%;
     text-align: left;
   }
-  footer .foot-line .link-line a {
+  .footer-container .foot-line .link-line a {
     margin: 0 0.8em 0 0;
   }
   .section-center {
@@ -2717,7 +2728,7 @@ img {
     width: 33.33%;
     padding: 0 !important;
   }
-  footer .foot-connect ul.follow {
+  .footer-container .foot-connect ul.follow {
     font-size: 1.2em;
     padding-right: 0;
   }
@@ -2725,11 +2736,11 @@ img {
     width: 33.33%;
     padding: 0 !important;
   }
-  footer {
+  .footer-container {
     border-top: 2em solid #fff;
     font-size: 0.85em;
   }
-  footer .foot-join .foot-join-img {
+  .footer-container .foot-join .foot-join-img {
     width: 380px;
     top: -3px;
   }
@@ -2812,7 +2823,7 @@ img {
 
 /* @media (min-width: (min-width: 982px) */
 @media (min-width: 982px) {
-  footer .foot-join .foot-join-img {
+  .footer-container .foot-join .foot-join-img {
     left: 27%;
     width: 430px;
   }
@@ -2820,14 +2831,14 @@ img {
 /* @media (min-width: (min-width: 982px) */
 /* @media (min-width: 1000px) */
 @media (min-width: 1000px) {
-  footer .foot-connect ul.follow {
+  .footer-container .foot-connect ul.follow {
     position: relative;
     font-size: 1em;
   }
-  footer {
+  .footer-container {
     font-size: 0.95em;
   }
-  footer .foot-line .foot-line-background {
+  .footer-container .foot-line .foot-line-background {
     height: 8.4em;
     z-index: -5;
   }
@@ -3081,7 +3092,7 @@ img {
 
   /* footer */
 
-  footer .foot-contact {
+  .footer-container .foot-contact {
     box-sizing: border-box;
     width: 20%;
     float: left;
@@ -3090,18 +3101,18 @@ img {
     clear: none;
   }
 
-  footer .foot-rewards,
-  footer .foot-support {
+  .footer-container .foot-rewards,
+  .footer-container .foot-support {
     box-sizing: border-box;
     width: 20%;
     float: left;
     padding-left: 0.5%;
     padding-right: 0.5%;
   }
-  footer {
+  .footer-container {
     font-size: 1em;
   }
-  footer .foot-join {
+  .footer-container .foot-join {
     box-sizing: border-box;
     width: 40%;
     float: left;
@@ -3111,11 +3122,11 @@ img {
     right: initial;
     top: 0;
   }
-  footer .foot-join .foot-join-img {
+  .footer-container .foot-join .foot-join-img {
     left: 30%;
     width: 390px;
   }
-  footer .foot-join .foot-join-img {
+  .footer-container .foot-join .foot-join-img {
     left: 30%;
     width: 436px;
   }
@@ -3123,11 +3134,11 @@ img {
     padding-right: 2%;
     padding-left: 2%;
   }
-  footer .tagline {
+  .footer-container .tagline {
     font-size: 2.1em;
     display: block;
   }
-  footer .foot-line {
+  .footer-container .foot-line {
     padding-left: 0;
     padding-top: 0;
     text-align: left;

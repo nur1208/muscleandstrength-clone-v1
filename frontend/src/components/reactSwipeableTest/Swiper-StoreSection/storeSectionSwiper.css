@@ -152,15 +152,23 @@ h2.grey-stripe {
   color: #ddd;
 }
 .swiper-button-next:after {
-  margin-left: 24px;
+  margin-left: 12px;
 }
 
 .swiper-button-prev:after {
-  margin-right: 24px;
+  margin-right: 12px;
 }
 @media print, screen and (min-width: 52.5em) {
   .mns-carousel .height-setter {
     height: 100%;
+  }
+}
+
+@media (max-width: 840px) {
+  .mns-carousel .swiper-button-next,
+  .mns-carousel .swiper-button-prev {
+    transition: opacity 0.3s ease-in-out;
+    opacity: 0 !important;
   }
 }
 

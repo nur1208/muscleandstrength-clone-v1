@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { useDispatch, useSelector } from "react-redux";
+import { useMediaQuery } from "react-responsive";
 import { getPathName } from "../actions/navBlockActions";
 import { getProductsTopDeals } from "../actions/productsAction";
 import { Slider } from "../components/homeScreen/Slider";
@@ -40,6 +41,12 @@ export const StoreScreen = (props) => {
 
   require("../styles/store.css");
 
+  const isNotPC = useMediaQuery({ maxWidth: 1028 });
+
+  useEffect(() => {
+    if (isNotPC) console.log("not PC screen");
+  }, [isNotPC]);
+
   return (
     <main id="main-wrapper">
       <Helmet>
@@ -53,12 +60,19 @@ export const StoreScreen = (props) => {
           sliderStyle={"store-section"}
           dotsStyle={"slick-dots-store"}
           sectionCenterStyle={"store-section-center"}
+          hasPhoneImage={true}
         />
         <QuickNav />
         {loading ? (
           <LoadingScreen msg={"Loading Top Deals products"} />
         ) : error ? (
           <MessageBox variant="danger">{error}</MessageBox>
+        ) : isNotPC ? (
+          <StoreSectionSwiper
+            sectionId={"top-rated-products"}
+            title={"Top Rated Products"}
+            items={topRated}
+          />
         ) : (
           <StoreSection
             sectionId="top-deals"

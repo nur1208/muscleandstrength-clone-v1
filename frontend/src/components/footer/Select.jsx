@@ -7,13 +7,13 @@ export const Select = (props) => {
   const optionsConst = options;
   return (
     <div className="select-container">
-      <select className="half" required>
+      <select className="half" required defaultValue={"Choose Your Goal"}>
         {optionsConst.map((cItem, index) => (
           <option
             key={index}
             value={cItem.value}
             disabled={cItem.disabled}
-            defaultValue={cItem.selected}
+            // selected={cItem.selected}
           >
             {cItem.text}
           </option>

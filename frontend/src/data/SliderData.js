@@ -16,14 +16,17 @@ export const sliderData = [
 export const sliderDataStore = [
   {
     hrefValue: "/store/landing/jan25under20",
-    image: "/images/u20_slider_desktop.jpg",
+    image: "/images/cell_slider_desktop.jpg",
+    imagePhone: "/images/cell_slider_mobile.jpg",
   },
   {
     hrefValue: "/store/landing/vitwell",
-    image: "/images/pantry_slider_desktop.jpg",
+    image: "/images/xtend_slider_desktop.jpg",
+    imagePhone: "/images/xtend_slider_mobile.jpg",
   },
   {
     hrefValue: "/store/landing/jan25protein",
-    image: "/images/pro_slider_desktop_1.jpg",
+    image: "/images/well_slider_desktop.jpg",
+    imagePhone: "/images/well_slider_mobile.jpg",
   },
 ];

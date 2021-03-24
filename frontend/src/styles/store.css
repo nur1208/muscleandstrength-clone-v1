@@ -167,7 +167,7 @@ html body {
 }
 
 .store-section-center {
-  height: 350px;
+  height: 187px;
 }
 
 /* start of QuickNave  */
@@ -647,7 +647,7 @@ button.btn.primary:hover {
 
 .mns-carousel .swiper-button-next.swiper-button-disabled,
 .mns-carousel .swiper-button-prev.swiper-button-disabled {
-  opacity: 0.1;
+  opacity: 0.1 !important;
   cursor: auto;
   pointer-events: none;
   border-color: #ddd;
@@ -769,6 +769,15 @@ h2.blue-stripe {
 #content-block .cell .info-block {
   padding: 12px;
 }
+
+#content-block .cell {
+  margin-bottom: 10px;
+  background: #fff;
+}
+
+.grid-margin-x > .small-6 {
+  width: calc(50% - 0.625rem);
+}
 /* end of StoreSection  */
 @media print, screen and (min-width: 46.25em) {
   /* start of StoreSection in 46.25em  */
@@ -779,6 +788,14 @@ h2.blue-stripe {
   .grid-margin-x > .bp740-4 {
     width: calc(33.33333% - 0.625rem);
   }
+  .grid-x > .bp740-6 {
+    flex: 0 0 auto;
+    width: 50%;
+  }
+  .grid-margin-x > .bp740-6 {
+    width: calc(50% - 0.625rem);
+  }
+
   /* end of StoreSection in 46.25em  */
 }
 @media print, screen and (min-width: 52.5em) {
@@ -824,6 +841,12 @@ h2.blue-stripe {
   h2.blue-stripe {
     margin-bottom: 15px;
   }
+  .grid-margin-x > .small-12 {
+    width: calc(100% - 0.9375rem);
+  }
+  .grid-margin-x > .bp740-6 {
+    width: calc(50% - 0.9375rem);
+  }
 
   /* end of StoreSection in 52.5em*/
 }
@@ -840,6 +863,24 @@ h2.blue-stripe {
   /* end of StoreSection in 64em*/
 }
 
+@media (min-width: 350px) {
+  .store-section-center {
+    height: 215px;
+  }
+}
+
+@media (min-width: 400px) {
+  .store-section-center {
+    height: 247px;
+  }
+}
+
+@media (min-width: 450px) {
+  .store-section-center {
+    height: 247px;
+  }
+}
+
 @media (min-width: 500px) {
   .store-section.slick-dots-store {
     bottom: -2px;
@@ -849,7 +890,13 @@ h2.blue-stripe {
   }
 
   .store-section-center {
-    height: 127px;
+    height: 295px;
+  }
+}
+
+@media (min-width: 550px) {
+  .store-section-center {
+    height: 321px;
   }
 }
 @media (min-width: 600px) {
@@ -868,8 +915,25 @@ h2.blue-stripe {
     padding: 15px;
   }
 
+  .store-section-center {
+    height: 327px;
+  }
+
   /* end of StoreSection in 840px */
 }
+
+@media (min-width: 650px) {
+  .store-section-center {
+    height: 352px;
+  }
+}
+
+@media (min-width: 700px) {
+  .store-section-center {
+    height: 379px;
+  }
+}
+
 @media (min-width: 740px) {
   /* start of QuickNave in 740px */
   .css-carousel .css-carousel-container {
@@ -882,7 +946,7 @@ h2.blue-stripe {
   /* end of QuickNave in 740px */
 
   .store-section-center {
-    height: 195px;
+    height: 403px;
   }
 }
 
@@ -898,7 +962,7 @@ h2.blue-stripe {
   }
 
   .store-section-center {
-    height: 257px;
+    height: 217px;
   }
 }
 @media (min-width: 840px) {
@@ -966,7 +1030,10 @@ h2.blue-stripe {
   /* end of StoreSection in 840px */
 
   .store-section-center {
-    height: 213px;
+    height: 233px;
+  }
+  #content-block .cell {
+    margin-bottom: 15px;
   }
 }
 
@@ -982,21 +1049,32 @@ h2.blue-stripe {
     margin-right: 20px;
   }
 }
+@media (min-width: 900px) {
+  .store-section-center {
+    height: 245px;
+  }
+}
 @media (min-width: 950px) {
   .section-center {
     height: 416px;
   }
 
   .store-section-center {
-    height: 257px;
+    height: 256px;
   }
 }
 
+@media (max-width: 1023px) {
+  .margin-bottom-none .grid-x {
+    margin-bottom: -15px;
+  }
+}
 @media (min-width: 1024px) {
   /* start of StoreSection in 1024px */
   .mns-carousel.hybrid-carousel-grid .cell.carousel-cell {
     margin-bottom: 25px;
   }
+
   /* end of StoreSection in 1024px */
 }
 

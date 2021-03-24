@@ -104,7 +104,12 @@ export const footContact = {
 };
 
 export const footerFormOptions = [
-  { value: "", text: "Choose Your Goal", disabled: true, selected: true },
+  {
+    value: "Choose Your Goal",
+    text: "Choose Your Goal",
+    disabled: true,
+    selected: true,
+  },
   { value: "Build Muscle", text: "Build Muscle" },
   { value: "Lose Fat", text: "Lose Fat" },
   { value: "Increase Strength", text: "Increase Strength" },

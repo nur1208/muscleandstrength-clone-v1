@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { useMediaQuery } from "react-responsive";
 
 export const Slider = ({
   sliderData,
   sliderStyle,
   dotsStyle,
   sectionCenterStyle,
+  hasPhoneImage,
 }) => {
   const [sliderItems] = useState(sliderData);
   const [index, setIndex] = useState(0);
@@ -42,12 +44,14 @@ export const Slider = ({
     }
   }, [index, isSelectedSlider]);
 
+  const isPhone = useMediaQuery({ maxWidth: 749 });
+
   return (
     <div className={sliderStyle}>
       <div className="slick-slider">
         <div className={sectionCenterStyle || "section-center"}>
           {sliderItems.map((sliderItem, sliderIndex) => {
-            const { hrefValue, image } = sliderItem;
+            const { hrefValue, image, imagePhone } = sliderItem;
 
             let position = "nextSlide";
             if (sliderIndex === index) {
@@ -64,13 +68,23 @@ export const Slider = ({
               <article className={position} key={sliderIndex}>
                 <div className="nodeListWrapper">
                   <a href={hrefValue} className="nodeImg ">
-                    <img
-                      src={image}
-                      alt={image.substring(
-                        image.lastIndexOf("/") + 1,
-                        image.lastIndexOf(".")
-                      )}
-                    />
+                    {isPhone && hasPhoneImage ? (
+                      <img
+                        src={imagePhone}
+                        alt={imagePhone.substring(
+                          imagePhone.lastIndexOf("/") + 1,
+                          imagePhone.lastIndexOf(".")
+                        )}
+                      />
+                    ) : (
+                      <img
+                        src={image}
+                        alt={image.substring(
+                          image.lastIndexOf("/") + 1,
+                          image.lastIndexOf(".")
+                        )}
+                      />
+                    )}
                   </a>
                 </div>
               </article>

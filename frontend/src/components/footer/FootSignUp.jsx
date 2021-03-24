@@ -7,7 +7,7 @@ export const FootSignUp = ({ fields }) => {
   return (
     <form className="newsletter-signup-form">
       {fields.map((field, index) => (
-        <React.Fragment key={index}>field</React.Fragment>
+        <React.Fragment key={index}>{field}</React.Fragment>
       ))}
       <button
         className="btn btn-submit btn-flat-blue"
