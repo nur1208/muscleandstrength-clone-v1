@@ -51,7 +51,7 @@ export const ProductScreen = (props) => {
           {!loading && <ProductAside />}
 
           <div className="main-content continued">
-            <Recommended items={items} />
+            {/* <Recommended items={items} /> */}
             <ProductInfo />
             <Reviews title={"Reviews"} />
             <UsersReview viewMore={10} hasViewAll={true} />

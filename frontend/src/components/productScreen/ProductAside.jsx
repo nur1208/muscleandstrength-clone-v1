@@ -326,6 +326,7 @@ export const ProductAside = () => {
   const [nurtIndex, setnurtIndex] = useState(0);
 
   const [nurt, setNurt] = useState(nutritionInfo.items[nurtIndex].nutrition);
+  const [showAllNurt, setShowAllNurt] = useState(false);
 
   const getSelectIndex = (index) => {
     setnurtIndex(index);
@@ -425,7 +426,7 @@ export const ProductAside = () => {
         </div>
       </div>
       <div className="product-aside"></div>
-      <div className="product-nutrition">
+      <div className={`product-nutrition ${showAllNurt ? "show-all" : ""}`}>
         <div className="section-title">Nutrition Info</div>
         <div className="section-inner-wrap">
           <div className="panelSelector">
@@ -519,7 +520,14 @@ export const ProductAside = () => {
             </div>
           </div>
           <div className="expand-wrap">
-            <div className="expand-btn btn-blue btn btn-sm">Expand Info</div>
+            {!showAllNurt && (
+              <div
+                className="expand-btn btn-blue btn btn-sm"
+                onClick={() => setShowAllNurt(true)}
+              >
+                Expand Info
+              </div>
+            )}
           </div>
         </div>
       </div>

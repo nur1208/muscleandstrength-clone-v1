@@ -460,7 +460,7 @@ a:hover {
 }
 
 .deals-coupons-section .deals-swiper-container .swiper-slide .deal-info-wrap {
-  width: 67%;
+  width: 24%;
   margin-right: 2%;
 }
 
@@ -1766,6 +1766,19 @@ strong {
   background-image: linear-gradient(#004175, #004780);
   color: #e6e6e6;
 }
+
+.product-nutrition .section-inner-wrap {
+  padding: 1em;
+  position: relative;
+}
+.product-nutrition .expand-btn {
+  float: none;
+}
+
+.btn.btn-sm,
+button.btn.btn-sm {
+  font-size: 13px;
+}
 /* end of Reviews */
 /* start of UsersReview */
 .review-wrapper {
@@ -1892,7 +1905,7 @@ strong {
   overflow: hidden;
   margin: 1em 0;
   white-space: pre-line;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .customer-review-wrap .helpful-wrap {
@@ -2024,6 +2037,10 @@ abbr[title] {
   .product-header .product-data {
     text-align: center;
   }
+
+  .deals-coupons-section .deals-swiper-container .swiper-slide .deal-info-wrap {
+    width: 40%;
+  }
 }
 
 @media (min-width: 370px) {
@@ -2064,7 +2081,17 @@ abbr[title] {
   .features-list-wrap .features-list li .inner-icon {
     font-size: 2.2em;
   }
+
+  .deals-coupons-section .deals-swiper-container .swiper-slide .deal-info-wrap {
+    width: 40%;
+  }
   /* end of features in 400px*/
+}
+
+@media (min-width: 450px) {
+  .deals-coupons-section .deals-swiper-container .swiper-slide .deal-info-wrap {
+    width: 44%;
+  }
 }
 
 @media (min-width: 480px) {
@@ -2083,6 +2110,10 @@ abbr[title] {
   }
   .button-columns .btn-left {
     float: left;
+  }
+
+  .deals-coupons-section .deals-swiper-container .swiper-slide .deal-info-wrap {
+    width: 67%;
   }
   /* end of UsersReview in 480px*/
 }
@@ -2225,6 +2256,12 @@ abbr[title] {
     padding-left: 1em;
     float: left;
     display: block;
+  }
+  .btn.btn-sm,
+  button.btn.btn-sm {
+    padding: 0 15px;
+    height: 35px;
+    line-height: 35px;
   }
   /* end of UsersReview in 600px*/
 }
@@ -2411,6 +2448,29 @@ abbr[title] {
     line-height: 60px;
   }
   /* end of Reviews in 840px*/
+}
+
+@media (max-width: 940px) {
+  .product-header .product-title-wrap {
+    float: left;
+    width: 100%;
+  }
+
+  .product-header .product-info {
+    float: revert;
+    width: 100%;
+  }
+
+  .product-header .product-data {
+    float: left;
+    width: 100%;
+  }
+
+  .product-share-btn {
+    /* float: right; */
+    margin-left: 23px;
+    margin-top: 0;
+  }
 }
 
 @media (min-width: 940px) {
