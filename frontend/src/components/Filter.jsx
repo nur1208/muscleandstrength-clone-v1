@@ -6,6 +6,8 @@ import { RangeSlider } from "./reviewScreen/RangeSlider";
 export const Filter = () => {
   const [sortGroup, setSortGroup] = useState(["", "checked"]);
   const [filter, setFilter] = useState(["checked", ""]);
+  const [isSortOpen, setIsSortOpen] = useState(false);
+
   const reviewAdd = useSelector((state) => state.reviewAdd);
   const { loading } = reviewAdd;
 
@@ -31,12 +33,20 @@ export const Filter = () => {
     console.log("here");
   };
   return (
-    <div className="refine-search-wrap" id="toolbar-target">
+    <div
+      className={`refine-search-wrap  ${isSortOpen ? "open" : ""}`}
+      id="toolbar-target"
+    >
       <div className="mobile-header">
-        <button className="button btn btn-blue">Sort &amp; Filter</button>
+        <button
+          className="button btn btn-blue"
+          onClick={() => setIsSortOpen(!isSortOpen)}
+        >
+          Sort &amp; Filter
+        </button>
         <label className="heading"></label>
       </div>
-      <div className="review-sorting-filtering" data-product-id="14821">
+      <div className={`review-sorting-filtering`} data-product-id="14821">
         <div className="inner-wrap">
           <div className="sort-by section">
             <div className="wrap">

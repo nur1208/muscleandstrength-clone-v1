@@ -267,6 +267,11 @@ abbr[title] {
   display: block;
   overflow: hidden;
 }
+
+.refine-search-wrap.open .review-sorting-filtering {
+  display: block;
+  margin-bottom: 1em;
+}
 /* end of UsersReview */
 
 @media (min-width: 480px) {

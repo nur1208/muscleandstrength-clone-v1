@@ -16,7 +16,7 @@ export const MobileSearch = () => {
           </span>
           <button className="search-button" type="submit">
             <img
-              src="images/search-right_bold.png"
+              src="/images/search-right_bold.png"
               alt="search-right_bold.png"
               className="icon"
             />
