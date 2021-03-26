@@ -18,6 +18,7 @@ import {
 import {
   addReviewReducer,
   getAllReviewsReducer,
+  reportAddReducer,
   reviewReducer,
 } from "./reducers/reviewRdeucer";
 
@@ -70,6 +71,7 @@ const reducer = combineReducers({
   getAllReviews: getAllReviewsReducer,
   reviewAdd: addReviewReducer,
   slider: sliderReducer,
+  reportAdd: reportAddReducer,
 });
 
 const store = createStore(

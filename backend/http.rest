@@ -47,3 +47,19 @@ Content-Type: application/json
     "_id":"605080b1bf0ab73d74020dd7",
     "userId":"5fef1d35db624d3258c938c7"
 }
+
+###
+POST  http://localhost:5000/api/review/report
+Content-Type: application/json
+
+{
+    "report":{
+        "reviewId":"604b733f1ffe9b039cfbb3da",
+        "userId":"5fef1d35db624d3258c938c7",
+        "productId":"603cd94f39e7893b1cb3e4ed",
+        "userName":"nur",
+        "content":"Always assess your tolerance with a single scoop. This product is only intended to be consumed by healthy adults 18 years of age or older. Not for use by those with pre-existing medical conditions or those taking any medications, young children under the age of 18, pregnant or lactating women, or individuals sensitive to caffeine or beta alanine. Discontinue use and consult your health care professional if you experience any adverse reaction to this product. Do not consume with caffeine, alcohol, or stimulants from other sources. To avoid sleeplessness do not consume within 4 hours of bedtime. You may experience harmless short term skin tingles. Store in a cool, dry place. KEEP OUT OF REACH OF CHILDREN."
+    }  
+}
+
+###

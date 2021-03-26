@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Rating } from "./Rating";
 import { RatingList } from "./RatingList";
 import { GiMuscleUp } from "react-icons/gi";
 import { MdVerifiedUser } from "react-icons/md";
 import Moment from "react-moment";
+import { LoadingTwo } from "../LoadingTwo";
+import { Reporting } from "./Reporting";
 
 export const ReviewCard = ({
   userId,
@@ -18,9 +20,12 @@ export const ReviewCard = ({
   userGoal,
   isVerifiedBuyer,
 }) => {
+  const [isReportOn, setIsReportOn] = useState(false);
   return (
     <div
-      className={`rID-${userId} customer-review-wrap`}
+      className={`rID-${userId} customer-review-wrap ${
+        isReportOn ? "report-on" : ""
+      }`}
       data-metadata-loaded="true"
       key={userId}
     >
@@ -127,18 +132,14 @@ export const ReviewCard = ({
             className="report"
             id="review-report-link-73480"
             data-rid="73480"
+            onClick={() => setIsReportOn(true)}
           >
             Report
           </button>
         </div>
       </div>
-      <div className="loading-message">
-        <img
-          className="lazyload"
-          src="/images/ajax-loader.gif"
-          alt="ajax-loader.gif"
-        />
-      </div>
+      <LoadingTwo />
+      <Reporting setIsReportOn={setIsReportOn} />
     </div>
   );
 };

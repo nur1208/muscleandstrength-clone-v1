@@ -1,6 +1,9 @@
 import axios from "../../node_modules/axios/index";
 
 import {
+  REVIEW_ADD_REPORT_FAIL,
+  REVIEW_ADD_REPORT_REQUEST,
+  REVIEW_ADD_REPORT_SUCCESS,
   REVIEW_ADD_REVIEWS_FAIL,
   REVIEW_ADD_REVIEWS_REQUEST,
   REVIEW_ADD_REVIEWS_SUCCESS,
@@ -99,6 +102,23 @@ export const deleteReview = (_id, userId) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: REVIEW_DELETE_REVIEW_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const addReport = (report) => async (dispatch) => {
+  dispatch({ type: REVIEW_ADD_REPORT_REQUEST });
+  try {
+    const { data } = await axios.post("/api/review/report", { report });
+
+    dispatch({ type: REVIEW_ADD_REPORT_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({
+      type: REVIEW_ADD_REPORT_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

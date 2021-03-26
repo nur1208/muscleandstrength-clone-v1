@@ -1,4 +1,7 @@
 import {
+  REVIEW_ADD_REPORT_FAIL,
+  REVIEW_ADD_REPORT_REQUEST,
+  REVIEW_ADD_REPORT_SUCCESS,
   REVIEW_ADD_REVIEWS_FAIL,
   REVIEW_ADD_REVIEWS_REQUEST,
   REVIEW_ADD_REVIEWS_SUCCESS,
@@ -94,5 +97,18 @@ export const addReviewReducer = (state = {}, action) => {
 
     default:
       return state;
+  }
+};
+
+export const reportAddReducer = (state = {}, action) => {
+  switch (action.type) {
+    case REVIEW_ADD_REPORT_REQUEST:
+      return { ...state, loading: true };
+    case REVIEW_ADD_REPORT_SUCCESS:
+      return { ...state, loading: false, report: action.payload };
+    case REVIEW_ADD_REPORT_FAIL:
+      return { ...state, loading: false, error: action.payload };
+    default:
+      return { ...state };
   }
 };

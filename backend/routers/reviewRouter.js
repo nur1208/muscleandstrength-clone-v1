@@ -1,6 +1,7 @@
 import express from "express";
 import expressAsyncHandler from "express-async-handler";
 import ReviewModal from "../models/reveiwModal.js";
+import ReportModal from "../models/reportModal.js";
 
 const reviewRouter = express.Router();
 
@@ -125,6 +126,23 @@ reviewRouter.delete(
     } catch (error) {
       res.status(404).send({ message: "Review Not Found", error: error });
     }
+  })
+);
+
+reviewRouter.post(
+  "/report",
+  expressAsyncHandler(async (req, res) => {
+    console.log(req.body);
+    const { reviewId, userId, productId, userName, content } = req.body.report;
+    const review = new ReportModal({
+      reviewId,
+      userId,
+      productId,
+      userName,
+      content,
+    });
+    const createdReview = await review.save();
+    res.send({ createdReview });
   })
 );
 
