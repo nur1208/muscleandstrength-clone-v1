@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Rating } from "./Rating";
 import { RatingList } from "./RatingList";
 import { GiMuscleUp } from "react-icons/gi";
@@ -6,6 +6,8 @@ import { MdVerifiedUser } from "react-icons/md";
 import Moment from "react-moment";
 import { LoadingTwo } from "../LoadingTwo";
 import { Reporting } from "./Reporting";
+import { Helpful } from "./Helpful";
+import { useSelector } from "react-redux";
 
 export const ReviewCard = ({
   userId,
@@ -21,6 +23,17 @@ export const ReviewCard = ({
   isVerifiedBuyer,
 }) => {
   const [isReportOn, setIsReportOn] = useState(false);
+
+  const userSingIn = useSelector((state) => state.userSingIn);
+  const {
+    userInfo: { _id },
+  } = userSingIn;
+
+  useEffect(() => {
+    console.log(_id);
+    console.log(userId);
+    console.log(_id !== userId);
+  }, [_id, userId]);
   return (
     <div
       className={`rID-${userId} customer-review-wrap ${
@@ -90,39 +103,7 @@ export const ReviewCard = ({
           <a href="#results-disclaimer">*</a>
         </div>
       </div>
-      <div className="helpful-wrap" id="review-helpful-27713">
-        <div className="question">Was this helpful?</div>
-        <div className="response-wrap">
-          You found this <span className="not-helpful">not </span>
-          helpful
-        </div>
-        <div className="form">
-          <button
-            className="choice"
-            id="review-helpful-link-27713"
-            // onClick="reviews.helpfulReview(27713, 1); return false;"
-          >
-            Yes
-          </button>
-          <button
-            className="choice"
-            id="review-helpful-link-27713"
-            // onClick="reviews.helpfulReview(27713, 0); return false;"
-          >
-            No
-          </button>
-          <button
-            className="response-wrap change"
-            id="review-vote-undo-link-27713"
-            // onClick="reviews.undoReviewVote(27713); return false;"
-          >
-            Undo
-          </button>
-        </div>
-        <div className="helpful-data">{`${helpful} of ${
-          notHelpful + helpful
-        } found this helpful`}</div>
-      </div>
+      {userId !== _id && <Helpful helpful={helpful} notHelpful={notHelpful} />}
       <div className="review-meta-wrap">
         <abbr className="date timeago" title={createdAt}>
           <Moment fromNow>{createdAt}</Moment>
