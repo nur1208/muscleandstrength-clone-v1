@@ -146,4 +146,20 @@ reviewRouter.post(
   })
 );
 
+reviewRouter.get(
+  "/numReviews/:id",
+  expressAsyncHandler(async (req, res) => {
+    const reviewsNum = await ReviewModal.countDocuments({
+      productId: req.params.id,
+    });
+
+    const reviewsVerifiedNum = await ReviewModal.countDocuments({
+      productId: req.params.id,
+      isVerifiedBuyer: true,
+    });
+
+    res.send({ reviewsNum, reviewsVerifiedNum });
+  })
+);
+
 export default reviewRouter;

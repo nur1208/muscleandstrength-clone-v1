@@ -12,8 +12,12 @@ export const ProductHeader = () => {
     brand,
     description,
     rating,
-    numReviews,
+    // numReviews,
   } = product;
+
+  const getAllReviews = useSelector((state) => state.getAllReviews);
+  const { totalReviews } = getAllReviews;
+
   return loading ? (
     <>
       <h1>Loading</h1>
@@ -66,7 +70,7 @@ export const ProductHeader = () => {
             </div>
           </div>
           <span className="button-text">
-            {numReviews} <span className="button-text-label">Reviews</span>
+            {totalReviews} <span className="button-text-label">Reviews</span>
           </span>
         </a>
         <div className="product-share-btn addthis_toolbox">

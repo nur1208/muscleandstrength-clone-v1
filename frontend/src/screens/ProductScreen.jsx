@@ -14,7 +14,7 @@ import { useAddBodyClass } from "../hooks/customAddBodyClass";
 import { DealsSection } from "./DealsSection";
 import { LoadingScreen } from "../components/LoadingScreen";
 import { MessageBox } from "../components/MessageBox";
-import { getAllReviews } from "../actions/reviewAction";
+import { getAllReviews, getTotalReviews } from "../actions/reviewAction";
 
 export const ProductScreen = (props) => {
   require("../styles/product.css");
@@ -26,8 +26,10 @@ export const ProductScreen = (props) => {
   useEffect(() => {
     dispatch(getOneProduct(productId));
     dispatch(getAllReviews(productId, 10));
+    dispatch(getTotalReviews(productId));
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch]);
+  }, [dispatch, productId]);
 
   const productOne = useSelector((state) => state.productOne);
   const { loading, error } = productOne;
