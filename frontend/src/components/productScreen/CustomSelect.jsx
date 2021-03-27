@@ -31,13 +31,18 @@ export const CustomSelect = ({
     value: items[0].title,
   });
 
-  const handleSelect = () => {
+  const toggleSelect = () => {
     setSodList(sodList === "sod_list" ? "sod_list focus open" : "sod_list");
     setSodListWrapper(
       sodListWrapper === "sod_list_wrapper"
         ? "sod_list_wrapper open"
         : "sod_list_wrapper"
     );
+  };
+
+  const handleSelect = () => {
+    toggleSelect();
+
     addClass(selected.index);
 
     if (getSelectIndex) {
@@ -54,7 +59,7 @@ export const CustomSelect = ({
         item =
           item.substring(0, item.indexOf(style)) +
           item.substring(item.indexOf(style) + style.length);
-      } else if (index === i) {
+      } else if (index === i && !item.includes(style)) {
         item = item + " " + style;
         if (style === "selected") {
           if (!stopSelected) setSelected({ index: i, value: v });
@@ -76,6 +81,7 @@ export const CustomSelect = ({
       data-placeholder-option="false"
       data-filter=""
       onClick={handleSelect}
+      onBlur={toggleSelect}
     >
       <span className="sod_label">{selected.value}</span>
       <span className={sodListWrapper}>
