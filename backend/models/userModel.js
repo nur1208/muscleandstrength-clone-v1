@@ -15,7 +15,7 @@ const userSchema = new mongoose.Schema(
     referralCode: { type: String },
     isNewsLitter: { type: Boolean, default: false },
     isAdmin: { type: Boolean, default: false },
-    image: { type: String },
+    image: { type: String, default: "/images/user-login.png" },
     point: { type: Number, default: 0 },
   },
   {

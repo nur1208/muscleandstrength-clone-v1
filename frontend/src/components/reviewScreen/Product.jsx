@@ -1,6 +1,12 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 export const Product = () => {
+  const productOne = useSelector((state) => state.productOne);
+  const {
+    product: { _id },
+  } = productOne;
   return (
     <div className="product-wrap">
       <div className="image-wrap">
@@ -22,9 +28,9 @@ export const Product = () => {
         <div className="product-text">
           The Ultimate Fast Acting, Full Strength Fat Burner!*
         </div>
-        <a href="/store/ripper.html" className="btn btn-lg btn-blue">
+        <Link to={`/store/${_id}`} className="btn btn-lg btn-blue">
           View Product
-        </a>
+        </Link>
       </div>
     </div>
   );
