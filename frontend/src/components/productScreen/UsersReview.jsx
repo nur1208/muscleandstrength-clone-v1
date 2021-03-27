@@ -12,6 +12,8 @@ export const UsersReview = ({ viewMore, hasViewAll }) => {
   const allReviews = useSelector((state) => state.getAllReviews);
   const { reviews, limit, loading } = allReviews;
 
+  // const reviews = [];
+
   const productOne = useSelector((state) => state.productOne);
   const {
     product: { _id },
@@ -53,37 +55,43 @@ export const UsersReview = ({ viewMore, hasViewAll }) => {
           />
         </div> */}
         <LoadingTwo isDisplay={loading} />
-        <div className="button-columns btn-row-mobile">
-          {viewMore && (
-            <button
-              className="btn btn-right btn-blue"
-              id="load-more-reviews"
-              onClick={handleAddMore}
-            >
-              View {viewMore} More Reviews
-            </button>
-          )}
-          {hasViewAll && (
-            <Link
-              to="/store/review"
-              className="btn ellipsis  btn-left btn-blue"
-              href="/store/reviews/brands/jnx-sports/ripper.html"
-            >
-              View All Reviews
-            </Link>
-          )}
-        </div>
+        {reviews.length > viewMore && (
+          <div className="button-columns btn-row-mobile">
+            {viewMore && (
+              <button
+                className="btn btn-right btn-blue"
+                id="load-more-reviews"
+                onClick={handleAddMore}
+              >
+                View {viewMore} More Reviews
+              </button>
+            )}
+            {hasViewAll && (
+              <Link
+                to="/store/review"
+                className="btn ellipsis  btn-left btn-blue"
+                href="/store/reviews/brands/jnx-sports/ripper.html"
+              >
+                View All Reviews
+              </Link>
+            )}
+          </div>
+        )}
       </div>
-      <div id="results-disclaimer">
-        * Muscle &amp; Strength does not imply any medical claims from this
-        review. There are no guarantees of specific results and results may
-        vary.
-      </div>
-      <div className="fdaWarning">
-        * These statements have not been evaluated by the Food and Drug
-        Administration. This product is not intended to diagnose, treat, cure,
-        or prevent any disease.
-      </div>
+      {reviews.length !== 0 && (
+        <>
+          <div id="results-disclaimer">
+            * Muscle &amp; Strength does not imply any medical claims from this
+            review. There are no guarantees of specific results and results may
+            vary.
+          </div>
+          <div className="fdaWarning">
+            * These statements have not been evaluated by the Food and Drug
+            Administration. This product is not intended to diagnose, treat,
+            cure, or prevent any disease.
+          </div>
+        </>
+      )}
     </>
   );
 };

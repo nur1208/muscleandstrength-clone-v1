@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { Filter } from "../components/Filter";
 import { LoadingTwo } from "../components/LoadingTwo";
 import { Reviews } from "../components/productScreen/Reviews";
@@ -13,6 +14,11 @@ export const ReviewScreen = () => {
 
   useAddBodyClass("mnsreview-product-view");
   useAddBodyClass("layout-v3");
+
+  const allReviews = useSelector((state) => state.getAllReviews);
+  const { reviews } = allReviews;
+
+  const limitToShowF = 3;
   return (
     <div id="main-wrap">
       <div className="aside aside-before">
@@ -27,7 +33,7 @@ export const ReviewScreen = () => {
         />
         <LoadingTwo />
         {isWriteMode && <Reviewing />}
-        <Filter />
+        {reviews.length > limitToShowF && <Filter />}
         <UsersReview viewMore={50} />
       </div>
     </div>
