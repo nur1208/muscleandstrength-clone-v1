@@ -40,6 +40,11 @@ export const CustomSelect = ({
     );
   };
 
+  const closeSelect = () => {
+    setSodList("sod_list");
+    setSodListWrapper("sod_list_wrapper");
+  };
+
   const handleSelect = () => {
     toggleSelect();
 
@@ -81,7 +86,7 @@ export const CustomSelect = ({
       data-placeholder-option="false"
       data-filter=""
       onClick={handleSelect}
-      onBlur={toggleSelect}
+      onBlur={closeSelect}
     >
       <span className="sod_label">{selected.value}</span>
       <span className={sodListWrapper}>
