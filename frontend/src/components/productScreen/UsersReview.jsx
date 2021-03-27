@@ -55,7 +55,7 @@ export const UsersReview = ({ viewMore, hasViewAll }) => {
           />
         </div> */}
         <LoadingTwo isDisplay={loading} />
-        {reviews.length > viewMore && (
+        {reviews.length >= viewMore && (
           <div className="button-columns btn-row-mobile">
             {viewMore && (
               <button

@@ -14,6 +14,7 @@ import {
   REVIEW_GET_ALL_FAIL,
   REVIEW_GET_ALL_REQUEST,
   REVIEW_GET_ALL_SUCCESS,
+  REVIEW_GET_TOTAL_REVIEWS,
   REVIEW_UPDATE_REVIEW_FAIL,
   REVIEW_UPDATE_REVIEW_REQUEST,
   REVIEW_UPDATE_REVIEW_SUCCESS,
@@ -52,6 +53,13 @@ export const getAllReviewsReducer = (state = {}, action) => {
       };
     case REVIEW_GET_ALL_FAIL:
       return { ...state, loading: false, error: action.payload };
+
+    case REVIEW_GET_TOTAL_REVIEWS:
+      return {
+        ...state,
+        totalReviews: action.payload.reviewsNum,
+        totalVerbifiedReviews: action.payload.reviewsVerifiedNum,
+      };
 
     default:
       return state;

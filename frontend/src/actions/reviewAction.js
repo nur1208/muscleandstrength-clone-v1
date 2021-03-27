@@ -16,6 +16,7 @@ import {
   REVIEW_GET_ALL_FAIL,
   REVIEW_GET_ALL_REQUEST,
   REVIEW_GET_ALL_SUCCESS,
+  REVIEW_GET_TOTAL_REVIEWS,
   REVIEW_UPDATE_REVIEW_FAIL,
   REVIEW_UPDATE_REVIEW_REQUEST,
   REVIEW_UPDATE_REVIEW_SUCCESS,
@@ -124,5 +125,20 @@ export const addReport = (report) => async (dispatch) => {
           ? error.response.data.message
           : error.message,
     });
+  }
+};
+
+export const getTotalReviews = (productId) => async (dispatch) => {
+  try {
+    const { data } = await axios.get(`/api/review/numReviews/${productId}`);
+
+    dispatch({ type: REVIEW_GET_TOTAL_REVIEWS, payload: data });
+    localStorage.setItem("totalReviews", JSON.stringify(data.reviewsNum));
+    localStorage.setItem(
+      "totalVerifiedReviews",
+      JSON.stringify(data.reviewsVerifiedNum)
+    );
+  } catch (error) {
+    console.log(error);
   }
 };

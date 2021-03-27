@@ -49,6 +49,13 @@ const initialState = {
     reviews: localStorage.getItem("reviews")
       ? JSON.parse(localStorage.getItem("reviews"))
       : [],
+    totalReviews: localStorage.getItem("totalReviews")
+      ? JSON.parse(localStorage.getItem("totalReviews"))
+      : null,
+
+    totalVerifiedReviews: localStorage.getItem("totalVerifiedReviews")
+      ? JSON.parse(localStorage.getItem("totalVerifiedReviews"))
+      : null,
   },
 };
 

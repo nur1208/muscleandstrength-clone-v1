@@ -38,11 +38,14 @@ export const Reviews = ({ mainStyle, title, specialBtn, setIsWriteMode }) => {
 
   const productOne = useSelector((state) => state.productOne);
   const {
-    product: { topRated, graphData, numReviews, numReviewsVerified, rating },
+    product: { topRated, graphData, rating },
   } = productOne;
 
   const userSingIn = useSelector((state) => state.userSingIn);
   const { userInfo } = userSingIn;
+
+  const getAllReviews = useSelector((state) => state.getAllReviews);
+  const { totalReviews, totalVerbifiedReviews } = getAllReviews;
 
   const handleWriteReview = () => {
     if (!userInfo) {
@@ -70,11 +73,11 @@ export const Reviews = ({ mainStyle, title, specialBtn, setIsWriteMode }) => {
             />
             <div className="review-data-summary">
               <div className="item">
-                <BsPencil className="icon" /> Reviews ({numReviews})
+                <BsPencil className="icon" /> Reviews ({totalReviews})
               </div>
               <div className="item">
                 <MdVerifiedUser className="icon green" /> Verified Buyers (
-                {numReviewsVerified})
+                {totalVerbifiedReviews})
               </div>
             </div>
           </div>
@@ -117,12 +120,7 @@ export const Reviews = ({ mainStyle, title, specialBtn, setIsWriteMode }) => {
               <BsPencil className="icon" /> Write Review
             </button>
           ) : (
-            <Link
-              rel="nofollow"
-              target="_blank"
-              to="/store/review"
-              className="btn btn-lg btn-blue"
-            >
+            <Link to="/store/review" className="btn btn-lg btn-blue">
               <BsPencil className="icon" /> Write Review
             </Link>
           )}

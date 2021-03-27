@@ -29,11 +29,6 @@ export const ReviewCard = ({
     userInfo: { _id },
   } = userSingIn;
 
-  useEffect(() => {
-    console.log(_id);
-    console.log(userId);
-    console.log(_id !== userId);
-  }, [_id, userId]);
   return (
     <div
       className={`rID-${userId} customer-review-wrap ${
