@@ -25,9 +25,7 @@ export const ReviewCard = ({
   const [isReportOn, setIsReportOn] = useState(false);
 
   const userSingIn = useSelector((state) => state.userSingIn);
-  const {
-    userInfo: { _id },
-  } = userSingIn;
+  const { userInfo } = userSingIn;
 
   return (
     <div
@@ -98,7 +96,10 @@ export const ReviewCard = ({
           <a href="#results-disclaimer">*</a>
         </div>
       </div>
-      {userId !== _id && <Helpful helpful={helpful} notHelpful={notHelpful} />}
+      {userInfo &&
+        userId !== userInfo._id && ( // if the user not login there will be error with out "userInfo &&"
+          <Helpful helpful={helpful} notHelpful={notHelpful} />
+        )}
       <div className="review-meta-wrap">
         <abbr className="date timeago" title={createdAt}>
           <Moment fromNow>{createdAt}</Moment>

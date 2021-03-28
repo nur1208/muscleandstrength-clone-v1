@@ -65,3 +65,13 @@ Content-Type: application/json
 ###
 
 GET http://localhost:5000/api/review/numReviews/603cd94f39e7893b1cb3e4ed
+
+
+###
+
+GET https://cdn.muscleandstrength.com/store/skin/frontend/mnsv4/default/images/stars-svg-overlay.svg
+
+
+###
+
+GET http://localhost:5000/api/image/stars-svg-overlay.svg

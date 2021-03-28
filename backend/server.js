@@ -1,5 +1,6 @@
 import express from "express";
 import mongoose from "mongoose";
+import imageRouter from "./routers/imageRouter.js";
 import productsRouter from "./routers/productsRouter.js";
 import reviewRouter from "./routers/reviewRouter.js";
 import userRouter from "./routers/userRouters.js";
@@ -20,6 +21,8 @@ mongoose.connect(
 const port = process.env.PORT || 5000;
 
 // app.use(express.static("public"));
+app.use("/api/image", imageRouter);
+
 app.use("/api/review", reviewRouter);
 
 app.use("/api/products", productsRouter);
