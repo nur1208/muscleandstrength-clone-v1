@@ -1,11 +1,12 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { Pagination } from "swiper";
+import SwiperCore, { Pagination, Autoplay } from "swiper";
 import "swiper/swiper-bundle.css";
+import { useMediaQuery } from "react-responsive";
 
-SwiperCore.use([Pagination]);
+SwiperCore.use([Pagination, Autoplay]);
 
-export const SliderV2 = () => {
+export const SliderV2 = ({ slidersData, hasPhoneImage }) => {
   require("../styles/sliderV2.css");
 
   const slides = [];
@@ -37,24 +38,57 @@ export const SliderV2 = () => {
     );
   }
 
+  const isPhone = useMediaQuery({ maxWidth: 749 });
+
   return (
     <Swiper
       id="main"
       tag="section"
       className="home-carousel"
       wrapperTag="ul"
-      pagination
-      //   spaceBetween={0}
-      //   slidesPerView={1}
-      // onInit={(swiper) => console.log("swiper initialized", swiper)}
-      // onSlideChange={(swiper) =>
-      //   console.log("Slide Index changed to:", swiper.activeIndex)
-      // }
-      // onReachEnd={() => {
-      //   console.log("Swiper reach end");
-      // }}
+      pagination={{ clickable: true }}
+      loop={true}
+      speed={800}
+      autoplay={{
+        delay: 8000,
+      }}
     >
-      {slides}
+      {slidersData.map((slider, index) => {
+        const { hrefValue, image, imagePhone } = slider;
+
+        return (
+          <SwiperSlide key={`slide-${index}`} tag="li">
+            {/* <img
+          src={`https://cdn.muscleandstrength.com/sites/default/files/field/slide-image/losingfatandcuttingwithoutlosingmuscle.jpeg`}
+          style={{ listStyle: "none" }}
+          alt={`slide ${i + 1}`}
+        ></img> */}
+            <div class="nodeListWrapper">
+              <a href={hrefValue} class="nodeImg ">
+                {isPhone && hasPhoneImage ? (
+                  <img
+                    src={imagePhone}
+                    alt={imagePhone.substring(
+                      imagePhone.lastIndexOf("/") + 1,
+                      imagePhone.lastIndexOf(".")
+                    )}
+                  />
+                ) : (
+                  <img
+                    src={image}
+                    alt={image.substring(
+                      image.lastIndexOf("/") + 1,
+                      image.lastIndexOf(".")
+                    )}
+                  />
+                )}
+              </a>
+            </div>
+          </SwiperSlide>
+        );
+      })}
+
+      {/* {slides} */}
     </Swiper>
   );
 };

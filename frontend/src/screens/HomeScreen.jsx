@@ -33,7 +33,7 @@ export const HomeScreen = (props) => {
         <div className="header-content">
           <div className="row">
             {/* <Slider sliderData={sliderData} sliderStyle={"section"} /> */}
-            <SliderV2 />
+            <SliderV2 slidersData={sliderData} />
             <HeaderRightBlock />
           </div>
         </div>
