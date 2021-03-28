@@ -498,8 +498,9 @@ export const CreateAccountScreen = (props) => {
                           onChange={(e) => setGender(e.target.value)}
                           onFocus={handleInputFocus}
                           onBlur={handleInputBlur}
+                          defaultValue={"Gender"}
                         >
-                          <option value="" defaultValue disabled>
+                          <option value="Gender" disabled>
                             Gender
                           </option>
                           <option value="Male">Male</option>
@@ -525,8 +526,9 @@ export const CreateAccountScreen = (props) => {
                         onChange={(e) => setGoal(e.target.value)}
                         onFocus={handleInputFocus}
                         onBlur={handleInputBlur}
+                        defaultValue="Goal"
                       >
-                        <option value="" disabled defaultValue>
+                        <option value="Goal" disabled>
                           Goal
                         </option>
                         <option value="Build Muscle">Build Muscle</option>
@@ -560,8 +562,9 @@ export const CreateAccountScreen = (props) => {
                         onChange={(e) => setExperience(e.target.value)}
                         onFocus={handleInputFocus}
                         onBlur={handleInputBlur}
+                        defaultValue="Training Experience"
                       >
-                        <option value="" disabled defaultValue>
+                        <option value="Training Experience" disabled>
                           Training Experience
                         </option>
                         <option value="Beginner">Beginner (&lt; 1 Year)</option>

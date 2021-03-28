@@ -486,10 +486,11 @@ img {
   color: #303030;
 }
 
-.mns-carousel .product-info {
+.mns-carousel .grid-products-wrapper .product-info {
   position: absolute;
   width: 100%;
   bottom: 0;
+  cursor: auto;
 }
 
 .mns-label {
