@@ -463,7 +463,7 @@ export const Reviewing = () => {
                       data-product-id="14821"
                       onClick={handlePost}
                     >
-                      Post Review
+                      {isPosted ? "Update Review" : "Post Review"}
                     </button>
                     <input
                       type="hidden"

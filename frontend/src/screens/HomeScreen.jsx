@@ -10,6 +10,7 @@ import { TodaysDeals } from "../components/homeScreen/TodaysDeals";
 import { Helmet } from "react-helmet-async";
 import { useAddBodyClass } from "../hooks/customAddBodyClass";
 import { sliderData } from "../data/SliderData";
+import { SliderV2 } from "../components/SliderV2";
 
 export const HomeScreen = (props) => {
   const dispatch = useDispatch();
@@ -31,7 +32,8 @@ export const HomeScreen = (props) => {
         </Helmet>
         <div className="header-content">
           <div className="row">
-            <Slider sliderData={sliderData} sliderStyle={"section"} />
+            {/* <Slider sliderData={sliderData} sliderStyle={"section"} /> */}
+            <SliderV2 />
             <HeaderRightBlock />
           </div>
         </div>

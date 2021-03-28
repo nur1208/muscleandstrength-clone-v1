@@ -20,6 +20,7 @@ import { ResetPasswordScreen } from "./screens/ResetPasswordScreen";
 import { ProductScreen } from "./screens/ProductScreen";
 import { ReviewScreen } from "./screens/ReviewScreen";
 import { StoreSectionSwiper } from "./components/reactSwipeableTest/Swiper-StoreSection/StoreSectionSwiper";
+import { SliderV2 } from "./components/SliderV2";
 // import "./styles/home.css";
 
 function App(props) {
@@ -44,7 +45,7 @@ function App(props) {
           <NavBlock />
           <Switch>
             <Route path="/store/review" component={ReviewScreen} />
-            <Route path="/test" component={StoreSectionSwiper} />
+            <Route path="/test" component={SliderV2} />
             <Route
               path="/store/customer/account/changeforgotten/"
               component={ResetPasswordScreen}
