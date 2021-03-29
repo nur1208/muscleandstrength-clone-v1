@@ -9,7 +9,7 @@ export const Product = () => {
   } = productOne;
   return (
     <div className="product-wrap">
-      <div className="image-wrap">
+      <div className="image-wrap review-screen">
         <a href="/store/ripper.html">
           <img
             src="//cdn.muscleandstrength.com/store/media/catalog/product/cache/all/large_image/x450/602f0fa2c1f0d1ba5e241f914e856ff9/t/h/the-ripper-blood-orange-30-serve_2.jpg"
