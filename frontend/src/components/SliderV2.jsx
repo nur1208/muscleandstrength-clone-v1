@@ -6,7 +6,7 @@ import { useMediaQuery } from "react-responsive";
 
 SwiperCore.use([Pagination, Autoplay]);
 
-export const SliderV2 = ({ slidersData, hasPhoneImage }) => {
+export const SliderV2 = ({ slidersData, hasPhoneImage, sliderStyle }) => {
   require("../styles/sliderV2.css");
 
   const slides = [];
@@ -43,8 +43,8 @@ export const SliderV2 = ({ slidersData, hasPhoneImage }) => {
   return (
     <Swiper
       id="main"
-      tag="section"
-      className="home-carousel"
+      // tag="section"
+      className={sliderStyle}
       wrapperTag="ul"
       pagination={{ clickable: true }}
       loop={true}

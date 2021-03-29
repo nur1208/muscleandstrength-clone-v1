@@ -17,14 +17,16 @@
   max-width: 95.5%;
 }
 
-.home-carousel .nodeListWrapper {
+.home-carousel .nodeListWrapper,
+.mns-carousel .nodeListWrapper {
   overflow: hidden;
   display: block;
   text-decoration: none;
   color: #000;
 }
 
-.home-carousel a.nodeImg {
+.home-carousel a.nodeImg,
+.mns-carousel a.nodeImg {
   display: block;
 }
 
@@ -33,11 +35,46 @@
   height: auto;
 }
 
+.mns-carousel .image-wrap {
+  padding: 0;
+  text-align: center;
+  display: block;
+}
+
+.mns-carousel .nodeListWrapper .nodeImg img {
+  padding: 0;
+  margin: 0;
+  max-width: 100%;
+}
+
+.mns-carousel {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1300px;
+  padding: 12px 81px 12px 30px;
+}
+
+.mns-carousel {
+  padding: 0;
+}
+
+@media (min-width: 740px) {
+  .mns-carousel .intrinsic-wrapper {
+    position: relative;
+  }
+}
+
 @media (min-width: 800px) {
   .home-carousel {
     max-width: 67%;
     float: left;
     margin: 0 0 10px 2.5%;
+  }
+}
+
+@media (min-width: 840px) {
+  .mns-carousel {
+    padding: 15px 19px;
   }
 }
 

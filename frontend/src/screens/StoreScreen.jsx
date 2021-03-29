@@ -8,6 +8,7 @@ import { Slider } from "../components/homeScreen/Slider";
 import { LoadingScreen } from "../components/LoadingScreen";
 import { MessageBox } from "../components/MessageBox";
 import { StoreSectionSwiper } from "../components/reactSwipeableTest/Swiper-StoreSection/StoreSectionSwiper";
+import { SliderV2 } from "../components/SliderV2";
 import { Brands } from "../components/storeScreen/Brands";
 import { ContentBlock } from "../components/storeScreen/ContentBlock";
 import { MerchBanner } from "../components/storeScreen/MerchBanner";
@@ -55,12 +56,17 @@ export const StoreScreen = (props) => {
         </title>
       </Helmet>
       <article className="content">
-        <Slider
+        {/* <Slider
           sliderData={sliderDataStore}
           sliderStyle={"store-section"}
           dotsStyle={"slick-dots-store"}
           sectionCenterStyle={"store-section-center"}
           hasPhoneImage={true}
+        /> */}
+        <SliderV2
+          slidersData={sliderDataStore}
+          hasPhoneImage={true}
+          sliderStyle="mns-carousel"
         />
         <QuickNav />
         {loading ? (
