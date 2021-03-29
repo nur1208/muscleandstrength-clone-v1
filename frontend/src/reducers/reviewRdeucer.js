@@ -58,7 +58,19 @@ export const getAllReviewsReducer = (state = {}, action) => {
       return {
         ...state,
         totalReviews: action.payload.reviewsNum,
-        totalVerbifiedReviews: action.payload.reviewsVerifiedNum,
+        totalVerifiedReviews: action.payload.reviewsVerifiedNum,
+      };
+
+    case REVIEW_ADD_REVIEW_SUCCESS:
+      return {
+        ...state,
+        totalReviews: state.totalReviews + 1,
+      };
+
+    case REVIEW_DELETE_REVIEW_SUCCESS:
+      return {
+        ...state,
+        totalReviews: state.totalReviews - 1,
       };
 
     default:
@@ -76,6 +88,7 @@ export const addReviewReducer = (state = {}, action) => {
         loading: false,
         success: true,
         review: action.payload.createdReview,
+        // totalReviews: state.totalReviews + 1,
       };
     case REVIEW_ADD_REVIEW_FAIL:
       return { ...state, loading: false, error: action.payload };

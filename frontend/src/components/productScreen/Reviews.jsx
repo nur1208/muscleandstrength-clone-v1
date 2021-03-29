@@ -45,7 +45,7 @@ export const Reviews = ({ mainStyle, title, specialBtn, setIsWriteMode }) => {
   const { userInfo } = userSingIn;
 
   const getAllReviews = useSelector((state) => state.getAllReviews);
-  const { totalReviews, totalVerbifiedReviews } = getAllReviews;
+  const { totalReviews, totalVerifiedReviews } = getAllReviews;
 
   const handleWriteReview = () => {
     if (!userInfo) {
@@ -77,7 +77,7 @@ export const Reviews = ({ mainStyle, title, specialBtn, setIsWriteMode }) => {
               </div>
               <div className="item">
                 <MdVerifiedUser className="icon green" /> Verified Buyers (
-                {totalVerbifiedReviews})
+                {totalVerifiedReviews})
               </div>
             </div>
           </div>

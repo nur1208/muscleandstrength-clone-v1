@@ -117,6 +117,7 @@ export const addReport = (report) => async (dispatch) => {
     const { data } = await axios.post("/api/review/report", { report });
 
     dispatch({ type: REVIEW_ADD_REPORT_SUCCESS, payload: data });
+    getTotalReviews();
   } catch (error) {
     dispatch({
       type: REVIEW_ADD_REPORT_FAIL,

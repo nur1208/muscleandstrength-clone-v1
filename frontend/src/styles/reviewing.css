@@ -167,7 +167,7 @@ input.btn {
 .review-form-wrap .notice .notice-text {
   float: left;
   font-size: 13px;
-  margin-top: -7px;
+  margin-top: -6px;
 }
 button {
   color: #303030;
@@ -195,6 +195,7 @@ button {
   width: 100% !important;
   position: relative;
   border: 1px solid #ddd;
+  max-width: 100%;
 }
 
 .review-form-wrap .section.overall-review {
