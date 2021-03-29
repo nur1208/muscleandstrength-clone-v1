@@ -7,10 +7,13 @@ import { UsersReview } from "../components/productScreen/UsersReview";
 import { Product } from "../components/reviewScreen/Product";
 import { Reviewing } from "../components/reviewScreen/Reviewing";
 import { useAddBodyClass } from "../hooks/customAddBodyClass";
+import { useGetPathName } from "../hooks/customGetPathName";
 
-export const ReviewScreen = () => {
+export const ReviewScreen = (props) => {
   require("../styles/ReviewScreen.css");
   const [isWriteMode, setIsWriteMode] = useState(false);
+
+  useGetPathName(props.location.pathname + "/:The Ripper");
 
   useAddBodyClass("mnsreview-product-view");
   useAddBodyClass("layout-v3");

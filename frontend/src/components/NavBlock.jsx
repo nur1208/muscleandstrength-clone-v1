@@ -15,7 +15,13 @@ export const NavBlock = () => {
             ) : (
               <>
                 <Link to="/">Home</Link>
-                {` > ${pathName.split("/")[1]}`}
+                {` > ${pathName.split("/")[1]} ${
+                  pathName.split("/")[2] === "review" ? " > review" : ""
+                }  ${
+                  pathName.split("/")[3] && pathName.split("/")[3].includes(":")
+                    ? ">" + pathName.split("/")[3].substr(1)
+                    : ""
+                }`}
               </>
             )}
           </div>

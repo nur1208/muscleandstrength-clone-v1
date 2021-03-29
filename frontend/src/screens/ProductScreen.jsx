@@ -15,6 +15,7 @@ import { DealsSection } from "./DealsSection";
 import { LoadingScreen } from "../components/LoadingScreen";
 import { MessageBox } from "../components/MessageBox";
 import { getAllReviews, getTotalReviews } from "../actions/reviewAction";
+import { useGetPathName } from "../hooks/customGetPathName";
 
 export const ProductScreen = (props) => {
   require("../styles/product.css");
@@ -33,6 +34,8 @@ export const ProductScreen = (props) => {
 
   const productOne = useSelector((state) => state.productOne);
   const { loading, error } = productOne;
+
+  useGetPathName(props.location.pathname + "/:The Ripper");
 
   return (
     <>

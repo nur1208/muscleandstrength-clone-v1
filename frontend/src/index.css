@@ -644,11 +644,11 @@ input[type="radio"] {
 .breadcrumb {
   color: #bbb;
   padding: 0;
-  font-size: 0.7em;
+  font-size: 0.8em;
   line-height: 1.2em;
   letter-spacing: 0.1em;
   font-weight: 300;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
