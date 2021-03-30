@@ -302,6 +302,31 @@ export const Reviewing = () => {
     }
   };
 
+  const handleSubmit = () => {
+    reviewingAs.length >= 4 && isAlphaNumeric(reviewingAs)
+      ? setEditMemberName(false)
+      : IsUnvaluedName(true);
+  };
+
+  const isAlphaNumeric = (str) => {
+    var code, i, len;
+
+    for (i = 0, len = str.length; i < len; i++) {
+      code = str.charCodeAt(i);
+      if (
+        !(code > 47 && code < 58) && // numeric (0-9)
+        !(code > 64 && code < 91) && // upper alpha (A-Z)
+        !(code > 96 && code < 123) && // lower alpha (a-z)
+        code !== 32 && // blank space
+        code !== 45 && // -
+        code !== 95 // _
+      ) {
+        return false;
+      }
+    }
+    return true;
+  };
+
   return (
     <div class="inline-review active">
       <div class="member-form-wrap">
@@ -328,13 +353,7 @@ export const Reviewing = () => {
               class="btn aloading basic-load"
               data-id="706136"
               data-form-key="K4GSwX1fmv7wOLVT"
-              onClick={() =>
-                reviewingAs.length >= 4 &&
-                !reviewingAs.includes("-") &&
-                !reviewingAs.includes("_")
-                  ? setEditMemberName(false)
-                  : IsUnvaluedName(true)
-              }
+              onClick={handleSubmit}
             >
               <span class="init">Done</span>
               {/* <span class="loading">

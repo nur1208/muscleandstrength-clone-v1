@@ -76,22 +76,19 @@ export const MessageModal = ({
     if (modalRef.current === e.target) setShowModal(false);
   };
 
-  // useEffect(() => {
-  //   if (timeOut) {
-  //     const time = setTimeout(() => {
-  //       setShowModal(false);
-  //     }, timeOut);
-  //     return () => {
-  //       clearTimeout(time);
-  //     };
-  //   }
-  // }, [setShowModal, timeOut]);
+  useEffect(() => {
+    if (timeOut) {
+      setTimeout(() => {
+        setShowModal(false);
+      }, timeOut);
+    }
+  }, [timeOut]);
 
-  if (timeOut) {
-    setTimeout(() => {
-      setShowModal(false);
-    }, timeOut);
-  }
+  // if (timeOut) {
+  //   setTimeout(() => {
+  //     setShowModal(false);
+  //   }, timeOut);
+  // }
 
   return (
     <>

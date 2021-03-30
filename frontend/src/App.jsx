@@ -50,50 +50,52 @@ function App(props) {
 
   return (
     <BrowserRouter>
-      <div id="mns-page" className="mm-page">
-        <div id="page">
-          <MessageModal
-            showModal={showModal}
-            setShowModal={setShowModal}
-            titleColor="green"
-            timeOut={10000}
-            title="Logged in Successfully?"
-            message="Thanks for logging with muscleAndStrength"
-          />
-          <Region />
-          <Header />
-          <NavBlock />
-          <Switch>
-            <Route path="/store/review" component={ReviewScreen} />
-            <Route path="/test" component={AppPop2} />
-            <Route
-              path="/store/customer/account/changeforgotten/"
-              component={ResetPasswordScreen}
-            />
-            <Route
-              path="/store/customer/account/forgotpassword/"
-              component={ForgetPasswordScreen}
-            />
-            <Route
-              path="/store/customer/account/login/"
-              component={LoginScreen}
-            />
-            <Route
-              path="/store/customer/account/logoutSuccess/"
-              component={LogoutSuccessScreen}
-            />
-            <Route
-              path="/store/customer/account/create"
-              component={CreateAccountScreen}
-            />
-            <Route path="/store/:id" component={ProductScreen} />
+      <>
+        <MessageModal
+          showModal={showModal}
+          setShowModal={setShowModal}
+          titleColor="green"
+          timeOut={10000}
+          title="Logged in Successfully?"
+          message="Thanks for logging with muscleAndStrength"
+        />
+        <div id="mns-page" className="mm-page">
+          <div id="page">
+            <Region />
+            <Header />
+            <NavBlock />
+            <Switch>
+              <Route path="/store/review" component={ReviewScreen} />
+              <Route path="/test" component={AppPop2} />
+              <Route
+                path="/store/customer/account/changeforgotten/"
+                component={ResetPasswordScreen}
+              />
+              <Route
+                path="/store/customer/account/forgotpassword/"
+                component={ForgetPasswordScreen}
+              />
+              <Route
+                path="/store/customer/account/login/"
+                component={LoginScreen}
+              />
+              <Route
+                path="/store/customer/account/logoutSuccess/"
+                component={LogoutSuccessScreen}
+              />
+              <Route
+                path="/store/customer/account/create"
+                component={CreateAccountScreen}
+              />
+              <Route path="/store/:id" component={ProductScreen} />
 
-            <Route path="/store" component={StoreScreen} />
-            <Route path="/" component={HomeScreen} exact />
-          </Switch>
+              <Route path="/store" component={StoreScreen} />
+              <Route path="/" component={HomeScreen} exact />
+            </Switch>
+          </div>
         </div>
-      </div>
-      <Footer />
+        <Footer />
+      </>
 
       <div className="menu-mask" onClick={handleCloseSidebar}></div>
       {isDialogOpen && (
