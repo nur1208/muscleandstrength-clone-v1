@@ -1,6 +1,6 @@
 // import { useState } from "react";
 // import { useSelector } from "react-redux";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { closeDialogLogin } from "./actions/dialogLoginActions";
@@ -21,12 +21,20 @@ import { ProductScreen } from "./screens/ProductScreen";
 import { ReviewScreen } from "./screens/ReviewScreen";
 import { StoreSectionSwiper } from "./components/reactSwipeableTest/Swiper-StoreSection/StoreSectionSwiper";
 import { SliderV2 } from "./components/SliderV2";
+import { AppPop } from "./components/test/testPopUp/AppPop";
+import { AppPop2 } from "./components/test/testPopUp/AppPop2";
+import { MessageModal } from "./components/MessageModal";
 // import "./styles/home.css";
 
 function App(props) {
   const dispatch = useDispatch();
   const dialogLogin = useSelector((state) => state.dialogLogin);
   const { isDialogOpen } = dialogLogin;
+
+  const userSingIn = useSelector((state) => state.userSingIn);
+  const { success } = userSingIn;
+
+  const [showModal, setShowModal] = useState(false);
 
   const handleCloseSidebar = () => {
     dispatch(closeSidebar());
@@ -36,16 +44,28 @@ function App(props) {
     dispatch(closeDialogLogin());
   };
 
+  useEffect(() => {
+    setShowModal(isDialogOpen !== undefined && success);
+  }, [isDialogOpen, success]);
+
   return (
     <BrowserRouter>
       <div id="mns-page" className="mm-page">
         <div id="page">
+          <MessageModal
+            showModal={showModal}
+            setShowModal={setShowModal}
+            titleColor="green"
+            timeOut={10000}
+            title="Logged in Successfully?"
+            message="Thanks for logging with muscleAndStrength"
+          />
           <Region />
           <Header />
           <NavBlock />
           <Switch>
             <Route path="/store/review" component={ReviewScreen} />
-            <Route path="/test" component={SliderV2} />
+            <Route path="/test" component={AppPop2} />
             <Route
               path="/store/customer/account/changeforgotten/"
               component={ResetPasswordScreen}
