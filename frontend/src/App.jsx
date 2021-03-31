@@ -24,6 +24,7 @@ import { SliderV2 } from "./components/SliderV2";
 import { AppPop } from "./components/test/testPopUp/AppPop";
 import { AppPop2 } from "./components/test/testPopUp/AppPop2";
 import { MessageModal } from "./components/MessageModal";
+import { FlexBox1 } from "./components/learning/FlexBox1";
 // import "./styles/home.css";
 
 function App(props) {
@@ -61,10 +62,11 @@ function App(props) {
         />
         <div id="mns-page" className="mm-page">
           <div id="page">
-            <Region />
-            <Header />
-            <NavBlock />
+            {/* <Region /> */}
+            {/* <Header />
+            <NavBlock /> */}
             <Switch>
+              <Route path="/learn" component={FlexBox1} />
               <Route path="/store/review" component={ReviewScreen} />
               <Route path="/test" component={AppPop2} />
               <Route
@@ -94,7 +96,7 @@ function App(props) {
             </Switch>
           </div>
         </div>
-        <Footer />
+        {/* <Footer /> */}
       </>
 
       <div className="menu-mask" onClick={handleCloseSidebar}></div>

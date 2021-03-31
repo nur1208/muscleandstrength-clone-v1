@@ -417,7 +417,7 @@ export const Reviewing = () => {
         data-form-key="K4GSwX1fmv7wOLVT"
       >
         <div class="notice">
-          <div class="notice-text">Your product review is posted!</div>
+          <div class="notice-text">you're about to post a product review</div>
           <button class="clear-button" onClick={handleClear}>
             clear
           </button>

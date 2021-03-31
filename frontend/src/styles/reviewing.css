@@ -167,7 +167,8 @@ input.btn {
 .review-form-wrap .notice .notice-text {
   float: left;
   font-size: 13px;
-  margin-top: -6px;
+  margin-top: -12px;
+  line-height: 1.8em;
 }
 button {
   color: #303030;
