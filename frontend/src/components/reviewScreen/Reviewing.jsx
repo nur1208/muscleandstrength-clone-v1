@@ -5,19 +5,29 @@ import {
   deleteReview,
   updateReview,
 } from "../../actions/reviewAction";
+import { updateUser } from "../../actions/userActions";
 import { LoadingTwo } from "../LoadingTwo";
 import { RatingBox } from "./RatingBox";
 import { SelectRating } from "./SelectRating";
 
 export const Reviewing = () => {
   require("../../styles/reviewing.css");
+  const userSingIn = useSelector((state) => state.userSingIn);
+  const { userInfo } = userSingIn;
+
   const limitWordsDefault = -60;
   const [limitWords, seTLimitWords] = useState(limitWordsDefault);
   const [text, setText] = useState("");
   const [isPassLimitWords, setIsPassLimitWords] = useState(false);
   const [isWriteMoreMode, setIsWriteMoreMode] = useState(false);
   const [editMemberName, setEditMemberName] = useState(false);
-  const [reviewingAs, setReviewingAs] = useState("md n");
+  const [reviewingAs, setReviewingAs] = useState(
+    userInfo
+      ? userInfo.reviewingAs
+        ? userInfo.reviewingAs
+        : userInfo.firstName.substring(4)
+      : "user"
+  );
   const [isUnvaluedName, IsUnvaluedName] = useState(false);
   const [resetRating, setResetRating] = useState(false);
   const [isPosted, setIsPosted] = useState(false);
@@ -27,9 +37,6 @@ export const Reviewing = () => {
   const [editMode, setEditMode] = useState(false);
 
   const dispatch = useDispatch(null);
-
-  const userSingIn = useSelector((state) => state.userSingIn);
-  const { userInfo } = userSingIn;
 
   const productOne = useSelector((state) => state.productOne);
   const { product } = productOne;
@@ -303,9 +310,23 @@ export const Reviewing = () => {
   };
 
   const handleSubmit = () => {
-    reviewingAs.length >= 4 && isAlphaNumeric(reviewingAs)
-      ? setEditMemberName(false)
-      : IsUnvaluedName(true);
+    // reviewingAs.length >= 4 &&
+    // reviewingAs.length <= 20 &&
+    // isAlphaNumeric(reviewingAs)
+    //   ? setEditMemberName(false)
+    //   : IsUnvaluedName(true);
+
+    if (
+      reviewingAs.length >= 4 &&
+      reviewingAs.length <= 20 &&
+      isAlphaNumeric(reviewingAs)
+    ) {
+      setEditMemberName(false);
+      // console.log("call backend for updating reviewingAs");
+      dispatch(updateUser(userInfo._id, { reviewingAs }));
+    } else {
+      IsUnvaluedName(true);
+    }
   };
 
   const isAlphaNumeric = (str) => {
@@ -373,7 +394,7 @@ export const Reviewing = () => {
               <img
                 class="member-image lazyloaded"
                 data-src="/store/skin/frontend/mnsv4/default/images/user-img.jpg"
-                src="/images/user-img.jpg"
+                src="/images/user-login.png"
                 alt=""
               />
               <div class="name change-member-name">{reviewingAs}</div>

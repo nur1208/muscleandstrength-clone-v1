@@ -18,7 +18,9 @@ export const SelectRating = ({ selectedFavors, setSelectedFavors }) => {
       const newFavor = buyingOption[1].items[index];
       let isExit = false;
       selectedFavors.forEach((element) => {
-        if (element.value === newFavor.value) isExit = true;
+        if (newFavor._id === element._id) {
+          isExit = true;
+        }
       });
 
       if (!isExit) {

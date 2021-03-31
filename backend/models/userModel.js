@@ -17,6 +17,9 @@ const userSchema = new mongoose.Schema(
     isAdmin: { type: Boolean, default: false },
     image: { type: String, default: "/images/user-login.png" },
     point: { type: Number, default: 0 },
+    reviewingAs: {
+      type: String,
+    },
   },
   {
     timestamps: true,

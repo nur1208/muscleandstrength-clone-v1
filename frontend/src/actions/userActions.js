@@ -16,6 +16,9 @@ import {
   USER_FORGOT_PASSWORD_RESET_FAIL,
   USER_FORGOT_PASSWORD_TOKEN_VALID,
   USER_FORGOT_PASSWORD_TOKEN_INVALID,
+  USER_UPDATE_REQUEST,
+  USER_UPDATE_SUCCESS,
+  USER_UPDATE_FAIL,
 } from "../constants/userConstants";
 
 export const registerUser = (
@@ -159,6 +162,37 @@ export const isFPTokenValid = () => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: USER_FORGOT_PASSWORD_TOKEN_INVALID,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const updateUser = (_id, update) => async (dispatch, getState) => {
+  dispatch({ type: USER_UPDATE_REQUEST });
+  try {
+    const { data } = await axios.put(
+      "/api/users/update",
+      {
+        _id,
+        update,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${getState().userSingIn.userInfo.token}`,
+        },
+      }
+    );
+    dispatch({ type: USER_UPDATE_SUCCESS, payload: data });
+    localStorage.setItem(
+      "userInfo",
+      JSON.stringify(getState().userSingIn.userInfo)
+    );
+  } catch (error) {
+    dispatch({
+      type: USER_UPDATE_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

@@ -58,6 +58,7 @@ userRouter.post(
           _id: user._id,
           firstName: user.firstName,
           email: user.email,
+          reviewingAs: user.reviewingAs,
           token: generateToken(user),
         });
         return;
@@ -171,4 +172,26 @@ userRouter.put(
 userRouter.get("/isFPTokenValid", isAuthFP, (req, res) => {
   res.send({ message: "valid token" });
 });
+
+userRouter.put(
+  "/update",
+  isAuthFP,
+  expressAsyncHandler(async (req, res) => {
+    const { _id, update } = req.body;
+    console.log(req.body);
+
+    const updateUser = await UserModal.findByIdAndUpdate(_id, update, {
+      new: true,
+      upsert: true,
+      setDefaultsOnInsert: true,
+    });
+    res.send({
+      _id: updateUser._id,
+      firstName: updateUser.firstName,
+      email: updateUser.email,
+      reviewingAs: updateUser.reviewingAs,
+      token: generateToken(updateUser),
+    });
+  })
+);
 export default userRouter;

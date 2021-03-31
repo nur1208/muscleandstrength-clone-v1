@@ -75,3 +75,15 @@ GET https://cdn.muscleandstrength.com/store/skin/frontend/mnsv4/default/images/s
 ###
 
 GET http://localhost:5000/api/image/stars-svg-overlay.svg
+
+### 
+PUT http://localhost:5000/api/users/update
+Content-Type: application/json
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmVmMWQzNWRiNjI0ZDMyNThjOTM4YzciLCJmaXJzdE5hbWUiOiJudXIiLCJsYXN0TmFtZSI6Im1kIiwiZW1haWwiOiJudXJAeWFob28uY29tIiwiZ2VuZGVyIjoiIiwiZ29hbCI6IiIsInRyYWluaW5nRXhwZXJpZW5jZSI6IiIsImlzQWRtaW4iOmZhbHNlLCJyZWZlcnJhbENvZGUiOiIiLCJpYXQiOjE2MTcxNzA5ODIsImV4cCI6MTYxOTc2Mjk4Mn0.5qQC0x1NMDWlkU3UGpiBq2K8mlM6Ipysuigfv8V492c
+
+{
+    "_id":"5fef1d35db624d3258c938c7",
+    "something":"working!",
+    "update":{"reviewingAs":"mdNur"}
+}
+

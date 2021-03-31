@@ -16,6 +16,9 @@ import {
   USER_SIGN_IN_FAIL,
   USER_SIGN_IN_REQUEST,
   USER_SIGN_IN_SUCCESS,
+  USER_UPDATE_FAIL,
+  USER_UPDATE_REQUEST,
+  USER_UPDATE_SUCCESS,
 } from "../constants/userConstants";
 
 export const userRegisterReducer = (state = {}, action) => {
@@ -39,6 +42,17 @@ export const userSignInReducer = (state = {}, action) => {
       return { loading: false, userInfo: action.payload, success: true };
     case USER_SIGN_IN_FAIL:
       return { ...state, loading: false, error: action.payload };
+    case USER_UPDATE_REQUEST:
+      return { ...state, loadingUpdate: true };
+    case USER_UPDATE_SUCCESS:
+      return {
+        ...state,
+        loadingUpdate: false,
+        userInfo: action.payload,
+        successUpdate: true,
+      };
+    case USER_UPDATE_FAIL:
+      return { ...state, loadingUpdate: false, errorUpdate: action.payload };
     case USER_LOGOUT:
       return {};
     default:

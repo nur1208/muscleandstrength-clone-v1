@@ -41,7 +41,6 @@ export const generateTokenFP = () => {
 
 export const isAuthFP = (req, res, next) => {
   const authorization = req.headers.authorization;
-  console.log("here");
   if (authorization) {
     const token = authorization.slice(7, authorization.length);
 
