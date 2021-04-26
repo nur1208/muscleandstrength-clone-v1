@@ -1,0 +1,26 @@
+Review:
+    - id : string
+    - ReviewingAs: string
+    - image: string
+    - rating: float
+    - content: string
+    - userId: user.id
+    - createDate: date
+    - helpful: int
+    - notHelpful: int
+    - productId = product.id 
+    - ratingFavors = [{
+        - namecontent
+        - rating
+        - id
+    }]
+    - userGoal : string
+    - isVerifiedBuyer: boolean
+
+Report:
+    -id : string
+    ReviewId : Review.id
+    userId = user.id
+    productId = product.id
+    userName = string
+    content = string
