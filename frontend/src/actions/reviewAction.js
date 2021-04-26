@@ -17,6 +17,8 @@ import {
   REVIEW_GET_ALL_REQUEST,
   REVIEW_GET_ALL_SUCCESS,
   REVIEW_GET_TOTAL_REVIEWS,
+  REVIEW_HELPFUL_FAIL,
+  REVIEW_HELPFUL_SUCCESS,
   REVIEW_UPDATE_REVIEW_FAIL,
   REVIEW_UPDATE_REVIEW_REQUEST,
   REVIEW_UPDATE_REVIEW_SUCCESS,
@@ -141,5 +143,30 @@ export const getTotalReviews = (productId) => async (dispatch) => {
     );
   } catch (error) {
     console.log(error);
+  }
+};
+
+export const helpfulFunction = (_id, type) => async (dispatch) => {
+  let helpful, notHelpful;
+  if (type === 1) helpful = 1;
+  else if (type === 0) notHelpful = 1;
+
+  try {
+    const { data } = await axios.put(`/api/review/update`, {
+      review: {
+        _id,
+        helpful,
+        notHelpful,
+      },
+    });
+    dispatch({ type: REVIEW_HELPFUL_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({
+      type: REVIEW_HELPFUL_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
   }
 };

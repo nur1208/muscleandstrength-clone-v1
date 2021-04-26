@@ -1,6 +1,18 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { helpfulFunction } from "../../actions/reviewAction";
 
 export const Helpful = ({ helpful, notHelpful }) => {
+  const dispatch = useDispatch(null);
+
+  const YEAS = 1;
+  const NO = 0;
+
+  const handleHelpful = (type) => {
+    const _id = "604b733f1ffe9b039cfbb3da";
+    dispatch(helpfulFunction(_id, type));
+  };
+
   return (
     <div className="helpful-wrap" id="review-helpful-27713">
       <div className="question">Was this helpful?</div>
@@ -12,14 +24,14 @@ export const Helpful = ({ helpful, notHelpful }) => {
         <button
           className="choice"
           id="review-helpful-link-27713"
-          // onClick="reviews.helpfulReview(27713, 1); return false;"
+          onClick={() => handleHelpful(YEAS)}
         >
           Yes
         </button>
         <button
           className="choice"
           id="review-helpful-link-27713"
-          // onClick="reviews.helpfulReview(27713, 0); return false;"
+          onClick={() => handleHelpful(NO)}
         >
           No
         </button>

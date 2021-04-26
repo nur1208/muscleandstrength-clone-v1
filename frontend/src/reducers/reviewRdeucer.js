@@ -15,6 +15,7 @@ import {
   REVIEW_GET_ALL_REQUEST,
   REVIEW_GET_ALL_SUCCESS,
   REVIEW_GET_TOTAL_REVIEWS,
+  REVIEW_HELPFUL_SUCCESS,
   REVIEW_UPDATE_REVIEW_FAIL,
   REVIEW_UPDATE_REVIEW_REQUEST,
   REVIEW_UPDATE_REVIEW_SUCCESS,
@@ -71,6 +72,17 @@ export const getAllReviewsReducer = (state = {}, action) => {
       return {
         ...state,
         totalReviews: state.totalReviews - 1,
+      };
+
+    case REVIEW_HELPFUL_SUCCESS:
+      const updatedId = action.payload.updatedReview._id;
+
+      return {
+        ...state,
+        reviews: state.reviews.map((review) => {
+          if (review._id === updatedId) return action.payload.updatedReview;
+          return review;
+        }),
       };
 
     default:

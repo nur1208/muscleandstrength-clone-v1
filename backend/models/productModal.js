@@ -62,6 +62,8 @@ const productSchema = new mongoose.Schema(
         badges: { type: [String] },
         content: { type: String },
         helpfulData: { type: String },
+        helpful: { type: Number },
+        notHelpful: { type: Number },
         yearsAgo: { type: Number },
       },
     ],

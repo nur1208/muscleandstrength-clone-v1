@@ -90,6 +90,8 @@ reviewRouter.put(
       image,
       rating,
       userGoal,
+      helpful,
+      notHelpful,
       isVerifiedBuyer,
     } = req.body.review;
     const review = await ReviewModal.findById(_id);
@@ -100,6 +102,9 @@ reviewRouter.put(
       review.image = image || review.image;
       review.rating = rating || review.rating;
       review.userGoal = userGoal || review.userGoal;
+      review.helpful = (helpful && review.helpful + 1) || review.helpful;
+      review.notHelpful =
+        (notHelpful && review.notHelpful + 1) || review.notHelpful;
       review.isVerifiedBuyer = isVerifiedBuyer || review.isVerifiedBuyer;
       const updatedReview = await review.save();
       res.send({ updatedReview });
