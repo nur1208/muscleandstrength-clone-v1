@@ -62,9 +62,9 @@ function App(props) {
         />
         <div id="mns-page" className="mm-page">
           <div id="page">
-            {/* <Region /> */}
-            {/* <Header />
-            <NavBlock /> */}
+            <Region />
+            <Header />
+            <NavBlock />
             <Switch>
               <Route path="/learn" component={FlexBox1} />
               <Route path="/store/review" component={ReviewScreen} />
@@ -96,7 +96,7 @@ function App(props) {
             </Switch>
           </div>
         </div>
-        {/* <Footer /> */}
+        <Footer />
       </>
 
       <div className="menu-mask" onClick={handleCloseSidebar}></div>
