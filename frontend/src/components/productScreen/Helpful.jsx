@@ -1,23 +1,51 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { helpfulFunction } from "../../actions/reviewAction";
+import { deleteHelpfulness, helpfulFunction } from "../../actions/reviewAction";
 
-export const Helpful = ({ helpful, notHelpful }) => {
+export const Helpful = ({
+  helpful,
+  notHelpful,
+  _id,
+  isHelpfulEvaluate,
+  helpfulObject,
+}) => {
   const dispatch = useDispatch(null);
 
-  const YEAS = 1;
-  const NO = 0;
+  const YEAS = true;
+  const NO = false;
+
+  const userSingIn = useSelector((state) => state.userSingIn);
+
+  const {
+    userInfo: { evaluateHelpfulness, _id: userId },
+  } = userSingIn;
+
+  const productOne = useSelector((state) => state.productOne);
+
+  const {
+    product: { _id: productId },
+  } = productOne;
 
   const handleHelpful = (type) => {
-    const _id = "604b733f1ffe9b039cfbb3da";
-    dispatch(helpfulFunction(_id, type));
+    // const _id = "604b733f1ffe9b039cfbb3da";
+    dispatch(helpfulFunction(_id, type, userId, productId));
   };
+  // ${
+  //       evaluateHelpfulness.map(_id) ? "response-yes" : ""
+  //     }`
 
+  const handleUndo = () => {
+    dispatch(deleteHelpfulness(helpfulObject._id));
+  };
   return (
-    <div className="helpful-wrap" id="review-helpful-27713">
+    <div
+      className={`helpful-wrap ${isHelpfulEvaluate ? "response-yes" : ""}`}
+      id={`review-helpful-${_id}`}
+    >
       <div className="question">Was this helpful?</div>
       <div className="response-wrap">
-        You found this <span className="not-helpful">not </span>
+        You found this{" "}
+        {!helpfulObject.isHelpful && <span className="not-helpful">not </span>}
         helpful
       </div>
       <div className="form">
@@ -38,7 +66,7 @@ export const Helpful = ({ helpful, notHelpful }) => {
         <button
           className="response-wrap change"
           id="review-vote-undo-link-27713"
-          // onClick="reviews.undoReviewVote(27713); return false;"
+          onClick={handleUndo}
         >
           Undo
         </button>

@@ -24,3 +24,10 @@ Report:
     productId = product.id
     userName = string
     content = string
+
+helpfulness: (helpfulness is bridge table between user and review)
+    _id: string
+    ReviewId: Review.id
+    userId : user.id
+    productId: product.id
+    isHelpful : boolean (the default value is false)

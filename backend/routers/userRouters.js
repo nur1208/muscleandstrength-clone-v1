@@ -59,6 +59,7 @@ userRouter.post(
           firstName: user.firstName,
           email: user.email,
           reviewingAs: user.reviewingAs,
+          evaluateHelpfulness: user.evaluateHelpfulness,
           token: generateToken(user),
         });
         return;
@@ -177,7 +178,7 @@ userRouter.put(
   "/update",
   isAuthFP,
   expressAsyncHandler(async (req, res) => {
-    const { _id, update } = req.body;
+    const { _id, update } = req.body; // update is update query. what do u wanna update?
     console.log(req.body);
 
     const updateUser = await UserModal.findByIdAndUpdate(_id, update, {
@@ -190,6 +191,7 @@ userRouter.put(
       firstName: updateUser.firstName,
       email: updateUser.email,
       reviewingAs: updateUser.reviewingAs,
+      evaluateHelpfulness: updateUser.evaluateHelpfulness,
       token: generateToken(updateUser),
     });
   })

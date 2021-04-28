@@ -8,12 +8,15 @@ import {
   REVIEW_ADD_REVIEW_FAIL,
   REVIEW_ADD_REVIEW_REQUEST,
   REVIEW_ADD_REVIEW_SUCCESS,
+  REVIEW_DELETE_HELPFULNESS_SUCCESS,
   REVIEW_DELETE_REVIEW_FAIL,
   REVIEW_DELETE_REVIEW_REQUEST,
   REVIEW_DELETE_REVIEW_SUCCESS,
   REVIEW_GET_ALL_FAIL,
   REVIEW_GET_ALL_REQUEST,
   REVIEW_GET_ALL_SUCCESS,
+  REVIEW_GET_HELPFULNESS_FAIL,
+  REVIEW_GET_HELPFULNESS_SUCCESS,
   REVIEW_GET_TOTAL_REVIEWS,
   REVIEW_HELPFUL_SUCCESS,
   REVIEW_UPDATE_REVIEW_FAIL,
@@ -74,15 +77,35 @@ export const getAllReviewsReducer = (state = {}, action) => {
         totalReviews: state.totalReviews - 1,
       };
 
-    case REVIEW_HELPFUL_SUCCESS:
-      const updatedId = action.payload.updatedReview._id;
+    // case REVIEW_HELPFUL_SUCCESS:
+    //   const updatedId = action.payload.updatedReview._id;
 
+    //   return {
+    //     ...state,
+    //     reviews: state.reviews.map((review) => {
+    //       if (review._id === updatedId) return action.payload.updatedReview;
+    //       return review;
+    //     }),
+    //   };
+
+    case REVIEW_GET_HELPFULNESS_SUCCESS:
+      return { ...state, helpfulness: action.payload.data.getHelpfulness };
+
+    case REVIEW_GET_HELPFULNESS_FAIL:
+      return { ...state, helpfulnessError: action.payload };
+
+    case REVIEW_HELPFUL_SUCCESS:
       return {
         ...state,
-        reviews: state.reviews.map((review) => {
-          if (review._id === updatedId) return action.payload.updatedReview;
-          return review;
-        }),
+        helpfulness: [...state.helpfulness, action.payload.created],
+      };
+
+    case REVIEW_DELETE_HELPFULNESS_SUCCESS:
+      return {
+        ...state,
+        helpfulness: state.helpfulness.filter(
+          (helpful) => helpful._id !== action.payload
+        ),
       };
 
     default:

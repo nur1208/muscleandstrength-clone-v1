@@ -11,6 +11,7 @@ import { useSelector } from "react-redux";
 
 export const ReviewCard = ({
   userId,
+  _id,
   rating,
   ratingFavors,
   image,
@@ -21,6 +22,8 @@ export const ReviewCard = ({
   createdAt,
   userGoal,
   isVerifiedBuyer,
+  isHelpfulEvaluate,
+  helpfulObject,
 }) => {
   const [isReportOn, setIsReportOn] = useState(false);
 
@@ -98,7 +101,13 @@ export const ReviewCard = ({
       </div>
       {userInfo &&
         userId !== userInfo._id && ( // if the user not login there will be error with out "userInfo &&"
-          <Helpful helpful={helpful} notHelpful={notHelpful} />
+          <Helpful
+            helpful={helpful}
+            notHelpful={notHelpful}
+            _id={_id}
+            isHelpfulEvaluate={isHelpfulEvaluate}
+            helpfulObject={helpfulObject}
+          />
         )}
       <div className="review-meta-wrap">
         <abbr className="date timeago" title={createdAt}>

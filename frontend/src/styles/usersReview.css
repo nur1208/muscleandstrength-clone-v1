@@ -420,6 +420,20 @@ textarea {
 
 /* end of Reporting */
 
+.helpful-wrap.response-yes .question,
+.helpful-wrap.response-yes .choice {
+  display: none;
+}
+
+.customer-review-wrap .helpful-wrap.response-no .response-wrap,
+.customer-review-wrap .helpful-wrap.response-yes .response-wrap {
+  display: inline;
+}
+
+.helpful-wrap.response-yes .response-wrap {
+  display: inline;
+}
+
 /* end of UsersReview */
 
 @media (min-width: 480px) {
@@ -464,6 +478,13 @@ textarea {
     padding-left: 1em;
     float: left;
     display: block;
+  }
+
+  .customer-review-wrap .helpful-wrap .change,
+  .customer-review-wrap .helpful-wrap .choice {
+    padding: 0 0.8em;
+    margin: 0 0.2em;
+    min-width: 3.2em;
   }
   /* end of UsersReview in 600px*/
 }

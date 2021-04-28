@@ -87,3 +87,57 @@ Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmVmMWQzNW
     "update":{"reviewingAs":"mdNur"}
 }
 
+### 
+PUT http://localhost:5000/api/users/update
+Content-Type: application/json
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmVmMWQzNWRiNjI0ZDMyNThjOTM4YzciLCJmaXJzdE5hbWUiOiJudXIiLCJsYXN0TmFtZSI6Im1kIiwiZW1haWwiOiJudXJAeWFob28uY29tIiwiZ2VuZGVyIjoiIiwiZ29hbCI6IiIsInRyYWluaW5nRXhwZXJpZW5jZSI6IiIsImlzQWRtaW4iOmZhbHNlLCJyZWZlcnJhbENvZGUiOiIiLCJpYXQiOjE2MTcxOTQ0MTEsImV4cCI6MTYxOTc4NjQxMX0.lfbtBWBBeu-OjCgzQHUHmszVstxPEnNQlllwJTU2Sp0
+
+{
+    "_id":"5fef1d35db624d3258c938c7",
+    "something":"working!",
+    "update":{ "$addToSet": { "evaluateHelpfulness": ["604b733f1ffe9b039cfbb3da"] } }
+}
+
+
+### 
+PUT http://localhost:5000/api/users/update
+Content-Type: application/json
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmVmMWQzNWRiNjI0ZDMyNThjOTM4YzciLCJmaXJzdE5hbWUiOiJudXIiLCJsYXN0TmFtZSI6Im1kIiwiZW1haWwiOiJudXJAeWFob28uY29tIiwiZ2VuZGVyIjoiIiwiZ29hbCI6IiIsInRyYWluaW5nRXhwZXJpZW5jZSI6IiIsImlzQWRtaW4iOmZhbHNlLCJyZWZlcnJhbENvZGUiOiIiLCJpYXQiOjE2MTcxOTQ0MTEsImV4cCI6MTYxOTc4NjQxMX0.lfbtBWBBeu-OjCgzQHUHmszVstxPEnNQlllwJTU2Sp0
+
+{
+    "_id":"5fef1d35db624d3258c938c7",
+    "something":"working!",
+    "update":{ "$set": { "evaluateHelpfulness": [] } }
+}
+
+
+### 
+PUT http://localhost:5000/api/users/update
+Content-Type: application/json
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmVmMWQzNWRiNjI0ZDMyNThjOTM4YzciLCJmaXJzdE5hbWUiOiJudXIiLCJsYXN0TmFtZSI6Im1kIiwiZW1haWwiOiJudXJAeWFob28uY29tIiwiZ2VuZGVyIjoiIiwiZ29hbCI6IiIsInRyYWluaW5nRXhwZXJpZW5jZSI6IiIsImlzQWRtaW4iOmZhbHNlLCJyZWZlcnJhbENvZGUiOiIiLCJpYXQiOjE2MTcxOTQ0MTEsImV4cCI6MTYxOTc4NjQxMX0.lfbtBWBBeu-OjCgzQHUHmszVstxPEnNQlllwJTU2Sp0
+
+{
+    "_id":"5fef1d35db624d3258c938c7",
+    "something":"working!",
+    "update":{ "$addToSet": { "evaluateHelpfulness": [{"reviewId":"604b733f1ffe9b039cfbb3da", "isHelpful":true}] } }
+}
+
+###
+POST  http://localhost:5000/api/review/helpfulness
+Content-Type: application/json
+
+{
+    "helpfulness":{
+        "reviewId":"604b733f1ffe9b039cfbb3de",
+        "userId":"5fef1d35db624d3258c938c7",
+        "productId":"603cd94f39e7893b1cb3e4ed",
+       "isHelpful":false
+    }  
+}
+
+###
+GET http://localhost:5000/api/review/helpfulness/5fef1d35db624d3258c938c7/603cd94f39e7893b1cb3e4ed
+
+###
+
+DELETE   http://localhost:5000/api/review/helpfulness/60898e58da037f11d834b77a

@@ -20,6 +20,16 @@ const userSchema = new mongoose.Schema(
     reviewingAs: {
       type: String,
     },
+    // evaluateHelpfulness: [
+    //   {
+    //     reviewId: {
+    //       type: mongoose.Types.ObjectId,
+    //       ref: "review",
+    //       required: true,
+    //     },
+    //     isHelpful: { type: Boolean, default: false },
+    //   },
+    // ],
   },
   {
     timestamps: true,

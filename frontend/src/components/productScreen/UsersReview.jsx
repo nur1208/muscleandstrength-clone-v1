@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
-import { getAllReviews } from "../../actions/reviewAction";
+import { getAllReviews, getHelpfulness } from "../../actions/reviewAction";
 import { LoadingTwo } from "../LoadingTwo";
 import { ReviewCard } from "./ReviewCard";
 
@@ -10,30 +10,36 @@ export const UsersReview = ({ viewMore, hasViewAll }) => {
   require("../../styles/usersReview.css");
 
   const allReviews = useSelector((state) => state.getAllReviews);
-  const { reviews, limit, loading } = allReviews;
+  const { reviews, limit, loading, helpfulness } = allReviews;
 
   // const reviews = [];
 
   const productOne = useSelector((state) => state.productOne);
   const {
-    product: { _id },
+    product: { _id: productId },
   } = productOne;
 
   const reviewAdd = useSelector((state) => state.reviewAdd);
   const { review: newReview } = reviewAdd;
 
+  const userSingIn = useSelector((state) => state.userSingIn);
+  const {
+    userInfo: { _id: userId },
+  } = userSingIn;
+
   const dispatch = useDispatch(null);
 
   const handleAddMore = () => {
-    dispatch(getAllReviews(_id, limit + viewMore));
+    dispatch(getAllReviews(productId, limit + viewMore));
   };
 
   useEffect(() => {
     // this because limit's default value is 10 so when viewMore not equal 10
     //  change the limit the viewMore passed  value for example in ReviewScreen
     // viewMore value is 50 not 10.
-    if (limit !== viewMore) dispatch(getAllReviews(_id, viewMore));
+    if (limit !== viewMore) dispatch(getAllReviews(productId, viewMore));
 
+    dispatch(getHelpfulness(userId, productId));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -43,7 +49,24 @@ export const UsersReview = ({ viewMore, hasViewAll }) => {
         <div className="review-wrapper" data-pagesize="5">
           {newReview && <ReviewCard {...newReview} />}
           {reviews.map((review, index) => {
-            return <ReviewCard {...review} key={index} />;
+            let isHelpfulEvaluate = false;
+            let helpfulObject = {};
+            helpfulness &&
+              helpfulness.forEach((helpful) => {
+                if (helpful.reviewId.localeCompare(review._id) === 0) {
+                  isHelpfulEvaluate = true;
+                  helpfulObject = helpful;
+                  return;
+                }
+              });
+            return (
+              <ReviewCard
+                {...review}
+                key={index}
+                isHelpfulEvaluate={isHelpfulEvaluate}
+                helpfulObject={helpfulObject}
+              />
+            );
           })}
         </div>
         {/* <div className="viewmore-loadingmessage" id="viewmore-loadingmessage">

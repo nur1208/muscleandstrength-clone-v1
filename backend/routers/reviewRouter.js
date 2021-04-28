@@ -2,6 +2,7 @@ import express from "express";
 import expressAsyncHandler from "express-async-handler";
 import ReviewModal from "../models/reveiwModal.js";
 import ReportModal from "../models/reportModal.js";
+import HelpfulnessModal from "../models/helpfulnessModal.js";
 
 const reviewRouter = express.Router();
 
@@ -164,6 +165,45 @@ reviewRouter.get(
     });
 
     res.send({ reviewsNum, reviewsVerifiedNum });
+  })
+);
+
+reviewRouter.post(
+  "/helpfulness",
+  expressAsyncHandler(async (req, res) => {
+    console.log(req.body);
+    const { reviewId, userId, productId, isHelpful } = req.body.helpfulness;
+    const helpfulness = new HelpfulnessModal({
+      reviewId,
+      userId,
+      productId,
+      isHelpful,
+    });
+    const created = await helpfulness.save();
+    res.send({ created });
+
+    // HelpfulnessModal.remove({ reviewId });
+    // res.send({ message: "all deleted" });
+  })
+);
+
+reviewRouter.get(
+  "/helpfulness/:userId/:productId",
+  expressAsyncHandler(async (req, res) => {
+    const getHelpfulness = await HelpfulnessModal.find({
+      productId: req.params.productId,
+      userId: req.params.userId,
+    });
+    res.send({ getHelpfulness });
+  })
+);
+
+reviewRouter.delete(
+  "/helpfulness/:id",
+  expressAsyncHandler(async (req, res) => {
+    const { id } = req.params;
+    await HelpfulnessModal.deleteOne({ _id: id });
+    res.send({ message: "item with " + id + " deleted" });
   })
 );
 
