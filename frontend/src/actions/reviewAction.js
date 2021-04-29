@@ -205,22 +205,26 @@ export const getHelpfulness = (userId, productId) => async (dispatch) => {
   }
 };
 
-export const deleteHelpfulness = (_id) => async (dispatch) => {
+export const deleteHelpfulness = (_id, reviewId, isHelpful) => async (
+  dispatch
+) => {
   dispatch({ type: REVIEW_DELETE_HELPFULNESS_REQUEST });
 
   try {
-    await axios.delete(
-      `/api/review/helpfulness/${_id}`
+    const { data } = await axios.delete(
+      `/api/review/helpfulness/${_id}/${reviewId}/${isHelpful}`
     );
-    dispatch({type: REVIEW_DELETE_HELPFULNESS_SUCCESS, payload:_id})
+    dispatch({
+      type: REVIEW_DELETE_HELPFULNESS_SUCCESS,
+      payload: { data, _id },
+    });
   } catch (error) {
-      dispatch({
-        type: REVIEW_DELETE_HELPFULNESS_FAIL,
-        payload:
-          error.response && error.response.data.message
-            ? error.response.data.message
-            : error.message,
-      });
+    dispatch({
+      type: REVIEW_DELETE_HELPFULNESS_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
   }
-
-}
+};

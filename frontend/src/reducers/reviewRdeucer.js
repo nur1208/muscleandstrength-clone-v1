@@ -89,23 +89,38 @@ export const getAllReviewsReducer = (state = {}, action) => {
     //   };
 
     case REVIEW_GET_HELPFULNESS_SUCCESS:
-      return { ...state, helpfulness: action.payload.data.getHelpfulness };
+      return {
+        ...state,
+        helpfulness: action.payload.data.getHelpfulness,
+      };
 
     case REVIEW_GET_HELPFULNESS_FAIL:
       return { ...state, helpfulnessError: action.payload };
 
     case REVIEW_HELPFUL_SUCCESS:
+      const updatedId = action.payload.updatedReview._id;
+
       return {
         ...state,
         helpfulness: [...state.helpfulness, action.payload.created],
+        reviews: state.reviews.map((review) => {
+          if (review._id === updatedId) return action.payload.updatedReview;
+          return review;
+        }),
       };
 
     case REVIEW_DELETE_HELPFULNESS_SUCCESS:
+      const updateId = action.payload.data.updatedReview._id;
+
       return {
         ...state,
         helpfulness: state.helpfulness.filter(
-          (helpful) => helpful._id !== action.payload
+          (helpful) => helpful._id !== action.payload._id
         ),
+        reviews: state.reviews.map((review) => {
+          if (review._id === updateId) return action.payload.data.updatedReview;
+          return review;
+        }),
       };
 
     default:

@@ -35,7 +35,6 @@ reviewRouter.get(
 reviewRouter.post(
   "/add",
   expressAsyncHandler(async (req, res) => {
-    console.log(req.body);
     const {
       reviewingAs,
       image,
@@ -66,7 +65,7 @@ reviewRouter.post(
 // reviewRouter.put(
 //   "/update",
 //   expressAsyncHandler(async (req, res) => {
-//     console.log(req.body);
+//
 
 //     const { _id: newId, content: newContent } = req.body;
 
@@ -82,7 +81,6 @@ reviewRouter.post(
 reviewRouter.put(
   "/update",
   expressAsyncHandler(async (req, res) => {
-    console.log(req.body);
     const {
       _id,
       content,
@@ -118,8 +116,6 @@ reviewRouter.put(
 reviewRouter.delete(
   "/delete",
   expressAsyncHandler(async (req, res) => {
-    console.log(req.body);
-    console.log(req.data);
     const { _id, userId } = req.body;
     try {
       const review = await ReviewModal.findById(_id);
@@ -138,7 +134,6 @@ reviewRouter.delete(
 reviewRouter.post(
   "/report",
   expressAsyncHandler(async (req, res) => {
-    console.log(req.body);
     const { reviewId, userId, productId, userName, content } = req.body.report;
     const review = new ReportModal({
       reviewId,
@@ -171,7 +166,6 @@ reviewRouter.get(
 reviewRouter.post(
   "/helpfulness",
   expressAsyncHandler(async (req, res) => {
-    console.log(req.body);
     const { reviewId, userId, productId, isHelpful } = req.body.helpfulness;
     const helpfulness = new HelpfulnessModal({
       reviewId,
@@ -180,7 +174,16 @@ reviewRouter.post(
       isHelpful,
     });
     const created = await helpfulness.save();
-    res.send({ created });
+
+    const review = await ReviewModal.findOne({ _id: reviewId });
+    if (review) {
+      if (isHelpful) {
+        review.helpful = review.helpful + 1;
+      } else review.notHelpful = review.notHelpful + 1;
+    }
+
+    const updatedReview = await review.save();
+    res.send({ created, updatedReview });
 
     // HelpfulnessModal.remove({ reviewId });
     // res.send({ message: "all deleted" });
@@ -199,11 +202,23 @@ reviewRouter.get(
 );
 
 reviewRouter.delete(
-  "/helpfulness/:id",
+  "/helpfulness/:id/:reviewId/:isHelpful",
   expressAsyncHandler(async (req, res) => {
-    const { id } = req.params;
+    const { id, isHelpful, reviewId } = req.params;
     await HelpfulnessModal.deleteOne({ _id: id });
-    res.send({ message: "item with " + id + " deleted" });
+
+    const review = await ReviewModal.findOne({ _id: reviewId });
+    if (review) {
+      if (isHelpful.localeCompare("true") === 0) {
+        review.helpful = review.helpful - 1;
+      } else {
+        review.notHelpful = review.notHelpful - 1;
+      }
+    }
+
+    const updatedReview = await review.save();
+
+    res.send({ message: "item with " + id + " deleted", updatedReview });
   })
 );
 

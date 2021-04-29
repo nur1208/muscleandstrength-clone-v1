@@ -35,7 +35,9 @@ export const Helpful = ({
   //     }`
 
   const handleUndo = () => {
-    dispatch(deleteHelpfulness(helpfulObject._id));
+    dispatch(
+      deleteHelpfulness(helpfulObject._id, _id, helpfulObject.isHelpful)
+    );
   };
   return (
     <div
