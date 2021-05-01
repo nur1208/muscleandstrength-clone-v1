@@ -25,6 +25,7 @@ import { AppPop } from "./components/test/testPopUp/AppPop";
 import { AppPop2 } from "./components/test/testPopUp/AppPop2";
 import { MessageModal } from "./components/MessageModal";
 import { FlexBox1 } from "./components/learning/FlexBox1";
+import { AdminScreen } from "./screens/AdminScreen";
 // import "./styles/home.css";
 
 function App(props) {
@@ -62,10 +63,11 @@ function App(props) {
         />
         <div id="mns-page" className="mm-page">
           <div id="page">
-            <Region />
+            {/* <Region />
             <Header />
-            <NavBlock />
+            <NavBlock /> */}
             <Switch>
+              <Route path="/admin" component={AdminScreen} />
               <Route path="/learn" component={FlexBox1} />
               <Route path="/store/review" component={ReviewScreen} />
               <Route path="/test" component={AppPop2} />
@@ -96,7 +98,7 @@ function App(props) {
             </Switch>
           </div>
         </div>
-        <Footer />
+        {/* <Footer /> */}
       </>
 
       <div className="menu-mask" onClick={handleCloseSidebar}></div>
