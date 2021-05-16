@@ -1,88 +1,104 @@
-import React from "react";
+import React, { useState } from "react";
 import {
-  AdminHeader,
-  HeaderTitle,
-  MainContent,
-  SearchWrapper,
   Sidebar,
   SidebarBrand,
   SidebarMenu,
   SidebarMenuContainer,
   SidebarMenuItem,
+  GlobalStyle,
+  NavToggle,
+  AdminHeader,
+  MainContent,
+  SearchWrapper,
   UserWrapper,
-  AdminMain,
-  Cards,
-  CardSingle,
 } from "../components/admin/styledComp";
 import { FcCdLogo } from "react-icons/fc";
 import { BsListTask } from "react-icons/bs";
-import { AiOutlineDashboard } from "react-icons/ai";
+import { AiOutlineDashboard, AiOutlineSearch } from "react-icons/ai";
 import { FiUsers } from "react-icons/fi";
-import { GrProjects } from "react-icons/gr";
 import { GiBuyCard } from "react-icons/gi";
 import { RiAccountBoxLine, RiProjectorLine } from "react-icons/ri";
+import { Dashboard } from "../components/admin/Dashboard";
+import { Products } from "../components/admin/Products";
 import { FaBars } from "react-icons/fa";
-import { AiOutlineSearch } from "react-icons/ai";
 
 export const AdminScreen = () => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [activeSectionIndex, setActiveSectionIndex] = useState(0);
+
+  const sidebarItem = [
+    {
+      title: "Dashboard",
+      isActive: true,
+      icon: <AiOutlineDashboard />,
+      comp: (
+        <Dashboard
+          isSidebarOpen={isSidebarOpen}
+          setIsSidebarOpen={setIsSidebarOpen}
+        />
+      ),
+    },
+    { title: "Customers", isActive: false, icon: <FiUsers /> },
+    {
+      title: "Products",
+      isActive: false,
+      icon: <RiProjectorLine />,
+      comp: <Products isSidebarOpen={isSidebarOpen} />,
+    },
+    { title: "Orders", isActive: false, icon: <GiBuyCard /> },
+    { title: "Accounts", isActive: false, icon: <RiAccountBoxLine /> },
+    { title: "Tasks", isActive: false, icon: <BsListTask /> },
+  ];
+
   return (
     <div>
-      <Sidebar>
-        <SidebarBrand>
+      <GlobalStyle />
+      <NavToggle type="checkBox" id="nav-toggle" />
+      <Sidebar isSidebarOpen={isSidebarOpen}>
+        <SidebarBrand isSidebarOpen={isSidebarOpen}>
           <h2>
             <FcCdLogo
               style={{ display: "inline-block", paddingRight: "0.5rem" }}
             ></FcCdLogo>{" "}
-            Accusoft
+            <span>Accusoft</span>
           </h2>
         </SidebarBrand>
 
         <SidebarMenu>
           <SidebarMenuContainer>
-            <SidebarMenuItem>
-              <a href="#" className="active">
-                <AiOutlineDashboard /> <span>Dashboard</span>
-              </a>
-            </SidebarMenuItem>
-            <SidebarMenuItem>
-              <a href="#">
-                <FiUsers /> <span>Customers</span>
-              </a>
-            </SidebarMenuItem>
-            <SidebarMenuItem>
-              <a href="#">
-                <RiProjectorLine /> <span>Projects</span>
-              </a>
-            </SidebarMenuItem>
-            <SidebarMenuItem>
-              <a href="#">
-                <GiBuyCard /> <span>Orders</span>
-              </a>
-            </SidebarMenuItem>
-            <SidebarMenuItem>
-              <a href="#">
-                <RiAccountBoxLine /> <span>Accounts</span>
-              </a>
-            </SidebarMenuItem>
-            <SidebarMenuItem>
-              <a href="#">
-                <BsListTask /> <span>Tasks</span>
-              </a>
-            </SidebarMenuItem>
+            {sidebarItem.map((sidebar, index) => {
+              return (
+                <SidebarMenuItem
+                  isSidebarOpen={isSidebarOpen}
+                  key={index}
+                  onClick={() => setActiveSectionIndex(index)}
+                >
+                  <a href="#" className={`${sidebar.isActive ? "active" : ""}`}>
+                    {sidebar.icon} <span>{sidebar.title}</span>
+                  </a>
+                </SidebarMenuItem>
+              );
+            })}
           </SidebarMenuContainer>
         </SidebarMenu>
       </Sidebar>
 
-      <MainContent>
-        <AdminHeader>
+      <MainContent isSidebarOpen={isSidebarOpen}>
+        <AdminHeader isSidebarOpen={isSidebarOpen}>
           <h2>
-            <label htmlFor=""></label>
-            <FaBars />
+            <label htmlFor="nav-toggle">
+              {" "}
+              <span onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
+                <FaBars />
+              </span>
+            </label>
             Dashboard
           </h2>
 
           <SearchWrapper>
-            <AiOutlineSearch />
+            <span>
+              <AiOutlineSearch />
+            </span>
             <input type="search" placeholder="Search here" />
           </SearchWrapper>
 
@@ -94,49 +110,7 @@ export const AdminScreen = () => {
             </div>
           </UserWrapper>
         </AdminHeader>
-        <AdminMain>
-          <Cards>
-            <CardSingle>
-              <div>
-                <h1>54</h1>
-                <span>Customers</span>
-              </div>
-              <div>
-                <FiUsers />
-              </div>
-            </CardSingle>
-
-            <CardSingle>
-              <div>
-                <h1>79</h1>
-                <span>Projects</span>
-              </div>
-              <div>
-                <RiProjectorLine />
-              </div>
-            </CardSingle>
-
-            <CardSingle>
-              <div>
-                <h1>124</h1>
-                <span>Orders</span>
-              </div>
-              <div>
-                <GiBuyCard />
-              </div>
-            </CardSingle>
-
-            <CardSingle>
-              <div>
-                <h1>$6k</h1>
-                <span>Income</span>
-              </div>
-              <div>
-                <GiBuyCard />
-              </div>
-            </CardSingle>
-          </Cards>
-        </AdminMain>
+        {sidebarItem[activeSectionIndex].comp}
       </MainContent>
     </div>
   );

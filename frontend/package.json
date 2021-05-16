@@ -4,6 +4,7 @@
   "proxy": "http://127.0.0.1:5000",
   "private": true,
   "dependencies": {
+    "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^12.2.2",
@@ -12,9 +13,11 @@
     "moment": "^2.29.1",
     "react": "^17.0.1",
     "react-bones": "^1.0.3",
+    "react-bootstrap": "^1.5.2",
     "react-color-extractor": "^1.1.2",
     "react-dom": "^17.0.1",
     "react-draggable": "^4.4.3",
+    "react-fontawesome": "^1.7.1",
     "react-google-recaptcha": "^2.1.0",
     "react-helmet": "^6.1.0",
     "react-helmet-async": "^1.0.9",
@@ -54,5 +57,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "babel-plugin-styled-components": "^1.12.0"
   }
 }

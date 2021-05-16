@@ -5,6 +5,7 @@ import { submenuReducer, subSubmenuReducer } from "./reducers/submenuReducer";
 import { navBlockReducer } from "./reducers/navBlockReducer";
 import { dialogLoginReducer } from "./reducers/dialogLoginReducer";
 import {
+  AdminUploadingImageReducer,
   emailFindReducer,
   userForgetPasswordReducer,
   userRegisterReducer,
@@ -79,6 +80,7 @@ const reducer = combineReducers({
   reviewAdd: addReviewReducer,
   slider: sliderReducer,
   reportAdd: reportAddReducer,
+  AdminUploadingImage: AdminUploadingImageReducer,
 });
 
 const store = createStore(

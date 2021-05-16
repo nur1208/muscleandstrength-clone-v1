@@ -19,6 +19,9 @@ import {
   USER_UPDATE_REQUEST,
   USER_UPDATE_SUCCESS,
   USER_UPDATE_FAIL,
+  USER_ADMIN_UPLOADING_IMAGE_REQUEST,
+  USER_ADMIN_UPLOADING_IMAGE_SUCCESS,
+  USER_ADMIN_UPLOADING_IMAGE_FAIL,
 } from "../constants/userConstants";
 
 export const registerUser = (
@@ -193,6 +196,33 @@ export const updateUser = (_id, update) => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: USER_UPDATE_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const uploadingProductImage = (formData) => async (dispatch) => {
+  dispatch({ type: USER_ADMIN_UPLOADING_IMAGE_REQUEST });
+  try {
+    // const { data } = await axios.post("/api/image/image-upload", {
+    //   formData,
+    // });
+
+    const data = await fetch(`/api/image/image-upload`, {
+      method: "POST",
+      body: formData,
+    });
+
+    const j = await data.json();
+
+    console.log("j = ", j);
+    dispatch({ type: USER_ADMIN_UPLOADING_IMAGE_SUCCESS, payload: j });
+  } catch (error) {
+    dispatch({
+      type: USER_ADMIN_UPLOADING_IMAGE_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

@@ -4,7 +4,10 @@ import imageRouter from "./routers/imageRouter.js";
 import productsRouter from "./routers/productsRouter.js";
 import reviewRouter from "./routers/reviewRouter.js";
 import userRouter from "./routers/userRouters.js";
+import formData from "express-form-data";
+import dotenv from "dotenv";
 
+dotenv.config();
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -19,6 +22,8 @@ mongoose.connect(
 );
 
 const port = process.env.PORT || 5000;
+app.use(formData.parse());
+app.use(express.urlencoded());
 
 // app.use(express.static("public"));
 app.use("/api/image", imageRouter);

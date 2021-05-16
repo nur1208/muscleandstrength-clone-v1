@@ -89,6 +89,7 @@ productsRouter.post(
       recommended,
       usersReview,
       nutritionInfo,
+      qty,
     } = req.body.product;
 
     const product = new Product({
@@ -112,6 +113,7 @@ productsRouter.post(
       recommended,
       usersReview,
       nutritionInfo,
+      qty,
     });
     const createdProduct = await product.save();
     res.send({ createdProduct });

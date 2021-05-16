@@ -26,6 +26,7 @@ import { AppPop2 } from "./components/test/testPopUp/AppPop2";
 import { MessageModal } from "./components/MessageModal";
 import { FlexBox1 } from "./components/learning/FlexBox1";
 import { AdminScreen } from "./screens/AdminScreen";
+import { AppIU } from "./components/test/testImagesUploading/AppIU";
 // import "./styles/home.css";
 
 function App(props) {
@@ -70,7 +71,7 @@ function App(props) {
               <Route path="/admin" component={AdminScreen} />
               <Route path="/learn" component={FlexBox1} />
               <Route path="/store/review" component={ReviewScreen} />
-              <Route path="/test" component={AppPop2} />
+              <Route path="/test" component={AppIU} />
               <Route
                 path="/store/customer/account/changeforgotten/"
                 component={ResetPasswordScreen}

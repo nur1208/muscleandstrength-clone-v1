@@ -1,4 +1,7 @@
 import {
+  USER_ADMIN_UPLOADING_IMAGE_FAIL,
+  USER_ADMIN_UPLOADING_IMAGE_REQUEST,
+  USER_ADMIN_UPLOADING_IMAGE_SUCCESS,
   USER_FIND_EMAIL_FAIL,
   USER_FIND_EMAIL_SUCCESS,
   USER_FORGOT_PASSWORD,
@@ -99,6 +102,22 @@ export const userForgetPasswordReducer = (state = {}, action) => {
       return { ...state, data: action.payload, isFPTokenInvalid: false };
     case USER_FORGOT_PASSWORD_TOKEN_INVALID:
       return { ...state, error: action.payload, isFPTokenInvalid: true };
+    default:
+      return state;
+  }
+};
+
+export const AdminUploadingImageReducer = (state = {}, action) => {
+  switch (action.type) {
+    case USER_ADMIN_UPLOADING_IMAGE_REQUEST:
+      return { ...state, loading: true };
+
+    case USER_ADMIN_UPLOADING_IMAGE_SUCCESS:
+      return { ...state, loading: false, image: action.payload };
+
+    case USER_ADMIN_UPLOADING_IMAGE_FAIL:
+      return { ...state, loading: false, error: action.payload };
+
     default:
       return state;
   }
