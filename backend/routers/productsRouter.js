@@ -90,6 +90,7 @@ productsRouter.post(
       usersReview,
       nutritionInfo,
       qty,
+      type,
     } = req.body.product;
 
     const product = new Product({
@@ -114,6 +115,7 @@ productsRouter.post(
       usersReview,
       nutritionInfo,
       qty,
+      type,
     });
     const createdProduct = await product.save();
     res.send({ createdProduct });

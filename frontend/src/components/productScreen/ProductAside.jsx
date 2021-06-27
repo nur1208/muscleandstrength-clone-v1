@@ -141,8 +141,7 @@ export const ProductAside = () => {
         price: 24.13,
       },
       {
-        link:
-          "https://www.muscleandstrength.com/store/nitro-tech-100-whey-gold.html",
+        link: "https://www.muscleandstrength.com/store/nitro-tech-100-whey-gold.html",
         image:
           "https://cdn.muscleandstrength.com/store/media/catalog/product/cache/all/image/150x/9df78eab33525d08d6e5fb8d27136e95/n/i/nitro_whey_5.5lb_drc_1.jpg",
         name: "Nitro-Tech 100% Whey Gold",
@@ -158,8 +157,7 @@ export const ProductAside = () => {
         price: 21.17,
       },
       {
-        link:
-          "https://www.muscleandstrength.com/store/primeval-labs-apeshit.html",
+        link: "https://www.muscleandstrength.com/store/primeval-labs-apeshit.html",
         image:
           "https://cdn.muscleandstrength.com/store/media/catalog/product/cache/all/image/150x/9df78eab33525d08d6e5fb8d27136e95/u/n/untamed-slemonade_1024x1024_2x_1.jpg",
         name: "APESH*T UNTAMED",
@@ -167,8 +165,7 @@ export const ProductAside = () => {
         price: 25.41,
       },
       {
-        link:
-          "https://www.muscleandstrength.com/store/primeval-labs-apeshit-cutz.html",
+        link: "https://www.muscleandstrength.com/store/primeval-labs-apeshit-cutz.html",
         image:
           "https://cdn.muscleandstrength.com/store/media/catalog/product/cache/all/image/150x/9df78eab33525d08d6e5fb8d27136e95/u/n/untamed-cutz-palmer_1024x1024_2x_1.jpg",
         name: "APESH*T Cutz",
@@ -176,8 +173,7 @@ export const ProductAside = () => {
         price: 25.41,
       },
       {
-        link:
-          "https://www.muscleandstrength.com/store/nitro-tech-performance.html",
+        link: "https://www.muscleandstrength.com/store/nitro-tech-performance.html",
         image:
           "https://cdn.muscleandstrength.com/store/media/catalog/product/cache/all/image/150x/9df78eab33525d08d6e5fb8d27136e95/m/t/mt_performance_series_nitro_tech_toasted_s_mores_4lbs-sm_1.jpg",
         name: "Nitro-Tech",
@@ -325,7 +321,11 @@ export const ProductAside = () => {
   };
   const [nurtIndex, setnurtIndex] = useState(0);
 
-  const [nurt, setNurt] = useState(nutritionInfo.items[nurtIndex].nutrition);
+  const [nurt, setNurt] = useState(
+    nutritionInfo.items.length > 0
+      ? nutritionInfo.items[nurtIndex].nutrition
+      : null
+  );
   const [showAllNurt, setShowAllNurt] = useState(false);
 
   const getSelectIndex = (index) => {
@@ -333,7 +333,7 @@ export const ProductAside = () => {
   };
 
   useEffect(() => {
-    setNurt(nutritionInfo.items[nurtIndex].nutrition);
+    nurt && setNurt(nutritionInfo.items[nurtIndex].nutrition);
   }, [nurtIndex, nutritionInfo]);
 
   return (
@@ -426,42 +426,56 @@ export const ProductAside = () => {
         </div>
       </div>
       <div className="product-aside"></div>
-      <div className={`product-nutrition ${showAllNurt ? "show-all" : ""}`}>
-        <div className="section-title">Nutrition Info</div>
-        <div className="section-inner-wrap">
-          <div className="panelSelector">
-            <form name="nutrinfo-selector" id="nutrinfo-selector">
-              <CustomSelect
-                items={nutritionInfo && nutritionInfo.items}
-                favors={nutritionInfo && nutritionInfo.favors}
-                maxH={170}
-                getSelectIndex={getSelectIndex}
-              />
-            </form>
-          </div>
-          <div className="panel-wrap">
-            <div className="show-more-mask"></div>
-            <div className="nutrition-info-inner">
-              <div className="nutrition-panel" id="nutrition-info-samp0282">
-                <div className="nutrition-panel-inner">
-                  <h4>{items3[nurtIndex].title}</h4>
-                  <div className="serving thickline">
-                    Serving Size: {nurt.ServingSize}
-                    <br />
-                    Servings Per Container: {nurt.ServingsPreContainer}
-                  </div>
-                  <div id="nutrition-info-table">
-                    <div className="item thinline">
-                      <div className="col-1 ">Amount Per Serving</div>
-                      <div className="col-2">Amt</div>
-                      <div className="col-3">%DV</div>
+      {nurt && (
+        <div className={`product-nutrition ${showAllNurt ? "show-all" : ""}`}>
+          <div className="section-title">Nutrition Info</div>
+          <div className="section-inner-wrap">
+            <div className="panelSelector">
+              <form name="nutrinfo-selector" id="nutrinfo-selector">
+                <CustomSelect
+                  items={nutritionInfo && nutritionInfo.items}
+                  favors={nutritionInfo && nutritionInfo.favors}
+                  maxH={170}
+                  getSelectIndex={getSelectIndex}
+                />
+              </form>
+            </div>
+            <div className="panel-wrap">
+              <div className="show-more-mask"></div>
+              <div className="nutrition-info-inner">
+                <div className="nutrition-panel" id="nutrition-info-samp0282">
+                  <div className="nutrition-panel-inner">
+                    <h4>{items3[nurtIndex].title}</h4>
+                    <div className="serving thickline">
+                      Serving Size: {nurt.ServingSize}
+                      <br />
+                      Servings Per Container: {nurt.ServingsPreContainer}
                     </div>
-                    <div className="row">
-                      {nurt &&
-                        nurt.info.map((item, index) =>
-                          item.isTop ? (
-                            <div className="thinline-top" key={index}>
-                              <div className={item.cssStyle}>
+                    <div id="nutrition-info-table">
+                      <div className="item thinline">
+                        <div className="col-1 ">Amount Per Serving</div>
+                        <div className="col-2">Amt</div>
+                        <div className="col-3">%DV</div>
+                      </div>
+                      <div className="row">
+                        {nurt &&
+                          nurt.info.map((item, index) =>
+                            item.isTop ? (
+                              <div className="thinline-top" key={index}>
+                                <div className={item.cssStyle}>
+                                  <div className="col-1">
+                                    {item.isIndent ? (
+                                      <span className="indent">item.name</span>
+                                    ) : (
+                                      item.name
+                                    )}
+                                  </div>
+                                  <div className="col-2">{item.Amt}</div>
+                                  <div className="col-3">{item.DV}</div>
+                                </div>
+                              </div>
+                            ) : (
+                              <div className={item.cssStyle} key={index}>
                                 <div className="col-1">
                                   {item.isIndent ? (
                                     <span className="indent">item.name</span>
@@ -472,65 +486,53 @@ export const ProductAside = () => {
                                 <div className="col-2">{item.Amt}</div>
                                 <div className="col-3">{item.DV}</div>
                               </div>
-                            </div>
-                          ) : (
-                            <div className={item.cssStyle} key={index}>
-                              <div className="col-1">
-                                {item.isIndent ? (
-                                  <span className="indent">item.name</span>
-                                ) : (
-                                  item.name
-                                )}
-                              </div>
-                              <div className="col-2">{item.Amt}</div>
-                              <div className="col-3">{item.DV}</div>
-                            </div>
-                          )
-                        )}
+                            )
+                          )}
+                      </div>
                     </div>
+                    <div className="ingredients-heading">Ingredients</div>
+                    <div className="ingredients">
+                      Citric Acid, Malic Acid, Calcium Silicate, Silicon
+                      Dioxide, Natural and Artificial Flavors, Beet Juice
+                      (color), Sucralose, Acesulfame Potassium
+                    </div>
+                    <span className="item-directions-note hide">
+                      <p>{directions}</p>
+                    </span>
+                    <span className="item-warning-note hide">
+                      <p>{warning}</p>
+                    </span>
                   </div>
-                  <div className="ingredients-heading">Ingredients</div>
-                  <div className="ingredients">
-                    Citric Acid, Malic Acid, Calcium Silicate, Silicon Dioxide,
-                    Natural and Artificial Flavors, Beet Juice (color),
-                    Sucralose, Acesulfame Potassium
-                  </div>
-                  <span className="item-directions-note hide">
+                </div>
+              </div>
+              <div className="directions-warning">
+                <div id="directions">
+                  <div className="title">Directions</div>
+                  <div id="directions-note" className="font-s-small">
                     <p>{directions}</p>
-                  </span>
-                  <span className="item-warning-note hide">
+                  </div>
+                </div>
+                <div id="warnings">
+                  <div className="title">Warnings</div>
+                  <div id="warning-note" className="font-s-small">
                     <p>{warning}</p>
-                  </span>
+                  </div>
                 </div>
               </div>
             </div>
-            <div className="directions-warning">
-              <div id="directions">
-                <div className="title">Directions</div>
-                <div id="directions-note" className="font-s-small">
-                  <p>{directions}</p>
+            <div className="expand-wrap">
+              {!showAllNurt && (
+                <div
+                  className="expand-btn btn-blue btn btn-sm"
+                  onClick={() => setShowAllNurt(true)}
+                >
+                  Expand Info
                 </div>
-              </div>
-              <div id="warnings">
-                <div className="title">Warnings</div>
-                <div id="warning-note" className="font-s-small">
-                  <p>{warning}</p>
-                </div>
-              </div>
+              )}
             </div>
-          </div>
-          <div className="expand-wrap">
-            {!showAllNurt && (
-              <div
-                className="expand-btn btn-blue btn btn-sm"
-                onClick={() => setShowAllNurt(true)}
-              >
-                Expand Info
-              </div>
-            )}
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

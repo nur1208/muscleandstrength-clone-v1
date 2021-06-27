@@ -1,4 +1,6 @@
 import {
+  USER_ADMIN_RESET_PRODUCT_ADD_INFO,
+  USER_ADMIN_SAVE_PRODUCT_ADD_INFO,
   USER_ADMIN_UPLOADING_IMAGE_FAIL,
   USER_ADMIN_UPLOADING_IMAGE_REQUEST,
   USER_ADMIN_UPLOADING_IMAGE_SUCCESS,
@@ -117,6 +119,16 @@ export const AdminUploadingImageReducer = (state = {}, action) => {
 
     case USER_ADMIN_UPLOADING_IMAGE_FAIL:
       return { ...state, loading: false, error: action.payload };
+
+    default:
+      return state;
+  }
+};
+
+export const adminSaveUserInputProductsR = (state = {}, action) => {
+  switch (action.type) {
+    case USER_ADMIN_RESET_PRODUCT_ADD_INFO:
+      return { ...state, userInput: {} };
 
     default:
       return state;

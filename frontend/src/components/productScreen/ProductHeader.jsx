@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect } from "react";
 import { FaShare } from "react-icons/fa";
 import { useSelector } from "react-redux";
 
@@ -18,6 +19,11 @@ export const ProductHeader = () => {
   const getAllReviews = useSelector((state) => state.getAllReviews);
   const { totalReviews } = getAllReviews;
 
+  // useEffect(() => {
+  //   console.log(image);
+  //   console.log(image.startsWith("/"));
+  // }, [image]);
+
   return loading ? (
     <>
       <h1>Loading</h1>
@@ -34,7 +40,7 @@ export const ProductHeader = () => {
         <img
           id="image"
           className=" lazyloaded"
-          src={image}
+          src={image.startsWith("/") ? image : "/" + image}
           alt="The Ripper!"
           title="The Ripper!"
         />
@@ -58,7 +64,7 @@ export const ProductHeader = () => {
         <div className="tagline">{description}</div>
         <ul className="product-features">
           {features &&
-            features.map((feature, index) => <li key={index}>{feature}</li>)}
+            features.map((feature, index) => <li key={index}>- {feature}</li>)}
         </ul>
       </div>
       <div className="product-data">

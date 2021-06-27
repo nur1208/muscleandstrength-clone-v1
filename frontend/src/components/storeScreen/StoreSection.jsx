@@ -47,12 +47,12 @@ export const StoreSection = ({ sectionId, title, items, promotionsId }) => {
                     <span className="price">€{item.price}</span>
                   </div>
                   <div className="button-wrap">
-                    <a
-                      href={item.href}
+                    <Link
+                      to={item.href}
                       className="btn btn-blue btn-sm btn-addtocart"
                     >
                       View Product
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>

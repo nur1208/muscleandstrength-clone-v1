@@ -77,12 +77,12 @@ export const MessageModal = ({
   };
 
   useEffect(() => {
-    if (timeOut) {
+    if (timeOut && showModal) {
       setTimeout(() => {
         setShowModal(false);
       }, timeOut);
     }
-  }, [timeOut]);
+  }, [setShowModal, timeOut, showModal]);
 
   // if (timeOut) {
   //   setTimeout(() => {

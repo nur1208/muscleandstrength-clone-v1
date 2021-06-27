@@ -64,14 +64,14 @@ function App(props) {
         />
         <div id="mns-page" className="mm-page">
           <div id="page">
-            {/* <Region />
+            <Region />
             <Header />
-            <NavBlock /> */}
+            <NavBlock />
             <Switch>
               <Route path="/admin" component={AdminScreen} />
               <Route path="/learn" component={FlexBox1} />
               <Route path="/store/review" component={ReviewScreen} />
-              <Route path="/test" component={AppIU} />
+              <Route path="/test" component={AppPop2} />
               <Route
                 path="/store/customer/account/changeforgotten/"
                 component={ResetPasswordScreen}
@@ -99,7 +99,7 @@ function App(props) {
             </Switch>
           </div>
         </div>
-        {/* <Footer /> */}
+        <Footer />
       </>
 
       <div className="menu-mask" onClick={handleCloseSidebar}></div>

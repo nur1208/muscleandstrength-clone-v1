@@ -1,4 +1,4 @@
-POST http://localhost:5000/api/products/seed/
+POST http://localhost:5001/api/products/seed/
 Content-Type: application/json
 
 {
@@ -27,7 +27,7 @@ GET  http://localhost:5000/api/review/getAll/603cd94f39e7893b1cb3e4ed/1
 
 #####
 
-PUT http://localhost:5000/api/review/update
+PUT http://localhost:5001/api/review/update
 Content-Type: application/json
 
 {

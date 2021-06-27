@@ -48,6 +48,10 @@ export const StoreScreen = (props) => {
     if (isNotPC) console.log("not PC screen");
   }, [isNotPC]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <main id="main-wrapper">
       <Helmet>
@@ -76,8 +80,8 @@ export const StoreScreen = (props) => {
         ) : isNotPC ? (
           <StoreSectionSwiper
             sectionId={"top-rated-products"}
-            title={"Top Rated Products"}
-            items={topRated}
+            title={"his Week's Top Deals"}
+            items={topDeals}
           />
         ) : (
           <StoreSection
@@ -126,7 +130,7 @@ export const StoreScreen = (props) => {
           // />
           <StoreSectionSwiper
             sectionId={"top-rated-products"}
-            title={"Top Rated Products"}
+            title={"TRENDING PRODUCTS"}
             items={trending}
           />
         )}

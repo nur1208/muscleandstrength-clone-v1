@@ -2024,6 +2024,11 @@ abbr[title] {
   display: flex;
   justify-content: space-between;
 }
+
+.std img {
+  margin: 0 auto;
+  display: block;
+}
 /* end of UsersReview */
 
 @media (min-width: 320px) {

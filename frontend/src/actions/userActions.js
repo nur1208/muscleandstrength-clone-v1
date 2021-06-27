@@ -22,48 +22,52 @@ import {
   USER_ADMIN_UPLOADING_IMAGE_REQUEST,
   USER_ADMIN_UPLOADING_IMAGE_SUCCESS,
   USER_ADMIN_UPLOADING_IMAGE_FAIL,
+  USER_ADMIN_SAVE_PRODUCT_ADD_INFO,
+  USER_ADMIN_RESET_PRODUCT_ADD_INFO,
 } from "../constants/userConstants";
 
-export const registerUser = (
-  firstName,
-  lastName,
-  email,
-  gender,
-  goal,
-  trainingExperience,
-  password,
-  referralCode,
-  isNewsLitter
-) => async (dispatch, getState) => {
-  dispatch({ type: USER_REGISTER_REQUEST });
-  try {
-    const { data } = await axios.post("/api/users/register", {
-      firstName,
-      lastName,
-      email,
-      gender,
-      goal,
-      trainingExperience,
-      password,
-      referralCode,
-      isNewsLitter,
-    });
-    dispatch({ type: USER_REGISTER_SUCCESS, payload: data });
-    dispatch({ type: USER_SIGN_IN_SUCCESS, payload: data });
-    localStorage.setItem(
-      "userInfo",
-      JSON.stringify(getState().userRegister.userInfo)
-    );
-  } catch (error) {
-    dispatch({
-      type: USER_REGISTER_FAIL,
-      payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message,
-    });
-  }
-};
+export const registerUser =
+  (
+    firstName,
+    lastName,
+    email,
+    gender,
+    goal,
+    trainingExperience,
+    password,
+    referralCode,
+    isNewsLitter
+  ) =>
+  async (dispatch, getState) => {
+    dispatch({ type: USER_REGISTER_REQUEST });
+    try {
+      const { data } = await axios.post("/api/users/register", {
+        firstName,
+        lastName,
+        email,
+        gender,
+        goal,
+        trainingExperience,
+        password,
+        referralCode,
+        isNewsLitter,
+      });
+      dispatch({ type: USER_REGISTER_SUCCESS, payload: data });
+      dispatch({ type: USER_SIGN_IN_SUCCESS, payload: data });
+      localStorage.setItem(
+        "userInfo",
+        JSON.stringify(getState().userRegister.userInfo)
+      );
+    } catch (error) {
+      dispatch({
+        type: USER_REGISTER_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+      });
+    }
+  };
 
 export const SingInUser = (email, password) => async (dispatch, getState) => {
   dispatch({ type: USER_SIGN_IN_REQUEST });
@@ -229,4 +233,14 @@ export const uploadingProductImage = (formData) => async (dispatch) => {
           : error.message,
     });
   }
+};
+
+export const saveUserInputProducts = (data) => async (dispatch) => {
+  localStorage.setItem("userInputProducts", JSON.stringify(data));
+  dispatch({ type: USER_ADMIN_SAVE_PRODUCT_ADD_INFO });
+};
+
+export const resetUserInputProducts = (data) => async (dispatch) => {
+  localStorage.clear("userInputProducts");
+  dispatch({ type: USER_ADMIN_RESET_PRODUCT_ADD_INFO });
 };

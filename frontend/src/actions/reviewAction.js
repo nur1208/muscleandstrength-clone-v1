@@ -153,35 +153,34 @@ export const getTotalReviews = (productId) => async (dispatch) => {
   }
 };
 
-export const helpfulFunction = (_id, type, userId, productId) => async (
-  dispatch
-) => {
-  // let helpful, notHelpful;
-  // if (type === 1) helpful = 1;
-  // else if (type === 0) notHelpful = 1;
+export const helpfulFunction =
+  (_id, type, userId, productId) => async (dispatch) => {
+    // let helpful, notHelpful;
+    // if (type === 1) helpful = 1;
+    // else if (type === 0) notHelpful = 1;
 
-  try {
-    const { data } = await axios.post(`/api/review/helpfulness`, {
-      helpfulness: {
-        reviewId: _id,
-        userId,
-        productId,
-        isHelpful: type,
-      },
-    });
-    dispatch({ type: REVIEW_HELPFUL_SUCCESS, payload: data });
-    // dispatch(updateUser(userId, { $addToSet: { evaluateHelpfulness: [_id] } }));
-    // update the user too.
-  } catch (error) {
-    dispatch({
-      type: REVIEW_HELPFUL_FAIL,
-      payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message,
-    });
-  }
-};
+    try {
+      const { data } = await axios.post(`/api/review/helpfulness`, {
+        helpfulness: {
+          reviewId: _id,
+          userId,
+          productId,
+          isHelpful: type,
+        },
+      });
+      dispatch({ type: REVIEW_HELPFUL_SUCCESS, payload: data });
+      // dispatch(updateUser(userId, { $addToSet: { evaluateHelpfulness: [_id] } }));
+      // update the user too.
+    } catch (error) {
+      dispatch({
+        type: REVIEW_HELPFUL_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+      });
+    }
+  };
 
 export const getHelpfulness = (userId, productId) => async (dispatch) => {
   dispatch({ type: REVIEW_GET_HELPFULNESS_REQUEST });
@@ -205,26 +204,25 @@ export const getHelpfulness = (userId, productId) => async (dispatch) => {
   }
 };
 
-export const deleteHelpfulness = (_id, reviewId, isHelpful) => async (
-  dispatch
-) => {
-  dispatch({ type: REVIEW_DELETE_HELPFULNESS_REQUEST });
+export const deleteHelpfulness =
+  (_id, reviewId, isHelpful) => async (dispatch) => {
+    dispatch({ type: REVIEW_DELETE_HELPFULNESS_REQUEST });
 
-  try {
-    const { data } = await axios.delete(
-      `/api/review/helpfulness/${_id}/${reviewId}/${isHelpful}`
-    );
-    dispatch({
-      type: REVIEW_DELETE_HELPFULNESS_SUCCESS,
-      payload: { data, _id },
-    });
-  } catch (error) {
-    dispatch({
-      type: REVIEW_DELETE_HELPFULNESS_FAIL,
-      payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message,
-    });
-  }
-};
+    try {
+      const { data } = await axios.delete(
+        `/api/review/helpfulness/${_id}/${reviewId}/${isHelpful}`
+      );
+      dispatch({
+        type: REVIEW_DELETE_HELPFULNESS_SUCCESS,
+        payload: { data, _id },
+      });
+    } catch (error) {
+      dispatch({
+        type: REVIEW_DELETE_HELPFULNESS_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+      });
+    }
+  };

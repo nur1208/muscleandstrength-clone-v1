@@ -10,35 +10,68 @@ import {
   UploadedImage,
   AddButton,
   AddButtonW,
+  FeatureWrapper,
+  ButtonF,
 } from "./styledComp";
 import { FaImage } from "react-icons/fa";
 
 import { Form, Button, Table } from "react-bootstrap";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { uploadingProductImage } from "../../actions/userActions";
+import {
+  resetUserInputProducts,
+  saveUserInputProducts,
+  uploadingProductImage,
+} from "../../actions/userActions";
 import { useEffect } from "react";
 import { addProduct } from "../../actions/productsAction";
 
 export const Products = ({ isSidebarOpen }) => {
+  const adminSaveUserInputProducts = useSelector(
+    (state) => state.adminSaveUserInputProducts
+  );
+  const { userInput } = adminSaveUserInputProducts;
   const [uploading, setUploading] = useState(false);
-  const [name, setProductName] = useState("");
-  const [price, setPrice] = useState(0);
-  const [brand, setBrand] = useState("");
-  const [qty, setQty] = useState(0);
-  const [category, setCategory] = useState("");
-  const [description, setDescription] = useState("");
-  const [waring, setWaring] = useState("");
-  const [ingredient, setIngredient] = useState("");
-  const [features, setFeatures] = useState([]);
-  const [featuresText, setFeaturesText] = useState("");
-  const [extraInfo, setExtraInfo] = useState("");
+  // const [userInput, setUserInput] = useState({});
+  const [name, setProductName] = useState(userInput.name ? userInput.name : "");
+  const [price, setPrice] = useState(userInput.price ? userInput.price : 0);
+  const [brand, setBrand] = useState(userInput.brand ? userInput.brand : "");
+  const [qty, setQty] = useState(userInput.qty ? userInput.qty : 0);
+  const [category, setCategory] = useState(
+    userInput.category ? userInput.category : ""
+  );
+  const [description, setDescription] = useState(
+    userInput.description ? userInput.description : ""
+  );
+  const [waring, setWaring] = useState(
+    userInput.waring ? userInput.waring : ""
+  );
+  const [ingredient, setIngredient] = useState(
+    userInput.ingredient ? userInput.ingredient : ""
+  );
+  const [features, setFeatures] = useState(
+    userInput.features ? userInput.features : []
+  );
+  const [featuresText, setFeaturesText] = useState(
+    userInput.featuresText ? userInput.featuresText : ""
+  );
+  const [extraInfo, setExtraInfo] = useState(
+    userInput.extraInfo ? userInput.extraInfo : ""
+  );
+  const [type, setType] = useState(userInput.type ? userInput.type : "");
+  const [imageUrl, setImageUrl] = useState(
+    userInput.image ? userInput.image : ""
+  );
 
   const dispatch = useDispatch(null);
 
   const AdminUploadingImage = useSelector((state) => state.AdminUploadingImage);
 
   const { image } = AdminUploadingImage;
+
+  const productAdd = useSelector((state) => state.productAdd);
+
+  const { success } = productAdd;
 
   const handleInputFile = (e) => {
     const files = Array.from(e.target.files);
@@ -65,17 +98,98 @@ export const Products = ({ isSidebarOpen }) => {
     //   });
   };
 
-  useEffect(() => {
-    const newA = featuresText.trim().split(";");
-    // const eachElementTrim = newA.map((item) => item.trim());
-    console.log(newA.map((item) => item.trim()));
+  // useEffect(() => {
+  //   const newA = featuresText.trim().split(":");
+  //   // const eachElementTrim = newA.map((item) => item.trim());
+  //   setFeatures(newA.map((item) => item.trim()).filter((item) => item !== ""));
+  // }, [featuresText]);
 
-    setFeatures(newA.map((item) => item.trim()).filter((item) => item !== ""));
-  }, [featuresText]);
+  // useEffect(() => {
+  //   const data = localStorage.getItem("userInputProducts");
+  //   setUserInput(JSON.parse(data));
+  //   setProductName(userInput.name);
+  // }, []);
 
   const handleInput = (e, f) => {
     f(e.target.value);
   };
+
+  useEffect(() => {
+    dispatch(
+      saveUserInputProducts({
+        name,
+        price,
+        brand,
+        qty,
+        category,
+        description,
+        waring,
+        ingredient,
+        features,
+        featuresText,
+        extraInfo,
+        image: imageUrl,
+        type,
+      })
+    );
+
+    // localStorage.setItem(
+    //   "userInputProducts",
+    //   JSON.stringify({
+    //     name,
+    //     price,
+    //     brand,
+    //     qty,
+    //     category,
+    //     description,
+    //     waring,
+    //     ingredient,
+    //     features,
+    //     featuresText,
+    //     extraInfo,
+    //     image: imageUrl,
+    //     type,
+    //   })
+    // );
+  }, [
+    brand,
+    category,
+    description,
+    dispatch,
+    extraInfo,
+    features,
+    featuresText,
+    imageUrl,
+    ingredient,
+    name,
+    price,
+    qty,
+    type,
+    waring,
+  ]);
+
+  const resetAllState = () => {
+    setProductName("");
+    setPrice(0);
+    setBrand("");
+    setQty(0);
+    setCategory("");
+    setDescription("");
+    setWaring("");
+    setIngredient("");
+    setFeatures([]);
+    setFeaturesText("");
+    setExtraInfo("");
+    setType("");
+    setImageUrl("");
+  };
+
+  useEffect(() => {
+    if (success) {
+      dispatch(resetUserInputProducts());
+      resetAllState();
+    }
+  }, [dispatch, success]);
 
   const formGroups = [
     {
@@ -83,18 +197,21 @@ export const Products = ({ isSidebarOpen }) => {
       type: "text",
       placeholder: "Enter Product Name",
       onChangeFunction: setProductName,
+      value: name,
     },
     {
       title: "Price",
       type: "number",
       placeholder: "Price in Euro",
       onChangeFunction: setPrice,
+      value: price,
     },
     {
       title: "brand",
       type: "text",
       placeholder: "Enter product brand",
       onChangeFunction: setBrand,
+      value: brand,
     },
 
     {
@@ -102,12 +219,14 @@ export const Products = ({ isSidebarOpen }) => {
       type: "number",
       placeholder: "How many: qty",
       onChangeFunction: setQty,
+      value: qty,
     },
     {
       title: "category",
       type: "text",
       placeholder: "Enter product category",
       onChangeFunction: setCategory,
+      value: category,
     },
     {
       title: "description",
@@ -115,6 +234,7 @@ export const Products = ({ isSidebarOpen }) => {
       as: "textarea",
       placeholder: "Enter product description",
       onChangeFunction: setDescription,
+      value: description,
     },
     {
       title: "warning",
@@ -122,6 +242,7 @@ export const Products = ({ isSidebarOpen }) => {
       as: "textarea",
       placeholder: "Enter product waring (if exist)",
       onChangeFunction: setWaring,
+      value: waring,
     },
     {
       title: "ingredient",
@@ -129,13 +250,17 @@ export const Products = ({ isSidebarOpen }) => {
       as: "textarea",
       placeholder: "Enter product ingredient (if exist)",
       onChangeFunction: setIngredient,
+      value: ingredient,
     },
     {
       title: "features",
       type: "",
       as: "textarea",
-      placeholder: "Enter product features (spare each features with ';')",
+      placeholder:
+        "Enter product features (enter the feature then click on add feature button)",
       onChangeFunction: setFeaturesText,
+      value: featuresText,
+      hasButton: true,
     },
     {
       title: "extraInfo",
@@ -143,6 +268,21 @@ export const Products = ({ isSidebarOpen }) => {
       as: "textarea",
       placeholder: "Enter product extra Info html",
       onChangeFunction: setExtraInfo,
+      value: extraInfo,
+    },
+    {
+      title: "type",
+      type: "text",
+      placeholder: "Enter product type(it's temporary field)",
+      onChangeFunction: setType,
+      value: type,
+    },
+    {
+      title: "image",
+      type: "text",
+      placeholder: "Enter product image url(it's temporary field)",
+      onChangeFunction: setImageUrl,
+      value: imageUrl,
     },
   ];
 
@@ -159,9 +299,25 @@ export const Products = ({ isSidebarOpen }) => {
         ingredient,
         features,
         extraInfo,
-        image: image.url,
+        // image: image && image.url ? image.url : "",
+        image: imageUrl,
+        type,
       })
     );
+  };
+
+  const addOtherFeature = () => {
+    setFeatures([...features, featuresText]);
+    setFeaturesText("");
+  };
+
+  const handleDeleteFeature = (index) => {
+    setFeatures(features.filter((_, i) => i !== index));
+  };
+
+  const handleResetInput = () => {
+    resetAllState();
+    dispatch(resetUserInputProducts());
   };
   return (
     <ProductsWrapper isSidebarOpen={isSidebarOpen}>
@@ -176,7 +332,28 @@ export const Products = ({ isSidebarOpen }) => {
                   placeholder={item.placeholder}
                   as={item.as}
                   onChange={(e) => handleInput(e, item.onChangeFunction)}
+                  value={item.value === 0 ? "" : item.value}
                 />
+                {item.hasButton && (
+                  <>
+                    <ul>
+                      {features.map(
+                        (
+                          feature,
+                          index ////
+                        ) => (
+                          <FeatureWrapper>
+                            <li key={index}>- {feature}</li>
+                            <ButtonF onClick={() => handleDeleteFeature(index)}>
+                              Delete
+                            </ButtonF>
+                          </FeatureWrapper>
+                        )
+                      )}
+                    </ul>
+                    <Button onClick={addOtherFeature}>add feature</Button>
+                  </>
+                )}
               </Form.Group>
             ))}
           </FormWrapper>
@@ -203,6 +380,7 @@ export const Products = ({ isSidebarOpen }) => {
       </ProductInputW>
       <AddButtonW>
         <AddButton onClick={handleAddProduct}>Add</AddButton>
+        <AddButton onClick={handleResetInput}>reset</AddButton>
       </AddButtonW>
 
       <Table striped bordered hover variant="dark">

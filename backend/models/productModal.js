@@ -19,6 +19,7 @@ const productSchema = new mongoose.Schema(
 
     category: { type: String, required: true },
     ingredient: { type: String },
+    type: { type: String },
     directions: { type: String },
     warning: { type: String },
     extraInfo: { type: String },

@@ -5,6 +5,7 @@ import { submenuReducer, subSubmenuReducer } from "./reducers/submenuReducer";
 import { navBlockReducer } from "./reducers/navBlockReducer";
 import { dialogLoginReducer } from "./reducers/dialogLoginReducer";
 import {
+  adminSaveUserInputProductsR,
   AdminUploadingImageReducer,
   emailFindReducer,
   userForgetPasswordReducer,
@@ -58,6 +59,11 @@ const initialState = {
       ? JSON.parse(localStorage.getItem("totalVerifiedReviews"))
       : null,
   },
+  adminSaveUserInputProducts: {
+    userInput: localStorage.getItem("userInputProducts")
+      ? JSON.parse(localStorage.getItem("userInputProducts"))
+      : {},
+  },
 };
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -81,6 +87,7 @@ const reducer = combineReducers({
   slider: sliderReducer,
   reportAdd: reportAddReducer,
   AdminUploadingImage: AdminUploadingImageReducer,
+  adminSaveUserInputProducts: adminSaveUserInputProductsR,
 });
 
 const store = createStore(

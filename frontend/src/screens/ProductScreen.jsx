@@ -37,6 +37,15 @@ export const ProductScreen = (props) => {
 
   useGetPathName(props.location.pathname + "/:The Ripper");
 
+  useEffect(() => {
+    // window.scrollTo({
+    //   top: 0,
+    //   behavior: "smooth",
+    // });
+
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
       {loading ? (

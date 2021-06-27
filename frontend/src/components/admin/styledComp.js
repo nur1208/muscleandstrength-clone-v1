@@ -474,15 +474,25 @@ export const UploadedImage = styled.img`
 
 export const AddButtonW = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   margin-bottom: 3rem;
 `;
 
 export const AddButton = styled.button`
-  width: 80%;
+  width: 45%;
   padding: 1%;
   color: #f1e5e6;
   background-color: #007bff;
   border-radius: 5%;
   border-color: #007bff;
+`;
+
+export const FeatureWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const ButtonF = styled.button`
+  width: 15%;
+  font-size: 10px;
 `;
