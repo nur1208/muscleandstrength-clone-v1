@@ -27,6 +27,8 @@ import { MessageModal } from "./components/MessageModal";
 import { FlexBox1 } from "./components/learning/FlexBox1";
 import { AdminScreen } from "./screens/AdminScreen";
 import { AppIU } from "./components/test/testImagesUploading/AppIU";
+import { SearchScreen } from "./screens/SearchScreen";
+import { AppDome } from "./components/dome/AppDome";
 // import "./styles/home.css";
 
 function App(props) {
@@ -66,12 +68,14 @@ function App(props) {
           <div id="page">
             <Region />
             <Header />
-            <NavBlock />
+            {/* <NavBlock /> */}
             <Switch>
+              <Route path="/dome" component={AppDome} />
               <Route path="/admin" component={AdminScreen} />
               <Route path="/learn" component={FlexBox1} />
               <Route path="/store/review" component={ReviewScreen} />
               <Route path="/test" component={AppPop2} />
+              <Route path="/store/search" component={SearchScreen} />
               <Route
                 path="/store/customer/account/changeforgotten/"
                 component={ResetPasswordScreen}
@@ -99,7 +103,7 @@ function App(props) {
             </Switch>
           </div>
         </div>
-        <Footer />
+        {/* <Footer /> */}
       </>
 
       <div className="menu-mask" onClick={handleCloseSidebar}></div>

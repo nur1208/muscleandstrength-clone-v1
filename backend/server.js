@@ -26,6 +26,9 @@ app.use(formData.parse());
 app.use(express.urlencoded());
 
 // app.use(express.static("public"));
+
+app.use(express.static("backend/view"));
+
 app.use("/api/image", imageRouter);
 
 app.use("/api/review", reviewRouter);

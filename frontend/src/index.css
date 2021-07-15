@@ -7,6 +7,7 @@ html {
   margin: 0;
 }
 body {
+  background-color: #f5f5f5;
   padding: 0;
   margin: 0;
   overflow-x: hidden;
@@ -245,6 +246,10 @@ footer
   background-color: #003966 !important;
   margin: 0 !important;
   border: 0 !important;
+}
+
+.mm-page:after {
+  clear: both;
 }
 img {
   border: 0;
@@ -500,9 +505,9 @@ select {
 [type="month"],
 [type="number"],
 [type="password"],
-[type="search"],
+/* [type="search"], */
 [type="tel"],
-[type="text"],
+/* [type="text"], */
 [type="time"],
 [type="url"],
 [type="week"],
