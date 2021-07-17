@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ErrorsMainContainer = styled.div`
   margin-left: 1.17em;
-  display: none;
+  display: ${(props) => (props.hasError ? "block" : "none")};
 `;
 
 export const Message = styled.ul`

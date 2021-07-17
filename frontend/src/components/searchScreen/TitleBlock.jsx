@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import {
   BaseText,
@@ -13,6 +14,8 @@ import {
 } from "../../styledComponents/searchScreen/TitleBlockSC";
 
 export const TitleBlock = () => {
+  const productSearch = useSelector((state) => state.productSearch);
+  const { query } = productSearch;
   return (
     <TitleBlockGrid id="TitleBlockGrid">
       <BoxBreadcrumbs id="BoxBreadcrumbs">
@@ -26,7 +29,7 @@ export const TitleBlock = () => {
           >
             Home
           </Link>{" "}
-          &gt; Search results for: 'The Ripper'
+          &gt; Search results for: '{query}'
         </Breadcrumb>
       </BoxBreadcrumbs>
 

@@ -122,4 +122,35 @@ productsRouter.post(
   })
 );
 
+productsRouter.get(
+  "/search/numOfProducts/:productName",
+  expressAsyncHandler(async (req, res) => {
+    const numOfProducts = await Product.countDocuments({
+      name: { $regex: req.params.productName, $options: "i" },
+    });
+
+    res.send({ numOfProducts });
+  })
+);
+
+productsRouter.get(
+  "/search/:productName/:limit",
+  expressAsyncHandler(async (req, res) => {
+    const products = await Product.find(
+      {
+        name: { $regex: req.params.productName, $options: "i" },
+      },
+      null,
+      { limit: Number(req.params.limit) }
+    );
+    if (products.length !== 0) {
+      res.send({ products });
+    } else {
+      res.status(404).send({
+        message: `products with '${req.params.productName}' name is not exist in the database`,
+      });
+    }
+  })
+);
+
 export default productsRouter;

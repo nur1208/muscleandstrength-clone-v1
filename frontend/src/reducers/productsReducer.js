@@ -5,6 +5,10 @@ import {
   PRODUCT_GET_ONE_FAIL,
   PRODUCT_GET_ONE_REQUEST,
   PRODUCT_GET_ONE_SUCCESS,
+  PRODUCT_SEARCH_FAIL,
+  PRODUCT_SEARCH_GET_NUM_SUCCESS,
+  PRODUCT_SEARCH_REQUEST,
+  PRODUCT_SEARCH_SUCCESS,
   PRODUCT_TOP_DEALS_FAIL,
   PRODUCT_TOP_DEALS_REQUEST,
   PRODUCT_TOP_DEALS_SUCCESS,
@@ -61,6 +65,37 @@ export const productAddReducer = (state = {}, action) => {
         loading: false,
         success: false,
         error: action.payload,
+      };
+    default:
+      return state;
+  }
+};
+
+export const productSearchReducer = (state = {}, action) => {
+  switch (action.type) {
+    case PRODUCT_SEARCH_REQUEST:
+      return { ...state, loading: true, error: false };
+    case PRODUCT_SEARCH_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        success: true,
+        products: action.payload.data.products,
+        query: action.payload.quey,
+        error: false,
+      };
+    case PRODUCT_SEARCH_FAIL:
+      return {
+        ...state,
+        loading: false,
+        success: false,
+        error: action.payload,
+      };
+
+    case PRODUCT_SEARCH_GET_NUM_SUCCESS:
+      return {
+        ...state,
+        numOfProducts: action.payload,
       };
     default:
       return state;

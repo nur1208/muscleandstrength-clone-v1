@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import {
   StoreControl,
   StoreControlLink,
@@ -7,6 +8,8 @@ import {
 } from "../../styledComponents/searchScreen/storeControlSC";
 
 export const StoreControlComp = ({ noPadding }) => {
+  const productSearch = useSelector((state) => state.productSearch);
+  const { products } = productSearch;
   return (
     <StoreControl id="StoreControl" noPadding={noPadding}>
       <ul>
@@ -18,7 +21,9 @@ export const StoreControlComp = ({ noPadding }) => {
               href="https://www.muscleandstrength.com/store/search?q=The+Ripper"
             >
               <span class="store-control__link__title">Store</span>
-              <span class="store-control__link__count">(1)</span>
+              <span class="store-control__link__count">
+                ({products.length})
+              </span>
             </StoreControlLink>
           </li>
           <ToggleSwitch id="ToggleSwitch">
@@ -35,7 +40,7 @@ export const StoreControlComp = ({ noPadding }) => {
               href="https://www.muscleandstrength.com/store/search/articles?q=The+Ripper"
             >
               <span class="store-control__link__title">Articles</span>
-              <span class="store-control__link__count">(1)</span>
+              <span class="store-control__link__count">(0)</span>
             </StoreControlLink>
           </li>
         </ul>

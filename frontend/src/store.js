@@ -15,6 +15,7 @@ import {
 import {
   productAddReducer,
   productGetOneReducer,
+  productSearchReducer,
   productsReducer,
 } from "./reducers/productsReducer";
 import {
@@ -64,6 +65,9 @@ const initialState = {
       ? JSON.parse(localStorage.getItem("userInputProducts"))
       : {},
   },
+  productSearch: {
+    products: [],
+  },
 };
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -88,6 +92,7 @@ const reducer = combineReducers({
   reportAdd: reportAddReducer,
   AdminUploadingImage: AdminUploadingImageReducer,
   adminSaveUserInputProducts: adminSaveUserInputProductsR,
+  productSearch: productSearchReducer,
 });
 
 const store = createStore(

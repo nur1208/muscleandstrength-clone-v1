@@ -141,3 +141,12 @@ GET http://localhost:5000/api/review/helpfulness/5fef1d35db624d3258c938c7/603cd9
 ###
 
 DELETE   http://localhost:5000/api/review/helpfulness/60898e58da037f11d834b77a
+
+###
+
+GET  http://localhost:5000/api/products/search/JNX/18
+
+
+###
+
+GET http://localhost:5000/api/products/search/numOfProducts/JNs

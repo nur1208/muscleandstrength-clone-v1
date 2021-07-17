@@ -6,6 +6,7 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import store from "./store";
+import { BrowserRouter } from "react-router-dom";
 // import "./styles/home.css";
 // import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -15,7 +16,9 @@ ReactDOM.render(
   <React.StrictMode>
     <HelmetProvider>
       <Provider store={store}>
-        <App />
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
       </Provider>
     </HelmetProvider>
   </React.StrictMode>,

@@ -2,7 +2,7 @@
 // import { useSelector } from "react-redux";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, useLocation } from "react-router-dom";
 import { closeDialogLogin } from "./actions/dialogLoginActions";
 import { closeSidebar } from "./actions/sidebarAction";
 import { Footer } from "./components/footer/Footer";
@@ -53,8 +53,13 @@ function App(props) {
     setShowModal(isDialogOpen !== undefined && success);
   }, [isDialogOpen, success]);
 
+  const location = useLocation();
+
+  useEffect(() => {
+    console.log(location);
+  }, [location]);
   return (
-    <BrowserRouter>
+    <>
       <>
         <MessageModal
           showModal={showModal}
@@ -68,7 +73,7 @@ function App(props) {
           <div id="page">
             <Region />
             <Header />
-            {/* <NavBlock /> */}
+            {location.pathname !== "/store/search" && <NavBlock />}
             <Switch>
               <Route path="/dome" component={AppDome} />
               <Route path="/admin" component={AdminScreen} />
@@ -103,7 +108,8 @@ function App(props) {
             </Switch>
           </div>
         </div>
-        {/* <Footer /> */}
+        {/* <Footer />
+         */}
       </>
 
       <div className="menu-mask" onClick={handleCloseSidebar}></div>
@@ -117,7 +123,7 @@ function App(props) {
           ></div>
         </>
       )}
-    </BrowserRouter>
+    </>
   );
 }
 

@@ -19,20 +19,15 @@ import {
 } from "../../styledComponents/searchScreen/productSC";
 import { RatingStars } from "../RatingStars";
 
-export const Product = () => {
+export const Product = ({ image, name, rating, numReviews, price }) => {
   return (
     <ProductWrapper id="ProductWrapper">
       <InnerWrap id="InnerWrap">
         <ImageWrap id="ImageWrap">
-          <img
-            src="/images/the-ripper-blue-raspberry-30-serve.webp"
-            alt="the-ripper-blue-raspberry-30-serve"
-          />
+          <img src={image} alt="the-ripper-blue-raspberry-30-serve" />
         </ImageWrap>
         <ProductInfo id="ProductInfo" href="/store/ripper.html">
-          <ProductName id="ProductName">
-            JNX Sports The Ripper, 30 Servings{" "}
-          </ProductName>
+          <ProductName id="ProductName">{name} </ProductName>
           <ProductDeal
             id="ProductDeal"
             href="/store/ripper.html"
@@ -44,17 +39,17 @@ export const Product = () => {
             </Deal>
           </ProductDeal>
           <ProductRating id="ProductRating">
-            <RatingStars ratingPercentage={94} />
-            <ReviewCount id="ReviewCount">(829)</ReviewCount>
+            <RatingStars ratingPercentage={rating} />
+            <ReviewCount id="ReviewCount">({numReviews})</ReviewCount>
           </ProductRating>
           <ProductPrice id="ProductPrice">
-            <BeforeDiscount id="BeforeDiscount">
+            {/* <BeforeDiscount id="BeforeDiscount">
               <Price id="Price" isDiscount={true}>
                 €27.76
               </Price>
-            </BeforeDiscount>
+            </BeforeDiscount> */}
             <RegularPrice id="RegularPrice">
-              <Price id="Price">€15.61</Price>
+              <Price id="Price">€{price}</Price>
             </RegularPrice>
             <Stock id="Stock">IN STOCK</Stock>
           </ProductPrice>
