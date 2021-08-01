@@ -1,5 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { deleteCartItem, updateQtyCartItem } from "../../actions/cartActions";
+import {
+  Loader,
+  LoaderBlock,
+} from "../../styledComponents/searchScreen/catalogListingSC";
 
 const CartItemWrap = styled.div`
   grid-template-columns: 25% auto 72px;
@@ -37,6 +44,10 @@ const BoxImage = styled.div`
       width: 90%;
       max-width: 115px;
     }
+    :hover {
+      opacity: 0.9;
+      transition: opacity 0.3s ease-in-out;
+    }
   }
 `;
 
@@ -48,6 +59,10 @@ const BoxInfo = styled.div`
 const ProductName = styled.span`
   color: #059;
   display: block;
+
+  a:hover {
+    color: #0687e6;
+  }
 `;
 
 const Price = styled.span`
@@ -80,6 +95,14 @@ const BoxQuantity = styled.div`
     margin-bottom: 0;
   }
 
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+  }
+
   input {
     margin: 0;
     overflow: visible;
@@ -94,7 +117,9 @@ const BoxQuantity = styled.div`
     padding: 0;
     width: 37px;
     display: inline-block;
-
+    -webkit-appearance: none;
+    margin: 0;
+    -moz-appearance: textfield;
     @media (min-width: 600px) {
       /* padding: 0 10px; */
       line-height: 30px;
@@ -232,24 +257,55 @@ export const CartItem = ({
   subtotal,
   freeProductName,
   hasBottomBorder,
+  cartItemId,
+  isLoadings,
+  setIsLoadings,
+  index,
+  productId,
+  productType,
 }) => {
+  const [qtyState, setQtyState] = useState(qty ? qty : 0);
   const priceFormatter = (price) => {
     return price === "FREE" ? price : `€${price}`;
   };
+
+  const cart = useSelector((state) => state.cart);
+  const { idLoading, deletedIdLoading } = cart;
+
+  const dispatch = useDispatch(null);
+
+  const handleUpdateQty = () => {
+    if (qtyState !== qty) {
+      if (Number(qtyState) !== 0) {
+        dispatch(updateQtyCartItem(cartItemId, qtyState));
+      } else {
+        dispatch(deleteCartItem(cartItemId));
+      }
+    } else console.log("sorry qty haven't change yet");
+
+    // console.log(`update QTY to ${qtyState}`);
+  };
+
+  const handleDeleteCartItem = () => {
+    dispatch(deleteCartItem(cartItemId));
+  };
+
   return (
     <CartItemWrap id="CartItemWrap" hasBottomBorder={hasBottomBorder}>
       <BoxImage id="BoxImage">
-        <a href="#somewhere">
+        <Link to={`/store/${productId}`}>
           <img
             src="/images/the-ripper-blood-orange-30-serve.jpg"
             alt="the-ripper-blood-orange-30-serve.jpg"
           />
-        </a>
+        </Link>
       </BoxImage>
 
       <BoxInfo id="BoxInfo">
         <ProductName id="ProductName">
-          <a href="#somewhere">{name}</a>
+          <Link to={`/store/${productId}`}>{`${name} ${
+            productType ? "- " + productType : ""
+          }`}</Link>
         </ProductName>
         <Price id="Price">{priceFormatter(price)}</Price>
       </BoxInfo>
@@ -277,13 +333,35 @@ export const CartItem = ({
         </div>
       </BoxPrice>
       <BoxQuantity id="BoxQuantity">
-        <input type="number" size="2" maxlength="3" value={qty} />
+        <input
+          type="number"
+          size="2"
+          maxlength="3"
+          value={qtyState}
+          onChange={(e) => setQtyState(e.target.value < 0 ? 0 : e.target.value)}
+        />
 
         {hasButton && (
           <>
-            <UpdateBtn id="UpdateBtn">Update Qty </UpdateBtn>
+            <UpdateBtn id="UpdateBtn" onClick={handleUpdateQty}>
+              Update Qty{" "}
+              <LoaderBlock
+                id="LoaderBlock"
+                isLoading={idLoading === cartItemId}
+              >
+                <Loader id="Loader" isBlue={true} />
+              </LoaderBlock>
+            </UpdateBtn>
 
-            <DeleteBtn id="DeleteBtn">Delete</DeleteBtn>
+            <DeleteBtn id="DeleteBtn" onClick={handleDeleteCartItem}>
+              Delete{" "}
+              <LoaderBlock
+                id="LoaderBlock"
+                isLoading={deletedIdLoading === cartItemId}
+              >
+                <Loader id="Loader" isBlue={true} />
+              </LoaderBlock>
+            </DeleteBtn>
           </>
         )}
       </BoxQuantity>

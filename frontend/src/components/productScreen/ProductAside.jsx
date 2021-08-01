@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { AiOutlineQuestionCircle } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
-import { addProduct } from "../../actions/productsAction";
+import { useHistory } from "react-router-dom";
+import { addToCart } from "../../actions/cartActions";
 import { items } from "../../data/groupOne";
 import { items2 } from "../../data/groupTwo";
 import { items3 } from "../../data/Nutrition";
+import {
+  Loader,
+  LoaderBlock,
+} from "../../styledComponents/searchScreen/catalogListingSC";
 import { CustomSelect } from "./CustomSelect";
 import { Group } from "./Group";
 
@@ -15,10 +20,26 @@ export const ProductAside = () => {
 
   const dispatch = useDispatch(null);
 
+  const [favors, setFavors] = useState(null);
+  const [isAdded, setIsAdded] = useState(false);
+
+  const history = useHistory();
+
   const productOne = useSelector((state) => state.productOne);
   const {
-    product: { buyingOption, directions, warning, nutritionInfo },
+    product: {
+      buyingOption,
+      directions,
+      warning,
+      nutritionInfo,
+      _id: productId,
+    },
   } = productOne;
+
+  const cart = useSelector((state) => state.cart);
+  const { loading, success } = cart;
+
+  const userSingIn = useSelector((state) => state.userSingIn);
 
   const product = {
     name: "JNX Sports The Ripper",
@@ -315,9 +336,20 @@ export const ProductAside = () => {
     nutritionInfo: { items: items3 },
   };
 
-  const handleAddProduct = (e) => {
+  const handleAddToCart = (e) => {
     e.preventDefault();
-    dispatch(addProduct(product));
+    // console.log(userSingIn);
+    const userId = userSingIn.userInfo && userSingIn.userInfo._id;
+    // console.log({ userId, productId });
+
+    if (favors) {
+      const productType = "30 Servings " + favors.title;
+      const quantity = favors.quantity;
+      console.log({ productType, quantity: favors.quantity });
+      dispatch(addToCart(userId, productId, quantity, productType));
+      setIsAdded(true);
+    }
+    // dispatch(addProduct(product));
   };
   const [nurtIndex, setnurtIndex] = useState(0);
 
@@ -335,6 +367,14 @@ export const ProductAside = () => {
   useEffect(() => {
     nurt && setNurt(nutritionInfo.items[nurtIndex].nutrition);
   }, [nurtIndex, nutritionInfo]);
+
+  useEffect(() => {
+    // if cartItem add successfully to the cart
+    if (success && isAdded) {
+      // setIsAdded(false);
+      history.push("/store/cart");
+    }
+  }, [history, success]);
 
   return (
     <div className="aside aside-after">
@@ -354,8 +394,9 @@ export const ProductAside = () => {
                       title={option.title}
                       servingInfo={option.servingINfo}
                       deal={option.deal && option.deal.title}
-                      favors={option.favors}
+                      // favors={option.favors}
                       items={option.items}
+                      setFavors={option.title === "30 Servings" && setFavors}
                     />
                   ))}
                 {/* <Group
@@ -385,12 +426,12 @@ export const ProductAside = () => {
                   <button
                     className="btn btn-lg btn-submit"
                     // onclick="productAddToCartForm.submit(this, event); return false;"
-                    onClick={handleAddProduct}
+                    onClick={handleAddToCart}
                   >
                     Add to Cart
-                    <span className="css-loader-block">
-                      <span className="css-loader"></span>
-                    </span>
+                    <LoaderBlock id="LoaderBlock" isLoading={loading}>
+                      <Loader id="Loader" />
+                    </LoaderBlock>
                   </button>
                 </div>
               </div>

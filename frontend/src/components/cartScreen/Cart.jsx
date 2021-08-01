@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { CartItem } from "./CartItem";
 import { CartLabels } from "./CartLabels";
@@ -31,36 +32,53 @@ const BlueBordered = styled.h1`
 `;
 
 export const Cart = () => {
-  const cartItems = [
-    {
-      name: "JNX Sports The Ripper - 30 Servings Blood Orange",
-      price: 27.86,
-      hasButton: true,
-      subtotal: 27.86,
-      qty: 1,
-    },
-    {
-      name: "JNX Sports The Ripper - 30 Servings Blood Orange",
-      price: "FREE",
-      subtotal: "FREE",
-      qty: 1,
-      message: "Buy 1 Get 1 FREE ",
-      freeProductName: "1 x JNX Sports The Ripper - 30 Servings Blood Orange",
-    },
-  ];
+  // const [cartItems, setCartItems] = useState([]);
+  const cart = useSelector((state) => state.cart);
+  const { cartItems } = cart;
+
+  const [isLoadings, setIsLoadings] = useState([]);
+
+  useEffect(() => {
+    if (cartItems) {
+      setIsLoadings(Array(cartItems.length).fill(false));
+    }
+  }, [cartItems]);
 
   return (
     <div>
       <CartForm id="CartForm">
         <CartWrap id="CartWrap">
           <CartLabels />
-          {cartItems.map((item, index) => (
-            <CartItem
-              key={index}
-              {...item}
-              hasBottomBorder={index + 1 !== cartItems.length}
-            />
-          ))}
+          {cartItems &&
+            cartItems.map((item, index) => {
+              if (item.product) {
+                const {
+                  quantity,
+                  _id: cartItemId,
+                  product: { name, price, _id: productId },
+                  productType,
+                } = item;
+                return (
+                  <CartItem
+                    productId={productId}
+                    key={cartItemId}
+                    cartItemId={cartItemId}
+                    // {...item}
+                    productType={productType}
+                    price={price}
+                    name={name}
+                    isLoadings={isLoadings}
+                    setIsLoadings={setIsLoadings}
+                    qty={quantity}
+                    subtotal={quantity * price}
+                    hasButton={true}
+                    hasBottomBorder={index + 1 !== cartItems.length}
+                    index={index}
+                  />
+                );
+              }
+              return null;
+            })}
         </CartWrap>
       </CartForm>
       <BlueBordered id="BlueBordered">Limited Time Price Cuts</BlueBordered>

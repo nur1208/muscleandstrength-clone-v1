@@ -26,6 +26,7 @@ import {
 } from "./reducers/reviewRdeucer";
 
 import { sliderReducer } from "./reducers/sliderReducer";
+import { cartReducer } from "./reducers/cartReucers";
 
 const initialState = {
   userSingIn: {
@@ -93,6 +94,7 @@ const reducer = combineReducers({
   AdminUploadingImage: AdminUploadingImageReducer,
   adminSaveUserInputProducts: adminSaveUserInputProductsR,
   productSearch: productSearchReducer,
+  cart: cartReducer,
 });
 
 const store = createStore(

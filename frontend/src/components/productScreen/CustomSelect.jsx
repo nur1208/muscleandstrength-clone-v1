@@ -6,6 +6,9 @@ export const CustomSelect = ({
   maxH,
   getSelectIndex,
   stopSelected,
+  setSelectedFIndex,
+  setQyt,
+  qty,
 }) => {
   const [sodList, setSodList] = useState("sod_list");
   const [sodListWrapper, setSodListWrapper] = useState("sod_list_wrapper");
@@ -67,7 +70,11 @@ export const CustomSelect = ({
       } else if (index === i && !item.includes(style)) {
         item = item + " " + style;
         if (style === "selected") {
-          if (!stopSelected) setSelected({ index: i, value: v });
+          if (!stopSelected) {
+            setSelected({ index: i, value: v });
+            setSelectedFIndex(i);
+            if (i !== 0 && qty === 0) setQyt(1);
+          }
         }
       }
       return item;

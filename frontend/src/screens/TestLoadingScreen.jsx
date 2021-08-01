@@ -1,7 +1,7 @@
 import React from "react";
 
 export const TestLoadingScreen = () => {
-  require("../styles/testLoadingScreen.css");
+  // require("../styles/testLoadingScreen.css");
   return (
     <>
       <table width="100%" height="100%" cellPadding="20">

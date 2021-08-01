@@ -48,7 +48,7 @@ export const LoaderBlock = styled.span`
   top: 50%;
   transform: translateY(-50%);
   position: absolute;
-  display: none;
+  display: ${(props) => (props.isLoading ? "block" : "none")};
   z-index: 10;
 `;
 
@@ -71,7 +71,7 @@ export const Loader = styled.span`
   position: relative;
   text-indent: -9999em;
   border: 4px solid rgba(255, 255, 255, 0.3);
-  border-left-color: #fff;
+  border-left-color: ${(props) => (props.isBlue ? "#059" : "#fff")};
   transform: translateZ(0);
   animation: 1.1s linear infinite load8;
 `;

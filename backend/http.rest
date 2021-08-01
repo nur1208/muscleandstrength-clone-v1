@@ -150,3 +150,41 @@ GET  http://localhost:5000/api/products/search/JNX/18
 ###
 
 GET http://localhost:5000/api/products/search/numOfProducts/JNs
+
+###
+
+POST http://localhost:5000/api/store/cart/
+Content-Type: application/json
+
+{
+  "productId":"603cd94f39e7893b1cb3e4ed",
+  "userId":"5fef1d35db624d3258c938c7", 
+  "quantity":"4",
+  "productType":"30 Servings Blood Orange"
+}
+
+###
+
+GEt http://localhost:5000/api/store/cart/5fef1d35db624d3258c938c7
+
+###
+
+PUT http://localhost:5000/api/store/cart/quantity
+Content-Type: application/json
+
+{
+  "cartItemId":"60fe4fcaf2135b32b8c8c7c3",
+  "qty":"30"
+}
+
+
+### 
+
+
+DELETE  http://localhost:5000/api/store/cart
+Content-Type: application/json
+
+{
+  "cartItemId":"60fe4fcaf2135b32b8c8c7c3"
+ 
+}

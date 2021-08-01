@@ -31,3 +31,13 @@ helpfulness: (helpfulness is bridge table between user and review)
     userId : user.id
     productId: product.id
     isHelpful : boolean (the default value is false)
+
+cartItem:
+    _id: objectId
+    productId: product._id
+    quantity: number
+
+cart: 
+    _id: objectId
+    cartItemId: _id[]
+    userId: _id
