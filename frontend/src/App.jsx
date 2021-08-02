@@ -30,6 +30,7 @@ import { AppIU } from "./components/test/testImagesUploading/AppIU";
 import { SearchScreen } from "./screens/SearchScreen";
 import { AppDome } from "./components/dome/AppDome";
 import { CartScreen } from "./screens/CartScreen";
+import { FooterV2 } from "./components/FooterV2";
 // import "./styles/home.css";
 
 function App(props) {
@@ -110,8 +111,8 @@ function App(props) {
             </Switch>
           </div>
         </div>
-        {/* <Footer />
-         */}
+        <Footer />
+        {/* <FooterV2 /> */}
       </>
 
       <div className="menu-mask" onClick={handleCloseSidebar}></div>

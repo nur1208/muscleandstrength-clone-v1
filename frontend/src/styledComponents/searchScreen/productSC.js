@@ -163,8 +163,8 @@ export const Stock = styled.div`
 `;
 
 export const ViewBtn = styled.div`
-  display: flex;
-  justify-content: center;
+  /* display: flex;
+  justify-content: center; */
   font-size: 18px;
   font-weight: 700;
   color: #059;

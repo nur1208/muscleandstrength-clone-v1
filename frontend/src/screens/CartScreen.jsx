@@ -24,7 +24,7 @@ export const CartScreen = () => {
       <Helmet>
         <title>Shopping Cart</title>
       </Helmet>
-      <MainContent>
+      <MainContent id="MainContent">
         {isCartEmpty ? <CartEmpty /> : <CartContainer />}
       </MainContent>
     </MainWrap>

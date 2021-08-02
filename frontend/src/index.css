@@ -42,6 +42,15 @@ body.menu-open .menu-mask {
   --transition: all 0.3s linear;
   --max-width: 1170px;
 }
+
+input[type="number"],
+input[type="text"] {
+  -webkit-appearance: none;
+}
+
+input[type="text"]:focus {
+  outline: none;
+}
 #page {
   background-color: #fff;
   position: relative;

@@ -26,7 +26,8 @@ export const Search = () => {
       >
         <input
           id="search--desktop"
-          type="search"
+          // type="search"
+          type="text"
           placeholder="Search products, brands, workouts..."
           autoComplete="off"
           value={searchInput}

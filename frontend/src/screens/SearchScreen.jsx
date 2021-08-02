@@ -16,7 +16,7 @@ export const SearchScreen = () => {
     <SearchMainContainer>
       <TitleBlock />
 
-      <MainWrapper id="MainWrapper" style={{ height: "100vh" }}>
+      <MainWrapper id="MainWrapper">
         <AllProducts id="AllProducts">All Products</AllProducts>
         <Col2Container id="Col2Container">
           <LeftSide id="LeftSide">

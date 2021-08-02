@@ -15,7 +15,10 @@ export const Toolbar = styled.div`
   display: block;
 `;
 
-export const ViewMoreWrap = styled.div``;
+export const ViewMoreWrap = styled.div`
+  display: flex;
+  justify-content: center;
+`;
 
 export const ViewMore = styled.button`
   background-color: #059;

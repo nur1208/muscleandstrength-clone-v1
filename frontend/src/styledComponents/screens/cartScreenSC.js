@@ -27,7 +27,6 @@ export const MainContent = styled.div`
   font-family: nimbusnovus, sans-serif;
 
   width: 95%;
-  height: 100vh;
   padding-left: 2.5%;
   padding-right: 2.5%;
   padding: 0 15px;

@@ -2,6 +2,7 @@ import React from "react";
 import { FaIdeal, FaGlassMartini } from "react-icons/fa";
 import { MdDateRange } from "react-icons/md";
 import { AiFillPhone } from "react-icons/ai";
+import { LogoV2 } from "../footerV2/LogoV2";
 export const PerksFooter = () => {
   const links = [
     {
@@ -41,11 +42,7 @@ export const PerksFooter = () => {
     <div className="perks-footer">
       <div className="max-wrap">
         <div className="main-text">
-          The{" "}
-          <span className="logo">
-            <img src="/images/logo.png" alt="logo.png" />
-          </span>{" "}
-          Difference
+          The <LogoV2 /> Difference
         </div>
         <div className="text-block-wrap">
           {links.map((link, index) => {
