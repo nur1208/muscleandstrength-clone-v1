@@ -7,6 +7,7 @@ import userRouter from "./routers/userRouters.js";
 import formData from "express-form-data";
 import dotenv from "dotenv";
 import cartRouter from "./routers/cartRouter.js";
+import brandRouter from "./routers/brandRouter.js";
 dotenv.config();
 const app = express();
 app.use(express.json());
@@ -28,6 +29,8 @@ app.use(express.urlencoded());
 // app.use(express.static("public"));
 
 app.use(express.static("backend/view"));
+
+app.use("/api/store/brand", brandRouter);
 
 app.use("/api/store/cart", cartRouter);
 

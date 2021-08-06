@@ -13,7 +13,7 @@ import {
   TitleBlockGrid,
 } from "../../styledComponents/searchScreen/TitleBlockSC";
 
-export const TitleBlock = () => {
+export const TitleBlock = ({ path, title }) => {
   const productSearch = useSelector((state) => state.productSearch);
   const { query } = productSearch;
   return (
@@ -29,7 +29,7 @@ export const TitleBlock = () => {
           >
             Home
           </Link>{" "}
-          &gt; Search results for: '{query}'
+          {path ? path : `&gt; Search results for: '${query ? query : " "}'`}
         </Breadcrumb>
       </BoxBreadcrumbs>
 
@@ -53,7 +53,7 @@ export const TitleBlock = () => {
           </div>
         </FreeShippingBlock>
       </BoxFreeShipping>
-      <BoxTitle>Search Results</BoxTitle>
+      <BoxTitle>{title ? title : "Search Results"}</BoxTitle>
     </TitleBlockGrid>
   );
 };

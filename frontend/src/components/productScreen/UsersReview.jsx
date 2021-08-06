@@ -23,9 +23,9 @@ export const UsersReview = ({ viewMore, hasViewAll }) => {
   const { review: newReview } = reviewAdd;
 
   const userSingIn = useSelector((state) => state.userSingIn);
-  const {
-    userInfo: { _id: userId },
-  } = userSingIn;
+  // const {
+  //   userInfo: { _id: userId },
+  // } = userSingIn;
 
   const dispatch = useDispatch(null);
 
@@ -38,8 +38,10 @@ export const UsersReview = ({ viewMore, hasViewAll }) => {
     //  change the limit the viewMore passed  value for example in ReviewScreen
     // viewMore value is 50 not 10.
     if (limit !== viewMore) dispatch(getAllReviews(productId, viewMore));
-
-    dispatch(getHelpfulness(userId, productId));
+    const userId = userSingIn && userSingIn._id;
+    if (userId) {
+      dispatch(getHelpfulness(userId, productId));
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

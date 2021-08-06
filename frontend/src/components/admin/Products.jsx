@@ -14,7 +14,6 @@ import {
   ButtonF,
 } from "./styledComp";
 import { FaImage } from "react-icons/fa";
-
 import { Form, Button, Table } from "react-bootstrap";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -25,6 +24,7 @@ import {
 } from "../../actions/userActions";
 import { useEffect } from "react";
 import { addProduct } from "../../actions/productsAction";
+import { Select, FormLabel, FormControl } from "@chakra-ui/react";
 
 export const Products = ({ isSidebarOpen }) => {
   const adminSaveUserInputProducts = useSelector(
@@ -42,6 +42,10 @@ export const Products = ({ isSidebarOpen }) => {
   );
   const [description, setDescription] = useState(
     userInput.description ? userInput.description : ""
+  );
+
+  const [direction, setDirection] = useState(
+    userInput.directions ? userInput.directions : ""
   );
   const [waring, setWaring] = useState(
     userInput.waring ? userInput.waring : ""
@@ -111,6 +115,7 @@ export const Products = ({ isSidebarOpen }) => {
   // }, []);
 
   const handleInput = (e, f) => {
+    console.log(brand);
     f(e.target.value);
   };
 
@@ -123,6 +128,7 @@ export const Products = ({ isSidebarOpen }) => {
         qty,
         category,
         description,
+        directions: direction,
         waring,
         ingredient,
         features,
@@ -155,6 +161,7 @@ export const Products = ({ isSidebarOpen }) => {
     brand,
     category,
     description,
+    direction,
     dispatch,
     extraInfo,
     features,
@@ -175,6 +182,7 @@ export const Products = ({ isSidebarOpen }) => {
     setQty(0);
     setCategory("");
     setDescription("");
+    setDirection("");
     setWaring("");
     setIngredient("");
     setFeatures([]);
@@ -208,7 +216,7 @@ export const Products = ({ isSidebarOpen }) => {
     },
     {
       title: "brand",
-      type: "text",
+      type: "select",
       placeholder: "Enter product brand",
       onChangeFunction: setBrand,
       value: brand,
@@ -235,6 +243,14 @@ export const Products = ({ isSidebarOpen }) => {
       placeholder: "Enter product description",
       onChangeFunction: setDescription,
       value: description,
+    },
+    {
+      title: "direction",
+      type: "",
+      as: "textarea",
+      placeholder: "Enter product directions (if exist)",
+      onChangeFunction: setDirection,
+      value: direction,
     },
     {
       title: "warning",
@@ -295,6 +311,7 @@ export const Products = ({ isSidebarOpen }) => {
         qty,
         category,
         description,
+        direction,
         waring,
         ingredient,
         features,
@@ -324,38 +341,54 @@ export const Products = ({ isSidebarOpen }) => {
       <ProductInputW id="ProductInputW">
         <Form>
           <FormWrapper>
-            {formGroups.map((item, index) => (
-              <Form.Group controlId="formBasicProductName" key={index}>
-                <Form.Label>{item.title}:</Form.Label>
-                <Form.Control
-                  type={item.type}
-                  placeholder={item.placeholder}
-                  as={item.as}
-                  onChange={(e) => handleInput(e, item.onChangeFunction)}
-                  value={item.value === 0 ? "" : item.value}
-                />
-                {item.hasButton && (
-                  <>
-                    <ul>
-                      {features.map(
-                        (
-                          feature,
-                          index ////
-                        ) => (
-                          <FeatureWrapper>
-                            <li key={index}>- {feature}</li>
-                            <ButtonF onClick={() => handleDeleteFeature(index)}>
-                              Delete
-                            </ButtonF>
-                          </FeatureWrapper>
-                        )
-                      )}
-                    </ul>
-                    <Button onClick={addOtherFeature}>add feature</Button>
-                  </>
-                )}
-              </Form.Group>
-            ))}
+            {formGroups.map((item, index) =>
+              item.type !== "select" ? (
+                <Form.Group controlId="formBasicProductName" key={index}>
+                  <Form.Label>{item.title}:</Form.Label>
+                  <Form.Control
+                    type={item.type}
+                    placeholder={item.placeholder}
+                    as={item.as}
+                    onChange={(e) => handleInput(e, item.onChangeFunction)}
+                    value={item.value === 0 ? "" : item.value}
+                  />
+                  {item.hasButton && (
+                    <>
+                      <ul>
+                        {features.map(
+                          (
+                            feature,
+                            index ////
+                          ) => (
+                            <FeatureWrapper>
+                              <li key={index}>- {feature}</li>
+                              <ButtonF
+                                onClick={() => handleDeleteFeature(index)}
+                              >
+                                Delete
+                              </ButtonF>
+                            </FeatureWrapper>
+                          )
+                        )}
+                      </ul>
+                      <Button onClick={addOtherFeature}>add feature</Button>
+                    </>
+                  )}
+                </Form.Group>
+              ) : (
+                <FormControl id="first-name">
+                  <FormLabel>Brand</FormLabel>
+
+                  <Select
+                    placeholder="Select Brand"
+                    onChange={(e) => handleInput(e, item.onChangeFunction)}
+                  >
+                    <option value="610a5df809f5dc1ab041e575">MuscleTech</option>
+                    <option value="-1">Other</option>
+                  </Select>
+                </FormControl>
+              )
+            )}
           </FormWrapper>
         </Form>
         <ImageWrapper id="ImageWrapper">

@@ -31,6 +31,7 @@ import { SearchScreen } from "./screens/SearchScreen";
 import { AppDome } from "./components/dome/AppDome";
 import { CartScreen } from "./screens/CartScreen";
 import { FooterV2 } from "./components/FooterV2";
+import { BrandScreen } from "./screens/BrandScreen";
 // import "./styles/home.css";
 
 function App(props) {
@@ -75,12 +76,14 @@ function App(props) {
           <div id="page">
             <Region />
             <Header />
-            {location.pathname !== "/store/search" && <NavBlock />}
+            {location.pathname !== "/store/search" &&
+              location.pathname !== "/store/brands" && <NavBlock />}
             <Switch>
               <Route path="/dome" component={AppDome} />
               <Route path="/admin" component={AdminScreen} />
               <Route path="/learn" component={FlexBox1} />
               <Route path="/test" component={AppPop2} />
+              <Route path="/store/brands" component={BrandScreen} />
               <Route path="/store/cart" component={CartScreen} />
               <Route path="/store/review" component={ReviewScreen} />
               <Route path="/store/search" component={SearchScreen} />
