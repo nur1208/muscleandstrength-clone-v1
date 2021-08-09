@@ -13,9 +13,8 @@ import {
 } from "../../styledComponents/searchScreen/catalogListingSC";
 import { Products } from "./Products";
 
-export const CatalogListing = () => {
-  const productSearch = useSelector((state) => state.productSearch);
-  const { loading, products, numOfProducts, query } = productSearch;
+export const CatalogListing = ({ catalogData }) => {
+  const { loading, products, numOfProducts, query } = catalogData;
   const dispatch = useDispatch(null);
   const leftProducts = numOfProducts - products.length;
 

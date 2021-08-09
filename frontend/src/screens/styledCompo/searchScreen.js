@@ -43,7 +43,7 @@ export const LeftSide = styled.aside`
   } ;
 `;
 
-export const AllProducts = styled.h2`
+export const ListProductsTitle = styled.h2`
   margin-bottom: 10px;
   position: relative;
   width: 100%;
@@ -61,7 +61,7 @@ export const AllProducts = styled.h2`
     margin-bottom: 15px;
   }
 
-  display: none;
+  /* display: none; */
 `;
 
 export const Content = styled.section`

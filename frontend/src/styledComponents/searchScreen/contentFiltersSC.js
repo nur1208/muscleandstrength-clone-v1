@@ -53,9 +53,22 @@ export const Option = styled.div`
   font-size: 13px;
   border-radius: 2px;
 
+  ${({ isActive }) =>
+    isActive &&
+    `background: #059;
+    padding: 0 12px;`}
+
   @media (min-width: 480px) {
     padding: 0 20px;
-  } ;
+  }
+
+  a {
+    ${({ isActive }) => (isActive ? `color: #fff;` : "color: #059;")}
+    cursor: pointer;
+
+    ${({ isActive }) =>
+      isActive && `font-family: nimbusnovus-medium, sans-serif;`}
+  }
 `;
 
 export const InnerWrap = styled.a`

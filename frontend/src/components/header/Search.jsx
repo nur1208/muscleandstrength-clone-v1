@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { getNumOfProducts, searchProducts } from "../../actions/productsAction";
+import {
+  getNumOfProducts,
+  searchProducts,
+} from "../../actions/productsAction";
 // import { push } from "react-router-dom";
 
 export const Search = () => {
@@ -14,7 +17,8 @@ export const Search = () => {
     dispatch(searchProducts(searchInput));
     dispatch(getNumOfProducts(searchInput));
     setSearchInput("");
-    history.push("/store/search");
+    // TODO DON'T FOR UNCOMMENT THE FOLLOWING:
+    // history.push("/store/search");
   };
 
   return (

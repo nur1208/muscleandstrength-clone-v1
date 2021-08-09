@@ -4,12 +4,19 @@ import { CatalogListing } from "./CatalogListing";
 import { HttpErrors } from "./HttpErrors";
 import { SearchInfoBar } from "./SearchInfoBar";
 
-export const ResultContent = () => {
+export const ResultContent = ({
+  catalogData,
+  isOptionsBtn,
+  showingTitle,
+}) => {
   return (
     <ResultContentWrap id="ResultContentWrap">
-      <SearchInfoBar />
+      <SearchInfoBar
+        isOptionsBtn={isOptionsBtn}
+        showingTitle={showingTitle}
+      />
       <HttpErrors />
-      <CatalogListing />
+      <CatalogListing catalogData={catalogData} />
     </ResultContentWrap>
   );
 };

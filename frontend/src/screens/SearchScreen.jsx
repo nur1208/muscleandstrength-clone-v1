@@ -1,37 +1,21 @@
 import React from "react";
-import {
-  MainWrapper,
-  Col2Container,
-  LeftSide,
-  AllProducts,
-  SearchMainContainer,
-  Content,
-} from "./styledCompo/searchScreen";
+import { useSelector } from "react-redux";
+import { ListProducts } from "../components/ListProducts";
 import { TitleBlock } from "../components/searchScreen/TitleBlock";
-import { MobileTabs } from "../components/searchScreen/MobileTabs";
-import { BlockNav } from "../components/searchScreen/BlockNav";
-import { ResultContent } from "../components/searchScreen/ResultContent";
+import { filters } from "../data/storeFilters";
+import { SearchMainContainer } from "./styledCompo/searchScreen";
 export const SearchScreen = () => {
+  const productSearch = useSelector((state) => state.productSearch);
   return (
     <SearchMainContainer>
       <TitleBlock />
 
-      <MainWrapper id="MainWrapper">
-        <AllProducts id="AllProducts">All Products</AllProducts>
-        <Col2Container id="Col2Container">
-          <LeftSide id="LeftSide">
-            <div>
-              <MobileTabs />
-              <div>
-                <BlockNav />
-              </div>
-            </div>
-          </LeftSide>
-          <Content id="Content">
-            <ResultContent />
-          </Content>
-        </Col2Container>
-      </MainWrapper>
+      <ListProducts
+        title="All Products"
+        isTitleDisable={true}
+        filtersData={filters}
+        catalogData={productSearch}
+      />
     </SearchMainContainer>
   );
 };

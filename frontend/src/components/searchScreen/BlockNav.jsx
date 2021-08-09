@@ -5,12 +5,12 @@ import {
 import { BlockSubtitle } from "./BlockSubtitle";
 import { ContentFilters } from "./ContentFilters";
 
-export const BlockNav = () => {
+export const BlockNav = ({ filtersData }) => {
   return (
     <BlockLayeredNav id="BlockLayeredNav">
       <BlockContent id="BlockContent">
         <BlockSubtitle />
-        <ContentFilters />
+        <ContentFilters filtersData={filtersData} />
       </BlockContent>
     </BlockLayeredNav>
   );

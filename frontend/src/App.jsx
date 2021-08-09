@@ -77,13 +77,13 @@ function App(props) {
             <Region />
             <Header />
             {location.pathname !== "/store/search" &&
-              location.pathname !== "/store/brands" && <NavBlock />}
+              location.pathname !== "/store/brand" && <NavBlock />}
             <Switch>
               <Route path="/dome" component={AppDome} />
               <Route path="/admin" component={AdminScreen} />
               <Route path="/learn" component={FlexBox1} />
               <Route path="/test" component={AppPop2} />
-              <Route path="/store/brands" component={BrandScreen} />
+              <Route path="/store/brand" component={BrandScreen} />
               <Route path="/store/cart" component={CartScreen} />
               <Route path="/store/review" component={ReviewScreen} />
               <Route path="/store/search" component={SearchScreen} />
