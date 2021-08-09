@@ -10,7 +10,8 @@ export const Slider = ({
 }) => {
   const [sliderItems] = useState(sliderData);
   const [index, setIndex] = useState(0);
-  const [isSelectedSlider, setIsSelectedSlider] = useState(false);
+  const [isSelectedSlider, setIsSelectedSlider] =
+    useState(false);
 
   const handleSelectedSlider = (index) => {
     setIndex(index);
@@ -49,9 +50,12 @@ export const Slider = ({
   return (
     <div className={sliderStyle}>
       <div className="slick-slider">
-        <div className={sectionCenterStyle || "section-center"}>
+        <div
+          className={sectionCenterStyle || "section-center"}
+        >
           {sliderItems.map((sliderItem, sliderIndex) => {
-            const { hrefValue, image, imagePhone } = sliderItem;
+            const { hrefValue, image, imagePhone } =
+              sliderItem;
 
             let position = "nextSlide";
             if (sliderIndex === index) {
@@ -59,13 +63,17 @@ export const Slider = ({
             }
             if (
               sliderIndex === index - 1 ||
-              (index === 0 && sliderIndex === sliderItems.length - 1)
+              (index === 0 &&
+                sliderIndex === sliderItems.length - 1)
             ) {
               position = "lastSlide";
             }
 
             return (
-              <article className={position} key={sliderIndex}>
+              <article
+                className={position}
+                key={sliderIndex}
+              >
                 <div className="nodeListWrapper">
                   <a href={hrefValue} className="nodeImg ">
                     {isPhone && hasPhoneImage ? (
@@ -105,9 +113,14 @@ export const Slider = ({
               isSlickActive = "slick-active";
             }
             return (
-              <li className={isSlickActive} key={activeIndex}>
+              <li
+                className={isSlickActive}
+                key={activeIndex}
+              >
                 <button
-                  onClick={() => handleSelectedSlider(activeIndex)}
+                  onClick={() =>
+                    handleSelectedSlider(activeIndex)
+                  }
                 ></button>
               </li>
             );

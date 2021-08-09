@@ -17,8 +17,7 @@ export const Search = () => {
     dispatch(searchProducts(searchInput));
     dispatch(getNumOfProducts(searchInput));
     setSearchInput("");
-    // TODO DON'T FOR UNCOMMENT THE FOLLOWING:
-    // history.push("/store/search");
+    history.push("/store/search");
   };
 
   return (

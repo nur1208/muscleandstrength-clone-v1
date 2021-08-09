@@ -1,4 +1,5 @@
 import React from "react";
+import { useMediaQuery } from "react-responsive";
 import { ResultContentWrap } from "../../styledComponents/searchScreen/resultContentSC";
 import { CatalogListing } from "./CatalogListing";
 import { HttpErrors } from "./HttpErrors";
@@ -9,12 +10,16 @@ export const ResultContent = ({
   isOptionsBtn,
   showingTitle,
 }) => {
+  const isLaptop = useMediaQuery({ minWidth: 840 });
+
   return (
     <ResultContentWrap id="ResultContentWrap">
-      <SearchInfoBar
-        isOptionsBtn={isOptionsBtn}
-        showingTitle={showingTitle}
-      />
+      {isLaptop && (
+        <SearchInfoBar
+          isOptionsBtn={isOptionsBtn}
+          showingTitle={showingTitle}
+        />
+      )}
       <HttpErrors />
       <CatalogListing catalogData={catalogData} />
     </ResultContentWrap>

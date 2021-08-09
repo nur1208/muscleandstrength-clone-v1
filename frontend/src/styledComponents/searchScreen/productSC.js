@@ -38,7 +38,23 @@ export const InnerWrap = styled.div`
 
   @media (min-width: 840px) {
     border-width: 15px;
-  } ;
+  }
+
+  @media (max-width: 839px) {
+    display: -ms-grid;
+    display: grid;
+    grid-gap: 0 14px;
+    -ms-grid-columns: 30% 14px auto;
+    grid-template-columns: 30% auto;
+    align-items: start;
+    -ms-grid-rows: auto 0 auto;
+    grid-template-areas:
+      "pictureG dynamicG"
+      "pictureG infoG";
+    height: 100%;
+    background-color: #fff;
+    position: relative;
+  }
 `;
 
 export const ImageWrap = styled.a`
@@ -51,6 +67,10 @@ export const ImageWrap = styled.a`
     padding: 0;
     text-align: center;
     display: block;
+  }
+
+  @media (max-width: 839px) {
+    grid-area: pictureG;
   }
 
   img {
@@ -70,7 +90,11 @@ export const ImageWrap = styled.a`
 export const ProductInfo = styled.div`
   @media (min-width: 840px) {
     padding-bottom: 7px;
-  } ;
+  }
+
+  @media (max-width: 839px) {
+    grid-area: dynamicG;
+  }
 `;
 
 export const ProductName = styled.a`
@@ -144,10 +168,13 @@ export const Price = styled.span`
   font-size: 16px;
   color: #d41313; */
 
-  text-decoration: ${(props) => (props.isDiscount ? "line-through" : null)};
-  font-size: ${(props) => (props.isDiscount ? "16px" : "18px")};
+  text-decoration: ${(props) =>
+    props.isDiscount ? "line-through" : null};
+  font-size: ${(props) =>
+    props.isDiscount ? "16px" : "18px"};
   font-family: nimbusnovus-bold, sans-serif;
-  color: ${(props) => (props.isDiscount ? "#d41313" : "#059 ")};
+  color: ${(props) =>
+    props.isDiscount ? "#d41313" : "#059 "};
 
   display: block;
 `;
@@ -169,6 +196,9 @@ export const ViewBtn = styled.div`
   font-weight: 700;
   color: #059;
   padding-bottom: 0;
+  @media (max-width: 839px) {
+    grid-area: infoG;
+  }
 
   a {
     cursor: pointer;
