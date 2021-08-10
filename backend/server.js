@@ -14,7 +14,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 // process global
 mongoose.connect(
-  process.env.MONGO || "mongodb://localhost/muscleandstrength-v1",
+  process.env.MONGO ||
+    "mongodb://localhost/muscleandstrength-v1",
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,

@@ -33,35 +33,19 @@ create footContact comp
  crate footLine comp
    parameters links:[{relValue, hrefValue, text, targetValue, classValue}] rel="noreferrer"
 TODO change the background color of region's based on image color
-TODO (not important) make NavBlock dynamic  
 TODO find package that can change the price based on user country.
 TODO make TodaysDeals more dynamic and after building DealsScreen get the info from there.
-TODO (not important) fix cursors style in login popup window.
-TODO (not important) clean up Modal comp.
-TODO (not important) move HomeScreen and StoreScreen and LoginDialog to screens folder.
-TODO (not important) use Select comp for Gender.
 TODO find a way to import specific style file base on url
 TODO find out how to add reCAPTCHA to react components.
-TODO (not important) add benefit's icon
-TODO (not important) change select text color
 TODO handle sign up for newsletters.
-TODO (not important) fixe headerRightBlock social media marge-top 
-TODO (not important) change logo color in perksFooter  components
-TODO (not important) change isFNEmpty to isFnValid and do that to all the others fields
-TODO (not important) let the loading icon moves in login in the header
 *** create useGetPathName hook
  *** fix css loading 
-TODO (not important)  find another way to display perksFooter
  ***** move login style to index
  *** add clear up to useEffect(() => {
     document.body.classList.remove("front");
     document.body.classList.add("col1-wide");
   }, []);
 
-TODO (not important) add screens titles
-TODO * learn how to use reCAPTCHA
-TODO (not important) improve loading icon in loginScreen and also in loginDialog.
-TODO (not important) redirect the user where he/she was after login.
  ***** enter user enters his/her email in forget password screen redirect user to login screen and show 
   "If there is an account associated with medo1208@yahoo.com you will receive an email with a link to 
   reset your password".
@@ -76,12 +60,8 @@ TODO (not important) redirect the user where he/she was after login.
 
   Thank you, Muscle & Strength Store!"
 
-TODO (not important) add title to the pages 
-TODO (not important) change the logo in the title.
 **** learn how to make the user visit a page for some time and than the page expired.
 ***** tell the user if the email exist or not .
-TODO (not important) fix loading images
-TODO (not important) try to make the following code in LoginScreen.jsx more clear:
   {(error || emailEntered || errorTimeOut) && (
                   <div
                     className={`invalid-message message ${
@@ -96,39 +76,20 @@ TODO (not important) try to make the following code in LoginScreen.jsx more clea
 *** CREATE ADD CLASS TO body tag custom hook called addClassBodyTag
 ***** don't a user visit forget password screen if a user login.
 ***** fix how to show message to user in login screen 
-TODO (not important) let user sign up for newsletters 
-TODO (not important) send message to the users that sign up for newsletters
-TODO (NOT important) create route in backend for sending icons in quickNav component.
 ***** get the product in store from the backend. 
  *** ADD pic in merch banner for phones. when the screen is small.
-TODO (not important) change "product top deal" to "products".
 ***** create products database
  ***** show loading and if there are error show it in storeScreen when getting products from the backend
-TODO (not important) change the deal icon in product screen
-TODO (not important) fixe select hover in productScreen and close the select when click on any where else.
-TODO (not important) find how to get favors from the specific item.
 TODO active loading icon in productScreen at add button.
-TODO (not important) add two price instead price and priceString. 
 * show loading icon when requesting products from backend in StoreScreen.
-TODO * make yearAgo in usersReviews dynamic 
 *** ADD report functionality in usersReviews . {JUST SIMPLY, WHEN THE USER report send the report to someone's email }
         with the id of the user how report and his/her name and the review's id.
         commit -m "adding report functionality to users Reviews"
-TODO * ADD loading functionality in usersReviews .
 *** ADD VIEW 10 more reviews functionality in usersReviews .
 *** create all view page.
-TODO * add loading in product screen when getting the product form the backend
-TODO (not important) try to find another name and way to handle discount in buyingOption.
  ***** fix customSelect favors thing.
 ***** add point attribute in user database.
-TODO * find a better way to handle recommend product.
-TODO (not important) STORE  topDeal in local storage.
-TODO * make nutrition in database less complex
  (hard) add grip functionality in store swiper.
-TODO (not important) make stor-by and filter-by and start-filter individual
-TODO (not important) chang range slider style like the one in MuscleAndStrung web in reveiw component.
-TODO (not important) when the user enter his email then click on forgot password get his email make it easy for him cause he don't need to enter his email twice.
-TODO * deal with the following problem if the user open more than one product in different pages or different review screen.
  when the user login in with LoginDialog component show him popup window for 5 second to show him that he logged in successfully.
     commit -m "creating messageModal comp to show the user that he/her logged in successfully"
 ** find a better way to handle (4-20 alphanumeric characters,- and _) validation in the following code: 
@@ -143,31 +104,21 @@ TODO * deal with the following problem if the user open more than one product in
 
 *** close select when it bluer 
         commit -m "fixing CustomSelect comp. let it close when the focus changed to another element"
-TODO (not important) when the user selected a favor in reviewingScreen check the selected favor from the list.
  *** show loading when the user post a review
  ***** learn how to find just 10 reviews from the backend.
-TODO * make update review temporary maybe for 30 minutes.
 *** don't show helpful component if the review belong to him/her.
       commit -m "Disable helpful component when the review belong to the user who wrote the review"
 ***** add year ago react-moment package's fromNew attribute 
-TODO * fix: reviews.reviews.map((review, index), in userReview
-TODO * fix: images in product's reviews 
 *** show loading when loading reviews from the backend
-TODO (not important) ADD maxPages in userReview like the following code : data-pageno="1"
-TODO (not important) ADD PageNo in userReview like the following code : data-maxpages="74"
 ***  make showing reviewCard in userReview better for example if there is no review than don't show any reviewCard
       commit -m "Showing reviewCard in userReview better"
 *** learn how to know how may document in modal and than applied to Reviews and Verified Buyers attribute in product modal
       commit -m "making the number of reviews that the user see in product screen and review screen dynamic"
 *** add default user image in user modal.
-TODO (not important) find way to handle rating attribute between Reviewing and RatingBox comps 
-TODO (not important) change the name productOne to productDetails in redux store.
 **  selectedFavors.forEach((element) => {
         if (element.value === newFavor.value) isExit = true;
       }); check by id not value 
 
-TODO * const userGoal = userInfo.goal || "Build Muscle"; try to find a better way to handle it. in Reviewing comp
-TODO * const isVerifiedBuyer = false; modify it when adding VerifiedBuyer functionality in userModal
 ***** fix all the warring and the errors for example replace class to className and there are more error.
 ***** add the website to my github
  *** fix the orange hover in productScreen
@@ -179,55 +130,27 @@ TODO * const isVerifiedBuyer = false; modify it when adding VerifiedBuyer functi
 ** Your product review is posted!  try to come up with something better the quot in Reviewing comp 
         "you're about to post a product review"
 
-TODO (not important) clean all the url i mean use data option to send data 
 *** show update review instead post review when the user updates his/her review
-TODO * when click on write review don't open new window.
-TODO * when closing the website learn how to clear local storage;
 ** understand what display : flex means
-TODO * learn what's the difference between map and react.Children.map
-TODO (not important) understand the following code:
       const getOrder = ({ index, pos, numItems }) => {
         return index - pos < 0 ? numItems - Math.abs(index - pos) : index - pos;
       };
-TODO (not important but annoying for the user) fix when the user swipe in swiperSection and get at the last product don't let them click on the product by mistake.
  ***** (hard) handle phone screens in storeScreen
  ***** fix next and prev style when disable
 ***** push new commit to my repository with "making storeScreen Responsive" msg
-TODO * fix the grip cursor in storeSectionSlider
 *****fix HeaderRightBlock component's style
 ***** fix the random calling for PRODUCT_GET_ONE_REQUEST and REVIEW_GET_ALL_REQUEST
-TODO * try to find out how calling the following urls in StoreScreen:
-         http://localhost:3000/store 
-         http://localhost:3000/cdn-cgi/images/trace/jschal/js/transparent.gif?ray=6299ae5b19c4fd01 
-TODO (not important) make the code in ProductAside more better from line 460 to 488
-TODO (not important) when the user click on "write review" button in product screen first don't let the user open new window and don't let the user click on "write review" to write review
-TODO (not important) learn what for attribute means and the following code:
       <label for="firstname" className="required fl-label">
                           First Name
                         </label>
-TODO (not important) let the user visit http://localhost:3000/store/customer/account/logoutSuccess/ only when a user logout.
-TODO *  when the user refresh the page changeforgotten don't let the user visit the page again. 
-TODO (not important) add x button when showing message let the user close it. 
-TODO (not important) learn how to write README file in add it to my repository.
 ***** (hard) handle phone screens in HomeScreen
 ***** (hard) handle phone screens in ProductScreen 899 "making productScreen comp more responsive"
 ***** (hard) handle phone screens in ReviewingScreen "making ReviewingScreen comp more responsive"
 *** fix: the cursor style the the first section in the StoreScreen
-TODO (not important) add m&s logo in perksFooter
-TODO (not important) make the footer more prefect almost like the origin website
-TODO (not important) change the recommend swiper in productScreen
 *** improve Slider component
     commit -m "improving the Slider in homeScreen (changing Slider component to SliderV2 component)"
     commit -m "improving the Slider in storeScreen (changing Slider component to SliderV2 component)"
 
-TODO * fix recommend comp when the page less than 750px
-TODO (not important) add commit functionality to userReview component.
-TODO (not important) when the user click on submenu close the submenu for ex: when the user click on "store" in header.
-TODO (not important) when the user move to productScreen show him/her the state of the page
-TODO (not important) make my database design better.
-TODO * ADD loading icon when the user report and we processing the report request from the backend
-*** fix ima-wrapper in reviewScreen.
-    commit -m "fixing Product component in ReviewScreen components"
 ***** fix select flavors in reviewScreen.
     commit -m "fixing SelectRating comp in reviewScreen"
 ** ADD helpful functionality IN usersReviews comp.0
@@ -237,28 +160,10 @@ TODO * ADD loading icon when the user report and we processing the report reques
         note: get helpful and notHelpful from helpfulness modal.
         commit -m "impalement helpful functionality, but I still have some error with it."
         commit -m "fixing discovered errors in helpful functionality"
-TODO * add redirecting functionality when the user login. i mean show the user last page before the user move to logging screen.
-***** when the user click on "view product" button show the user productScreen of the wanted product.
-      commit -m "adding onClick event to "view Product" in productScreen"
 *** change total value in getAllReviews store when the user add or remove his/her review
     commit -m "letting totalReviews more dynamic and add totalVerifiedReviews to localStorage"
       you can see the functionality in amazome website
-TODO * change reveiwModal.js name to reviewModal.js
-
-***** fix some more review in productScreen
 ***** fix default values selectors in CreateAccountScreen 
-TODO (not important) learn how to use ESLint
-TODO * when the user moves to another screen show him/her the beginning of the page.
-TODO * when the user reviewed show him/her the review.
-*** fix NavBlock in reviewScreen and other screens
-      commit -m "fixing NavBlock in ReviewScreen and other screens"
-TODO * change swiper-pagination-bullet in homeScreen like the one in MuscleAndStrung
-***** fix totalVerifiedReviews when reloading the page
-TODO *** (after Verified functionality) change totalVerified value in getAllReviews store when the user add or remove his/her review and he/she verified buyer
-TODO * ADD the name of the product in the ReviewScreen.
-TODO * fix  LoginDialog's move functionality 
-TODO (not important) learning more about styled-components
-TODO (not important) find out why the following code in App.js doesn't work
      useEffect(() => {
     if (timeOut) {
       const time = setTimeout(() => {
@@ -270,25 +175,11 @@ TODO (not important) find out why the following code in App.js doesn't work
     }
   }, [setShowModal, timeOut]);
 
-TODO * read about the following warning 
-       Mongoose: `findOneAndUpdate()` and `findOneAndDelete()` without the `useFindAndModify` option set to false are deprecated. See: https://mongoosejs.com/docs/deprecations.html#findandmodify
-      (Use `node --trace-deprecation ...` to show where the warning was created)
-TODO *   src="/images/user-login.png" make it dynamic (bring the image form the backend)
-TODO (not important) make your own https://www.w3schools.com/css/tryit.asp?filename=trycss3_flexbox_image_gallery
-TODO (not important) make your own https://www.w3schools.com/css/tryit.asp?filename=trycss3_flexbox_website2
 product in database = {image, name,brand,description, features:[], rating,Reviews,deal,type,price,discount,simpleServing,simpleFlavors=[],serving, flavors, points,imageInfo,titleInfo, pInfos:[],featuresInfo:[],imageInfo2}
 nutritionInfo = {productId, title,isSelected,servingSize,ServingsPreContainer, info:[{cssStyle,name,Amt,DV}] }
 TODO  (not important) know the difference between bcrypt and bcryptjs
 TODO  (not important) know why reviews rendered more the once in productScreen.
-TODO * create new backend route for helpful functionality to make it faster, combine user update and review update in one update.
 TODO  (not important) correct reveiwConstants fime name.
-TODO *** add hasDeal attribute product modal then and homeScreen at deal section bring up those product that has deal.
-TODO *** learning how to add this week top deal and then impalement in storeScreen this week top deal section
-TODO *** bring up the product in to rated prodcut section from backend 
-      note: it's seems easy so try to study the orange website and see how they do it.
-TODO *** learning how to add TRENDING products and then impalement in storeScreen this TRENDING section
-      note: change the second top deal section to trending 
-      note: maybe this is depended on the more review products.
       
 **** add brand modal:
       note: attribute (name, image, description, title, video)
@@ -311,74 +202,16 @@ TODO *** learning how to add TRENDING products and then impalement in storeScree
       commit -m "created shopping cart screen"
 ***** adding shopping cart functionality
           commit -m "added shopping cart functionality"
-TODO *** learn how to logout the usr sometime of login and then add that functionality
-TODO (NOT important) let the user sees his review, make the user review first one.
-TODO *** store activeIndex in localStorage.
-TODO ** using axios instead of fetch in userAction file on the following code: 
-       const data = await fetch(`/api/image/image-upload`, {
-      method: "POST",
-      body: formData,
-    });
 
-TODO * improve extra info filed in add product. for example let the user add more image or video and show him sampl.
 
 ***** fix the style in header and footer
       commit -m "fixed the style in header in footer"
 ***** store user input in admin screen when adding products
-TODO (not important) add multi category feature.
-TODO *** learn how to add youtube video and then do it in some productScreen that have youtube video dah.
 TODO fix TOP DEALS in phone screen. 
-TODO *** improve there search form case sensitive to not.
-TODO (not important) add limit for adding product's features. 
 ***** fix "Cannot read property '_id' of null" error when the user logged out in "UsersReview"
-TODO *** (it's actually a note) if the product has different size, we need to add each size and when
-          clicking one of the size to view the product, show the user all the size available of that product.
-TODO * improve extraInfo input in admin page, like let the user enter is many p he want or images,
-       video, and it is in different page, and off course title.
+
 commit -m "create sidebar in admin screen"
-TODO (not important) update home screen design.
-TODO ** Save where the user at (where he/she last seeing).
-TODO *** make button global styled component and flexible (hasLoader props).
-TODO *** learning how to modify autoCompletion of styled components 
-TODO *** rebuild the footer like the one in search screen.
-TODO *** clean up my database delete unwanted documents.
-TODO (not important) add autoCompletion functionality when inputting in search input
-TODO ** add adding discount functionality for admins to the products.
-TODO * try not add all the products when view more just append the new products.
 **** make search screen more responsive.
     commit -m "made search screen more responsive"
-TODO ** update "Proceed to Checkout" button in cartScreen.
-TODO * try to close CountrySelector in cart screen when onBlur.
-      <div
-      style={{ minHeight: " 194px", zIndex: 3 }}
-      tabIndex={0}
-      onBlur={() => setIsOpen(false)}
-    >
-      <SodSelect
-        id="SodSelect"
-        title="Country"
-        onClick={() => setIsOpen(!isOpen)}
-        isOpen={isOpen}
-      >
-      ......
-TODO * try to change the position of CountrySelector when it is out of the screen.
-TODO * learning how to create more than one document in do it in add cartItem
-TODO * improve cart add and get backend interaction.
 ** clean the following miss in cartRouter: 
       cart.product.cart[0].cartItems
-TODO * fix "don't let the user select pick favor after select a favor"
-TODO *** tell a user when he/she adding product to cart without selecting favor and quantity
-TODO *** fix view product in searchScreen and also when clicking on the image and title.
-TODO *** make all the element in product in center in "searchScreen" and don't show view more btn if there not more products
-TODO **** add eslint to the backend
-TODO *** fix the select style in admin product screen
-TODO * improve "Home store/brans/MuscleTech" in TitleBlock component.
-TODO *** create buyingOption modal 
-TODO *** add popup window for add buying Options
-TODO *** fix Cast to ObjectId failed for value "null" at path "user" for model "cart" when the user not logged in.
-TODO **** organize your todo list put not important TODOs in one file and * or two and so on and different files.
-TODO * improve the style in storeSectionSlider the next and prev buttons
-TODO * update the data of storeSectionSlider in brandScreen.
-TODO *** add the right data in brandScreen 
-TODO (NOT important) pass , isOptionsBtn, showingTitle in better way 
-TODO (NOT important) fix responsive for small mobile in search screen
