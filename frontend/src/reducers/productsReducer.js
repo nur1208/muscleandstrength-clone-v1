@@ -5,6 +5,9 @@ import {
   PRODUCT_GET_ONE_FAIL,
   PRODUCT_GET_ONE_REQUEST,
   PRODUCT_GET_ONE_SUCCESS,
+  PRODUCT_GET_WITH_DEAL_FAIL,
+  PRODUCT_GET_WITH_DEAL_REQUEST,
+  PRODUCT_GET_WITH_DEAL_SUCCESS,
   PRODUCT_SEARCH_FAIL,
   PRODUCT_SEARCH_GET_NUM_SUCCESS,
   PRODUCT_SEARCH_REQUEST,
@@ -17,6 +20,7 @@ import {
 export const productsReducer = (state = {}, action) => {
   switch (action.type) {
     case PRODUCT_TOP_DEALS_REQUEST:
+    case PRODUCT_GET_WITH_DEAL_REQUEST:
       return { ...state, loading: true };
     case PRODUCT_TOP_DEALS_SUCCESS:
       return {
@@ -29,7 +33,16 @@ export const productsReducer = (state = {}, action) => {
         storeContents: action.payload.storeContents,
       };
     case PRODUCT_TOP_DEALS_FAIL:
+    case PRODUCT_GET_WITH_DEAL_FAIL:
       return { ...state, loading: false, error: action.payload };
+
+    case PRODUCT_GET_WITH_DEAL_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        productsWithDeal: action.payload,
+      };
+
     default:
       return state;
   }
@@ -40,7 +53,11 @@ export const productGetOneReducer = (state = {}, action) => {
     case PRODUCT_GET_ONE_REQUEST:
       return { ...state, loading: true };
     case PRODUCT_GET_ONE_SUCCESS:
-      return { ...state, loading: false, product: action.payload };
+      return {
+        ...state,
+        loading: false,
+        product: action.payload,
+      };
     case PRODUCT_GET_ONE_FAIL:
       return { ...state, loading: false, error: action.payload };
     default:

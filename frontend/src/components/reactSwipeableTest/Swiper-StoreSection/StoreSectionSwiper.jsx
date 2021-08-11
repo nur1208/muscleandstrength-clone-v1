@@ -7,7 +7,11 @@ import "swiper/swiper-bundle.css";
 
 SwiperCore.use([Navigation]);
 
-export const StoreSectionSwiper = ({ sectionId, title, items }) => {
+export const StoreSectionSwiper = ({
+  sectionId,
+  title,
+  items,
+}) => {
   require("../Swiper-StoreSection/storeSectionSwiper.css");
   // <Swiper id="main"></Swiper>;
 
@@ -17,8 +21,14 @@ export const StoreSectionSwiper = ({ sectionId, title, items }) => {
     slides.push(
       <SwiperSlide>
         <div className="height-setter">
-          <div className="dynamic-height" style={{ paddingBottom: 106 }}>
-            <a className="product-link" href="/store/shield.html">
+          <div
+            className="dynamic-height"
+            style={{ paddingBottom: 106 }}
+          >
+            <a
+              className="product-link"
+              href="/store/shield.html"
+            >
               <div className="image-wrap">
                 <img
                   className="product-image lazyloaded"
@@ -57,7 +67,9 @@ export const StoreSectionSwiper = ({ sectionId, title, items }) => {
       id={sectionId || "top-rated-products"}
       className="margin-bottom-none"
     >
-      <h2 className="grey-stripe">{title || "Top Rated Products"}</h2>
+      <h2 className="grey-stripe">
+        {title || "Top Rated Products"}
+      </h2>
       <Swiper
         id="main"
         className="mns-carousel"
@@ -76,8 +88,17 @@ export const StoreSectionSwiper = ({ sectionId, title, items }) => {
         {items.map((item, index) => (
           <SwiperSlide key={index}>
             <div className="height-setter">
-              <div className="dynamic-height" style={{ paddingBottom: 106 }}>
-                <Link className="product-link" to={item.href}>
+              <div
+                className="dynamic-height"
+                style={{ paddingBottom: 106 }}
+              >
+                <Link
+                  className="product-link"
+                  to={
+                    item.href ||
+                    "/store/60ad403adb4ee72f0c5b3bec"
+                  }
+                >
                   <div className="image-wrap">
                     <img
                       className="product-image lazyloaded"
@@ -89,13 +110,18 @@ export const StoreSectionSwiper = ({ sectionId, title, items }) => {
                 </Link>
               </div>
               <div className="product-info">
-                <span className="mns-label lbl-deal">{item.deal}</span>
+                <span className="mns-label lbl-deal">
+                  {item.deal || "Buy 1 Get 1 FREE"}
+                </span>
                 <div className="price-box">
                   <span className="price">€{item.price}</span>
                 </div>
                 <div className="button-wrap">
                   <Link
-                    to={item.href}
+                    to={
+                      item.href ||
+                      "/store/60ad403adb4ee72f0c5b3bec"
+                    }
                     className="btn btn-blue btn-sm btn-addtocart"
                   >
                     View Product

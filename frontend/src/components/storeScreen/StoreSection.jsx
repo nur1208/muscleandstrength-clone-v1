@@ -1,14 +1,24 @@
 import React, { useState } from "react";
-import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
+import {
+  AiOutlineArrowLeft,
+  AiOutlineArrowRight,
+} from "react-icons/ai";
 
 import { Link } from "react-router-dom";
 
-export const StoreSection = ({ sectionId, title, items, promotionsId }) => {
+export const StoreSection = ({
+  sectionId,
+  title,
+  items,
+  promotionsId,
+}) => {
   const [translate3d, setTranslate3d] = useState("translate3d");
 
   const moveSection = () => {
     setTranslate3d(
-      translate3d === "translate3d" ? "translate3d-2" : "translate3d"
+      translate3d === "translate3d"
+        ? "translate3d-2"
+        : "translate3d"
     );
   };
 
@@ -27,10 +37,22 @@ export const StoreSection = ({ sectionId, title, items, promotionsId }) => {
           }`}
         >
           {items.map((item, index) => (
-            <div className={`carousel-cell swiper-slide cell`} key={index}>
+            <div
+              className={`carousel-cell swiper-slide cell`}
+              key={index}
+            >
               <div className="height-setter">
-                <div className="dynamic-height" style={{ paddingBottom: 106 }}>
-                  <Link to={item.href} className="product-link">
+                <div
+                  className="dynamic-height"
+                  style={{ paddingBottom: 106 }}
+                >
+                  <Link
+                    to={
+                      item.href ||
+                      "/store/60ad403adb4ee72f0c5b3bec"
+                    }
+                    className="product-link"
+                  >
                     <div className="image-wrap">
                       <img
                         className="product-image lazyloaded"
@@ -38,17 +60,24 @@ export const StoreSection = ({ sectionId, title, items, promotionsId }) => {
                         alt="Primeval Labs EAA MAX, 30 Servings"
                       />
                     </div>
-                    <div className="product-name">{item.name}</div>
+                    <div className="product-name">
+                      {item.name}
+                    </div>
                   </Link>
                 </div>
                 <div className="product-info">
-                  <span className="mns-label lbl-deal">{item.deal}</span>
+                  <span className="mns-label lbl-deal">
+                    {item.deal || "Buy 1 Get 1 FREE"}
+                  </span>
                   <div className="price-box">
                     <span className="price">€{item.price}</span>
                   </div>
                   <div className="button-wrap">
                     <Link
-                      to={item.href}
+                      to={
+                        item.href ||
+                        "/store/60ad403adb4ee72f0c5b3bec"
+                      }
                       className="btn btn-blue btn-sm btn-addtocart"
                     >
                       View Product
@@ -63,13 +92,17 @@ export const StoreSection = ({ sectionId, title, items, promotionsId }) => {
           <>
             <AiOutlineArrowLeft
               className={`swiper-button-prev swiper-button-black ${
-                translate3d === "translate3d" ? "swiper-button-disabled" : ""
+                translate3d === "translate3d"
+                  ? "swiper-button-disabled"
+                  : ""
               }`}
               onClick={moveSection}
             />
             <AiOutlineArrowRight
               className={`swiper-button-next swiper-button-black  ${
-                translate3d === "translate3d-2" ? "swiper-button-disabled" : ""
+                translate3d === "translate3d-2"
+                  ? "swiper-button-disabled"
+                  : ""
               }`}
               onClick={moveSection}
             />

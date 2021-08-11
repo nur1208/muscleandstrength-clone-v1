@@ -17,6 +17,10 @@ Review:
     - userGoal : string
     - isVerifiedBuyer: boolean
 
+product:
+    .....
+    deals:[deal]
+
 Report:
     -id : string
     ReviewId : Review.id
@@ -41,3 +45,14 @@ cart:
     _id: objectId
     cartItemId: _id[]
     userId: _id
+
+deal:
+    _id: objectId
+    belongTo: productId (oneToMany, one deal belongs to one
+                        product,product has more than one deal)
+    title: string
+    description:string
+    type:string (for example 30% off or buy two and get one free)
+        make the user select the type but if the type is *% let 
+        him/her enter percentage
+

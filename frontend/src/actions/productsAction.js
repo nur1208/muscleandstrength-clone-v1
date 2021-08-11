@@ -14,16 +14,42 @@ import {
   PRODUCT_SEARCH_FAIL,
   PRODUCT_SEARCH_GET_NUM_SUCCESS,
   PRODUCT_SEARCH_GET_NUM_FAIL,
+  PRODUCT_GET_WITH_DEAL_REQUEST,
+  PRODUCT_GET_WITH_DEAL_SUCCESS,
+  PRODUCT_GET_WITH_DEAL_FAIL,
 } from "../constants/productsCntanst";
 
 export const getProductsTopDeals = () => async (dispatch) => {
   dispatch({ type: PRODUCT_TOP_DEALS_REQUEST });
   try {
-    const { data } = await axios.get("/api/products/getTopDeals");
+    const { data } = await axios.get(
+      "/api/products/getTopDeals"
+    );
     dispatch({ type: PRODUCT_TOP_DEALS_SUCCESS, payload: data });
   } catch (error) {
     dispatch({
       type: PRODUCT_TOP_DEALS_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const getProductsWithDeal = () => async (dispatch) => {
+  dispatch({ type: PRODUCT_GET_WITH_DEAL_REQUEST });
+  try {
+    const { data } = await axios.get(
+      "/api/products/productsWithDeal"
+    );
+    dispatch({
+      type: PRODUCT_GET_WITH_DEAL_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: PRODUCT_GET_WITH_DEAL_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message
@@ -52,7 +78,9 @@ export const getOneProduct = (id) => async (dispatch) => {
 export const addProduct = (product) => async (dispatch) => {
   dispatch({ type: PRODUCT_ADD_REQUEST });
   try {
-    const { data } = await axios.post(`/api/products/add`, { product });
+    const { data } = await axios.post(`/api/products/add`, {
+      product,
+    });
     dispatch({ type: PRODUCT_ADD_SUCCESS, payload: data });
   } catch (error) {
     dispatch({
@@ -70,8 +98,13 @@ export const searchProducts =
   async (dispatch) => {
     dispatch({ type: PRODUCT_SEARCH_REQUEST });
     try {
-      const { data } = await axios.get(`/api/products/search/${quey}/${limit}`);
-      dispatch({ type: PRODUCT_SEARCH_SUCCESS, payload: { data, quey } });
+      const { data } = await axios.get(
+        `/api/products/search/${quey}/${limit}`
+      );
+      dispatch({
+        type: PRODUCT_SEARCH_SUCCESS,
+        payload: { data, quey },
+      });
     } catch (error) {
       dispatch({
         type: PRODUCT_SEARCH_FAIL,

@@ -3,7 +3,10 @@ import { Helmet } from "react-helmet-async";
 import { useDispatch, useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
 import { getPathName } from "../actions/navBlockActions";
-import { getProductsTopDeals } from "../actions/productsAction";
+import {
+  getProductsTopDeals,
+  getProductsWithDeal,
+} from "../actions/productsAction";
 import { Slider } from "../components/homeScreen/Slider";
 import { LoadingScreen } from "../components/LoadingScreen";
 import { MessageBox } from "../components/MessageBox";
@@ -27,6 +30,7 @@ export const StoreScreen = (props) => {
 
   useEffect(() => {
     dispatch(getProductsTopDeals());
+    dispatch(getProductsWithDeal());
   }, [dispatch]);
 
   const products = useSelector((state) => state.products);
@@ -38,16 +42,15 @@ export const StoreScreen = (props) => {
     storeContents,
     loading,
     error,
+    productsWithDeal,
   } = products;
 
   require("../styles/store.css");
 
   const isNotPC = useMediaQuery({ maxWidth: 1028 });
 
-  useEffect(() => {
-    if (isNotPC) console.log("not PC screen");
-  }, [isNotPC]);
-
+  // when the user load the page for the first time show him/her
+  //the top of the page.
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -56,7 +59,8 @@ export const StoreScreen = (props) => {
     <main id="main-wrapper">
       <Helmet>
         <title>
-          Muscle & Strength Store: Supplements, Fitness Gear, Clothing & More!
+          Muscle & Strength Store: Supplements, Fitness Gear,
+          Clothing & More!
         </title>
       </Helmet>
       <article className="content">
@@ -80,14 +84,14 @@ export const StoreScreen = (props) => {
         ) : isNotPC ? (
           <StoreSectionSwiper
             sectionId={"top-rated-products"}
-            title={"his Week's Top Deals"}
+            title={"This Week's Top Deals"}
             items={topDeals}
           />
         ) : (
           <StoreSection
             sectionId="top-deals"
             title="This Week's Top Deals"
-            items={topDeals}
+            items={productsWithDeal}
             promotionsId="promotions-carousel_1"
           />
         )}

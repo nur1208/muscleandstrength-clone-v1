@@ -4,7 +4,11 @@ const productSchema = new mongoose.Schema(
   {
     name: { type: String, required: true },
     image: { type: String, required: true },
-    brand: { type: mongoose.Types.ObjectId, required: true, ref: "brand" },
+    brand: {
+      type: mongoose.Types.ObjectId,
+      required: true,
+      ref: "brand",
+    },
     // brand: { type: String, required: true },
     description: { type: String, required: true },
     features: { type: [String], index: true, required: true },
@@ -15,8 +19,12 @@ const productSchema = new mongoose.Schema(
     rating: { type: Number, default: 0 },
     numReviews: { type: Number, default: 0 },
     numReviewsVerified: { type: Number },
-    graphData: [{ start: { type: Number }, percentage: { type: Number } }],
-    topRated: [{ percentage: { type: Number }, name: { type: String } }],
+    graphData: [
+      { start: { type: Number }, percentage: { type: Number } },
+    ],
+    topRated: [
+      { percentage: { type: Number }, name: { type: String } },
+    ],
 
     category: { type: String, required: true },
     ingredient: { type: String },
@@ -24,6 +32,12 @@ const productSchema = new mongoose.Schema(
     directions: { type: String },
     warning: { type: String },
     extraInfo: { type: String },
+    deals: [
+      {
+        type: mongoose.Types.ObjectId,
+        ref: "deal",
+      },
+    ],
     buyingOption: [
       {
         price: { type: Number, required: true },
@@ -60,7 +74,12 @@ const productSchema = new mongoose.Schema(
       {
         userId: { type: String },
         rating: { type: Number },
-        ratedList: [{ percentage: { type: Number }, name: { type: String } }],
+        ratedList: [
+          {
+            percentage: { type: Number },
+            name: { type: String },
+          },
+        ],
         userName: { type: String },
         badges: { type: [String] },
         content: { type: String },

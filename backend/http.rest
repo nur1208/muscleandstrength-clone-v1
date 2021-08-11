@@ -18,7 +18,7 @@ Content-Type: application/json
 
 ####
 
-GET http://localhost:5000/api/products/6033aeb63949aa3b5cda6999
+GET http://localhost:5000/api/products/610cfe2cf4aa8733f47c2f62
 
 #####
 
@@ -202,3 +202,32 @@ Content-Type: application/json
   "video":"https://i.vimeocdn.com/video/960042876?mw=700&mh=394"
 
 }
+
+###
+
+POST http://localhost:5000/api/products/deal
+Content-Type: application/json
+
+{
+    "description":"Buy 1 Primeval Labs EAA Max and get 1 absolutely FREE! Limited time.",
+    "type":"Buy 1 Get 1 FREE",
+    "belongTo":"60a54b9f49019d37d4afa7de",
+    "expiredAt":"2021-08-13T15:03:20.972+00:00"
+
+}
+
+###
+
+PUT http://localhost:5000/api/products
+Content-Type: application/json
+
+{
+    "productId":"60a54b9f49019d37d4afa7de",
+    "deal":"611398cea9e6024e8094d4e3"
+}
+
+###
+
+GET http://localhost:5000/api/products/productsWithDeal
+
+

@@ -10,14 +10,15 @@ reviewRouter.post(
   "/seed",
   expressAsyncHandler(async (req, res) => {
     try {
-      const createdReviews = await ReviewModal.insertMany(req.body.reviews);
+      const createdReviews = await ReviewModal.insertMany(
+        req.body.reviews
+      );
       res.send({ createdReviews });
     } catch (error) {
       res.status(404).send({ message: error });
     }
   })
 );
-
 reviewRouter.get(
   "/getAll/:productId/:limit",
   expressAsyncHandler(async (req, res) => {
@@ -101,10 +102,13 @@ reviewRouter.put(
       review.image = image || review.image;
       review.rating = rating || review.rating;
       review.userGoal = userGoal || review.userGoal;
-      review.helpful = (helpful && review.helpful + 1) || review.helpful;
+      review.helpful =
+        (helpful && review.helpful + 1) || review.helpful;
       review.notHelpful =
-        (notHelpful && review.notHelpful + 1) || review.notHelpful;
-      review.isVerifiedBuyer = isVerifiedBuyer || review.isVerifiedBuyer;
+        (notHelpful && review.notHelpful + 1) ||
+        review.notHelpful;
+      review.isVerifiedBuyer =
+        isVerifiedBuyer || review.isVerifiedBuyer;
       const updatedReview = await review.save();
       res.send({ updatedReview });
     } else {
@@ -126,7 +130,9 @@ reviewRouter.delete(
         res.status(422).send({ message: "invalid user" });
       }
     } catch (error) {
-      res.status(404).send({ message: "Review Not Found", error: error });
+      res
+        .status(404)
+        .send({ message: "Review Not Found", error: error });
     }
   })
 );
@@ -134,7 +140,8 @@ reviewRouter.delete(
 reviewRouter.post(
   "/report",
   expressAsyncHandler(async (req, res) => {
-    const { reviewId, userId, productId, userName, content } = req.body.report;
+    const { reviewId, userId, productId, userName, content } =
+      req.body.report;
     const review = new ReportModal({
       reviewId,
       userId,
@@ -166,7 +173,8 @@ reviewRouter.get(
 reviewRouter.post(
   "/helpfulness",
   expressAsyncHandler(async (req, res) => {
-    const { reviewId, userId, productId, isHelpful } = req.body.helpfulness;
+    const { reviewId, userId, productId, isHelpful } =
+      req.body.helpfulness;
     const helpfulness = new HelpfulnessModal({
       reviewId,
       userId,
@@ -218,7 +226,10 @@ reviewRouter.delete(
 
     const updatedReview = await review.save();
 
-    res.send({ message: "item with " + id + " deleted", updatedReview });
+    res.send({
+      message: "item with " + id + " deleted",
+      updatedReview,
+    });
   })
 );
 
