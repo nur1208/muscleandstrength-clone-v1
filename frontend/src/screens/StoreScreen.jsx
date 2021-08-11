@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
 import { getPathName } from "../actions/navBlockActions";
 import {
+  getProductsThisWeekDeal,
   getProductsTopDeals,
   getProductsWithDeal,
 } from "../actions/productsAction";
@@ -30,7 +31,8 @@ export const StoreScreen = (props) => {
 
   useEffect(() => {
     dispatch(getProductsTopDeals());
-    dispatch(getProductsWithDeal());
+    // dispatch(getProductsWithDeal());
+    dispatch(getProductsThisWeekDeal());
   }, [dispatch]);
 
   const products = useSelector((state) => state.products);
@@ -91,7 +93,7 @@ export const StoreScreen = (props) => {
           <StoreSection
             sectionId="top-deals"
             title="This Week's Top Deals"
-            items={productsWithDeal}
+            items={topDeals}
             promotionsId="promotions-carousel_1"
           />
         )}

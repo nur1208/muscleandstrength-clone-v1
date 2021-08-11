@@ -9,6 +9,7 @@ import {
   brands,
   storeContents,
 } from "../storeData.js";
+import { getThisWeek } from "../utilities/getThisWeek.js";
 
 const productsRouter = express.Router();
 
@@ -88,15 +89,6 @@ productsRouter.get(
     }
 
     // entrants.find({ pincode: { $ne: null } });
-  })
-);
-
-productsRouter.get(
-  "/:id",
-  expressAsyncHandler(async (req, res) => {
-    const product = await Product.findById(req.params.id);
-    console.log({ name: product.name });
-    res.send(product);
   })
 );
 
@@ -230,6 +222,28 @@ productsRouter.put(
     } else {
       res.status(404).send({ message: "product not exits" });
     }
+  })
+);
+
+productsRouter.get(
+  "/thisWeekDeal",
+  expressAsyncHandler(async (req, res) => {
+    const { firstDay, lastDay } = getThisWeek();
+
+    const dealsOfThisWeek = await Deal.find({
+      createdAt: { $gte: firstDay, $lte: lastDay },
+    }).populate("belongTo");
+
+    res.send(dealsOfThisWeek);
+  })
+);
+
+productsRouter.get(
+  "/:id",
+  expressAsyncHandler(async (req, res) => {
+    const product = await Product.findById(req.params.id);
+    console.log({ name: product.name });
+    res.send(product);
   })
 );
 

@@ -209,10 +209,10 @@ POST http://localhost:5000/api/products/deal
 Content-Type: application/json
 
 {
-    "description":"Buy 1 Primeval Labs EAA Max and get 1 absolutely FREE! Limited time.",
-    "type":"Buy 1 Get 1 FREE",
-    "belongTo":"60a54b9f49019d37d4afa7de",
-    "expiredAt":"2021-08-13T15:03:20.972+00:00"
+    "description":"Buy 1 MuscleTech Hydroxycut Hardcore Next Gen Yohimbe Free for only €17.54! Limited time only.",
+    "type":"LIMITED TIME PRICE CUT",
+    "belongTo":"60a7f6464faa5a0320ddf5aa",
+    "expiredAt":"2021-08-23T15:03:20.972+00:00"
 
 }
 
@@ -229,5 +229,9 @@ Content-Type: application/json
 ###
 
 GET http://localhost:5000/api/products/productsWithDeal
+
+###
+
+GET http://localhost:5000/api/products/thisWeekDeal
 
 

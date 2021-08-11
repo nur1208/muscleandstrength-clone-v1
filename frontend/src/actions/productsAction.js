@@ -17,6 +17,9 @@ import {
   PRODUCT_GET_WITH_DEAL_REQUEST,
   PRODUCT_GET_WITH_DEAL_SUCCESS,
   PRODUCT_GET_WITH_DEAL_FAIL,
+  PRODUCT_GET_THIS_WEEK_DEAL_REQUEST,
+  PRODUCT_GET_THIS_WEEK_DEAL_SUCCESS,
+  PRODUCT_GET_THIS_WEEK_DEAL_FAIL,
 } from "../constants/productsCntanst";
 
 export const getProductsTopDeals = () => async (dispatch) => {
@@ -57,6 +60,28 @@ export const getProductsWithDeal = () => async (dispatch) => {
     });
   }
 };
+
+export const getProductsThisWeekDeal =
+  () => async (dispatch) => {
+    dispatch({ type: PRODUCT_GET_THIS_WEEK_DEAL_REQUEST });
+    try {
+      const { data } = await axios.get(
+        "/api/products/thisWeekDeal"
+      );
+      dispatch({
+        type: PRODUCT_GET_THIS_WEEK_DEAL_SUCCESS,
+        payload: data,
+      });
+    } catch (error) {
+      dispatch({
+        type: PRODUCT_GET_THIS_WEEK_DEAL_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+      });
+    }
+  };
 
 export const getOneProduct = (id) => async (dispatch) => {
   dispatch({ type: PRODUCT_GET_ONE_REQUEST });
