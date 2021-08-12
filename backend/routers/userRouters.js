@@ -3,9 +3,15 @@ import expressAsyncHandler from "express-async-handler";
 import Mailgen from "mailgen";
 import UserModal from "../models/userModel.js";
 import bcrypt from "bcrypt";
-import { generateToken, generateTokenFP, isAuthFP } from "../utils.js";
+import {
+  generateToken,
+  generateTokenFP,
+  isAuthFP,
+} from "../utils.js";
 import { sendEmail } from "../emailer.js";
 import { EMAIL } from "../config/index.js";
+import { COOKIE_NAME } from "../utilities/constants.js";
+import { getUserResponseObject } from "../utilities/getUserResponseObject.js";
 const userRouter = express.Router();
 
 userRouter.post(
@@ -51,21 +57,21 @@ userRouter.post(
 userRouter.post(
   "/signIn",
   expressAsyncHandler(async (req, res) => {
-    const user = await UserModal.findOne({ email: req.body.email });
+    const user = await UserModal.findOne({
+      email: req.body.email,
+    });
     if (user) {
       if (bcrypt.compareSync(req.body.password, user.password)) {
-        res.send({
-          _id: user._id,
-          firstName: user.firstName,
-          email: user.email,
-          reviewingAs: user.reviewingAs,
-          evaluateHelpfulness: user.evaluateHelpfulness,
-          token: generateToken(user),
-        });
+        req.session.userId = user._id;
+
+        console.log({ userIdInSignIn: req.session.userId });
+        res.send(getUserResponseObject(user));
         return;
       }
     }
-    res.status(401).send({ message: "Invalid Email or password" });
+    res
+      .status(401)
+      .send({ message: "Invalid Email or password" });
   })
 );
 
@@ -86,14 +92,21 @@ userRouter.post(
 userRouter.post(
   "/forgetPassword",
   expressAsyncHandler(async (req, res) => {
-    if (!req.body) return res.status(400).send({ message: "No Request Body" });
+    if (!req.body)
+      return res
+        .status(400)
+        .send({ message: "No Request Body" });
     if (!req.body.userEmail)
-      return res.status(400).send({ message: "No Email In Request Body" });
+      return res
+        .status(400)
+        .send({ message: "No Email In Request Body" });
 
     const { userEmail } = req.body;
 
     try {
-      const user = await UserModal.findOne({ email: req.body.userEmail });
+      const user = await UserModal.findOne({
+        email: req.body.userEmail,
+      });
       const MailGenerator = new Mailgen({
         theme: "default",
         product: {
@@ -101,8 +114,7 @@ userRouter.post(
           name: "muscleandstrength",
           link: "http://127.0.0.1:3000",
           // Optional product logo
-          logo:
-            "https://ecp.yusercontent.com/mail?url=https%3A%2F%2Fcdn.muscleandstrength.com%2Fstore%2Fskin%2Ffrontend%2Fmnsv4%2Fdefault%2Fimages%2Flogo_email.gif&t=1610882023&ymreqid=bf2a1792-b4db-390f-1cc3-61000001ce00&sig=TswtBRSwWTa2cQuTBNu4Fg--~D",
+          logo: "https://ecp.yusercontent.com/mail?url=https%3A%2F%2Fcdn.muscleandstrength.com%2Fstore%2Fskin%2Ffrontend%2Fmnsv4%2Fdefault%2Fimages%2Flogo_email.gif&t=1610882023&ymreqid=bf2a1792-b4db-390f-1cc3-61000001ce00&sig=TswtBRSwWTa2cQuTBNu4Fg--~D",
         },
       });
       const name = `${user.firstName} ${user.lastName}`;
@@ -117,8 +129,7 @@ userRouter.post(
             button: {
               color: "#3696c2", // Optional action button color
               text: "Reset Password",
-              link:
-                "http://localhost:3000/store/customer/account/changeforgotten/",
+              link: "http://localhost:3000/store/customer/account/changeforgotten/",
             },
           },
           outro:
@@ -156,7 +167,11 @@ userRouter.put(
     try {
       const user = await UserModal.updateOne(
         { email: req.body.email },
-        { $set: { password: bcrypt.hashSync(req.body.password, 8) } }
+        {
+          $set: {
+            password: bcrypt.hashSync(req.body.password, 8),
+          },
+        }
       );
       res.send({
         _id: user._id,
@@ -181,11 +196,15 @@ userRouter.put(
     const { _id, update } = req.body; // update is update query. what do u wanna update?
     console.log(req.body);
 
-    const updateUser = await UserModal.findByIdAndUpdate(_id, update, {
-      new: true,
-      upsert: true,
-      setDefaultsOnInsert: true,
-    });
+    const updateUser = await UserModal.findByIdAndUpdate(
+      _id,
+      update,
+      {
+        new: true,
+        upsert: true,
+        setDefaultsOnInsert: true,
+      }
+    );
     res.send({
       _id: updateUser._id,
       firstName: updateUser.firstName,
@@ -196,4 +215,45 @@ userRouter.put(
     });
   })
 );
+
+userRouter.get(
+  "/autoLoggingLoggedUser",
+  expressAsyncHandler(async (req, res) => {
+    // req.session.destroy();
+    const userId = req.session.userId;
+    if (!userId) {
+      res.status(404).send({ message: "user not logged in" });
+      return;
+    }
+
+    const user = await UserModal.findById(userId);
+
+    res.send(getUserResponseObject(user));
+
+    // res.send({ user });
+  })
+);
+
+userRouter.post(
+  "/logout",
+  expressAsyncHandler(async (req, res) => {
+    // return new Promise((resolve) =>
+    //   req.session.destroy((err) => {
+    //     res.clearCookie(COOKIE_NAME);
+    //     if (err) {
+    //       console.log(err);
+    //       resolve(false);
+    //       return;
+    //     }
+    //     resolve(true);
+    //   })
+    // );
+
+    req.session.destroy();
+    res.clearCookie(COOKIE_NAME);
+
+    res.send({ message: "logout successfully" });
+  })
+);
+
 export default userRouter;
