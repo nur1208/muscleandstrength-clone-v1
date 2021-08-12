@@ -238,6 +238,22 @@ productsRouter.get(
   })
 );
 
+//TODO for now just bring the product that have been rated.
+productsRouter.get(
+  "/topRatedProducts",
+  // it is good practice to name the variable
+  // that you not going to use to "_".
+  expressAsyncHandler(async (_, res) => {
+    // if product have first element in userReview so
+    // the product has been rated.
+    const productsHasBeenRated = await Product.find({
+      "usersReview.0": { $exists: true },
+    });
+
+    res.send(productsHasBeenRated);
+  })
+);
+
 productsRouter.get(
   "/:id",
   expressAsyncHandler(async (req, res) => {

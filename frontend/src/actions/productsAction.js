@@ -20,6 +20,9 @@ import {
   PRODUCT_GET_THIS_WEEK_DEAL_REQUEST,
   PRODUCT_GET_THIS_WEEK_DEAL_SUCCESS,
   PRODUCT_GET_THIS_WEEK_DEAL_FAIL,
+  PRODUCT_GET_HAS_BEEN_RATED_REQUEST,
+  PRODUCT_GET_HAS_BEEN_RATED_SUCCESS,
+  PRODUCT_GET_HAS_BEEN_RATED_FAIL,
 } from "../constants/productsCntanst";
 
 export const getProductsTopDeals = () => async (dispatch) => {
@@ -75,6 +78,28 @@ export const getProductsThisWeekDeal =
     } catch (error) {
       dispatch({
         type: PRODUCT_GET_THIS_WEEK_DEAL_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+      });
+    }
+  };
+
+export const getProductsHasBeenRated =
+  () => async (dispatch) => {
+    dispatch({ type: PRODUCT_GET_HAS_BEEN_RATED_REQUEST });
+    try {
+      const { data } = await axios.get(
+        "/api/products/topRatedProducts"
+      );
+      dispatch({
+        type: PRODUCT_GET_HAS_BEEN_RATED_SUCCESS,
+        payload: data,
+      });
+    } catch (error) {
+      dispatch({
+        type: PRODUCT_GET_HAS_BEEN_RATED_FAIL,
         payload:
           error.response && error.response.data.message
             ? error.response.data.message

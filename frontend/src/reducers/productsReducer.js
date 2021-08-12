@@ -2,6 +2,9 @@ import {
   PRODUCT_ADD_FAIL,
   PRODUCT_ADD_REQUEST,
   PRODUCT_ADD_SUCCESS,
+  PRODUCT_GET_HAS_BEEN_RATED_FAIL,
+  PRODUCT_GET_HAS_BEEN_RATED_REQUEST,
+  PRODUCT_GET_HAS_BEEN_RATED_SUCCESS,
   PRODUCT_GET_ONE_FAIL,
   PRODUCT_GET_ONE_REQUEST,
   PRODUCT_GET_ONE_SUCCESS,
@@ -25,6 +28,7 @@ export const productsReducer = (state = {}, action) => {
     case PRODUCT_TOP_DEALS_REQUEST:
     case PRODUCT_GET_WITH_DEAL_REQUEST:
     case PRODUCT_GET_THIS_WEEK_DEAL_REQUEST:
+    case PRODUCT_GET_HAS_BEEN_RATED_REQUEST:
       return { ...state, loading: true };
     case PRODUCT_TOP_DEALS_SUCCESS:
       return {
@@ -39,6 +43,7 @@ export const productsReducer = (state = {}, action) => {
     case PRODUCT_TOP_DEALS_FAIL:
     case PRODUCT_GET_WITH_DEAL_FAIL:
     case PRODUCT_GET_THIS_WEEK_DEAL_FAIL:
+    case PRODUCT_GET_HAS_BEEN_RATED_FAIL:
       return { ...state, loading: false, error: action.payload };
 
     case PRODUCT_GET_WITH_DEAL_SUCCESS:
@@ -54,6 +59,14 @@ export const productsReducer = (state = {}, action) => {
         loading: false,
         productsThisWeekDeal: action.payload,
       };
+
+    case PRODUCT_GET_HAS_BEEN_RATED_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        productsHasBeenRated: action.payload,
+      };
+
     default:
       return state;
   }

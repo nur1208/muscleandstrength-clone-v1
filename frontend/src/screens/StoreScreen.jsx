@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
 import { getPathName } from "../actions/navBlockActions";
 import {
+  getProductsHasBeenRated,
   getProductsThisWeekDeal,
   getProductsTopDeals,
   getProductsWithDeal,
@@ -32,7 +33,8 @@ export const StoreScreen = (props) => {
   useEffect(() => {
     dispatch(getProductsTopDeals());
     // dispatch(getProductsWithDeal());
-    dispatch(getProductsThisWeekDeal());
+    // dispatch(getProductsThisWeekDeal());
+    // dispatch(getProductsHasBeenRated());
   }, [dispatch]);
 
   const products = useSelector((state) => state.products);
@@ -44,7 +46,6 @@ export const StoreScreen = (props) => {
     storeContents,
     loading,
     error,
-    productsWithDeal,
   } = products;
 
   require("../styles/store.css");

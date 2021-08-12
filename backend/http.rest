@@ -234,4 +234,8 @@ GET http://localhost:5000/api/products/productsWithDeal
 
 GET http://localhost:5000/api/products/thisWeekDeal
 
+###
+
+GET http://localhost:5000/api/products/topRatedProducts
+
 
