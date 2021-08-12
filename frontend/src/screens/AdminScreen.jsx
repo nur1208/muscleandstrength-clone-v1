@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Sidebar,
   SidebarBrand,
@@ -14,17 +14,27 @@ import {
 } from "../components/admin/styledComp";
 import { FcCdLogo } from "react-icons/fc";
 import { BsListTask } from "react-icons/bs";
-import { AiOutlineDashboard, AiOutlineSearch } from "react-icons/ai";
+import {
+  AiOutlineDashboard,
+  AiOutlineSearch,
+} from "react-icons/ai";
 import { FiUsers } from "react-icons/fi";
 import { GiBuyCard } from "react-icons/gi";
-import { RiAccountBoxLine, RiProjectorLine } from "react-icons/ri";
+import {
+  RiAccountBoxLine,
+  RiProjectorLine,
+} from "react-icons/ri";
 import { Dashboard } from "../components/admin/Dashboard";
 import { Products } from "../components/admin/Products";
 import { FaBars } from "react-icons/fa";
 
 export const AdminScreen = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-  const [activeSectionIndex, setActiveSectionIndex] = useState(0);
+  const [activeSectionIndex, setActiveSectionIndex] = useState(
+    localStorage.getItem("activeSectionIndex")
+      ? JSON.parse(localStorage.getItem("activeSectionIndex"))
+      : 0
+  );
 
   const sidebarItem = [
     {
@@ -46,9 +56,20 @@ export const AdminScreen = () => {
       comp: <Products isSidebarOpen={isSidebarOpen} />,
     },
     { title: "Orders", isActive: false, icon: <GiBuyCard /> },
-    { title: "Accounts", isActive: false, icon: <RiAccountBoxLine /> },
+    {
+      title: "Accounts",
+      isActive: false,
+      icon: <RiAccountBoxLine />,
+    },
     { title: "Tasks", isActive: false, icon: <BsListTask /> },
   ];
+
+  useEffect(() => {
+    localStorage.setItem(
+      "activeSectionIndex",
+      activeSectionIndex
+    );
+  }, [activeSectionIndex]);
 
   return (
     <div>
@@ -58,7 +79,10 @@ export const AdminScreen = () => {
         <SidebarBrand isSidebarOpen={isSidebarOpen}>
           <h2>
             <FcCdLogo
-              style={{ display: "inline-block", paddingRight: "0.5rem" }}
+              style={{
+                display: "inline-block",
+                paddingRight: "0.5rem",
+              }}
             ></FcCdLogo>{" "}
             <span>Accusoft</span>
           </h2>
@@ -73,7 +97,12 @@ export const AdminScreen = () => {
                   key={index}
                   onClick={() => setActiveSectionIndex(index)}
                 >
-                  <a href="#" className={`${sidebar.isActive ? "active" : ""}`}>
+                  <a
+                    href="#"
+                    className={`${
+                      sidebar.isActive ? "active" : ""
+                    }`}
+                  >
                     {sidebar.icon} <span>{sidebar.title}</span>
                   </a>
                 </SidebarMenuItem>
@@ -88,7 +117,9 @@ export const AdminScreen = () => {
           <h2>
             <label htmlFor="nav-toggle">
               {" "}
-              <span onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
+              <span
+                onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+              >
                 <FaBars />
               </span>
             </label>
@@ -103,7 +134,12 @@ export const AdminScreen = () => {
           </SearchWrapper>
 
           <UserWrapper>
-            <img src="/images/user2.png" width="40px" height="40px" alt="" />
+            <img
+              src="/images/user2.png"
+              width="40px"
+              height="40px"
+              alt=""
+            />
             <div>
               <h4>John Doe</h4>
               <small>Super admin</small>

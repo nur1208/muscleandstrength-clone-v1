@@ -11,6 +11,7 @@ import { Helmet } from "react-helmet-async";
 import { useAddBodyClass } from "../hooks/customAddBodyClass";
 import { sliderData } from "../data/SliderData";
 import { SliderV2 } from "../components/SliderV2";
+import axios from "../../node_modules/axios/index";
 
 export const HomeScreen = (props) => {
   const dispatch = useDispatch();
@@ -27,13 +28,17 @@ export const HomeScreen = (props) => {
       <div id="main-wrap">
         <Helmet>
           <title>
-            Muscle {"&"} Strength: Supplement Store {"&"} Free Workouts
+            Muscle {"&"} Strength: Supplement Store {"&"} Free
+            Workouts
           </title>
         </Helmet>
         <div className="header-content">
           <div className="row">
             {/* <Slider sliderData={sliderData} sliderStyle={"section"} /> */}
-            <SliderV2 slidersData={sliderData} sliderStyle="home-carousel" />
+            <SliderV2
+              slidersData={sliderData}
+              sliderStyle="home-carousel"
+            />
             <HeaderRightBlock />
           </div>
         </div>

@@ -4,6 +4,9 @@ import {
   USER_ADMIN_UPLOADING_IMAGE_FAIL,
   USER_ADMIN_UPLOADING_IMAGE_REQUEST,
   USER_ADMIN_UPLOADING_IMAGE_SUCCESS,
+  USER_AUTO_LOGIN_FAIL,
+  USER_AUTO_LOGIN_REQUEST,
+  USER_AUTO_LOGIN_SUCCESS,
   USER_FIND_EMAIL_FAIL,
   USER_FIND_EMAIL_SUCCESS,
   USER_FORGOT_PASSWORD,
@@ -31,7 +34,11 @@ export const userRegisterReducer = (state = {}, action) => {
     case USER_REGISTER_REQUEST:
       return { ...state, loading: true };
     case USER_REGISTER_SUCCESS:
-      return { loading: false, userInfo: action.payload, success: true };
+      return {
+        loading: false,
+        userInfo: action.payload,
+        success: true,
+      };
     case USER_REGISTER_FAIL:
       return { ...state, loading: false, error: action.payload };
     default:
@@ -42,10 +49,17 @@ export const userRegisterReducer = (state = {}, action) => {
 export const userSignInReducer = (state = {}, action) => {
   switch (action.type) {
     case USER_SIGN_IN_REQUEST:
+    case USER_AUTO_LOGIN_REQUEST:
       return { ...state, loading: true };
     case USER_SIGN_IN_SUCCESS:
-      return { loading: false, userInfo: action.payload, success: true };
+    case USER_AUTO_LOGIN_SUCCESS:
+      return {
+        loading: false,
+        userInfo: action.payload,
+        success: true,
+      };
     case USER_SIGN_IN_FAIL:
+    case USER_AUTO_LOGIN_FAIL:
       return { ...state, loading: false, error: action.payload };
     case USER_UPDATE_REQUEST:
       return { ...state, loadingUpdate: true };
@@ -57,7 +71,11 @@ export const userSignInReducer = (state = {}, action) => {
         successUpdate: true,
       };
     case USER_UPDATE_FAIL:
-      return { ...state, loadingUpdate: false, errorUpdate: action.payload };
+      return {
+        ...state,
+        loadingUpdate: false,
+        errorUpdate: action.payload,
+      };
     case USER_LOGOUT:
       return {};
     default:
@@ -78,7 +96,10 @@ export const emailFindReducer = (state = {}, action) => {
   }
 };
 
-export const userForgetPasswordReducer = (state = {}, action) => {
+export const userForgetPasswordReducer = (
+  state = {},
+  action
+) => {
   switch (action.type) {
     case USER_FORGOT_PASSWORD:
       return {};
@@ -94,22 +115,34 @@ export const userForgetPasswordReducer = (state = {}, action) => {
       return { ...state, error: action.payload };
     case USER_FORGOT_PASSWORD_TIME_OUT:
       return {
-        error: "your reset password link expired, sorry you gotta try again",
+        error:
+          "your reset password link expired, sorry you gotta try again",
       };
     case USER_FORGOT_PASSWORD_RESET_SUCCESS:
       return { ...state, success: true };
     case USER_FORGOT_PASSWORD_RESET_FAIL:
       return { ...state, error: action.payload };
     case USER_FORGOT_PASSWORD_TOKEN_VALID:
-      return { ...state, data: action.payload, isFPTokenInvalid: false };
+      return {
+        ...state,
+        data: action.payload,
+        isFPTokenInvalid: false,
+      };
     case USER_FORGOT_PASSWORD_TOKEN_INVALID:
-      return { ...state, error: action.payload, isFPTokenInvalid: true };
+      return {
+        ...state,
+        error: action.payload,
+        isFPTokenInvalid: true,
+      };
     default:
       return state;
   }
 };
 
-export const AdminUploadingImageReducer = (state = {}, action) => {
+export const AdminUploadingImageReducer = (
+  state = {},
+  action
+) => {
   switch (action.type) {
     case USER_ADMIN_UPLOADING_IMAGE_REQUEST:
       return { ...state, loading: true };
@@ -125,7 +158,10 @@ export const AdminUploadingImageReducer = (state = {}, action) => {
   }
 };
 
-export const adminSaveUserInputProductsR = (state = {}, action) => {
+export const adminSaveUserInputProductsR = (
+  state = {},
+  action
+) => {
   switch (action.type) {
     case USER_ADMIN_RESET_PRODUCT_ADD_INFO:
       return { ...state, userInput: {} };

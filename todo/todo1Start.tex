@@ -63,3 +63,10 @@ TODO clean up the following code (we don't need it anymore):
     useEffect(() => {
         dispatch(getPathName(props.location.pathname));
       }, [dispatch, props.location.pathname]);
+TODO refactor the following code () make it as utilities:
+    {
+    //  
+    //     error.response && error.response.data.message
+    //       ? error.response.data.message
+    //       : error.message,
+    // name it as errorFromBackend(error)

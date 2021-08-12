@@ -1,7 +1,15 @@
 import thunk from "redux-thunk";
-import { applyMiddleware, combineReducers, compose, createStore } from "redux";
+import {
+  applyMiddleware,
+  combineReducers,
+  compose,
+  createStore,
+} from "redux";
 import sidebarReducer from "./reducers/sidebarReducer";
-import { submenuReducer, subSubmenuReducer } from "./reducers/submenuReducer";
+import {
+  submenuReducer,
+  subSubmenuReducer,
+} from "./reducers/submenuReducer";
 import { navBlockReducer } from "./reducers/navBlockReducer";
 import { dialogLoginReducer } from "./reducers/dialogLoginReducer";
 import {
@@ -29,11 +37,11 @@ import { sliderReducer } from "./reducers/sliderReducer";
 import { cartReducer } from "./reducers/cartReucers";
 
 const initialState = {
-  userSingIn: {
-    userInfo: localStorage.getItem("userInfo")
-      ? JSON.parse(localStorage.getItem("userInfo"))
-      : null,
-  },
+  // userSingIn: {
+  //   userInfo: localStorage.getItem("userInfo")
+  //     ? JSON.parse(localStorage.getItem("userInfo"))
+  //     : null,
+  // },
   userForgetPassword: {
     token: localStorage.getItem("fPToken")
       ? JSON.parse(localStorage.getItem("fPToken"))
@@ -57,7 +65,9 @@ const initialState = {
       ? JSON.parse(localStorage.getItem("totalReviews"))
       : null,
 
-    totalVerifiedReviews: localStorage.getItem("totalVerifiedReviews")
+    totalVerifiedReviews: localStorage.getItem(
+      "totalVerifiedReviews"
+    )
       ? JSON.parse(localStorage.getItem("totalVerifiedReviews"))
       : null,
   },
@@ -71,7 +81,8 @@ const initialState = {
   },
 };
 
-const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const composeEnhancer =
+  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const reducer = combineReducers({
   sidebar: sidebarReducer,

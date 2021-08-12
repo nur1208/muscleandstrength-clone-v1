@@ -2,7 +2,12 @@
 // import { useSelector } from "react-redux";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { BrowserRouter, Route, Switch, useLocation } from "react-router-dom";
+import {
+  BrowserRouter,
+  Route,
+  Switch,
+  useLocation,
+} from "react-router-dom";
 import { closeDialogLogin } from "./actions/dialogLoginActions";
 import { closeSidebar } from "./actions/sidebarAction";
 import { Footer } from "./components/footer/Footer";
@@ -32,6 +37,7 @@ import { AppDome } from "./components/dome/AppDome";
 import { CartScreen } from "./screens/CartScreen";
 import { FooterV2 } from "./components/FooterV2";
 import { BrandScreen } from "./screens/BrandScreen";
+import { autoLoggingLoggedUser } from "./actions/userActions";
 // import "./styles/home.css";
 
 function App(props) {
@@ -59,8 +65,8 @@ function App(props) {
   const location = useLocation();
 
   useEffect(() => {
-    console.log(location);
-  }, [location]);
+    dispatch(autoLoggingLoggedUser());
+  }, [dispatch]);
   return (
     <>
       <>
@@ -77,16 +83,27 @@ function App(props) {
             <Region />
             <Header />
             {location.pathname !== "/store/search" &&
-              location.pathname !== "/store/brand" && <NavBlock />}
+              location.pathname !== "/store/brand" && (
+                <NavBlock />
+              )}
             <Switch>
               <Route path="/dome" component={AppDome} />
               <Route path="/admin" component={AdminScreen} />
               <Route path="/learn" component={FlexBox1} />
               <Route path="/test" component={AppPop2} />
-              <Route path="/store/brand" component={BrandScreen} />
+              <Route
+                path="/store/brand"
+                component={BrandScreen}
+              />
               <Route path="/store/cart" component={CartScreen} />
-              <Route path="/store/review" component={ReviewScreen} />
-              <Route path="/store/search" component={SearchScreen} />
+              <Route
+                path="/store/review"
+                component={ReviewScreen}
+              />
+              <Route
+                path="/store/search"
+                component={SearchScreen}
+              />
               <Route
                 path="/store/customer/account/changeforgotten/"
                 component={ResetPasswordScreen}
@@ -107,7 +124,10 @@ function App(props) {
                 path="/store/customer/account/create"
                 component={CreateAccountScreen}
               />
-              <Route path="/store/:id" component={ProductScreen} />
+              <Route
+                path="/store/:id"
+                component={ProductScreen}
+              />
 
               <Route path="/store" component={StoreScreen} />
               <Route path="/" component={HomeScreen} exact />
@@ -118,7 +138,10 @@ function App(props) {
         {/* <FooterV2 /> */}
       </>
 
-      <div className="menu-mask" onClick={handleCloseSidebar}></div>
+      <div
+        className="menu-mask"
+        onClick={handleCloseSidebar}
+      ></div>
       {isDialogOpen && (
         <>
           <LoginDialog />
