@@ -20,6 +20,25 @@ Review:
 product:
     .....
     deals:[deal]
+    supProducts:[supProduct]
+
+supProduct:
+    -id: ObjectId
+    mainProduct: product._id
+    price: number
+    image: string
+    size: string
+    deals: [deal._id]
+    servings: number
+    perServingPrice: number
+    pointPerUint: number (default: 0)
+    flavors:[flavor._id] 
+
+flavor:
+    -id: ObjectId
+    name: string
+    qty:number
+
 
 Report:
     -id : string

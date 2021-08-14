@@ -13,8 +13,8 @@ const productSchema = new mongoose.Schema(
     description: { type: String, required: true },
     features: { type: [String], index: true, required: true },
 
-    price: { type: Number, required: true },
-    qty: { type: Number, required: true },
+    price: { type: Number },
+    qty: { type: Number },
 
     rating: { type: Number, default: 0 },
     numReviews: { type: Number, default: 0 },
@@ -36,6 +36,12 @@ const productSchema = new mongoose.Schema(
       {
         type: mongoose.Types.ObjectId,
         ref: "deal",
+      },
+    ],
+    supProducts: [
+      {
+        type: mongoose.Types.ObjectId,
+        ref: "supProduct",
       },
     ],
     buyingOption: [

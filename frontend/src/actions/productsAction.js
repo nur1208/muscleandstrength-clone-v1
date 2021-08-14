@@ -23,6 +23,9 @@ import {
   PRODUCT_GET_HAS_BEEN_RATED_REQUEST,
   PRODUCT_GET_HAS_BEEN_RATED_SUCCESS,
   PRODUCT_GET_HAS_BEEN_RATED_FAIL,
+  PRODUCT_GET_PRODUCT_V2_REQUEST,
+  PRODUCT_GET_PRODUCT_V2_SUCCESS,
+  PRODUCT_GET_PRODUCT_V2_FAIL,
 } from "../constants/productsCntanst";
 
 export const getProductsTopDeals = () => async (dispatch) => {
@@ -178,6 +181,30 @@ export const getNumOfProducts = (quey) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: PRODUCT_SEARCH_GET_NUM_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const getProductV2 = (productId) => async (dispatch) => {
+  dispatch({
+    type: PRODUCT_GET_PRODUCT_V2_REQUEST,
+  });
+  try {
+    const { data } = await axios.get(
+      `/api/products/version2/${productId}`
+    );
+
+    dispatch({
+      type: PRODUCT_GET_PRODUCT_V2_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: PRODUCT_GET_PRODUCT_V2_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

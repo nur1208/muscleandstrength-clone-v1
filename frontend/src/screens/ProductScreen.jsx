@@ -1,6 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getOneProduct } from "../actions/productsAction";
+import {
+  getOneProduct,
+  getProductV2,
+} from "../actions/productsAction";
 import { Features } from "../components/productScreen/Features";
 import { ProductAside } from "../components/productScreen/ProductAside";
 import { ProductHeader } from "../components/productScreen/ProductHeader";
@@ -14,7 +17,10 @@ import { useAddBodyClass } from "../hooks/customAddBodyClass";
 import { DealsSection } from "./DealsSection";
 import { LoadingScreen } from "../components/LoadingScreen";
 import { MessageBox } from "../components/MessageBox";
-import { getAllReviews, getTotalReviews } from "../actions/reviewAction";
+import {
+  getAllReviews,
+  getTotalReviews,
+} from "../actions/reviewAction";
 import { useGetPathName } from "../hooks/customGetPathName";
 
 export const ProductScreen = (props) => {
@@ -28,7 +34,7 @@ export const ProductScreen = (props) => {
     dispatch(getOneProduct(productId));
     dispatch(getAllReviews(productId, 10));
     dispatch(getTotalReviews(productId));
-
+    dispatch(getProductV2("61165b17e21c1f5e5cef730b"));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, productId]);
 

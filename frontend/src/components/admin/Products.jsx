@@ -24,7 +24,11 @@ import {
 } from "../../actions/userActions";
 import { useEffect } from "react";
 import { addProduct } from "../../actions/productsAction";
-import { Select, FormLabel, FormControl } from "@chakra-ui/react";
+import {
+  Select,
+  FormLabel,
+  FormControl,
+} from "@chakra-ui/react";
 
 export const Products = ({ isSidebarOpen }) => {
   const adminSaveUserInputProducts = useSelector(
@@ -33,10 +37,18 @@ export const Products = ({ isSidebarOpen }) => {
   const { userInput } = adminSaveUserInputProducts;
   const [uploading, setUploading] = useState(false);
   // const [userInput, setUserInput] = useState({});
-  const [name, setProductName] = useState(userInput.name ? userInput.name : "");
-  const [price, setPrice] = useState(userInput.price ? userInput.price : 0);
-  const [brand, setBrand] = useState(userInput.brand ? userInput.brand : "");
-  const [qty, setQty] = useState(userInput.qty ? userInput.qty : 0);
+  const [name, setProductName] = useState(
+    userInput.name ? userInput.name : ""
+  );
+  const [price, setPrice] = useState(
+    userInput.price ? userInput.price : 0
+  );
+  const [brand, setBrand] = useState(
+    userInput.brand ? userInput.brand : ""
+  );
+  const [qty, setQty] = useState(
+    userInput.qty ? userInput.qty : 0
+  );
   const [category, setCategory] = useState(
     userInput.category ? userInput.category : ""
   );
@@ -62,14 +74,18 @@ export const Products = ({ isSidebarOpen }) => {
   const [extraInfo, setExtraInfo] = useState(
     userInput.extraInfo ? userInput.extraInfo : ""
   );
-  const [type, setType] = useState(userInput.type ? userInput.type : "");
+  const [type, setType] = useState(
+    userInput.type ? userInput.type : ""
+  );
   const [imageUrl, setImageUrl] = useState(
     userInput.image ? userInput.image : ""
   );
 
   const dispatch = useDispatch(null);
 
-  const AdminUploadingImage = useSelector((state) => state.AdminUploadingImage);
+  const AdminUploadingImage = useSelector(
+    (state) => state.AdminUploadingImage
+  );
 
   const { image } = AdminUploadingImage;
 
@@ -296,7 +312,8 @@ export const Products = ({ isSidebarOpen }) => {
     {
       title: "image",
       type: "text",
-      placeholder: "Enter product image url(it's temporary field)",
+      placeholder:
+        "Enter product image url(it's temporary field)",
       onChangeFunction: setImageUrl,
       value: imageUrl,
     },
@@ -343,13 +360,18 @@ export const Products = ({ isSidebarOpen }) => {
           <FormWrapper>
             {formGroups.map((item, index) =>
               item.type !== "select" ? (
-                <Form.Group controlId="formBasicProductName" key={index}>
+                <Form.Group
+                  controlId="formBasicProductName"
+                  key={index}
+                >
                   <Form.Label>{item.title}:</Form.Label>
                   <Form.Control
                     type={item.type}
                     placeholder={item.placeholder}
                     as={item.as}
-                    onChange={(e) => handleInput(e, item.onChangeFunction)}
+                    onChange={(e) =>
+                      handleInput(e, item.onChangeFunction)
+                    }
                     value={item.value === 0 ? "" : item.value}
                   />
                   {item.hasButton && (
@@ -363,7 +385,9 @@ export const Products = ({ isSidebarOpen }) => {
                             <FeatureWrapper>
                               <li key={index}>- {feature}</li>
                               <ButtonF
-                                onClick={() => handleDeleteFeature(index)}
+                                onClick={() =>
+                                  handleDeleteFeature(index)
+                                }
                               >
                                 Delete
                               </ButtonF>
@@ -371,7 +395,9 @@ export const Products = ({ isSidebarOpen }) => {
                           )
                         )}
                       </ul>
-                      <Button onClick={addOtherFeature}>add feature</Button>
+                      <Button onClick={addOtherFeature}>
+                        add feature
+                      </Button>
                     </>
                   )}
                 </Form.Group>
@@ -381,9 +407,17 @@ export const Products = ({ isSidebarOpen }) => {
 
                   <Select
                     placeholder="Select Brand"
-                    onChange={(e) => handleInput(e, item.onChangeFunction)}
+                    onChange={(e) =>
+                      handleInput(e, item.onChangeFunction)
+                    }
                   >
-                    <option value="610a5df809f5dc1ab041e575">MuscleTech</option>
+                    <option value="610a5df809f5dc1ab041e575">
+                      MuscleTech
+                    </option>
+                    <option value="61165926e21c1f5e5cef730a">
+                      Dymatize
+                    </option>
+
                     <option value="-1">Other</option>
                   </Select>
                 </FormControl>

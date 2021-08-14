@@ -2,6 +2,7 @@ import express from "express";
 import expressAsyncHandler from "express-async-handler";
 import Deal from "../models/DealModal.js";
 import Product from "../models/productModal.js";
+import SupProduct from "../models/supProductModal.js";
 import {
   topDeal,
   topRated,
@@ -260,6 +261,89 @@ productsRouter.get(
     const product = await Product.findById(req.params.id);
     console.log({ name: product.name });
     res.send(product);
+  })
+);
+
+productsRouter.get(
+  "/version2/:id",
+  expressAsyncHandler(async (req, res) => {
+    // nasty populate
+    const product = await Product.find({
+      _id: req.params.id,
+    })
+      .populate({
+        path: "supProducts",
+        populate: { path: "deals" },
+      })
+      .populate("brand");
+
+    if (product) {
+      res.send(product[0]);
+    } else {
+      res.status(404).send({ message: "product id not exist" });
+    }
+  })
+);
+
+productsRouter.post(
+  "/supProduct",
+  expressAsyncHandler(async (req, res) => {
+    const { data: dataWithDeal } = req.body;
+    // console.log({ data: dataWithDeal });
+
+    // remove deal from dataWthDeal and put it and separate
+    // variable (deal).
+    const { deal, ...data } = dataWithDeal;
+    try {
+      // create new SupProduct modal save it in the database
+      const newSupProduct = new SupProduct(data);
+
+      // create new Deal modal and set 'belongTo' to the new
+      // created supProduct id and save it in the database
+      const newDeal = await new Deal({
+        ...deal,
+        belongTo: newSupProduct._id,
+      }).save();
+
+      //add new created deal id to "deals" attribute of the new
+      // created supProduct
+      newSupProduct.deals = [
+        newDeal._id,
+        ...newSupProduct.deals,
+      ];
+
+      // SupProduct modal save it in the database
+      await newSupProduct.save();
+
+      // find the main product
+      const mainProduct = await Product.findById(
+        data.mainProduct
+      );
+      // if the product with data.mainProduct id exit
+      if (mainProduct) {
+        // add created supProduct to the main product
+        mainProduct.supProducts = [
+          newSupProduct,
+          ...mainProduct.supProducts,
+        ];
+        console.log({ newSupProduct, mainProduct });
+        // save the new update for mainProduct
+        const updateProduct = await mainProduct.save();
+        /// send the update product to caller.
+        res.send(updateProduct);
+        // else product with data.mainProduct id not exit
+      } else {
+        /// send message error to caller.
+        res
+          .status(404)
+
+          .send({ message: "main product id not exist" });
+      }
+      // if there were unexpected error
+    } catch (error) {
+      /// send message error to caller.
+      res.status(500).send({ message: error.message });
+    }
   })
 );
 

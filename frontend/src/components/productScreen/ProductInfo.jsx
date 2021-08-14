@@ -1,5 +1,15 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import styled from "styled-components";
+
+const STDContainer = styled.div`
+  div.std {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+`;
 
 export const ProductInfo = () => {
   const productOne = useSelector((state) => state.productOne);
@@ -13,10 +23,10 @@ export const ProductInfo = () => {
         {loading ? (
           <h1>Loading</h1>
         ) : (
-          <div
-            className="std"
+          <STDContainer
+            id="STDContainer"
             dangerouslySetInnerHTML={{ __html: extraInfo }}
-          ></div>
+          ></STDContainer>
         )}
       </div>
     </div>

@@ -4,19 +4,38 @@ import { FaShare } from "react-icons/fa";
 import { useSelector } from "react-redux";
 
 export const ProductHeader = () => {
-  const productOne = useSelector((state) => state.productOne);
-  const { product, loading } = productOne;
+  // const productOne = useSelector((state) => state.productOne);
+  // const { product, loading } = productOne;
+  // const {
+  //   features,
+  //   name,
+  //   image,
+  //   brand,
+  //   description,
+  //   rating,
+  //   // numReviews,
+  // } = product;
+
+  const productV2Store = useSelector(
+    (state) => state.productV2Store
+  );
+
+  const { product, loading } = productV2Store;
+
   const {
     features,
     name,
     image,
-    brand,
+    brand: brandO,
     description,
     rating,
-    // numReviews,
   } = product;
 
-  const getAllReviews = useSelector((state) => state.getAllReviews);
+  const { name: brand } = brandO;
+
+  const getAllReviews = useSelector(
+    (state) => state.getAllReviews
+  );
   const { totalReviews } = getAllReviews;
 
   // useEffect(() => {
@@ -41,6 +60,8 @@ export const ProductHeader = () => {
           id="image"
           className=" lazyloaded"
           src={image.startsWith("/") ? image : "/" + image}
+          // TODO update the image in the database
+          // src={"/images/iso100_5lb_frpebbles_1.webp"}
           alt="The Ripper!"
           title="The Ripper!"
         />
@@ -64,7 +85,9 @@ export const ProductHeader = () => {
         <div className="tagline">{description}</div>
         <ul className="product-features">
           {features &&
-            features.map((feature, index) => <li key={index}>- {feature}</li>)}
+            features.map((feature, index) => (
+              <li key={index}>- {feature}</li>
+            ))}
         </ul>
       </div>
       <div className="product-data">
@@ -72,11 +95,15 @@ export const ProductHeader = () => {
           <div className="product-rating-wrap">
             <div className="rating-box">
               <div className="star-overlay gray-bg"></div>
-              <div className="rating" style={{ width: `${rating}%` }}></div>
+              <div
+                className="rating"
+                style={{ width: `${rating}%` }}
+              ></div>
             </div>
           </div>
           <span className="button-text">
-            {totalReviews} <span className="button-text-label">Reviews</span>
+            {totalReviews}{" "}
+            <span className="button-text-label">Reviews</span>
           </span>
         </a>
         <div className="product-share-btn addthis_toolbox">

@@ -25,6 +25,7 @@ import {
   productGetOneReducer,
   productSearchReducer,
   productsReducer,
+  productV2Reducer,
 } from "./reducers/productsReducer";
 import {
   addReviewReducer,
@@ -79,6 +80,9 @@ const initialState = {
   productSearch: {
     products: [],
   },
+  productV2Store: {
+    product: { brand: {} },
+  },
 };
 
 const composeEnhancer =
@@ -106,6 +110,7 @@ const reducer = combineReducers({
   adminSaveUserInputProducts: adminSaveUserInputProductsR,
   productSearch: productSearchReducer,
   cart: cartReducer,
+  productV2Store: productV2Reducer,
 });
 
 const store = createStore(

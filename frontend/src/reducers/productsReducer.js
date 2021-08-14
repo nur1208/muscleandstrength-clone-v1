@@ -8,6 +8,9 @@ import {
   PRODUCT_GET_ONE_FAIL,
   PRODUCT_GET_ONE_REQUEST,
   PRODUCT_GET_ONE_SUCCESS,
+  PRODUCT_GET_PRODUCT_V2_FAIL,
+  PRODUCT_GET_PRODUCT_V2_REQUEST,
+  PRODUCT_GET_PRODUCT_V2_SUCCESS,
   PRODUCT_GET_THIS_WEEK_DEAL_FAIL,
   PRODUCT_GET_THIS_WEEK_DEAL_REQUEST,
   PRODUCT_GET_THIS_WEEK_DEAL_SUCCESS,
@@ -83,6 +86,23 @@ export const productGetOneReducer = (state = {}, action) => {
         product: action.payload,
       };
     case PRODUCT_GET_ONE_FAIL:
+      return { ...state, loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const productV2Reducer = (state = {}, action) => {
+  switch (action.type) {
+    case PRODUCT_GET_PRODUCT_V2_REQUEST:
+      return { ...state, loading: true };
+    case PRODUCT_GET_PRODUCT_V2_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        product: action.payload,
+      };
+    case PRODUCT_GET_PRODUCT_V2_FAIL:
       return { ...state, loading: false, error: action.payload };
     default:
       return state;

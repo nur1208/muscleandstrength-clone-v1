@@ -11,6 +11,8 @@ export const Group = ({
   items,
   beforeDiscount,
   setFavors,
+  servings,
+  perServingPrice,
 }) => {
   const [selectedFIndex, setSelectedFIndex] = useState(0);
   const [qty, setQyt] = useState(0);
@@ -18,7 +20,11 @@ export const Group = ({
   useEffect(() => {
     const newQty = qty === 0 ? 1 : qty;
     if (selectedFIndex !== 0)
-      setFavors && setFavors({ ...items[selectedFIndex], quantity: newQty });
+      setFavors &&
+        setFavors({
+          ...items[selectedFIndex],
+          quantity: newQty,
+        });
     else setFavors && setFavors(null);
   }, [selectedFIndex, items, setFavors, qty]);
 
@@ -34,14 +40,20 @@ export const Group = ({
           )}
 
           <span className="calc">
-            <span className="regular-price" id="product-price-20452">
+            <span
+              className="regular-price"
+              id="product-price-20452"
+            >
               <span className="price">€{price}</span>{" "}
             </span>
             <span className="points-per-unit">{point}</span>
           </span>
         </div>
         <div className="title">{title}</div>
-        <div className="serving-info">{servingInfo}</div>
+        <div className="serving-info">
+          {servingInfo ||
+            `${servings} Servings | €${perServingPrice} Per Serving`}
+        </div>
         {deal && (
           <div className="deal">
             <span className="mns-label lbl-deal">{deal}</span>
@@ -52,7 +64,9 @@ export const Group = ({
             <div className="option-field field">
               <CustomSelect
                 favors={favors}
-                setSelectedFIndex={setFavors && setSelectedFIndex}
+                setSelectedFIndex={
+                  setFavors && setSelectedFIndex
+                }
                 items={items}
                 setQyt={setQyt}
                 qty={qty}
@@ -65,7 +79,11 @@ export const Group = ({
                   onClick={() =>
                     // this "(selectedFIndex === 0 ? 0 : 1)" for
                     // "don't let the user show less than one if he/she selected favor"
-                    setQyt(qty > (selectedFIndex === 0 ? 0 : 1) ? qty - 1 : qty)
+                    setQyt(
+                      qty > (selectedFIndex === 0 ? 0 : 1)
+                        ? qty - 1
+                        : qty
+                    )
                   }
                 >
                   –
@@ -89,7 +107,9 @@ export const Group = ({
                 />
                 <div
                   className="add increment"
-                  onClick={() => setQyt(qty < 20 ? qty + 1 : qty)}
+                  onClick={() =>
+                    setQyt(qty < 20 ? qty + 1 : qty)
+                  }
                 >
                   +
                 </div>
