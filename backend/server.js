@@ -8,7 +8,7 @@ import formData from "express-form-data";
 import dotenv from "dotenv";
 import cartRouter from "./routers/cartRouter.js";
 import brandRouter from "./routers/brandRouter.js";
-// --- imports for redis
+// --- imports for redis .
 import Redis from "ioredis";
 import session from "express-session";
 import connectRedis from "connect-redis";

@@ -37,7 +37,8 @@ export const StoreControlLink = styled.a`
   } /* current */
   color: ${(props) => props.current && "#059"};
   background-color: ${(props) => props.current && "#fff"};
-  font-family: ${(props) => props.current && "nimbusnovus-medium,sans-serif"};
+  font-family: ${(props) =>
+    props.current && "nimbusnovus-medium,sans-serif"};
   border-radius: ${(props) => props.current && "2px"};
 `;
 
