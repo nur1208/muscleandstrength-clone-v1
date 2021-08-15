@@ -22,7 +22,7 @@ export const ProductAside = () => {
 
   const [favors, setFavors] = useState(null);
   const [isAdded, setIsAdded] = useState(false);
-
+  const [isAddBtnClicked, setIsAddBtnClicked] = useState(false);
   const history = useHistory();
 
   const productOne = useSelector((state) => state.productOne);
@@ -360,7 +360,11 @@ export const ProductAside = () => {
         addToCart(userId, productId, quantity, productType)
       );
       setIsAdded(true);
+      setIsAddBtnClicked(false);
+    } else {
+      setIsAddBtnClicked(true);
     }
+
     // dispatch(addProduct(product));
   };
   const [nurtIndex, setnurtIndex] = useState(0);
@@ -396,7 +400,7 @@ export const ProductAside = () => {
           <form id="product_addtocart_form">
             <div className="section-inner-wrap">
               <div className="group-wrap">
-                {/* {buyingOption &&
+                {buyingOption &&
                   buyingOption.map((option, index) => (
                     <Group
                       key={index}
@@ -412,10 +416,14 @@ export const ProductAside = () => {
                         option.title === "30 Servings" &&
                         setFavors
                       }
+                      isAddBtnClicked={
+                        option.title === "30 Servings" &&
+                        isAddBtnClicked
+                      }
                     />
-                  ))} */}
+                  ))}
 
-                {supProducts &&
+                {/* {supProducts &&
                   supProducts.map((option, index) => {
                     // console.log({ deal: option.deals, index });
                     return (
@@ -435,14 +443,13 @@ export const ProductAside = () => {
                         deal={
                           option.deals[0] && option.deals[0].type
                         }
-
-                        // setFavors={
-                        //   option.title === "30 Servings" &&
-                        //   setFavors
-                        // }
+                        setFavors={
+                          option.title === "30 Servings" &&
+                          setFavors
+                        }
                       />
                     );
-                  })}
+                  })} */}
                 {/* <Group
                   price={0.0}
                   point={0.0}

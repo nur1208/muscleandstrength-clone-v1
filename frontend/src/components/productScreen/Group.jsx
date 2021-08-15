@@ -13,19 +13,26 @@ export const Group = ({
   setFavors,
   servings,
   perServingPrice,
+  isAddBtnClicked,
 }) => {
   const [selectedFIndex, setSelectedFIndex] = useState(0);
   const [qty, setQyt] = useState(0);
 
   useEffect(() => {
+    // set qty to one when the user select a flavor and qty
+    // equals = 0 otherwise set it the the value the user
+    // selected
     const newQty = qty === 0 ? 1 : qty;
-    if (selectedFIndex !== 0)
+    if (selectedFIndex !== 0 && qty !== 0)
       setFavors &&
         setFavors({
           ...items[selectedFIndex],
-          quantity: newQty,
+          quantity: newQty, // for the cart
         });
-    else setFavors && setFavors(null);
+    else {
+      setQyt(0);
+      setFavors && setFavors(null);
+    }
   }, [selectedFIndex, items, setFavors, qty]);
 
   useEffect(() => {}, []);
@@ -70,6 +77,9 @@ export const Group = ({
                 items={items}
                 setQyt={setQyt}
                 qty={qty}
+                isAddBtnClicked={
+                  isAddBtnClicked && isAddBtnClicked
+                }
               />
             </div>
             <div className="qty-field field">
@@ -80,9 +90,12 @@ export const Group = ({
                     // this "(selectedFIndex === 0 ? 0 : 1)" for
                     // "don't let the user show less than one if he/she selected favor"
                     setQyt(
+                      // if the user select flavor don't let him/
+                      // her select qty as 0
                       qty > (selectedFIndex === 0 ? 0 : 1)
                         ? qty - 1
                         : qty
+                      // qty > 0 ? qty - 1 : qty
                     )
                   }
                 >

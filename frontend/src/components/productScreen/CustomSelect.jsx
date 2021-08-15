@@ -9,9 +9,12 @@ export const CustomSelect = ({
   setSelectedFIndex,
   setQyt,
   qty,
+  isAddBtnClicked,
 }) => {
   const [sodList, setSodList] = useState("sod_list");
-  const [sodListWrapper, setSodListWrapper] = useState("sod_list_wrapper");
+  const [sodListWrapper, setSodListWrapper] = useState(
+    "sod_list_wrapper"
+  );
   const [favor, setFavor] = useState([]);
 
   const createFavors = () => {
@@ -34,8 +37,12 @@ export const CustomSelect = ({
     value: items[0].title,
   });
 
+  const [errorStyle, setErrorStyle] = useState(false);
+
   const toggleSelect = () => {
-    setSodList(sodList === "sod_list" ? "sod_list focus open" : "sod_list");
+    setSodList(
+      sodList === "sod_list" ? "sod_list focus open" : "sod_list"
+    );
     setSodListWrapper(
       sodListWrapper === "sod_list_wrapper"
         ? "sod_list_wrapper open"
@@ -83,6 +90,14 @@ export const CustomSelect = ({
     setFavor(newFavor);
   };
 
+  useEffect(() => {
+    setErrorStyle(
+      isAddBtnClicked &&
+        selected.value === "Pick a Flavor" &&
+        "#d41313"
+    );
+  }, [selected, isAddBtnClicked]);
+
   return (
     <span
       className="sod_select "
@@ -92,15 +107,24 @@ export const CustomSelect = ({
       data-links-external="false"
       data-placeholder-option="false"
       data-filter=""
+      style={{ borderColor: errorStyle }}
       onClick={handleSelect}
       onBlur={closeSelect}
     >
       <span className="sod_label">{selected.value}</span>
       <span className={sodListWrapper}>
-        <span className={sodList} style={{ maxHeight: maxH && 206 }}>
+        <span
+          className={sodList}
+          style={{ maxHeight: maxH && 206 }}
+        >
           {items.map((item, index) =>
             item.isDisabled ? (
-              <span className={favor[index]} title="" data-value="" key={index}>
+              <span
+                className={favor[index]}
+                title=""
+                data-value=""
+                key={index}
+              >
                 <br />
                 <label>Out of Stock</label>
               </span>
@@ -111,8 +135,12 @@ export const CustomSelect = ({
                 title={item.title}
                 data-value={item.value}
                 onMouseOver={() => addClass(index)}
-                onMouseDown={() => addClass(index, "selected", item.title)}
-                onClick={() => getSelectIndex && getSelectIndex(index)}
+                onMouseDown={() =>
+                  addClass(index, "selected", item.title)
+                }
+                onClick={() =>
+                  getSelectIndex && getSelectIndex(index)
+                }
               >
                 {item.title}
               </span>
