@@ -1,5 +1,6 @@
 import express from "express";
 import expressAsyncHandler from "express-async-handler";
+import mongoose from "mongoose";
 import Deal from "../models/DealModal.js";
 import Product from "../models/productModal.js";
 import SupProduct from "../models/supProductModal.js";
@@ -154,6 +155,10 @@ productsRouter.post(
 productsRouter.get(
   "/search/numOfProducts/:productName",
   expressAsyncHandler(async (req, res) => {
+    //$regex: req.params.productName is for searching with
+    // if name include the value of productName for example
+    // "r" will show the the product that has r in their name.
+    //$options: "i" is for case insensitive match
     const numOfProducts = await Product.countDocuments({
       name: { $regex: req.params.productName, $options: "i" },
     });
@@ -172,7 +177,22 @@ productsRouter.get(
       null,
       { limit: Number(req.params.limit) }
     );
+
+    // $ne means not equal
+    // const products = await Product.find({
+    //   name: { $regex: req.params.productName, $options: "i" },
+    //   _id: { $ne: "603cd94f39e7893b1cb3e4ed" },
+    // });
     if (products.length !== 0) {
+      //   const productId =
+      //     mongoose.mongo.ObjectID.createFromHexString(
+      //       "603cd94f39e7893b1cb3e4ed"
+      //     );
+      //   const newProducts = products.filter((product) =>
+      //     product._id.equals(productId)
+      //   );
+      //   products = newProducts;
+      console.log({ productLength: products.length });
       res.send({ products });
     } else {
       res.status(404).send({

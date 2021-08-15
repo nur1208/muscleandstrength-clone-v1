@@ -2,7 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { deleteCartItem, updateQtyCartItem } from "../../actions/cartActions";
+import {
+  deleteCartItem,
+  updateQtyCartItem,
+} from "../../actions/cartActions";
 import {
   Loader,
   LoaderBlock,
@@ -291,7 +294,10 @@ export const CartItem = ({
   };
 
   return (
-    <CartItemWrap id="CartItemWrap" hasBottomBorder={hasBottomBorder}>
+    <CartItemWrap
+      id="CartItemWrap"
+      hasBottomBorder={hasBottomBorder}
+    >
       <BoxImage id="BoxImage">
         <Link to={`/store/${productId}`}>
           <img
@@ -321,7 +327,9 @@ export const CartItem = ({
           {freeProductName && (
             <ItemOptions>
               <dt>{freeProductName} </dt>
-              <a href="#somewhere">Change your selected free items</a>
+              <a href="#somewhere">
+                Change your selected free items
+              </a>
             </ItemOptions>
           )}
         </div>
@@ -338,7 +346,9 @@ export const CartItem = ({
           size="2"
           maxlength="3"
           value={qtyState}
-          onChange={(e) => setQtyState(e.target.value < 0 ? 0 : e.target.value)}
+          onChange={(e) =>
+            setQtyState(e.target.value < 0 ? 0 : e.target.value)
+          }
         />
 
         {hasButton && (
@@ -353,7 +363,10 @@ export const CartItem = ({
               </LoaderBlock>
             </UpdateBtn>
 
-            <DeleteBtn id="DeleteBtn" onClick={handleDeleteCartItem}>
+            <DeleteBtn
+              id="DeleteBtn"
+              onClick={handleDeleteCartItem}
+            >
               Delete{" "}
               <LoaderBlock
                 id="LoaderBlock"
