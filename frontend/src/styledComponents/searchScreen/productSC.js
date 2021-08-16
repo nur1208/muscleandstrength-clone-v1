@@ -81,6 +81,10 @@ export const ImageWrap = styled.a`
     height: auto;
     margin-bottom: 15px;
 
+    :hover {
+      opacity: 0.9;
+      transition: opacity 0.3s ease-in-out;
+    }
     @media (min-width: 840px) {
       max-width: 120px;
     }
@@ -98,10 +102,14 @@ export const ProductInfo = styled.div`
 `;
 
 export const ProductName = styled.a`
+  :hover {
+    color: #303030;
+  }
+  color: #303030;
+
   font-size: 16px;
   display: block;
   line-height: 1.3;
-  color: #303030;
   margin-bottom: 4px;
 `;
 
@@ -170,11 +178,9 @@ export const Price = styled.span`
 
   text-decoration: ${(props) =>
     props.isDiscount ? "line-through" : null};
-  font-size: ${(props) =>
-    props.isDiscount ? "16px" : "18px"};
+  font-size: ${(props) => (props.isDiscount ? "16px" : "18px")};
   font-family: nimbusnovus-bold, sans-serif;
-  color: ${(props) =>
-    props.isDiscount ? "#d41313" : "#059 "};
+  color: ${(props) => (props.isDiscount ? "#d41313" : "#059 ")};
 
   display: block;
 `;
@@ -224,6 +230,12 @@ export const ViewBtn = styled.div`
     text-shadow: 1px 1px 0 #004780;
     border: 1px solid #004a85;
     flex: 0 0 48%;
+
+    :hover {
+      background-color: #004780;
+      background-image: linear-gradient(#004175, #004780);
+      color: #e6e6e6;
+    }
     @media (min-width: 600px) {
       padding: 0 15px;
       height: 35px;
