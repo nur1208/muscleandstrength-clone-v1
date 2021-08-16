@@ -18,11 +18,13 @@ export const GlobalStyle = createGlobalStyle`
 
 export const SidebarBrand = styled.div`
   height: 90px;
-  padding: ${(props) => (props.isSidebarOpen ? "1rem" : "1rem 0rem 1rem 2rem")};
+  padding: ${(props) =>
+    props.isSidebarOpen ? "1rem" : "1rem 0rem 1rem 2rem"};
   color: #fff;
 
   span {
-    display: ${(props) => (props.isSidebarOpen ? "inline-block" : "none")};
+    display: ${(props) =>
+      props.isSidebarOpen ? "inline-block" : "none"};
   }
 
   @media only screen and (max-width: 1200px) {
@@ -37,7 +39,8 @@ export const SidebarBrand = styled.div`
 export const SidebarMenuItem = styled.li`
   width: 100%;
   margin-bottom: 1.7rem;
-  padding-left: ${(props) => (props.isSidebarOpen ? "2rem" : "1rem")};
+  padding-left: ${(props) =>
+    props.isSidebarOpen ? "2rem" : "1rem"};
 
   a {
     padding-left: 1rem;
@@ -47,7 +50,8 @@ export const SidebarMenuItem = styled.li`
   }
 
   a span {
-    display: ${(props) => (props.isSidebarOpen ? "inline-block" : "none")};
+    display: ${(props) =>
+      props.isSidebarOpen ? "inline-block" : "none"};
     font-size: 1.5rem;
     padding-left: 1rem;
   }
@@ -62,7 +66,8 @@ export const SidebarMenuItem = styled.li`
 
   @media only screen and (max-width: 1200px) {
     padding-left: 1rem;
-    /* ${(props) => (props.isSidebarOpen ? "inline-block" : "none")} */
+    /* ${(props) =>
+      props.isSidebarOpen ? "inline-block" : "none"} */
     a span {
       display: none;
     }
@@ -105,7 +110,8 @@ export const Sidebar = styled.div`
   @media only screen and (max-width: 768px) {
     width: 345px;
 
-    left: ${(props) => (props.isSidebarOpen ? "0" : "-100% !important")};
+    left: ${(props) =>
+      props.isSidebarOpen ? "0" : "-100% !important"};
   }
 `;
 
@@ -117,7 +123,8 @@ export const SidebarMenuContainer = styled.ul``;
 
 export const MainContent = styled.div`
   transition: margin-left 300ms;
-  margin-left: ${(props) => (props.isSidebarOpen ? "345px" : "75px")};
+  margin-left: ${(props) =>
+    props.isSidebarOpen ? "345px" : "75px"};
 
   @media only screen and (max-width: 1200px) {
     margin-left: 70px;
@@ -138,7 +145,9 @@ export const AdminHeader = styled.div`
   position: fixed;
   left: ${(props) => (props.isSidebarOpen ? "345px" : "75px")};
   width: ${(props) =>
-    props.isSidebarOpen ? "calc(100% - 345px)" : "calc(100% - 75px)"};
+    props.isSidebarOpen
+      ? "calc(100% - 345px)"
+      : "calc(100% - 75px)"};
   top: 0;
   z-index: 100;
   transition: left 900ms;
@@ -495,4 +504,11 @@ export const FeatureWrapper = styled.div`
 export const ButtonF = styled.button`
   width: 15%;
   font-size: 10px;
+`;
+
+export const CustomSelect = styled.div`
+  div.css-162mkon {
+    left: 95%;
+    top: 66% !important;
+  }
 `;

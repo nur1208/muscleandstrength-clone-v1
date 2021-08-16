@@ -12,6 +12,7 @@ import {
   AddButtonW,
   FeatureWrapper,
   ButtonF,
+  CustomSelect,
 } from "./styledComp";
 import { FaImage } from "react-icons/fa";
 import { Form, Button, Table } from "react-bootstrap";
@@ -404,22 +405,23 @@ export const Products = ({ isSidebarOpen }) => {
               ) : (
                 <FormControl id="first-name">
                   <FormLabel>Brand</FormLabel>
+                  <CustomSelect>
+                    <Select
+                      placeholder="Select Brand"
+                      onChange={(e) =>
+                        handleInput(e, item.onChangeFunction)
+                      }
+                    >
+                      <option value="610a5df809f5dc1ab041e575">
+                        MuscleTech
+                      </option>
+                      <option value="61165926e21c1f5e5cef730a">
+                        Dymatize
+                      </option>
 
-                  <Select
-                    placeholder="Select Brand"
-                    onChange={(e) =>
-                      handleInput(e, item.onChangeFunction)
-                    }
-                  >
-                    <option value="610a5df809f5dc1ab041e575">
-                      MuscleTech
-                    </option>
-                    <option value="61165926e21c1f5e5cef730a">
-                      Dymatize
-                    </option>
-
-                    <option value="-1">Other</option>
-                  </Select>
+                      <option value="-1">Other</option>
+                    </Select>
+                  </CustomSelect>
                 </FormControl>
               )
             )}

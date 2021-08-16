@@ -14,7 +14,8 @@ import {
 import { Products } from "./Products";
 
 export const CatalogListing = ({ catalogData }) => {
-  const { loading, products, numOfProducts, query } = catalogData;
+  const { loading, products, numOfProducts, query } =
+    catalogData;
   const dispatch = useDispatch(null);
   const leftProducts = numOfProducts - products.length;
 
@@ -28,20 +29,24 @@ export const CatalogListing = ({ catalogData }) => {
       <SearchResultProducts id="SearchResultProducts">
         {loading ? <Loader /> : <Products />}
       </SearchResultProducts>
-      {products.length !== numOfProducts && (
-        <ToolbarBottom id="ToolbarBottom">
-          <Toolbar id="Toolbar">
-            <ViewMoreWrap id="ViewMoreWrap">
-              <ViewMore id="ViewMore" onClick={handleViewMore}>
-                View Next {leftProducts} Products
-                <LoaderBlock id="LoaderBlock">
-                  <Loader id="Loader" />
-                </LoaderBlock>
-              </ViewMore>
-            </ViewMoreWrap>
-          </Toolbar>
-        </ToolbarBottom>
-      )}
+      {/* products is exist and there are products in the 
+      database not loaded yet then show 'view Next products' 
+      btn*/}
+      {products.length !== 0 &&
+        products.length !== numOfProducts && (
+          <ToolbarBottom id="ToolbarBottom">
+            <Toolbar id="Toolbar">
+              <ViewMoreWrap id="ViewMoreWrap">
+                <ViewMore id="ViewMore" onClick={handleViewMore}>
+                  View Next {leftProducts} Products
+                  <LoaderBlock id="LoaderBlock">
+                    <Loader id="Loader" />
+                  </LoaderBlock>
+                </ViewMore>
+              </ViewMoreWrap>
+            </Toolbar>
+          </ToolbarBottom>
+        )}
     </ResultContentInnerWrap>
   );
 };
