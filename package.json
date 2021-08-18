@@ -22,6 +22,7 @@
     "nodemailer": "^6.4.17",
     "nodemon": "^2.0.6",
     "rand-token": "^1.0.1",
+    "react-datepicker": "^4.2.0",
     "react-helmet": "^6.1.0",
     "react-swipeable": "^6.1.0",
     "styled-components": "^5.2.1"

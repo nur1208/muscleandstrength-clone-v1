@@ -1,6 +1,8 @@
 import {
   USER_ADMIN_RESET_PRODUCT_ADD_INFO,
+  USER_ADMIN_RESET_SUP_PRODUCT_ADD_INFO,
   USER_ADMIN_SAVE_PRODUCT_ADD_INFO,
+  USER_ADMIN_SAVE_SUP_PRODUCT_ADD_INFO,
   USER_ADMIN_UPLOADING_IMAGE_FAIL,
   USER_ADMIN_UPLOADING_IMAGE_REQUEST,
   USER_ADMIN_UPLOADING_IMAGE_SUCCESS,
@@ -165,6 +167,11 @@ export const adminSaveUserInputProductsR = (
   switch (action.type) {
     case USER_ADMIN_RESET_PRODUCT_ADD_INFO:
       return { ...state, userInput: {} };
+
+    case USER_ADMIN_SAVE_SUP_PRODUCT_ADD_INFO:
+      return { ...state, userInputSupProduct: action.payload };
+    case USER_ADMIN_RESET_SUP_PRODUCT_ADD_INFO:
+      return { ...state, userInputSupProduct: {} };
 
     default:
       return state;

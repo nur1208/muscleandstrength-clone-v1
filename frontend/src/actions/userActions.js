@@ -27,7 +27,13 @@ import {
   USER_AUTO_LOGIN_REQUEST,
   USER_AUTO_LOGIN_SUCCESS,
   USER_AUTO_LOGIN_FAIL,
+  USER_ADMIN_RESET_SUP_PRODUCT_ADD_INFO,
+  USER_ADMIN_SAVE_SUP_PRODUCT_ADD_INFO,
 } from "../constants/userConstants";
+import {
+  USER_INPUT_DEAL,
+  USER_INPUT_SUP_PRODUCTS,
+} from "../utils/localStorageConstenses";
 
 export const registerUser =
   (
@@ -292,6 +298,40 @@ export const resetUserInputProducts =
     localStorage.clear("userInputProducts");
     dispatch({ type: USER_ADMIN_RESET_PRODUCT_ADD_INFO });
   };
+
+export const saveUserInputSupProducts =
+  (data) => async (dispatch) => {
+    localStorage.setItem(
+      USER_INPUT_SUP_PRODUCTS,
+      JSON.stringify(data)
+    );
+    // dispatch({
+    //   type: USER_ADMIN_SAVE_SUP_PRODUCT_ADD_INFO,
+    //   payload: data,
+    // });
+  };
+
+export const resetUserInputSupProducts =
+  (data) => async (dispatch) => {
+    localStorage.clear(USER_INPUT_SUP_PRODUCTS);
+    dispatch({ type: USER_ADMIN_RESET_SUP_PRODUCT_ADD_INFO });
+  };
+
+export const saveUserInputDeal = (data) => {
+  localStorage.setItem(USER_INPUT_DEAL, JSON.stringify(data));
+};
+
+export const getSavedUserInputDeal = () => {
+  const saveInput = JSON.parse(
+    localStorage.getItem(USER_INPUT_DEAL)
+  );
+
+  return saveInput;
+};
+
+export const resetSavedUserInputDeal = () => {
+  localStorage.clear(USER_INPUT_DEAL);
+};
 
 export const autoLoggingLoggedUser = () => async (dispatch) => {
   dispatch({

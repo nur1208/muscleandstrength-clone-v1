@@ -437,7 +437,8 @@ export const FormWrapper = styled.div`
 // product input wrapper.
 export const ProductInputW = styled.div`
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: ${({ hasImage }) =>
+    hasImage ? "50% 50%" : "100%"};
   grid-gap: 3rem;
   margin-bottom: 3rem;
 `;
@@ -488,7 +489,7 @@ export const AddButtonW = styled.div`
 `;
 
 export const AddButton = styled.button`
-  width: 45%;
+  width: 30%;
   padding: 1%;
   color: #f1e5e6;
   background-color: #007bff;

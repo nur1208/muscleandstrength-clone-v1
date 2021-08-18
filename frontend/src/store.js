@@ -36,6 +36,7 @@ import {
 
 import { sliderReducer } from "./reducers/sliderReducer";
 import { cartReducer } from "./reducers/cartReucers";
+import { USER_INPUT_SUP_PRODUCTS } from "./utils/localStorageConstenses";
 
 const initialState = {
   // userSingIn: {
@@ -75,6 +76,11 @@ const initialState = {
   adminSaveUserInputProducts: {
     userInput: localStorage.getItem("userInputProducts")
       ? JSON.parse(localStorage.getItem("userInputProducts"))
+      : {},
+    userInputSupProduct: localStorage.getItem(
+      USER_INPUT_SUP_PRODUCTS
+    )
+      ? JSON.parse(localStorage.getItem(USER_INPUT_SUP_PRODUCTS))
       : {},
   },
   productSearch: {

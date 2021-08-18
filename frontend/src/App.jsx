@@ -86,55 +86,60 @@ function App(props) {
               location.pathname !== "/store/brand" && (
                 <NavBlock />
               )}
-            <Switch>
-              <Route path="/dome" component={AppDome} />
-              <Route path="/admin" component={AdminScreen} />
-              <Route path="/learn" component={FlexBox1} />
-              <Route path="/test" component={AppPop2} />
-              <Route
-                path="/store/brand"
-                component={BrandScreen}
-              />
-              <Route path="/store/cart" component={CartScreen} />
-              <Route
-                path="/store/review"
-                component={ReviewScreen}
-              />
-              <Route
-                path="/store/search"
-                component={SearchScreen}
-              />
-              <Route
-                path="/store/customer/account/changeforgotten/"
-                component={ResetPasswordScreen}
-              />
-              <Route
-                path="/store/customer/account/forgotpassword/"
-                component={ForgetPasswordScreen}
-              />
-              <Route
-                path="/store/customer/account/login/"
-                component={LoginScreen}
-              />
-              <Route
-                path="/store/customer/account/logoutSuccess/"
-                component={LogoutSuccessScreen}
-              />
-              <Route
-                path="/store/customer/account/create"
-                component={CreateAccountScreen}
-              />
-              <Route
-                path="/store/:id"
-                component={ProductScreen}
-              />
+            <BrowserRouter>
+              <Switch>
+                <Route path="/dome" component={AppDome} />
+                <Route path="/admin" component={AdminScreen} />
+                <Route path="/learn" component={FlexBox1} />
+                <Route path="/test" component={AppPop2} />
+                <Route
+                  path="/store/brand"
+                  component={BrandScreen}
+                />
+                <Route
+                  path="/store/cart"
+                  component={CartScreen}
+                />
+                <Route
+                  path="/store/review"
+                  component={ReviewScreen}
+                />
+                <Route
+                  path="/store/search"
+                  component={SearchScreen}
+                />
+                <Route
+                  path="/store/customer/account/changeforgotten/"
+                  component={ResetPasswordScreen}
+                />
+                <Route
+                  path="/store/customer/account/forgotpassword/"
+                  component={ForgetPasswordScreen}
+                />
+                <Route
+                  path="/store/customer/account/login/"
+                  component={LoginScreen}
+                />
+                <Route
+                  path="/store/customer/account/logoutSuccess/"
+                  component={LogoutSuccessScreen}
+                />
+                <Route
+                  path="/store/customer/account/create"
+                  component={CreateAccountScreen}
+                />
+                <Route
+                  path="/store/:id"
+                  component={ProductScreen}
+                />
 
-              <Route path="/store" component={StoreScreen} />
-              <Route path="/" component={HomeScreen} exact />
-            </Switch>
+                <Route path="/store" component={StoreScreen} />
+                <Route path="/" component={HomeScreen} exact />
+              </Switch>
+            </BrowserRouter>
           </div>
         </div>
-        <Footer />
+        {/* <Footer /> */}
         {/* <FooterV2 /> */}
       </>
 

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { CountrySelector } from "./CountrySelector";
+import { ShippingInfo } from "./ShippingInfo";
+import { Dialog } from "./ShippingInfoModal";
 import { ShippingInfoModal } from "./ShippingInfoModal";
 
 const Form = styled.form`
@@ -131,19 +133,30 @@ export const EstimateShipping = () => {
             countryOptions={countryOptions}
           />
           <ZipCode id="ZipCode">
-            <InputText id="InputText" placeholder="Postcode" type="text" />
+            <InputText
+              id="InputText"
+              placeholder="Postcode"
+              type="text"
+            />
             <Button id="Button">Calculate</Button>
           </ZipCode>
         </InnerWrap>
       </Form>
       <BottomText id="BottomText">
         Learn more about{" "}
-        <SippingTo id="SippingTo" onClick={() => setIsModalOpen(true)}>
+        <SippingTo
+          id="SippingTo"
+          onClick={() => setIsModalOpen(true)}
+        >
           shipping to {countryOptions[selectedIndex].name}
         </SippingTo>
       </BottomText>
 
-      {isModalOpen && <ShippingInfoModal setIsModalOpen={setIsModalOpen} />}
+      {isModalOpen && (
+        <Dialog setIsModalOpen={setIsModalOpen}>
+          <ShippingInfo />
+        </Dialog>
+      )}
     </>
   );
 };
