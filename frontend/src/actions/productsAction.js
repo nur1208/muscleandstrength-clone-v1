@@ -27,6 +27,7 @@ import {
   PRODUCT_GET_PRODUCT_V2_SUCCESS,
   PRODUCT_GET_PRODUCT_V2_FAIL,
 } from "../constants/productsCntanst";
+import { STORE_MAIN_DATA } from "../utils/localStorageConstenses";
 
 export const getProductsTopDeals = () => async (dispatch) => {
   dispatch({ type: PRODUCT_TOP_DEALS_REQUEST });
@@ -35,6 +36,8 @@ export const getProductsTopDeals = () => async (dispatch) => {
       "/api/products/getTopDeals"
     );
     dispatch({ type: PRODUCT_TOP_DEALS_SUCCESS, payload: data });
+    localStorage.setItem(STORE_MAIN_DATA, JSON.stringify(data));
+    console.log({ data });
   } catch (error) {
     dispatch({
       type: PRODUCT_TOP_DEALS_FAIL,

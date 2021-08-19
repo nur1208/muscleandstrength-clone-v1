@@ -36,7 +36,10 @@ import {
 
 import { sliderReducer } from "./reducers/sliderReducer";
 import { cartReducer } from "./reducers/cartReucers";
-import { USER_INPUT_SUP_PRODUCTS } from "./utils/localStorageConstenses";
+import {
+  STORE_MAIN_DATA,
+  USER_INPUT_SUP_PRODUCTS,
+} from "./utils/localStorageConstenses";
 
 const initialState = {
   // userSingIn: {
@@ -52,7 +55,28 @@ const initialState = {
       ? JSON.parse(localStorage.getItem("fPEmail"))
       : "",
   },
-  products: { loading: true },
+  products: localStorage.getItem(STORE_MAIN_DATA)
+    ? {
+        loading: false,
+        isDataInLocalStorage: true,
+        topDeals: JSON.parse(
+          localStorage.getItem(STORE_MAIN_DATA)
+        ).topDeal,
+        topRated: JSON.parse(
+          localStorage.getItem(STORE_MAIN_DATA)
+        ).topRated,
+        trending: JSON.parse(
+          localStorage.getItem(STORE_MAIN_DATA)
+        ).trending,
+        brands: JSON.parse(localStorage.getItem(STORE_MAIN_DATA))
+          .brands,
+        storeContents: JSON.parse(
+          localStorage.getItem(STORE_MAIN_DATA)
+        ).storeContents,
+      }
+    : {
+        loading: true,
+      },
   productOne: {
     product: localStorage.getItem("product")
       ? JSON.parse(localStorage.getItem("product"))

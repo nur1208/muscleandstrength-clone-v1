@@ -30,13 +30,6 @@ export const StoreScreen = (props) => {
 
   useAddBodyClass("col1-wide");
 
-  useEffect(() => {
-    dispatch(getProductsTopDeals());
-    // dispatch(getProductsWithDeal());
-    // dispatch(getProductsThisWeekDeal());
-    // dispatch(getProductsHasBeenRated());
-  }, [dispatch]);
-
   const products = useSelector((state) => state.products);
   const {
     topDeals,
@@ -46,7 +39,17 @@ export const StoreScreen = (props) => {
     storeContents,
     loading,
     error,
+    isDataInLocalStorage,
   } = products;
+
+  useEffect(() => {
+    if (!isDataInLocalStorage) {
+      dispatch(getProductsTopDeals());
+    }
+    // dispatch(getProductsWithDeal());
+    // dispatch(getProductsThisWeekDeal());
+    // dispatch(getProductsHasBeenRated());
+  }, [dispatch, isDataInLocalStorage]);
 
   require("../styles/store.css");
 
