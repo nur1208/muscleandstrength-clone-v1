@@ -73,16 +73,16 @@ const initialState = {
       ? JSON.parse(localStorage.getItem("totalVerifiedReviews"))
       : null,
   },
-  adminSaveUserInputProducts: {
-    userInput: localStorage.getItem("userInputProducts")
-      ? JSON.parse(localStorage.getItem("userInputProducts"))
-      : {},
-    userInputSupProduct: localStorage.getItem(
-      USER_INPUT_SUP_PRODUCTS
-    )
-      ? JSON.parse(localStorage.getItem(USER_INPUT_SUP_PRODUCTS))
-      : {},
-  },
+  // adminSaveUserInputProducts: {
+  //   userInput: localStorage.getItem("userInputProducts")
+  //     ? JSON.parse(localStorage.getItem("userInputProducts"))
+  //     : {},
+  //   // userInputSupProduct: localStorage.getItem(
+  //   //   USER_INPUT_SUP_PRODUCTS
+  //   // )
+  //   //   ? JSON.parse(localStorage.getItem(USER_INPUT_SUP_PRODUCTS))
+  //   //   : {},
+  // },
   productSearch: {
     products: [],
   },

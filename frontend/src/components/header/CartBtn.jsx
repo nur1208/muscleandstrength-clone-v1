@@ -13,8 +13,11 @@ export const CartBtn = () => {
   const userSingIn = useSelector((state) => state.userSingIn);
   const dispatch = useDispatch(null);
   useEffect(() => {
-    const userId = userSingIn.userInfo && userSingIn.userInfo._id;
-    dispatch(getCart(userId));
+    const userId =
+      userSingIn.userInfo && userSingIn.userInfo._id;
+    if (userId) {
+      dispatch(getCart(userId));
+    }
   }, [dispatch, userSingIn]);
 
   return (
