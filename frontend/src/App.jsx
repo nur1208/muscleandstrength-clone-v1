@@ -102,7 +102,7 @@ function App(props) {
                 component={ReviewScreen}
               />
               <Route
-                path="/store/search"
+                path="/store/search/:query"
                 component={SearchScreen}
               />
               <Route

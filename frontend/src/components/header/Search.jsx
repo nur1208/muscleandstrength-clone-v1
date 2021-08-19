@@ -14,10 +14,8 @@ export const Search = () => {
   const history = useHistory();
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(searchProducts(searchInput));
-    dispatch(getNumOfProducts(searchInput));
     setSearchInput("");
-    history.push("/store/search");
+    history.push(`/store/search/${searchInput}`);
   };
 
   return (
