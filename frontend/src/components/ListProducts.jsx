@@ -6,6 +6,7 @@ import {
   LeftSide,
   MainWrapper,
 } from "../screens/styledCompo/searchScreen";
+import { DealAlerts } from "./DealAlerts";
 import { BlockNav } from "./searchScreen/BlockNav";
 import { MobileTabs } from "./searchScreen/MobileTabs";
 import { ResultContent } from "./searchScreen/ResultContent";
@@ -17,6 +18,7 @@ export const ListProducts = ({
   catalogData,
   isOptionsBtn,
   showingTitle,
+  hasDealAlerts,
 }) => {
   return (
     <MainWrapper id="MainWrapper">
@@ -35,6 +37,7 @@ export const ListProducts = ({
           </div>
         </LeftSide>
         <Content id="Content">
+          {hasDealAlerts && <DealAlerts />}
           <ResultContent
             catalogData={catalogData}
             isOptionsBtn={isOptionsBtn}

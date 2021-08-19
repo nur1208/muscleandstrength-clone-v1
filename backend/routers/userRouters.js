@@ -6,7 +6,7 @@ import bcrypt from "bcrypt";
 import {
   generateToken,
   generateTokenFP,
-  isAuthFP,
+  isAuth,
 } from "../utils.js";
 import { sendEmail } from "../emailer.js";
 import { EMAIL } from "../config/index.js";
@@ -185,13 +185,13 @@ userRouter.put(
   })
 );
 
-userRouter.get("/isFPTokenValid", isAuthFP, (req, res) => {
+userRouter.get("/isFPTokenValid", isAuth, (req, res) => {
   res.send({ message: "valid token" });
 });
 
 userRouter.put(
   "/update",
-  isAuthFP,
+  isAuth,
   expressAsyncHandler(async (req, res) => {
     const { _id, update } = req.body; // update is update query. what do u wanna update?
     console.log(req.body);

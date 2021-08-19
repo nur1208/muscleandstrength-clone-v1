@@ -2,12 +2,7 @@
 // import { useSelector } from "react-redux";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  BrowserRouter,
-  Route,
-  Switch,
-  useLocation,
-} from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { closeDialogLogin } from "./actions/dialogLoginActions";
 import { closeSidebar } from "./actions/sidebarAction";
 import { Footer } from "./components/footer/Footer";
@@ -38,6 +33,8 @@ import { CartScreen } from "./screens/CartScreen";
 import { FooterV2 } from "./components/FooterV2";
 import { BrandScreen } from "./screens/BrandScreen";
 import { autoLoggingLoggedUser } from "./actions/userActions";
+import { PromosScreen } from "./screens/PromosScreen";
+import { useIsShowNavBlock } from "./utils/getIsShowNavBlock";
 // import "./styles/home.css";
 
 function App(props) {
@@ -62,8 +59,6 @@ function App(props) {
     setShowModal(isDialogOpen !== undefined && success);
   }, [isDialogOpen, success]);
 
-  const location = useLocation();
-
   useEffect(() => {
     dispatch(autoLoggingLoggedUser());
   }, [dispatch]);
@@ -82,16 +77,18 @@ function App(props) {
           <div id="page">
             <Region />
             <Header />
-            {location.pathname !== "/store/search" &&
-              location.pathname !== "/store/brand" && (
-                <NavBlock />
-              )}
+            {useIsShowNavBlock() && <NavBlock />}
             {/* <BrowserRouter> */}
             <Switch>
               <Route path="/dome" component={AppDome} />
               <Route path="/admin" component={AdminScreen} />
               <Route path="/learn" component={FlexBox1} />
               <Route path="/test" component={AppPop2} />
+
+              <Route
+                path="/store/promos"
+                component={PromosScreen}
+              />
               <Route
                 path="/store/brand"
                 component={BrandScreen}
@@ -129,7 +126,6 @@ function App(props) {
                 path="/store/:id"
                 component={ProductScreen}
               />
-
               <Route path="/store" component={StoreScreen} />
               <Route path="/" component={HomeScreen} exact />
             </Switch>
