@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { FaShare } from "react-icons/fa";
 import { useSelector } from "react-redux";
 
-export const ProductHeader = () => {
+export const ProductHeader = ({ data, isOldVersion }) => {
   // const productOne = useSelector((state) => state.productOne);
   // const { product, loading } = productOne;
   // const {
@@ -16,22 +16,25 @@ export const ProductHeader = () => {
   //   // numReviews,
   // } = product;
 
-  const productV2Store = useSelector(
-    (state) => state.productV2Store
-  );
+  // const productV2Store = useSelector(
+  //   (state) => state.productV2Store
+  // );
 
-  const { product, loading } = productV2Store;
+  // const { product, loading } = productV2Store;
 
-  const {
-    features,
-    name,
-    image,
-    brand: brandO,
-    description,
-    rating,
-  } = product;
+  // const {
+  //   features,
+  //   name,
+  //   image,
+  //   brand: brandO,
+  //   description,
+  //   rating,
+  // } = product;
 
-  const { name: brand } = brandO;
+  const { features, name, image, brand, description, rating } =
+    data;
+
+  // const { name: brand } = brandO;
 
   const getAllReviews = useSelector(
     (state) => state.getAllReviews
@@ -43,11 +46,13 @@ export const ProductHeader = () => {
   //   console.log(image.startsWith("/"));
   // }, [image]);
 
-  return loading ? (
-    <>
-      <h1>Loading</h1>
-    </>
-  ) : (
+  // return loading ? (
+  //   <>
+  //     <h1>Loading</h1>
+  //   </>
+  // ) :
+
+  return (
     <div className="product-header">
       <div className="ship-to-block tooltip tooltipstered">
         <div className="ship-to-wrapper">
@@ -78,7 +83,9 @@ export const ProductHeader = () => {
         >
           A{" "}
           <a itemProp="url" href="/store/brands/jnx-sports">
-            <span itemProp="name">{brand}</span>
+            <span itemProp="name">
+              {isOldVersion ? brand : brand.name}
+            </span>
           </a>{" "}
           Product{" "}
         </span>

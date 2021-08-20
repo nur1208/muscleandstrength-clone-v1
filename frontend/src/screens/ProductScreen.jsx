@@ -31,15 +31,27 @@ export const ProductScreen = (props) => {
   const dispatch = useDispatch(null);
 
   useEffect(() => {
-    dispatch(getOneProduct(productId));
+    // dispatch(getOneProduct(productId));
     dispatch(getAllReviews(productId, 10));
     dispatch(getTotalReviews(productId));
     dispatch(getProductV2("61165b17e21c1f5e5cef730b"));
+    // dispatch(getProductV2("61165b17e21c1f5e5cef7303"));
+    // dispatch(getProductV2(productId));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, productId]);
 
   const productOne = useSelector((state) => state.productOne);
-  const { loading, error } = productOne;
+  const { loading, error, product } = productOne;
+
+  const productV2Store = useSelector(
+    (state) => state.productV2Store
+  );
+  const {
+    loading: loadingV2,
+    error: errorV2,
+    product: productV2,
+    isOldVersion,
+  } = productV2Store;
 
   useGetPathName(props.location.pathname + "/:The Ripper");
 
@@ -52,19 +64,26 @@ export const ProductScreen = (props) => {
     window.scrollTo(0, 0);
   }, []);
 
+  const productHeaderProps = {
+    data: isOldVersion ? product : productV2,
+    isOldVersion,
+  };
+
   return (
     <>
-      {loading ? (
+      {loading || loadingV2 ? (
         <LoadingScreen msg={"Loading Product"} />
-      ) : error ? (
-        <MessageBox variant="danger">{error}</MessageBox>
+      ) : error || errorV2 ? (
+        <MessageBox variant="danger">
+          {error || errorV2}
+        </MessageBox>
       ) : (
         <div id="main-wrap">
           <div className="main-content">
             <div className="message-wrap">
               <div id="messages_product_view"></div>
             </div>
-            <ProductHeader />
+            <ProductHeader {...productHeaderProps} />
             <Features items={features} />
             <DealsSection />
           </div>

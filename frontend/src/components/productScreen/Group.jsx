@@ -33,7 +33,7 @@ export const Group = ({
           ...items[selectedFIndex],
           quantity: newQty, // for the cart
         });
-    //if the user select a flavor than set the qty to 0 the let the user select flavor again.
+    //if the user select a flavor then set the qty to 0 the let the user select flavor again.
     else if (selectedFIndex !== 0 && qty === 0) {
       setSelected({
         index: 0,

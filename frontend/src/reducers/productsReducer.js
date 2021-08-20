@@ -9,6 +9,7 @@ import {
   PRODUCT_GET_ONE_REQUEST,
   PRODUCT_GET_ONE_SUCCESS,
   PRODUCT_GET_PRODUCT_V2_FAIL,
+  PRODUCT_GET_PRODUCT_V2_OLD,
   PRODUCT_GET_PRODUCT_V2_REQUEST,
   PRODUCT_GET_PRODUCT_V2_SUCCESS,
   PRODUCT_GET_THIS_WEEK_DEAL_FAIL,
@@ -95,15 +96,25 @@ export const productGetOneReducer = (state = {}, action) => {
 export const productV2Reducer = (state = {}, action) => {
   switch (action.type) {
     case PRODUCT_GET_PRODUCT_V2_REQUEST:
-      return { ...state, loading: true };
+      return { ...state, loading: true, isOldVersion: false };
     case PRODUCT_GET_PRODUCT_V2_SUCCESS:
       return {
         ...state,
         loading: false,
         product: action.payload,
       };
+    case PRODUCT_GET_PRODUCT_V2_OLD:
+      return {
+        ...state,
+        loading: false,
+        isOldVersion: true,
+      };
     case PRODUCT_GET_PRODUCT_V2_FAIL:
-      return { ...state, loading: false, error: action.payload };
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
     default:
       return state;
   }

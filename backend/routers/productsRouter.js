@@ -287,20 +287,37 @@ productsRouter.get(
 productsRouter.get(
   "/version2/:id",
   expressAsyncHandler(async (req, res) => {
-    // nasty populate
-    const product = await Product.find({
-      _id: req.params.id,
-    })
-      .populate({
-        path: "supProducts",
-        populate: { path: "deals" },
+    try {
+      // nasty populate
+      const product = await Product.find({
+        _id: req.params.id,
       })
-      .populate("brand");
+        .populate({
+          path: "supProducts",
+          populate: { path: "deals" },
+        })
+        .populate("brand");
 
-    if (product) {
-      res.send(product[0]);
-    } else {
-      res.status(404).send({ message: "product id not exist" });
+      if (product.length !== 0) {
+        console.log({ product });
+        res.send(product[0]);
+      } else {
+        res.status(404).send({ message: "product not exist" });
+      }
+    } catch (error) {
+      const messageThatProductOldV =
+        'at path "_id" for model "brand"';
+
+      const isOldVersion = error.message.includes(
+        messageThatProductOldV
+      );
+      console.log({
+        isOldVersion,
+      });
+      // status 499 something i choose for a product has old version structure.
+      res
+        .status(499)
+        .send({ isOldVersion, message: error.message });
     }
   })
 );

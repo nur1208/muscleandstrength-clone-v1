@@ -26,6 +26,7 @@ import {
   PRODUCT_GET_PRODUCT_V2_REQUEST,
   PRODUCT_GET_PRODUCT_V2_SUCCESS,
   PRODUCT_GET_PRODUCT_V2_FAIL,
+  PRODUCT_GET_PRODUCT_V2_OLD,
 } from "../constants/productsCntanst";
 import { axiosErrorHandler } from "../utils/axiosErrorHandler";
 import { STORE_MAIN_DATA } from "../utils/localStorageConstenses";
@@ -201,12 +202,22 @@ export const getProductV2 = (productId) => async (dispatch) => {
       payload: data,
     });
   } catch (error) {
-    dispatch({
-      type: PRODUCT_GET_PRODUCT_V2_FAIL,
-      payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message,
-    });
+    axiosErrorHandler(
+      error,
+      {
+        productId,
+        PRODUCT_GET_PRODUCT_V2_OLD,
+        PRODUCT_GET_PRODUCT_V2_FAIL,
+      },
+      dispatch
+    );
+    // console.log({ error });
+    // dispatch({
+    //   type: PRODUCT_GET_PRODUCT_V2_FAIL,
+    //   payload:
+    //     error.response && error.response.data.message
+    //       ? error.response.data.message
+    //       : error.message,
+    // });
   }
 };
