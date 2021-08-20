@@ -11,7 +11,6 @@ import { BrowserRouter } from "react-router-dom";
 // import "bootstrap/dist/css/bootstrap.min.css";
 
 // console.log(window.location.pathname);
-console.log("here");
 
 ReactDOM.render(
   <React.StrictMode>

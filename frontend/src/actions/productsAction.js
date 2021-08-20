@@ -27,6 +27,7 @@ import {
   PRODUCT_GET_PRODUCT_V2_SUCCESS,
   PRODUCT_GET_PRODUCT_V2_FAIL,
 } from "../constants/productsCntanst";
+import { axiosErrorHandler } from "../utils/axiosErrorHandler";
 import { STORE_MAIN_DATA } from "../utils/localStorageConstenses";
 
 export const getProductsTopDeals = () => async (dispatch) => {
@@ -39,23 +40,7 @@ export const getProductsTopDeals = () => async (dispatch) => {
     localStorage.setItem(STORE_MAIN_DATA, JSON.stringify(data));
     console.log({ data });
   } catch (error) {
-    // todo check if status code == 500 then send to the user
-    // something want wrong sorry.
-    // error that not cause by the user.(something working the backend)
-    if (error.response.status === 500) {
-      dispatch({
-        type: PRODUCT_TOP_DEALS_FAIL,
-        payload: "something went wrong, sorry.",
-      });
-    } else {
-      dispatch({
-        type: PRODUCT_TOP_DEALS_FAIL,
-        payload:
-          error.response && error.response.data.message
-            ? error.response.data.message
-            : error.message,
-      });
-    }
+    axiosErrorHandler(error, PRODUCT_TOP_DEALS_FAIL, dispatch);
   }
 };
 

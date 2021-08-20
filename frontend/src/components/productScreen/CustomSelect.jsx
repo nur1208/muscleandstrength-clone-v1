@@ -10,6 +10,8 @@ export const CustomSelect = ({
   setQyt,
   qty,
   isAddBtnClicked,
+  selected,
+  setSelected,
 }) => {
   const [sodList, setSodList] = useState("sod_list");
   const [sodListWrapper, setSodListWrapper] = useState(
@@ -32,10 +34,10 @@ export const CustomSelect = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const [selected, setSelected] = useState({
-    index: 0,
-    value: items[0].title,
-  });
+  // const [selected, setSelected] = useState({
+  //   index: 0,
+  //   value: items[0].title,
+  // });
 
   const [errorStyle, setErrorStyle] = useState(false);
 
@@ -111,7 +113,9 @@ export const CustomSelect = ({
       onClick={handleSelect}
       onBlur={closeSelect}
     >
-      <span className="sod_label">{selected.value}</span>
+      <span className="sod_label">
+        {selected && selected.value}
+      </span>
       <span className={sodListWrapper}>
         <span
           className={sodList}

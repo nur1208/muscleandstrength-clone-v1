@@ -17,6 +17,10 @@ export const Group = ({
 }) => {
   const [selectedFIndex, setSelectedFIndex] = useState(0);
   const [qty, setQyt] = useState(0);
+  const [selected, setSelected] = useState({
+    index: 0,
+    value: items[0].title,
+  });
 
   useEffect(() => {
     // set qty to one when the user select a flavor and qty
@@ -29,13 +33,23 @@ export const Group = ({
           ...items[selectedFIndex],
           quantity: newQty, // for the cart
         });
-    else {
+    //if the user select a flavor than set the qty to 0 the let the user select flavor again.
+    else if (selectedFIndex !== 0 && qty === 0) {
+      setSelected({
+        index: 0,
+        value: items[0].title,
+      });
+    } else {
       setQyt(0);
       setFavors && setFavors(null);
     }
   }, [selectedFIndex, items, setFavors, qty]);
 
-  useEffect(() => {}, []);
+  const customSelectProps = {
+    selected,
+    setSelected,
+  };
+
   return (
     <div className="group">
       <div className="group-header">
@@ -80,6 +94,7 @@ export const Group = ({
                 isAddBtnClicked={
                   isAddBtnClicked && isAddBtnClicked
                 }
+                {...customSelectProps}
               />
             </div>
             <div className="qty-field field">
@@ -92,9 +107,8 @@ export const Group = ({
                     setQyt(
                       // if the user select flavor don't let him/
                       // her select qty as 0
-                      qty > (selectedFIndex === 0 ? 0 : 1)
-                        ? qty - 1
-                        : qty
+                      // qty > (selectedFIndex === 0 ? 0 : 1)
+                      qty > 0 ? qty - 1 : qty
                       // qty > 0 ? qty - 1 : qty
                     )
                   }
