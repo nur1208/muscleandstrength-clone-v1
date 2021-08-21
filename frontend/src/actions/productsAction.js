@@ -202,6 +202,7 @@ export const getProductV2 = (productId) => async (dispatch) => {
       payload: data,
     });
   } catch (error) {
+    console.log({ error });
     axiosErrorHandler(
       error,
       {

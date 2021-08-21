@@ -86,8 +86,15 @@ export const productGetOneReducer = (state = {}, action) => {
         loading: false,
         product: action.payload,
       };
+    case PRODUCT_GET_PRODUCT_V2_SUCCESS:
+      return { ...state, loading: false };
     case PRODUCT_GET_ONE_FAIL:
-      return { ...state, loading: false, error: action.payload };
+    case PRODUCT_GET_PRODUCT_V2_FAIL:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
     default:
       return state;
   }
@@ -110,6 +117,9 @@ export const productV2Reducer = (state = {}, action) => {
         isOldVersion: true,
       };
     case PRODUCT_GET_PRODUCT_V2_FAIL:
+      // console.log({
+      //   productOneLoading: state.productOne.loading,
+      // });
       return {
         ...state,
         loading: false,
